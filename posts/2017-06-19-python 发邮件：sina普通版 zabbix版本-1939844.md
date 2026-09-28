@@ -4,6 +4,15 @@ date: "2017-06-19 15:59:49"
 category: "python"
 source: "https://blog.51cto.com/hequan/1939844"
 ---
+> **内容介绍**
+>
+> 本文是Python 编程实战笔记,记录了「python 发邮件：sina普通版    |  zabbix版本」的相关内容。
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 ```python
 from email.mime.text import MIMEText
