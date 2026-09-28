@@ -4,6 +4,15 @@ date: "2018-01-10 15:29:25"
 category: "lnmp"
 source: "https://blog.51cto.com/hequan/2059436"
 ---
+> **内容介绍**
+>
+> 本文是LNMP/LAMP Web 服务架构与优化,记录了「MySQL InnoDB Cluser  |  Mysql 5.7 集群」的相关内容。主要涉及:> - 目前 本集群 应用在自己的 django demo 环境上，暂时稳定运行。 > - 欢迎加群 620176501 讨论 Mysql 集群的应用。 ---…
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 > - 目前 本集群 应用在自己的 django demo 环境上，暂时稳定运行。
 > - 欢迎加群      620176501                        讨论 Mysql 集群的应用。
@@ -12,8 +21,7 @@ source: "https://blog.51cto.com/hequan/2059436"
 
 ### **核心架构**
 
-```
-* MySQL 5.7 引入了 Group Replication 功能，可以在一组 MySQL 服务器之间实现自动主机选举，形成一主多从结构。经过高级配置后，可以实现多主多从结构。
+```shell* MySQL 5.7 引入了 Group Replication 功能，可以在一组 MySQL 服务器之间实现自动主机选举，形成一主多从结构。经过高级配置后，可以实现多主多从结构。
 * MySQL Router 是一个轻量级透明中间件，可以自动获取上述集群的状态，规划 SQL 语句，分配到合理的 MySQL 后端进行执行。
 * MySQL Shell 是一个同时支持 JavaScript 和 SQL 的交互程序，可以快速配置 InnoDB Cluster。
 ```
@@ -26,29 +34,25 @@ source: "https://blog.51cto.com/hequan/2059436"
 
 - 本次共3台机器，设置主机名及hosts  |  配置每台服务 my.cnf 中report_host 字段，为自己的 hostname
 
-```
-192.168.10.123 db1
+```shell192.168.10.123 db1
 192.168.10.124 db2
 192.168.10.125 db3
 ```
 
 - 安装 mysql5.7.21   ,可以参考下面的安装基本，我搭建的时候就是用的这个。
 
-```
-http://blog.51cto.com/hequan/2067341
+```shellhttp://blog.51cto.com/hequan/2067341
 ```
 
 - 安装mysql-shell
 
-```
-wget https://cdn.mysql.com//Downloads/MySQL-Shell/mysql-shell-1.0.11-1.el7.x86_64.rpm
+```shellwget https://cdn.mysql.com//Downloads/MySQL-Shell/mysql-shell-1.0.11-1.el7.x86_64.rpm
 yum install mysql-shell-1.0.11-1.el7.x86_64.rpm  -y
 ```
 
 - 设置相关用户的权限，生产环境   可以不是  root用户
 
-```
-grant all   privileges  on *.*  to 'root'@'%'  identified by '123456';
+```shellgrant all   privileges  on *.*  to 'root'@'%'  identified by '123456';
 GRANT ALL PRIVILEGES ON mysql_innodb_cluster_metadata.* TO root@'%' WITH GRANT OPTION;
 GRANT RELOAD, SHUTDOWN, PROCESS, FILE, SUPER, REPLICATION SLAVE, REPLICATION CLIENT, \
 CREATE USER ON *.* TO root@'%' WITH GRANT OPTION;
@@ -60,8 +64,7 @@ flush privileges;
 
 ### mysqlsh
 
-```
-[root@db1 ~]#  mysqlsh
+```shell[root@db1 ~]#  mysqlsh
 
 ## 检查mysql 配置文件   (3台主机都要操作此步骤)
 dba.checkInstanceConfiguration('root@db1:3306') 
@@ -101,8 +104,7 @@ The instance 'db1:3306' is valid for Cluster usage
 }
 ```
 
-```
-## 登陆
+```shell## 登陆
 mysqlsh --uri root@db1:3306   
 
 ## 创建集群     main
@@ -137,13 +139,11 @@ cluster.status();
 
 ### Mysql-route 设置
 
-```
-wget https://cdn.mysql.com//Downloads/MySQL-Router/mysql-router-2.1.4-1.el7.x86_64.rpm
+```shellwget https://cdn.mysql.com//Downloads/MySQL-Router/mysql-router-2.1.4-1.el7.x86_64.rpm
 yum install -y mysql-router-2.1.4-1.el7.x86_64.rpm
 ```
 
-```
-## 此命令会更新 /etc/mysqlrouter/mysqlrouter.conf 中的配置信息, 可以是别的机器 这里选择的为db2
+```shell## 此命令会更新 /etc/mysqlrouter/mysqlrouter.conf 中的配置信息, 可以是别的机器 这里选择的为db2
 
 [root@db2 ~]# mysqlrouter --bootstrap root@db1:3306 --user mysqlrouter
 
@@ -190,8 +190,7 @@ select @@hostname;
 
 ### 故障模拟
 
-```
-##关闭 db1 数据库，自动切换如下：
+```shell##关闭 db1 数据库，自动切换如下：
 
 "topology": {
             "db1:3306": {
@@ -217,8 +216,7 @@ select @@hostname;
             }
 ```
 
-```
-##重启db2 ,执行命令
+```shell##重启db2 ,执行命令
 
 mysql> show databases;
 ERROR 2013 (HY000): Lost connection to MySQL server during query
@@ -246,8 +244,7 @@ cluster.rejoinInstance('root@db2:3306')
 The instance 'db2:3306' was successfully added to the MySQL Cluster.  
 ```
 
-```
-## 所有节点都重启了，重新加入
+```shell## 所有节点都重启了，重新加入
 
 mysqlsh --uri root@db1:3306
 mysql-js> var cluster = dba.rebootClusterFromCompleteOutage();
@@ -267,15 +264,13 @@ The cluster was successfully rebooted.
 
 ### 报错总结：
 
-```
-##如果节点在加入集群前，执行了写操作，加入集群时会报错
+```shell##如果节点在加入集群前，执行了写操作，加入集群时会报错
 ERROR: Error joining instance to cluster: 'db2:3306' - Query failed. MySQL Error (3092): The server is not configured properly to be an active member of the group. Please see more details on error log.. Query: START group_replication (RuntimeError)
 
 ##登陆 db2 数据库 执行 reset master;
 ```
 
-```
-## 如果出现了   "status": "NO_QUORUM"     执行修复，重新加入   
+```shell## 如果出现了   "status": "NO_QUORUM"     执行修复，重新加入   
 ## 暂未测试
 
 cluster.forceQuorumUsingPartitionOf("db1:3306")
@@ -290,8 +285,7 @@ mysql-js> cluster.rejoinInstance('root@db3:3306')
 
 > 官方文档：   https://dev.mysql.com/doc/refman/5.7/en/mysql-innodb-cluster-userguide.html
 
-```
-节点有哪状态
+```shell节点有哪状态
 
     * ONLINE  - 节点状态正常。
     * OFFLINE  -   实例在运行，但没有加入任何Cluster。
