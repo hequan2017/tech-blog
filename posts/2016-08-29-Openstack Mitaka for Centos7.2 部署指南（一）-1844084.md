@@ -6,363 +6,381 @@ source: "https://blog.51cto.com/hequan/1844084"
 ---
 > **内容介绍**
 >
-> 本文是OpenStack 私有云部署与运维笔记,记录了「Openstack Mitaka for  Centos7.2 部署指南（一）」的相关内容。主要涉及:本文主要参考 [https://www.zybuluo.com/ncepuwanghui/note/389373](https://www.zybuluo.co…
+> 本篇是参照官方文档把 Ubuntu 版 OpenStack Mitaka 部署指南改写为 CentOS 7.2 版本的第一部分，覆盖基础环境搭建：MariaDB、MongoDB（计量服务用）、RabbitMQ、Memcached 的安装配置，keystone 身份服务的完整部署（Apache mod_wsgi 托管、Fernet 令牌、域/项目/用户/角色创建、openrc 环境脚本），以及 glance 镜像服务的安装与 cirros 测试镜像上传。
 
 > **技术备注**
 >
-> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+> Mitaka 与 CentOS 7 均已 EOL，如今部署请参考现行版本的官方文档或使用 Kolla-Ansible 等方案。文中若干组件已发生大变化：glance-registry 在 Newton 之后被移除；keystone 的 ADMIN_TOKEN 临时令牌机制与 35357 管理端口早已废弃，5000 端口也已统一为 `/v3`；`openstack image create` 的 `--public` 参数已改为 `--visibility public`。文中参考的作业部落链接已失效。
 
 ---
 
-本文主要参考
+本文主要参考：
 
-[https://www.zybuluo.com/ncepuwanghui/note/389373](https://www.zybuluo.com/ncepuwanghui/note/389373)
+- [OpenStack Mitaka for Ubuntu 16.04 LTS 部署指南](https://www.zybuluo.com/ncepuwanghui/note/389373)（作业部落，链接已失效）
+- [官方文档](http://docs.openstack.org/mitaka/install-guide-rdo/)
 
-OpenStack Mitaka for Ubuntu 16.04 LTS 部署指南
+把上面的 Ubuntu 换成 CentOS，其他详情请看上面的部署指南。
 
-[http://docs.openstack.org/mitaka/install-guide-rdo/](http://docs.openstack.org/mitaka/install-guide-rdo/)
+## 4.1 配置 OpenStack 基础服务
 
-官方文档
-
-把上面的Ubuntu 换成Centos，其他详情请看上面的部署指南
-
----
-
-**4.1配置OpenStack**
+安装 RDO Mitaka 源与 OpenStack client：
 
 ```bash
-yum install centos-release-openstack-mitaka
+yum install centos-release-openstack-mitaka
+yum install python-openstackclient
+```
 
-安装OpenStack client：
-yum install python-openstackclient
+安装 MariaDB：
 
-安装MariaDB
-yum install mariadb mariadb-server python2-PyMySQL
+```bash
+yum install mariadb mariadb-server python2-PyMySQL
+[root@controller ~]# vim /etc/my.cnf.d/openstack.cnf
+```
 
-[root@controller ~]# vim /etc/my.cnf.d/openstack.cnf
+```ini
 [mysqld]
-bind-address = 10.0.0.11
-default-storage-engine = innodb
+bind-address = 10.0.0.11
+default-storage-engine = innodb
 innodb_file_per_table
-max_connections = 4096
-collation-server = utf8_general_ci
-character-set-server = utf8
-
-systemctl enable  mariadb.service
-systemctl start  mariadb.service
-
-mysql_secure_installation  ##设置密码
+max_connections = 4096
+collation-server = utf8_general_ci
+character-set-server = utf8
 ```
-
-安装NoSQL数据库（MongoDB）
-
-注：只有计量服务（Telemetry Service）用到
-
-Controller Node
 
 ```bash
-① 安装MongoDB
-yum install mongodb-server mongodb
-[root@controller ~]# vim /etc/mongod.conf
-bind_ip = 10.0.0.11
-smallfiles = true
-systemctl enable mongod.service
-systemctl start mongod.service
+systemctl enable mariadb.service
+systemctl start mariadb.service
+mysql_secure_installation   ## 设置密码
 ```
 
-安装消息队列服务（RabbitMQ）
+安装 NoSQL 数据库（MongoDB）（Controller Node）：
 
-Controller Node
-
-① 安装RabbitMQ
+注：只有计量服务（Telemetry Service）用到。
 
 ```bash
-yum install rabbitmq-server
-systemctl enable rabbitmq-server.service
-systemctl start rabbitmq-server.service
-rabbitmqctl add_user openstack  openstack ##密码
-Creating user "openstack" ...
-rabbitmqctl set_permissions openstack ".*" ".*" ".*" ##权限
-Setting permissions for user "openstack" in vhost "/" ...
+yum install mongodb-server mongodb
+[root@controller ~]# vim /etc/mongod.conf
 ```
 
-安装Memcached
-
-身份服务（Identity Service）认证机制需要使用Memcached缓存令牌（Token）
-
-Controller Node
-
-① 安装Memcached
+```ini
+bind_ip = 10.0.0.11
+smallfiles = true
+```
 
 ```bash
-yum install memcached python-memcached
-systemctl enable memcached.service
-systemctl start memcached.service
+systemctl enable mongod.service
+systemctl start mongod.service
 ```
 
-4.2 身份服务配置（Identity Service Keystone）
+安装消息队列服务 RabbitMQ（Controller Node）：
 
-Identity服务采用RESTful设计，使用REST API提供Web服务接口。
+```bash
+yum install rabbitmq-server
+systemctl enable rabbitmq-server.service
+systemctl start rabbitmq-server.service
+rabbitmqctl add_user openstack openstack   ## 密码
+Creating user "openstack" ...
+rabbitmqctl set_permissions openstack ".*" ".*" ".*"   ## 权限
+Setting permissions for user "openstack" in vhost "/" ...
+```
 
-注：常见的Web Service 方式有SOAP 、WSDL 、REST 。
+安装 Memcached（Controller Node）：
+
+身份服务（Identity Service）认证机制需要使用 Memcached 缓存令牌（Token）。
+
+```bash
+yum install memcached python-memcached
+systemctl enable memcached.service
+systemctl start memcached.service
+```
+
+## 4.2 身份服务配置（Identity Service Keystone）
+
+Identity 服务采用 RESTful 设计，使用 REST API 提供 Web 服务接口。
+
+注：常见的 Web Service 方式有 SOAP、WSDL、REST。
 
 部署节点：Controller Node
 
-在MariaDB（MySQL）中创建Keystone数据库
+在 MariaDB（MySQL）中创建 keystone 数据库：
 
-```bash
-mysql -uroot -p123456
-CREATE DATABASE keystone;
-GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY  'keystone';
-GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'keystone';
-flush privileges;
+```sql
+mysql -uroot -p123456
+CREATE DATABASE keystone;
+GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY 'keystone';
+GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'keystone';
+flush privileges;
 quit;
-
-% 则代表了所有的host都能远程访问该mysql。但MySQL官方文档指出， % 并不包括localhost 。因此需要对localhost 和% 都进行授权。
 ```
 
-生成临时管理身份认证令牌（ADMIN_TOKEN）
+`%` 代表所有的 host 都能远程访问该 MySQL。但 MySQL 官方文档指出，`%` 并不包括 localhost，因此需要对 localhost 和 % 都进行授权。
 
-生成一个随机值，作为keystone初始配置时的ADMIN_TOKEN
+生成临时管理身份认证令牌（ADMIN_TOKEN），作为 keystone 初始配置时使用：
 
 ```bash
-openssl rand  -hex 10
+openssl rand -hex 10
 2d3c132acf773c01838e
 ```
 
-安装Keystone和Apache HTTP Server with mod_wsgi
+安装 Keystone 和 Apache HTTP Server with mod_wsgi。
 
-本文采用Apache HTTP server with mod_wsgi 监听端口5000 和35357 提供身份服务。默认keystone 服务已经监听端口5000 和35357 ，为避免冲突，需首先关闭keystone服务
+本文采用 Apache HTTP server with mod_wsgi 监听端口 5000 和 35357 提供身份服务。默认 keystone 服务已经监听端口 5000 和 35357，为避免冲突，需首先关闭 keystone 服务：
 
 ```bash
-yum install openstack-keystone httpd mod_wsgi
-vim  /etc/keystone/keystone.conf
-admin_token = ADMIN_TOKEN
-connection = mysql+pymysql://keystone:KEYSTONE_DBPASS@controller/keystone
-provider = fernet #####Fernet令牌提供者
-将配置信息写入到身份服务数据库keystone ：
-su -s /bin/sh  -c "keystone-manage db_sync" keystone
-初始化Fernet keys:
-keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
+yum install openstack-keystone httpd mod_wsgi
+vim /etc/keystone/keystone.conf
 ```
 
+```ini
+admin_token = ADMIN_TOKEN
+connection = mysql+pymysql://keystone:KEYSTONE_DBPASS@controller/keystone
+provider = fernet    ## Fernet令牌提供者
+```
+
+将配置信息写入到身份服务数据库 keystone，并初始化 Fernet keys：
+
+```bash
+su -s /bin/sh -c "keystone-manage db_sync" keystone
+keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
+```
+
+修改 httpd 配置：
+
+```bash
 vim /etc/httpd/conf/httpd.conf
+```
 
+```ini
 ServerName controller
+```
 
-vim /etc/httpd/conf.d/wsgi-keystone.conf
+`vim /etc/httpd/conf.d/wsgi-keystone.conf`：
 
-Listen 5000Listen 35357
+```apache
+Listen 5000
+Listen 35357
 
 <VirtualHost *:5000>
-    WSGIDaemonProcess keystone-public processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
-    WSGIProcessGroup keystone-public
-    WSGIScriptAlias / /usr/bin/keystone-wsgi-public
-    WSGIApplicationGroup %{GLOBAL}
-    WSGIPassAuthorization On
-    ErrorLogFormat "%{cu}t %M"
-    ErrorLog /var/log/httpd/keystone-error.log
-    CustomLog /var/log/httpd/keystone-access.log combined
+    WSGIDaemonProcess keystone-public processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
+    WSGIProcessGroup keystone-public
+    WSGIScriptAlias / /usr/bin/keystone-wsgi-public
+    WSGIApplicationGroup %{GLOBAL}
+    WSGIPassAuthorization On
+    ErrorLogFormat "%{cu}t %M"
+    ErrorLog /var/log/httpd/keystone-error.log
+    CustomLog /var/log/httpd/keystone-access.log combined
 
-    <Directory /usr/bin>
-        Require all granted
-    </Directory></VirtualHost>
+    <Directory /usr/bin>
+        Require all granted
+    </Directory>
+</VirtualHost>
 
 <VirtualHost *:35357>
-    WSGIDaemonProcess keystone-admin processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
-    WSGIProcessGroup keystone-admin
-    WSGIScriptAlias / /usr/bin/keystone-wsgi-admin
-    WSGIApplicationGroup %{GLOBAL}
-    WSGIPassAuthorization On
-    ErrorLogFormat "%{cu}t %M"
-    ErrorLog /var/log/httpd/keystone-error.log
-    CustomLog /var/log/httpd/keystone-access.log combined
+    WSGIDaemonProcess keystone-admin processes=5 threads=1 user=keystone group=keystone display-name=%{GROUP}
+    WSGIProcessGroup keystone-admin
+    WSGIScriptAlias / /usr/bin/keystone-wsgi-admin
+    WSGIApplicationGroup %{GLOBAL}
+    WSGIPassAuthorization On
+    ErrorLogFormat "%{cu}t %M"
+    ErrorLog /var/log/httpd/keystone-error.log
+    CustomLog /var/log/httpd/keystone-access.log combined
 
-    <Directory /usr/bin>
-        Require all granted
-
-</Directory></VirtualHost>
-
-```bash
-systemctl enable httpd.service
-systemctl start httpd.service
+    <Directory /usr/bin>
+        Require all granted
+    </Directory>
+</VirtualHost>
 ```
 
-创建服务实体（Service Entity）和API路径（API Endpoints）
-
 ```bash
-vim admin ##设置环境变量
-export OS_TOKEN=2d3c132acf773c01838e
-export OS_URL=http://controller:35357/v3
-export OS_IDENTITY_API_VERSION=3
-source admin
+systemctl enable httpd.service
+systemctl start httpd.service
 ```
 
-创建服务实体
-
-身份服务管理着一个OpenStack的服务目录，通过服务目录确定其他服务是否可用
+创建服务实体（Service Entity）和 API 路径（API Endpoints），先设置环境变量：
 
 ```bash
-openstack service create --name keystone --description "OpenStack Identity" identity
+vim admin   ## 设置环境变量
+export OS_TOKEN=2d3c132acf773c01838e
+export OS_URL=http://controller:35357/v3
+export OS_IDENTITY_API_VERSION=3
+source admin
 ```
 
-创建API路径
-
-OpenStack每个服务可使用三种API路径变体： admin ， internal 和public 。默认情况， admin 类型的
-
-API路径可修改用户（user）和租户（tenant），而internal 和public 类型的API路径不允许该操作。
+创建服务实体。身份服务管理着一个 OpenStack 的服务目录，通过服务目录确定其他服务是否可用：
 
 ```bash
-openstack endpoint create --region RegionOne  identity public http://controller:5000/v3
-openstack endpoint create --region RegionOne  identity internal http://controller:5000/v3
-openstack endpoint create --region RegionOne identity admin http://controller:35357/v3
+openstack service create --name keystone --description "OpenStack Identity" identity
+```
+
+创建 API 路径。OpenStack 每个服务可使用三种 API 路径变体：admin、internal 和 public。默认情况下，admin 类型的 API 路径可修改用户（user）和租户（tenant），而 internal 和 public 类型的 API 路径不允许该操作：
+
+```bash
+openstack endpoint create --region RegionOne identity public http://controller:5000/v3
+openstack endpoint create --region RegionOne identity internal http://controller:5000/v3
+openstack endpoint create --region RegionOne identity admin http://controller:35357/v3
 ```
 
 创建域（Domain）、计划（Project）、用户（User）、角色（Role）：
 
 ```bash
-openstack domain create --description "Default Domain" default
-openstack project create --domain default  --description "Admin Project" admin
-openstack user create --domain default  --password-prompt admin
-openstack role create admin
+openstack domain create --description "Default Domain" default
+openstack project create --domain default --description "Admin Project" admin
+openstack user create --domain default --password-prompt admin
+openstack role create admin
 ```
 
-创建的任何角色都必须映射到OpenStack配置文件policy.json 指定的角色：
+创建的任何角色都必须映射到 OpenStack 配置文件 policy.json 指定的角色：
 
 ```bash
-openstack role add --project admin --user admin admin
+openstack role add --project admin --user admin admin
 ```
 
-创建服务计划
+创建服务计划：
 
 ```bash
-openstack project create --domain default --description "Service Project" service
+openstack project create --domain default --description "Service Project" service
 ```
 
-常规（非管理员）的任务应该使用一个普通的项目和用户。
+常规（非管理员）的任务应该使用一个普通的项目和用户：
 
 ```bash
-openstack project create --domain default  --description "Demo Project" demo
-openstack user create --domain default  --password-prompt demo
-openstack role create user
+openstack project create --domain default --description "Demo Project" demo
+openstack user create --domain default --password-prompt demo
+openstack role create user
 ```
 
 将普通用户角色授予示例计划和示例用户：
 
 ```bash
-openstack role add --project demo --user demo user
+openstack role add --project demo --user demo user
 ```
 
-处于安全考虑，禁用临时身份认证令牌机制
+出于安全考虑，禁用临时身份认证令牌机制：修改文件 `vi /etc/keystone/keystone-paste.ini`，从 `[pipeline:public_api]`、`[pipeline:admin_api]`、`[pipeline:api_v3]` 处移除 `admin_token_auth` 配置信息。
 
-修改文件vi /etc/keystone/keystone‐paste.ini ，从
-
-[pipeline:public_api] 、[pipeline:admin_api] ， [pipeline:api_v3] 处移除admin_token_auth 配置信息。
-
-取消环境变量OS_TOKEN 和OS_URL
+取消环境变量 OS_TOKEN 和 OS_URL：
 
 ```bash
-unset OS_TOKEN OS_URL
+unset OS_TOKEN OS_URL
 ```
 
-为admin 用户申请一个身份认证令牌
+为 admin 用户申请一个身份认证令牌：
 
 ```bash
-openstack ‐‐os‐auth‐url http://controller:35357/v3 ‐‐os‐project‐domain‐name default ‐‐osuser‐domain‐name default ‐‐os‐project‐name admin ‐‐os‐username admin token issue
-
-为demo 用户申请一个身份认证令牌
-openstack --os-auth-url http://controller:5000/v3   --os-project-domain-name default --os-user-domain-name       default   --os-project-name demo --os-username demo  token issue
+openstack --os-auth-url http://controller:35357/v3 --os-project-domain-name default --os-user-domain-name default --os-project-name admin --os-username admin token issue
 ```
 
-其他申请方法：
-
-创建OpenStack客户端环境脚本方法
+为 demo 用户申请一个身份认证令牌：
 
 ```bash
-vim   admin-openrc
-export OS_PROJECT_DOMAIN_NAME=default
-export OS_USER_DOMAIN_NAME=default
-export OS_PROJECT_NAME=admin
-export OS_USERNAME=admin
-export OS_PASSWORD=admin
-export OS_AUTH_URL=http://controller:35357/v3
-export OS_AUTH_TYPE=password
-export OS_IDENTITY_API_VERSION=3
-export OS_IMAGE_API_VERSION=2
-source   admin-openrc
-openstack token issue
-
-vim  demo-openrc
-export OS_PROJECT_DOMAIN_NAME=default
-export OS_USER_DOMAIN_NAME=default
-export OS_PROJECT_NAME=demo
-export OS_USERNAME=demo
-export OS_PASSWORD=demo
-export OS_AUTH_URL=http://controller:5000/v3
-export OS_AUTH_TYPE=password
-export OS_IDENTITY_API_VERSION=3
-export OS_IMAGE_API_VERSION=2
-source   demo-openrc
-openstack token issue
+openstack --os-auth-url http://controller:5000/v3 --os-project-domain-name default --os-user-domain-name default --os-project-name demo --os-username demo token issue
 ```
 
-4.3 镜像服务配置（Image Service Glance）
+其他申请方法：创建 OpenStack 客户端环境脚本。
 
-用户可使用OpenStack镜像服务提供的REST API 查询、注册、恢复虚拟机镜像。
+```bash
+vim admin-openrc
+```
+
+```bash
+export OS_PROJECT_DOMAIN_NAME=default
+export OS_USER_DOMAIN_NAME=default
+export OS_PROJECT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=admin
+export OS_AUTH_URL=http://controller:35357/v3
+export OS_AUTH_TYPE=password
+export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
+```
+
+```bash
+source admin-openrc
+openstack token issue
+```
+
+```bash
+vim demo-openrc
+```
+
+```bash
+export OS_PROJECT_DOMAIN_NAME=default
+export OS_USER_DOMAIN_NAME=default
+export OS_PROJECT_NAME=demo
+export OS_USERNAME=demo
+export OS_PASSWORD=demo
+export OS_AUTH_URL=http://controller:5000/v3
+export OS_AUTH_TYPE=password
+export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
+```
+
+```bash
+source demo-openrc
+openstack token issue
+```
+
+## 4.3 镜像服务配置（Image Service Glance）
+
+用户可使用 OpenStack 镜像服务提供的 REST API 查询、注册、恢复虚拟机镜像。
 
 部署节点：Controller Node
 
-```bash
-mysql -uroot -p123456
-CREATE DATABASE glance;
-GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost'  IDENTIFIED BY 'glance';
-GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%'   IDENTIFIED BY 'glance';
-flush privileges;
+```sql
+mysql -uroot -p123456
+CREATE DATABASE glance;
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY 'glance';
+GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY 'glance';
+flush privileges;
 ```
 
+```bash
 . admin-openrc
-
-在OpenStack中创建一个glance用户
-
-```bash
-openstack user create --domain default --password-prompt glance
-User Password: glance
-Repeat User Password:glance
 ```
 
-将admin 角色授予glance 用户和service 计划
+在 OpenStack 中创建一个 glance 用户：
 
 ```bash
-openstack role add --project service --user glance admin
+openstack user create --domain default --password-prompt glance
+User Password: glance
+Repeat User Password: glance
 ```
 
-创建glance服务实体
+将 admin 角色授予 glance 用户和 service 计划：
 
 ```bash
-openstack service create --name glance --description "OpenStack Image" p_w_picpath
+openstack role add --project service --user glance admin
 ```
 
-创建镜像服务API路径
+创建 glance 服务实体：
 
 ```bash
-openstack endpoint create --region RegionOne   p_w_picpath public http://controller:9292
-openstack endpoint create --region RegionOne   p_w_picpath internal http://controller:9292
-openstack endpoint create --region RegionOne   p_w_picpath admin http://controller:9292
+openstack service create --name glance --description "OpenStack Image" image
 ```
 
-安装和配置Glance服务组件
+创建镜像服务 API 路径：
 
 ```bash
-yum install openstack-glance
-vim /etc/glance/glance-api.conf
+openstack endpoint create --region RegionOne image public http://controller:9292
+openstack endpoint create --region RegionOne image internal http://controller:9292
+openstack endpoint create --region RegionOne image admin http://controller:9292
 ```
 
+安装和配置 Glance 服务组件：
+
+```bash
+yum install openstack-glance
+vim /etc/glance/glance-api.conf
+```
+
+```ini
 connection = mysql+pymysql://glance:GLANCE_DBPASS@controller/glance
+```
 
-在[keystone_authtoken] 和[paste_deploy] 处，配置身份服务访问。
+在 [keystone_authtoken] 和 [paste_deploy] 处，配置身份服务访问。
 
-注：注释掉[keystone_authtoken] 处所有默认内容  M版默认是全注释掉的
+注：注释掉 [keystone_authtoken] 处所有默认内容，M 版默认是全注释掉的。
 
+```ini
 [keystone_authtoken]
 ...
 auth_uri = http://controller:5000
@@ -377,57 +395,62 @@ password = GLANCE_PASS
 
 [paste_deploy]
 ...
-
 flavor = keystone
+```
 
-在[glance_store]处配置本地文件系统存储和镜像文件存储位置。
+在 [glance_store] 处配置本地文件系统存储和镜像文件存储位置：
 
+```ini
 stores = file,http
-
 default_store = file
-
-filesystem_store_datadir = /var/lib/glance/p_w_picpaths/
+filesystem_store_datadir = /var/lib/glance/images/
+```
 
 ```bash
-vim /etc/glance/glance-registry.conf
-connection = mysql+pymysql://glance:GLANCE_DBPASS@controller/glance
+vim /etc/glance/glance-registry.conf
+```
+
+```ini
+connection = mysql+pymysql://glance:GLANCE_DBPASS@controller/glance
 [keystone_authtoken]
-auth_uri = http://controller:5000
-auth_url = http://controller:35357
-memcached_servers = controller:11211
-auth_type = password
-project_domain_name = default
-user_domain_name = default
-project_name = service
-username = glance
-password = GLANCE_PASS
+auth_uri = http://controller:5000
+auth_url = http://controller:35357
+memcached_servers = controller:11211
+auth_type = password
+project_domain_name = default
+user_domain_name = default
+project_name = service
+username = glance
+password = GLANCE_PASS
 [paste_deploy]
-flavor = keystone
+flavor = keystone
 ```
 
-将配置信息写入glance数据库
+将配置信息写入 glance 数据库：
 
 ```bash
- su -s /bin/sh -c "glance-manage  db_sync" glance
+su -s /bin/sh -c "glance-manage db_sync" glance
 ```
 
-忽略所有有关’弃用’（deprecate）的输出
+忽略所有有关"弃用"（deprecate）的输出：
 
-Option "verbose" from group "DEFAULT" is deprecated for removal.  Its value may be silently ignored in the future.
-
+```text
+Option "verbose" from group "DEFAULT" is deprecated for removal.  Its value may be silently ignored in the future.
 /usr/lib/python2.7/site-packages/oslo_db/sqlalchemy/enginefacade.py:1056: OsloDBDeprecationWarning: EngineFacade is deprecated; please use oslo_db.sqlalchemy.enginefacade
-
 expire_on_commit=expire_on_commit, _conf=conf)
+```
+
+启动服务并上传 cirros 测试镜像：
 
 ```bash
-systemctl enable openstack-glance-api.service   openstack-glance-registry.service
-systemctl start openstack-glance-api.service   openstack-glance-registry.service
-wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
-openstack p_w_picpath create "cirros"   --file cirros-0.3.4-x86_64-disk.img  --disk-format qcow2 --container-format bare   --public
-[root@controller ~]# openstack p_w_picpath list
+systemctl enable openstack-glance-api.service openstack-glance-registry.service
+systemctl start openstack-glance-api.service openstack-glance-registry.service
+wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
+openstack image create "cirros" --file cirros-0.3.4-x86_64-disk.img --disk-format qcow2 --container-format bare --public
+[root@controller ~]# openstack image list
 +--------------------------------------+--------+--------+
-| ID                                   | Name   | Status |
+| ID                                   | Name   | Status |
 +--------------------------------------+--------+--------+
-| 9866bbe8-5efb-43e4-9c22-3984a63276c8 | cirros | active |
+| 9866bbe8-5efb-43e4-9c22-3984a63276c8 | cirros | active |
 +--------------------------------------+--------+--------+
 ```
