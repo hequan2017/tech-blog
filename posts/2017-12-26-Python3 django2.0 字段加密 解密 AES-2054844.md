@@ -6,19 +6,33 @@ source: "https://blog.51cto.com/hequan/2054844"
 ---
 > **内容介绍**
 >
-> 本文是Python 编程实战笔记,记录了「Python3  django2.0  字段加密 解密 AES」的相关内容。主要涉及:以下设置，适用于python3.5及以前的 python3.6版本的…
+> 本文提供 Django 模型敏感字段的两套可逆加解密实现：Python 3.5 及以前
+> 使用 pycrypto 的 AES CBC 模式，封装 AESCipher 类，自带补位（pad/unpad）
+> 与 base64 编码；Python 3.6 起改用 cryptography 库的 Fernet 对称加密，
+> 给出 encrypt_p / decrypt_p 两个函数，可直接用于密码等字段入库前加密、
+> 读出后还原。
 
 > **技术备注**
 >
-> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+> - pycrypto 早已停止维护，建议改装其兼容分支 `pycryptodome`
+>   （`pip install pycryptodome`，`from Crypto...` 导入方式不变）。
+> - Django 2.0 已于 2019 年 4 月停止支持，Python 3.5 / 3.6 也均已 EOL。
+> - 文中 Fernet 密钥硬编码在源码里仅作演示，生产环境应放入环境变量或
+>   配置中心；另 Django 自带 `django.core.signing` 亦可做可逆字段加密。
 
 ---
 
-以下设置，适用于python3.5及以前的
+## 1. Python 3.5 及以前：pycrypto + AES
+
+安装：
+
+```shell
+pip install pycrypto
+```
+
+代码：
 
 ```python
-pip install   pycrypto
-
 import base64
 from Crypto.Cipher import AES
 from Crypto import Random
@@ -51,16 +65,22 @@ print(b1,type(b),type(b1))
 
 c = a.decrypt(enc='N4wGyzPTnggQtUr_gyGcsxMzU136thzPIc8y3mJ2uxg=')
 print(c)
+```
+
+## 2. Python 3.6 版本：cryptography + Fernet
+
+安装：
+
+```shell
+pip install cryptography
+```
+
+代码：
+
 ```python
-
-python3.6版本的
-
-```python
-pip install  cryptography
-
 from cryptography.fernet import Fernet
 
-##  key = base64.urlsafe_b64encode(os.urandom(32))  生成key
+# key = base64.urlsafe_b64encode(os.urandom(32))  生成key
 
 def  encrypt_p(password):
         f = Fernet('Ow2Qd11KeZS_ahNOMicpWUr3nu3RjOUYa0_GEuMDlOc=')
