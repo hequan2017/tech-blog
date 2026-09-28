@@ -6,7 +6,13 @@ source: "https://blog.51cto.com/hequan/1796041"
 ---
 > **内容介绍**
 >
-> 本文是多节点 OpenStack 部署笔记的两部分：第一部分介绍消息中枢 RabbitMQ——OpenStack 各组件间通过 AMQP 高级消息队列通信（也可选 qpid），在 h3（192.168.1.203）上配置本地 yum 源安装 rabbitmq-server，启动后确认 5672 端口监听，并启用 rabbitmq_management 插件通过 15672 端口的 Web 界面管理；第二部分讲元数据（metadata），包括检查控制节点 OVS 网桥与 ip_forward 转发，在计算节点 nova.conf 中配置 metadata_host 指向控制节点，最后在云主机内通过 `curl http://169.254.169.254/` 查看实例元数据。
+> 本文是多节点 OpenStack 部署笔记的两部分：第一部分介绍消息中枢 RabbitMQ——
+> OpenStack 各组件间通过 AMQP 高级消息队列通信（也可选 qpid），在 h3
+> （192.168.1.203）上配置本地 yum 源安装 rabbitmq-server，启动后确认 5672 端口
+> 监听，并启用 rabbitmq_management 插件通过 15672 端口的 Web 界面管理；第二部分
+> 讲元数据（metadata），包括检查控制节点 OVS 网桥与 ip_forward 转发，在计算节点
+> nova.conf 中配置 metadata_host 指向控制节点，最后在云主机内通过
+> `curl http://169.254.169.254/` 查看实例元数据。
 
 > **技术备注**
 >
@@ -133,9 +139,9 @@ c34056d1-7b80-437f-b73c-5bf05258d303
 1
 ```
 
-![元数据服务网络路径示意图一](assets/1796041/02_wKiom1d7hSXwj1mVAAAQLlKyWX4805.png)
+![云主机实例列表：centos7 的 IP 与浮动 IP](assets/1796041/02_wKiom1d7hSXwj1mVAAAQLlKyWX4805.png)
 
-![元数据服务网络路径示意图二](assets/1796041/03_wKioL1d7hSbTug-WAAGDLh0x_JY828.png)
+![手绘图：metadata 由控制节点关联计算节点配置文件](assets/1796041/03_wKioL1d7hSbTug-WAAGDLh0x_JY828.png)
 
 ### 2.2 计算节点配置 metadata_host
 
