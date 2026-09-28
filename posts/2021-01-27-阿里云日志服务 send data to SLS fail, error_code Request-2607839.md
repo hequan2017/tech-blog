@@ -6,7 +6,11 @@ source: "https://blog.51cto.com/hequan/2607839"
 ---
 > **内容介绍**
 >
-> 本文是服务器集群与高可用架构实践,记录了「阿里云日志服务 send data to SLS fail, error_code:Request」的相关内容。
+> 解决阿里云日志服务 SLS 上报失败、提示 `address is null` 的问题：原因是 `ilogtail` 默认使用私网 Endpoint，跨网络或公网环境需修改 `user_log_config.json` 中的 `defaultEndpoint` 为公网域名，然后重启 `ilogtaild` 服务。
+
+> **技术备注**
+>
+> 示例基于阿里云 Logtail（原 ilogtail）旧版配置；新版 Logtail 已支持通过控制台或环境变量直接配置 Endpoint，且推荐改用 `systemctl` 管理服务。公网 Endpoint 会产生外网流量费用，内网环境建议优先使用私网或 VPC Endpoint。
 
 ---
 
