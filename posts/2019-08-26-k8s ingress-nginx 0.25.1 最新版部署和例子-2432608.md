@@ -4,21 +4,28 @@ date: "2019-08-26 14:27:23"
 category: "kubernetes"
 source: "https://blog.51cto.com/hequan/2432608"
 ---
+> **内容介绍**
+>
+> 本文是Kubernetes 云原生容器编排实践,记录了「k8s ingress-nginx 0.25.1 最新版部署和例子」的相关内容。主要涉及:### k8s ingress-nginx 0.25.1 最新版部署和例子 #### 说明 #### 部署…
+
+> **技术备注**
+>
+> Nginx 配置在不同大版本间略有差异,建议以当前稳定版(1.24+/1.26+)官方文档为准。
+
+---
 
 ### k8s ingress-nginx 0.25.1 最新版部署和例子
 
 #### 说明
 
-```
-https:///kubernetes/ingress-nginx/blob/master/docs/deploy/
+```shellhttps:///kubernetes/ingress-nginx/blob/master/docs/deploy/
 
 增加了7层的识别能力，可以根据 http header, path 等进行路由转发
 ```
 
 #### 部署
 
-```
-wget  https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
+```shellwget  https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
 
 sed -i 's#quay.io/kubernetes-ingress-controller/nginx-ingress-controller#/google_containers/nginx-ingress-controller#g' mandatory.yaml
 
@@ -49,23 +56,20 @@ spec:
     /part-of: ingress-nginx
 ```
 
-```
-kubectl create -f  mandatory.yaml
+```shellkubectl create -f  mandatory.yaml
 kubectl create -f  service-nodeport.yaml
 ```
 
 #### 检查
 
-```
-kubectl get pod -n ingress-nginx -o wide
+```shellkubectl get pod -n ingress-nginx -o wide
 
 kubectl scale --replicas=2  deploy/nginx-ingress-controller -n ingress-nginx
 ```
 
 #### 例子
 
-```
-vim  deploy-demo.yaml
+```shellvim  deploy-demo.yaml
 apiVersion: v1
 kind: Service
 metadata:
