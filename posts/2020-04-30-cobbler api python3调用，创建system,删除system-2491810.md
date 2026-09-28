@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/2491810"
 ---
 > **内容介绍**
 >
-> 本文是Python 编程实战笔记,记录了「cobbler api python3调用，创建system,删除system」的相关内容。主要涉及:### cobbler api python3调用，创建system,删除system > 可以根据mac 地址 调用API 创建任务，安装完成之后，再把任务删…
+> 通过 Cobbler 的 XML-RPC API 用 Python 3 自动化创建、配置并删除装机 system：指定 MAC、IP、网关、子网掩码、绑定 profile，最后触发 `sync` 生效。注释中还整理了大量常用查询与维护接口，适合作为 Cobbler 运维脚本参考。
 
 > **技术备注**
 >
-> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+> 示例基于 Cobbler 2.x XML-RPC 接口与 CentOS 7 环境编写；Cobbler 3.x 起配置目录、CLI 与部分 API 行为有调整，生产环境建议先确认版本兼容性。
 
 ---
 
