@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/2408482"
 ---
 > **内容介绍**
 >
-> 本文是Go 语言后端开发实战,记录了「mysql 审核引擎 goInception 的基本使用」的相关内容。主要涉及:### mysql 审核引擎 goInception 的基本使用 #### 官网地址 > https:///hanchuanchuan/goInception…
+> 本文演示 MySQL SQL 审核引擎 goInception 的安装与基本调用：从源码编译启动服务，在配置里开启备份库，然后用 Python（pymysql + prettytable）模拟 MySQL 客户端连接 goInception 的 4000 端口，通过 inception_magic_start/commit 语法提交建表和插入语句，获得逐条的审核/执行结果与备份信息。
 
 > **技术备注**
 >
-> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+> goInception 是 inception 的 Go 重写版，目前仍在维护（hanchuanchuan/goInception）。文中 `go build` 的编译方式至今适用，但官方也提供 Docker 镜像和预编译包，可免去 `make parser` 步骤。示例里把审核+执行+备份一条龙跑通的做法至今通用；生产环境注意备份库账号权限与连接串里明文密码的问题。
 
 ---
 
@@ -18,14 +18,14 @@ source: "https://blog.51cto.com/hequan/2408482"
 
 #### 官网地址
 
-> https:///hanchuanchuan/goInception
+> https://github.com/hanchuanchuan/goInception
 
 #### 安装
 
 ```shell
-git clone https:///hanchuanchuan/goInception.git
+git clone https://github.com/hanchuanchuan/goInception.git
 cd goInception
-```shell
+```
 
 #### 修改配置
 
@@ -49,9 +49,11 @@ make parser
 go build -o goInception tidb-server/main.go
 
 ./goInception -config=config/config.toml
-```python
+```
 
-> pip install pymysql prettytable
+```shell
+pip install pymysql prettytable
+```
 
 #### 代码
 
@@ -83,7 +85,7 @@ print(tb)
 
 #### 结果
 
-```shell
+```text
 +----------+----------+-------------+----------------------+---------------+----------------------------------------------------+---------------+------------------------+------------------------+--------------+---------+-------------+
 | order_id |  stage   | error_level |     stage_status     | error_message |                        sql                         | affected_rows |        sequence        |     backup_dbname      | execute_time | sqlsha1 | backup_time |
 +----------+----------+-------------+----------------------+---------------+----------------------------------------------------+---------------+------------------------+------------------------+--------------+---------+-------------+
