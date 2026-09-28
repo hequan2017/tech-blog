@@ -4,18 +4,25 @@ date: "2018-10-09 16:57:59"
 category: "python"
 source: "https://blog.51cto.com/hequan/2296381"
 ---
+> **内容介绍**
+>
+> 本文是Python 编程实战笔记,记录了「ServerUnreachable Unable to connect server: timed」的相关内容。主要涉及:阿里云 创建主机 报错: 原因:…
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 阿里云 创建主机
 报错:
 
-```
-SDK.ServerUnreachable Unable to connect server: timed out
+```shellSDK.ServerUnreachable Unable to connect server: timed out
 ```
 
 原因:
 
-```
-ECS创建实例（CreateInstance请求）的最长等待时间为90秒，
+```shellECS创建实例（CreateInstance请求）的最长等待时间为90秒，
 
 但SDK对所有类型的请求均设置了一个固定的超时时间
 
@@ -32,7 +39,6 @@ ECS创建实例（CreateInstance请求）的最长等待时间为90秒，
 
 解决办法：
 
-```
-# 把超时时间 延长
+```shell# 把超时时间 延长
 createclt = client.AcsClient(self.AccessKeyId, self.AccessKeySecret, region_id, timeout=30)
 ```
