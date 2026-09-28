@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/5659413"
 ---
 > **内容介绍**
 >
-> 本文是服务器集群与高可用架构实践,记录了「k8s  部署nginx    Deployment/StatefulSet    sc」的相关内容。
-
+> 本文演示在 Kubernetes 中通过 NFS StorageClass 动态供给 PV，部署 Nginx 应用。包含一个 PVC 申请 1000Mi 共享存储，以及 Deployment（可替换为 StatefulSet）挂载该 PVC 到 `/usr/share/nginx/html` 的完整 YAML 示例。
+>
 > **技术备注**
 >
-> Nginx 配置在不同大版本间略有差异,建议以当前稳定版(1.24+/1.26+)官方文档为准。
+> NFS 动态供给需提前部署 nfs-subdir-external-provisioner；ReadWriteMany 模式依赖 NFS 服务端支持。StatefulSet 与 Deployment 在此场景差异不大，仅当需要稳定网络标识或有序扩缩容时才必须使用 StatefulSet。
 
 ---
 
