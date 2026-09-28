@@ -4,13 +4,21 @@ date: "2018-06-11 14:51:33"
 category: "vue"
 source: "https://blog.51cto.com/hequan/2128052"
 ---
+> **内容介绍**
+>
+> 本文是Vue 前端工程化实践,记录了「iview-admin 1.3 + django 2.0 (二)  用户登录」的相关内容。主要涉及:### Iview-admin #### main.js #### logo.vue…
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 ### Iview-admin
 
 #### main.js
 
-```
-import axios from 'axios';
+```pythonimport axios from 'axios';
 axios.interceptors.request.use(
     config => {
         let ttoken = JSON.parse(localStorage.getItem('token'));
@@ -29,8 +37,7 @@ Vue.prototype.$ajax = axios;
 
 #### logo.vue
 
-```
-<Alert v-show="isshow" type="error" show-icon closable>
+```python<Alert v-show="isshow" type="error" show-icon closable>
     提交错误
     <span slot="desc">{{ e }} </span>
 </Alert>
@@ -94,8 +101,7 @@ export default {
 
 #### settings.py
 
-```
-INSTALLED_APPS = [
+```shellINSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -127,16 +133,14 @@ APPEND_SLASH=False
 
 #### urls.py
 
-```
-from rest_framework.authtoken import views
+```pythonfrom rest_framework.authtoken import views
 
 path('api-token-auth', views.obtain_auth_token),
 ```
 
 #### api.py
 
-```
-from .serializers import AssetSerializer
+```pythonfrom .serializers import AssetSerializer
 
 from rest_framework import permissions
 from rest_framework import generics
