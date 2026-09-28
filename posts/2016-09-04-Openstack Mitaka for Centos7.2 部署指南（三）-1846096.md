@@ -4,6 +4,15 @@ date: "2016-09-04 14:20:27"
 category: "openstack"
 source: "https://blog.51cto.com/hequan/1846096"
 ---
+> **内容介绍**
+>
+> 本文是OpenStack 私有云部署与运维笔记,记录了「Openstack Mitaka for  Centos7.2 部署指南（三）」的相关内容。主要涉及:4.7 块存储服务配置（Block Storage Service Cinder） 部署节点：Controller Node mysql -u root -p1…
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 4.7 块存储服务配置（Block Storage Service Cinder）
 
