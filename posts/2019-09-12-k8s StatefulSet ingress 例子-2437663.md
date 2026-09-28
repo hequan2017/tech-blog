@@ -4,11 +4,19 @@ date: "2019-09-12 11:52:40"
 category: "kubernetes"
 source: "https://blog.51cto.com/hequan/2437663"
 ---
+> **内容介绍**
+>
+> 本文是Kubernetes 云原生容器编排实践,记录了「k8s  StatefulSet ingress 例子」的相关内容。主要涉及:### k8s StatefulSet例子…
+
+> **技术备注**
+>
+> Nginx 配置在不同大版本间略有差异,建议以当前稳定版(1.24+/1.26+)官方文档为准。
+
+---
 
 ### k8s  StatefulSet例子
 
-```
-apiVersion: v1
+```shellapiVersion: v1
 kind: Service
 metadata:
   name: nginx
@@ -58,8 +66,7 @@ spec:
           storage: 1Gi
 ```
 
-```
-apiVersion: extensions/v1beta1
+```shellapiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress-web
