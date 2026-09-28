@@ -6,7 +6,11 @@ source: "https://blog.51cto.com/hequan/2970605"
 ---
 > **内容介绍**
 >
-> 本文是Go 语言后端开发实战,记录了「go 根据jumpserver api 获取所有资产信息(后续可导入cmdb)」的相关内容。
+> 通过 JumpServer REST API 自动拉取全部资产信息：先调用 `/api/v1/authentication/auth/` 登录获取 Token，再携带 `Authorization: Bearer <token>` 访问 `/api/v1/assets/assets/` 分页接口，最后用 `gjson`/`gofasion` 解析 JSON 并打印主机名，方便后续导入 CMDB。
+
+> **技术备注**
+>
+> 示例基于 JumpServer v2 API（2021 年）；JumpServer v3 起 API 路径、认证方式与分页字段均有调整，建议参考对应版本的官方 API 文档。`gofasion` 与 `gjson` 的 import 路径原文被截断，实际应为 `github.com/Anderson-Lu/gofasion/gofasion` 与 `github.com/tidwall/gjson`。
 
 ---
 
@@ -17,11 +21,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"/Anderson-Lu/gofasion/gofasion"
-	"/tidwall/gjson"
 	"io/ioutil"
 	"net/http"
 	"time"
+
+	"github.com/Anderson-Lu/gofasion/gofasion"
+	"github.com/tidwall/gjson"
 )
 
 // Get 发送GET请求
