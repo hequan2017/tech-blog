@@ -4,9 +4,17 @@ date: "2021-04-19 14:28:28"
 category: "集群"
 source: "https://blog.51cto.com/hequan/2717713"
 ---
+> **内容介绍**
+>
+> 本文是服务器集群与高可用架构实践,记录了「elasticsearch 7.x搭建集群和重启」的相关内容。
 
-```
-yum install java-11-openjdk-devel.x86_64
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
+
+```shellyum install java-11-openjdk-devel.x86_64
 
 echo vm.max_map_count=655360 >> /etc/sysctl.conf
 sysctl -p
@@ -40,8 +48,7 @@ http.cors.enabled: true
 http.cors.allow-origin: "*"
 ```
 
-```
-curl -XGET http://192.168.100.101:9200/_cat/health?v
+```shellcurl -XGET http://192.168.100.101:9200/_cat/health?v
 
 curl -XGET http://192.168.100.103:9200/_cat/nodes?v
 
@@ -52,8 +59,7 @@ curl -XPUT http://192.168.100.102:9200/cmdb/user/4 -d "{\"email\":\"test@\",\"na
 curl -XGET http://192.168.100.101:9200/cmdb/user/1
 ```
 
-```
-一：关闭自动分片，即使新建index也无法分配数据分片。
+```shell一：关闭自动分片，即使新建index也无法分配数据分片。
 curl -XPUT http://192.168.100.102:9200/_cluster/settings -d '{
   "transient" : {
     "cluster.routing.allocation.enable" : "none"
