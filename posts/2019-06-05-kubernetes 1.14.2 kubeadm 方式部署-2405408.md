@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/2405408"
 ---
 > **内容介绍**
 >
-> 本文是Kubernetes 云原生容器编排实践,记录了「kubernetes 1.14.2  kubeadm 方式部署」的相关内容。主要涉及:### kubernetes 1.14.2 kubeadm方式部署 #### 主机 > 192.168.100.111 k8s-master…
+> 本文记录用 kubeadm 在 3 台 CentOS 7 主机上部署 Kubernetes 1.14.2 集群的完整过程：关闭防火墙/SELinux/交换分区、配置 hosts 与内核参数、安装 Docker 与 kubelet/kubeadm/kubectl（阿里云镜像源）、提前拉取并 retag gcr.io 镜像解决国内拉取困难，最后 kubeadm init 初始化 master、node 节点 join、部署 flannel 网络插件。
 
 > **技术备注**
 >
-> 文中 Kubernetes 版本较旧,kubeadm 部署方式在 1.24+ 后已默认使用 containerd 运行时(dockershim 已移除),请注意版本差异。
+> Kubernetes 1.14 是 2019 年 3 月发布的版本，早已停止维护。几个重要变化：① K8s 1.24 起移除了 dockershim，默认容器运行时为 containerd，不再需要装 Docker；② 文中阿里云的 kubernetes-el7 yum 源已失效，现官方源为 pkgs.k8s.io（按 minor 版本分仓库）；③ 手动 retag gcr.io 镜像的做法已被 `kubeadm config images pull --image-repository` 或镜像代理取代；④ flannel v0.10 的 CNI 配置写法与现在差异较大，新集群更常用 Calico 或 Cilium；⑤ CentOS 7 已于 2024-06-30 EOL。
 
 ---
 
@@ -26,7 +26,7 @@ source: "https://blog.51cto.com/hequan/2405408"
 
 ```shell
 systemctl stop firewalld
-ystemctl disable firewalld
+systemctl disable firewalld
 sed -i 's/enforcing/disabled/' /etc/selinux/config
 setenforce 0
 
@@ -54,7 +54,7 @@ net.bridge.bridge-nf-call-iptables = 1
 net.bridge.bridge-nf-call-arptables = 1
 
 sysctl -p
-```shell
+```
 
 #### 部署
 
@@ -135,7 +135,7 @@ Then you can join any number of worker nodes by running the following on each as
 ## node 节点执行
 kubeadm join 192.168.100.111:6443 --token ws2hxe.zeq9skej2ppjx4ip \
     --discovery-token-ca-cert-hash sha256:abf8f2694f738fcd199aa5bbf99491b0f9248b3750b1df7ba47450bbe9a75f81
-```shell
+```
 
 ```shell
 mkdir -p $HOME/.kube
