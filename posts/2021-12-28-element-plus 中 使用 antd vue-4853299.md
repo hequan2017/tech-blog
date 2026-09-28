@@ -4,11 +4,15 @@ date: "2021-12-28 17:54:12"
 category: ""
 source: "https://blog.51cto.com/hequan/4853299"
 ---
+> **内容介绍**
+>
+> 本文是技术实践笔记,记录了「element-plus 中  使用 antd vue」的相关内容。主要涉及:#### main.js #### 主要…
+
+---
 
 #### main.js
 
-```
-import { createApp } from 'vue'
+```pythonimport { createApp } from 'vue'
 import 'element-plus/dist/index.css'
 import './style/element_visiable.scss'
 import ElementPlus from 'element-plus'
@@ -41,8 +45,7 @@ export default app
 
 #### 主要
 
-```
-import App from './App.vue'
+```pythonimport App from './App.vue'
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 
