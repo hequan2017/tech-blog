@@ -100,6 +100,22 @@ main{flex:1;min-width:0;padding:0 32px 40px}
 .feat .ft .n{flex-shrink:0;font-size:12px;font-weight:500;color:var(--brand-1);background:var(--brand-soft);border-radius:20px;padding:2px 9px}
 .feat:hover .ft{color:var(--brand-1)}
 .feat .fd{margin-top:7px;font-size:13px;color:var(--muted);line-height:1.65}
+
+/* 关于本项目 + 年份分布 */
+.about{margin:34px 0 8px;padding:22px 22px 18px;border:1px solid var(--border);border-radius:14px;
+  background:linear-gradient(180deg,var(--bg-soft),var(--bg));text-align:left}
+.about h2{font-size:16px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.about p{font-size:13.5px;color:var(--muted);line-height:1.8;margin:6px 0}
+.about .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.about .tags span{font-size:12px;color:var(--brand-1);background:var(--brand-soft);
+  border-radius:20px;padding:3px 11px}
+.years{margin-top:16px}
+.years .yr{display:flex;align-items:center;gap:10px;margin:5px 0}
+.years .yl{width:38px;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex-shrink:0}
+.years .yb{flex:1;height:14px;background:var(--bg-alt);border-radius:7px;overflow:hidden}
+.years .yi{height:100%;background:linear-gradient(90deg,var(--brand),#3e71f6);border-radius:7px;
+  width:0;transition:width .8s ease}
+.years .yn{width:40px;font-size:12px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;flex-shrink:0}
 #stats{font-size:13px;color:var(--muted);margin:22px 0 10px;padding-bottom:12px;border-bottom:1px solid var(--border)}
 h2.year{font-size:14px;color:var(--muted);font-weight:600;margin:24px 0 4px;padding-bottom:6px;border-bottom:1px dashed var(--border)}
 .row{display:flex;align-items:baseline;gap:12px;padding:9px 12px;margin:1px -12px;border-radius:8px}
@@ -154,6 +170,9 @@ h1.pt{font-size:28px;line-height:1.4;font-weight:700;margin-bottom:14px}
 .markdown blockquote{border-left:3px solid var(--brand);background:var(--brand-soft);border-radius:0 8px 8px 0;
   padding:10px 16px;margin:16px 0;color:var(--muted)}
 .markdown blockquote p{margin:6px 0}
+/* 文章顶部 内容介绍/技术备注 摘要块 */
+.markdown blockquote:first-of-type{border-left-color:var(--brand);font-size:14.5px}
+.markdown blockquote:first-of-type strong{color:var(--brand-1)}
 .markdown code{font-family:Consolas,"JetBrains Mono","Courier New",monospace;font-size:.84em;
   background:var(--bg-alt);border-radius:4px;padding:2px 6px;color:var(--brand-1)}
 .markdown table{border-collapse:collapse;display:block;overflow:auto;max-width:100%;margin:16px 0;
@@ -238,6 +257,22 @@ footer a:hover{color:var(--brand-1)}
           <a class="feat" href="#/c/ansible"><div class="ico">🔧</div><div class="ft">自动化运维<span class="n">25 篇</span></div><div class="fd">shell · ansible · zabbix · autoops · cobbler:批量部署与监控告警</div></a>
           <a class="feat" href="#/c/未分类"><div class="ico">🗂️</div><div class="ft">未分类<span class="n">27 篇</span></div><div class="fd">未归类的技术随笔与实践记录</div></a>
         </div>
+        <div class="about" id="about">
+          <h2>📖 关于本项目</h2>
+          <p>本仓库是博主 <a href="https://blog.51cto.com/hequan" target="_blank" rel="noopener">hequan</a>
+            在 51CTO 发布的全部技术文章的离线备份与再整理,共 <b>416</b> 篇,时间跨度 2016–2025 共十年。
+            所有文章已转换为 Markdown,图片本地化至 <code>posts/assets/</code>,可离线阅读、全文检索,
+            每篇保留原标题、发布时间、分类与原文链接。</p>
+          <p>内容覆盖 <b>Go / Python 后端开发、Linux 系统运维、Kubernetes 云原生、OpenStack 私有云、
+            LNMP Web 架构、Ansible/Zabbix 自动化运维</b> 等方向,适合作为运维与后端开发的实战参考资料。
+            每篇文章顶部附有内容介绍与技术演进备注,帮助读者快速判断是否适用于当前环境。</p>
+          <div class="tags">
+            <span>Go</span><span>Python</span><span>Linux</span><span>Kubernetes</span>
+            <span>OpenStack</span><span>LNMP</span><span>Ansible</span><span>Zabbix</span>
+            <span>Docker</span><span>Vue</span><span>Shell</span><span>DevOps</span>
+          </div>
+          <div class="years" id="years"></div>
+        </div>
       </div>
       <div id="stats"></div>
       <div id="list"></div>
@@ -296,8 +331,29 @@ function loadIndex(){
   fetch('posts-index.json').then(r => r.json()).then(json => {
     POSTS = json;
     POSTS.sort((a,b) => b.d.localeCompare(a.d));
+    renderYears();
     route();
   });
+}
+
+/* 首页年份分布图 */
+function renderYears(){
+  const box = $('#years');
+  if(!box) return;
+  const cnt = {};
+  POSTS.forEach(p => { const y = p.d.slice(0,4); cnt[y] = (cnt[y]||0)+1; });
+  const ys = Object.keys(cnt).sort();
+  const max = Math.max(...ys.map(y => cnt[y]));
+  let h = '';
+  ys.forEach(y => {
+    const pct = Math.max(3, Math.round(cnt[y]/max*100));
+    h += `<div class="yr"><span class="yl">${y}</span>
+      <div class="yb"><div class="yi" data-w="${pct}"></div></div>
+      <span class="yn">${cnt[y]}</span></div>`;
+  });
+  box.innerHTML = h;
+  requestAnimationFrame(() => requestAnimationFrame(() =>
+    box.querySelectorAll('.yi').forEach(el => el.style.width = el.dataset.w + '%')));
 }
 
 /* ---------- 侧栏目录 ---------- */
