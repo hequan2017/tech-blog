@@ -4,6 +4,15 @@ date: "2016-07-05 22:25:01"
 category: "openstack"
 source: "https://blog.51cto.com/hequan/1796108"
 ---
+> **内容介绍**
+>
+> 本文是OpenStack 私有云部署与运维笔记,记录了「openstack学习笔记六 多节点部署之keystone」的相关内容。主要涉及:**keystone** 对用户进行验证，每个组件必须得实用一个用户向keystone进行注册，只有成功了，那么这个组件才能正常工作。所以当我们在创建其他组件的…
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 **keystone**    对用户进行验证，每个组件必须得实用一个用户向keystone进行注册，只有成功了，那么这个组件才能正常工作。所以当我们在创建其他组件的时候，也包括keystone本身，都得为这个组件创建一个用户名和密码
 
