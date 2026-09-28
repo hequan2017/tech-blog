@@ -4,6 +4,15 @@ date: "2016-08-01 03:21:45"
 category: "openstack"
 source: "https://blog.51cto.com/hequan/1832696"
 ---
+> **内容介绍**
+>
+> 本文是OpenStack 私有云部署与运维笔记,记录了「openstack学习笔记十 neutron」的相关内容。主要涉及:[](http://s3.51cto.com/wyfs02/M01/85/40/wKioL1eeT0fxFYT-AAHb7WtHzMg434.png-wh_50…
+
+> **技术备注**
+>
+> OpenStack 各版本迭代较快,部署时请以官方文档对应版本为准;生产中也可考虑 Kolla-Ansible 等容器化部署方案。
+
+---
 
 [![openstack学习笔记十 neutron_OpenStack](assets/1832696/01_wKioL1eeT0fxFYT-AAHb7WtHzMg434.png)](http://s3.51cto.com/wyfs02/M01/85/40/wKioL1eeT0fxFYT-AAHb7WtHzMg434.png-wh_500x0-wm_3-wmp_4-s_1196143743.png)
 
