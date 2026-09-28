@@ -6,7 +6,11 @@ source: "https://blog.51cto.com/hequan/2376728"
 ---
 > **内容介绍**
 >
-> 本文是Python 编程实战笔记,记录了「GraphQL  graphene-django  基本使用文档」的相关内容。主要涉及:### graphene-django 基本使用文档 #### 介绍 > 一种用于 API 的查询语言…
+> graphene-django 的基本使用文档：在 Django 项目中接入 GraphQL，定义 DjangoObjectType 映射 User 模型，实现 List/Field 两种查询与 create/update/delete 三种 Mutation，并给出 settings、urls 配置和完整的 GraphQL 请求示例。
+>
+> **技术备注**
+>
+> 文中基于 graphene 2.x；graphene 3 起 `mutate(self, info, **kwargs)` 需改为 `mutate(root, info, **kwargs)`，DjangoObjectType 需显式声明 `fields`（或 `fields = "__all__"`），升级时需注意。graphene-django 对 Django 4.x+ 的兼容性请查阅其官方文档版本矩阵。
 
 ---
 
@@ -19,38 +23,37 @@ source: "https://blog.51cto.com/hequan/2376728"
 
 #### 文档
 
-> 官网 http://graphql.cn/
-
-> 参考文档 https:///graphql/index/drf
+- 官网：http://graphql.cn/
+- 参考文档：https://docs.graphene-python.org/projects/django/en/latest/ （原文链接已失效，此处为新版文档地址）
 
 #### 个人项目应用
 
-> https:///hequan2017/seal
+https://github.com/hequan2017/seal
 
 #### 模块
 
 ```shell
-pip install  graphene-django
+pip install graphene-django
 ```
 
 #### 使用
 
 ```python
 INSTALLED_APPS = [
-	    'graphene_django',
+    'graphene_django',
 ]
 
 GRAPHENE = {
     'SCHEMA': 'app.schema.schema'
 }
 
-urls.py
+# urls.py
 from graphene_django.views import GraphQLView
 from app.schema import schema
 
+urlpatterns = [
     path('graphql/', GraphQLView.as_view(graphiql=True, schema=schema)),
-
-
+]
 ```
 
 #### app/schema.py
@@ -60,7 +63,7 @@ from django.contrib.auth.models import  User  as Users
 from graphene_django import DjangoObjectType
 import graphene
 
-# 相关文档 https:///graphql/index/drf
+# 相关文档 https://docs.graphene-python.org/projects/django/en/latest/
 class UserType(DjangoObjectType):
     class Meta:
         model = Users
@@ -71,7 +74,7 @@ class Query(graphene.ObjectType):
     # List == Field:
     # List 返回结果会是遍历所有查询结果
     # Field 返回结果只存在单个 (其中可添加参数, ex. pk)
-    single_user = graphene.Field(UserType, pk=())
+    single_user = graphene.Field(UserType, pk=graphene.Int())
 
     # 定义函数名的格式: resolve_字段
     # **kwargs 传递参数
@@ -111,7 +114,7 @@ class CMutation(object):
 class UpdateUser(graphene.Mutation):
     class Arguments:
         username = graphene.String()
-        pk = (required=True)
+        pk = graphene.Int(required=True)
 
     info = graphene.Field(UserType)
     ok = graphene.Boolean()
@@ -131,7 +134,7 @@ class UMutation(object):
 
 class DeleteUser(graphene.Mutation):
     class Arguments:
-        pk = ()
+        pk = graphene.Int(required=True)
 
     ok = graphene.Boolean()
 
@@ -157,7 +160,7 @@ schema = graphene.Schema(query=TQuery, mutation=Mutations)
 
 > GraphQL 请求参数
 
-```shell
+```graphql
 query {
   users{
     id,
