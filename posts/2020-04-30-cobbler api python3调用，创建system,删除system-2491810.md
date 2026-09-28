@@ -4,13 +4,21 @@ date: "2020-04-30 14:32:11"
 category: "python"
 source: "https://blog.51cto.com/hequan/2491810"
 ---
+> **内容介绍**
+>
+> 本文是Python 编程实战笔记,记录了「cobbler api python3调用，创建system,删除system」的相关内容。主要涉及:### cobbler api python3调用，创建system,删除system > 可以根据mac 地址 调用API 创建任务，安装完成之后，再把任务删…
+
+> **技术备注**
+>
+> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+
+---
 
 ### cobbler api python3调用，创建system,删除system
 
 > 可以根据mac 地址 调用API 创建任务，安装完成之后，再把任务删除掉。
 
-```
-#!/usr/bin/python3.6
+```python#!/usr/bin/python3.6
 
 import xmlrpc.client
 
