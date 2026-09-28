@@ -6,13 +6,17 @@ source: "https://blog.51cto.com/hequan/4853299"
 ---
 > **内容介绍**
 >
-> 本文是技术实践笔记,记录了「element-plus 中  使用 antd vue」的相关内容。主要涉及:#### main.js #### 主要…
+> 在 Vue 3 + Element Plus 项目里同时引入 Ant Design Vue 的入口配置：在 `main.js` 中引入 `ant-design-vue` 及其样式文件，然后链式 `app.use(Antd)`，与 ElementPlus（含 zh-cn 语言包）一起挂载到同一个应用实例上，实现两套组件库共存。
+
+> **技术备注**
+>
+> 示例基于 Vue 3 + ant-design-vue 2.x（样式文件为 `ant-design-vue/dist/antd.css`）。ant-design-vue 3.x 起样式改为 `dist/antd.css` 迁移后的 `dist/reset.css`（4.x 更是转向 cssinjs、无需手动引入全量样式），升级时注意调整引入路径。两套组件库混用会显著增大打包体积，且主题风格不统一，仅建议过渡期使用，长期最好收敛到其中一套。
 
 ---
 
 #### main.js
 
-```python
+```js
 import { createApp } from 'vue'
 import 'element-plus/dist/index.css'
 import './style/element_visiable.scss'
@@ -42,11 +46,11 @@ app.use(run)
   .use(ElementPlus, { locale: zhCn }).mount('#app')
 
 export default app
-```python
+```
 
 #### 主要
 
-```python
+```js
 import App from './App.vue'
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
