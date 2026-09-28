@@ -4,6 +4,11 @@ date: "2021-07-02 15:23:54"
 category: "go"
 source: "https://blog.51cto.com/hequan/2970605"
 ---
+> **内容介绍**
+>
+> 本文是Go 语言后端开发实战,记录了「go 根据jumpserver api 获取所有资产信息(后续可导入cmdb)」的相关内容。
+
+---
 
 ```markup
 package main
