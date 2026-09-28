@@ -18,8 +18,8 @@ source: "https://blog.51cto.com/hequan/2128052"
 
 #### main.js
 
-```pythonimport
-axios from 'axios';
+```python
+import axios from 'axios';
 axios.interceptors.request.use(
     config => {
         let ttoken = JSON.parse(localStorage.getItem('token'));
@@ -34,8 +34,7 @@ axios.interceptors.request.use(
 
 axios.defaults.withCredentials = true;
 Vue.prototype.$ajax = axios;
-```shel
-l
+```shell
 
 #### logo.vue
 
@@ -137,16 +136,16 @@ APPEND_SLASH=False
 
 #### urls.py
 
-```pythonfrom
-rest_framework.authtoken import views
+```python
+from rest_framework.authtoken import views
 
 path('api-token-auth', views.obtain_auth_token),
 ```
 
 #### api.py
 
-```pythonfrom
-.serializers import AssetSerializer
+```python
+from .serializers import AssetSerializer
 
 from rest_framework import permissions
 from rest_framework import generics

@@ -14,8 +14,7 @@ source: "https://blog.51cto.com/hequan/1886307"
 
 ---
 
-```bas
-h
+```bash
 一、部署HAProxy(2台)
 1、安装
 yum install HAProxy

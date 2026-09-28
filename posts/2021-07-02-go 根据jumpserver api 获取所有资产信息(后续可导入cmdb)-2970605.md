@@ -10,8 +10,7 @@ source: "https://blog.51cto.com/hequan/2970605"
 
 ---
 
-```marku
-p
+```go
 package main
 
 import (

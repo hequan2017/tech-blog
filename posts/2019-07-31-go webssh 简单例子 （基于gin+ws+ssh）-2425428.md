@@ -26,8 +26,8 @@ go版本 webssh
 
 > 修改 core/ssh.go 里面的账号密码地址等信息。 也可以自己修改成用密钥登录。
 
-```gofunc
-NewSshClient() (*ssh.Client, error) {
+```go
+func NewSshClient() (*ssh.Client, error) {
 					config := &ssh.ClientConfig{
 						Timeout:         time.Second * 5,
 						User:            "root",

@@ -25,8 +25,7 @@ source: "https://blog.51cto.com/hequan/2059436"
 * MySQL 5.7 引入了 Group Replication 功能，可以在一组 MySQL 服务器之间实现自动主机选举，形成一主多从结构。经过高级配置后，可以实现多主多从结构。
 * MySQL Router 是一个轻量级透明中间件，可以自动获取上述集群的状态，规划 SQL 语句，分配到合理的 MySQL 后端进行执行。
 * MySQL Shell 是一个同时支持 JavaScript 和 SQL 的交互程序，可以快速配置 InnoDB Cluster。
-```shel
-l
+```shell
 
 ![](assets/2059436/01_8815cd9266b5f987ffcdd17c72341bf2.png)
 
@@ -44,22 +43,21 @@ l
 
 - 安装 mysql5.7.21   ,可以参考下面的安装基本，我搭建的时候就是用的这个。
 
-```shellhttp
-://blog.51cto.com/hequan/2067341
+```shell
+http://blog.51cto.com/hequan/2067341
 ```
 
 - 安装mysql-shell
 
-```shellwget
-https://cdn.mysql.com//Downloads/MySQL-Shell/mysql-shell-1.0.11-1.el7.x86_64.rpm
+```shell
+wget https://cdn.mysql.com//Downloads/MySQL-Shell/mysql-shell-1.0.11-1.el7.x86_64.rpm
 yum install mysql-shell-1.0.11-1.el7.x86_64.rpm  -y
-```sq
-l
+```sql
 
 - 设置相关用户的权限，生产环境   可以不是  root用户
 
-```shellgrant
-all   privileges  on *.*  to 'root'@'%'  identified by '123456';
+```shell
+grant all   privileges  on *.*  to 'root'@'%'  identified by '123456';
 GRANT ALL PRIVILEGES ON mysql_innodb_cluster_metadata.* TO root@'%' WITH GRANT OPTION;
 GRANT RELOAD, SHUTDOWN, PROCESS, FILE, SUPER, REPLICATION SLAVE, REPLICATION CLIENT, \
 CREATE USER ON *.* TO root@'%' WITH GRANT OPTION;
@@ -109,8 +107,7 @@ The instance 'db1:3306' is valid for Cluster usage
 {
     "status": "ok"
 }
-```javascrip
-t
+```javascript
 
 ```shell
 ## 登陆
@@ -148,11 +145,10 @@ cluster.status();
 
 ### Mysql-route 设置
 
-```shellwget
-https://cdn.mysql.com//Downloads/MySQL-Router/mysql-router-2.1.4-1.el7.x86_64.rpm
+```shell
+wget https://cdn.mysql.com//Downloads/MySQL-Router/mysql-router-2.1.4-1.el7.x86_64.rpm
 yum install -y mysql-router-2.1.4-1.el7.x86_64.rpm
-```sq
-l
+```sql
 
 ```shell
 ## 此命令会更新 /etc/mysqlrouter/mysqlrouter.conf 中的配置信息, 可以是别的机器 这里选择的为db2
@@ -273,8 +269,7 @@ The instance 'db3:3306' was part of the cluster configuration.
 Would you like to rejoin it to the cluster? [y|N]: y
 
 The cluster was successfully rebooted.
-```shel
-l
+```shell
 
 ---
 

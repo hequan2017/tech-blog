@@ -20,15 +20,14 @@ source: "https://blog.51cto.com/hequan/2435698"
 
 #### 开启代理
 
-```shellkubectl
-proxy  --port=8089  --address=127.0.0.1   --accept-hosts='^*$'　　# 后面这个可以去掉，不用允许所有
-```g
-o
+```shell
+kubectl proxy  --port=8089  --address=127.0.0.1   --accept-hosts='^*$'　　# 后面这个可以去掉，不用允许所有
+```go
 
 #### 代码
 
-```pythonmkdir
-go-proxy
+```python
+mkdir go-proxy
 cd go-proxy
 go mod init go-proxy
 
@@ -119,8 +118,8 @@ func main() {
 }
 ```
 
-```shellgo
-run  main.go
+```shell
+go run  main.go
 ```
 
 #### 注意

@@ -85,8 +85,7 @@ MariaDB [mysql]> select  host,user  from user;
 +-----------+----------------+
 9 rows in set (0.00 sec)
 权限是  %，应该是可以的，
-```sq
-l
+```sql
 
 参考   mysql授权localhost&%区别及一直授权错误解决办法
 

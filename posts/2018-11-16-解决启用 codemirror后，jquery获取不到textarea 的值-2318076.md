@@ -18,8 +18,7 @@ source: "https://blog.51cto.com/hequan/2318076"
 
 ```html
 <textarea id="config" name="config"  class="form-control"></textarea>
-```javascrip
-t
+```javascript
 
 ```shell
 window.editor_two = CodeMirror.fromTextArea(document.getElementById("config"), {

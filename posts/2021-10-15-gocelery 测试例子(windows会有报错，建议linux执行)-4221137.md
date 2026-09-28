@@ -20,8 +20,7 @@ source: "https://blog.51cto.com/hequan/4221137"
 
 ### server
 
-```g
-o
+```go
 package main
 
 import (
@@ -73,8 +72,7 @@ func main() {
 
 ### client
 
-```g
-o
+```go
 package main
 
 import (

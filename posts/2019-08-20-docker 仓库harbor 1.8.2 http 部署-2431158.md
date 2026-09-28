@@ -28,8 +28,8 @@ Harbor是VMware公司开源的企业级Docker Registry项目，项目地址： h
 
 #### 部署
 
-```shellcurl
--L https:///docker/compose/releases/download/1.25.0-rc2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+```shell
+curl -L https:///docker/compose/releases/download/1.25.0-rc2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
 chmod +x /usr/local/bin/docker-compose
 
@@ -38,8 +38,8 @@ wget https://storage.googleapis.com/harbor-releases/release-1.8.0/harbor-offline
 tar xf  harbor-offline-installer-v1.8.2.tgz
 ```
 
-```shellcd
-harbor/
+```shell
+cd harbor/
 
 vim harbor.yml
 hostname: 192.168.100.150
@@ -67,8 +67,8 @@ vi /etc/docker/daemon.json
 }
 ```
 
-```shelldocker
-login  192.168.100.150   -u admin -p Harbor12345
+```shell
+docker login  192.168.100.150   -u admin -p Harbor12345
 docker tag centos  192.168.100.150/test/centos:v1
 docker push 192.168.100.150/test/centos:v1
 ```

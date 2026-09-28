@@ -14,15 +14,15 @@ source: "https://blog.51cto.com/hequan/2095114"
 
 ---
 
-![](assets/2095114/01_a2f996f35d2f81ba2ec75f4906b23bbf.jpg)
-![](assets/2095114/02_20d586154eba556461fd88e24ecd513b.jpg)
+![Jenkins 自动化发布环境规划表,三台服务器的分工](assets/2095114/01_a2f996f35d2f81ba2ec75f4906b23bbf.jpg)
+![环境工具版本表,含 maven、jenkins 与 docker 版本](assets/2095114/02_20d586154eba556461fd88e24ecd513b.jpg)
 
 ### 部署
 
 #### git服务器
 
-```shellyum
-install git
+```shell
+yum install git
 useradd git
 passwd git
 
@@ -34,8 +34,8 @@ git --bare  init  ##初始化仓库
 
 #### docker
 
-```shellcat
->> /etc/docker/daemon.json　<< EOF
+```shell
+cat >> /etc/docker/daemon.json　<< EOF
 {
 "insecure-registries":[":5000"]
 }
@@ -44,8 +44,8 @@ EOF
 
 #### Jenkins服务器
 
-```shellwget
-https://codeload.github.com/b3log/solo/zip/master
+```shell
+wget https://codeload.github.com/b3log/solo/zip/master
 unzip master
 
 ##用来让 jenkins 免密钥 拉代码
@@ -65,13 +65,12 @@ serverPort=80
 git add .
 git commit  -m "all"
 git push origin  master
-```dockerfil
-e
+```dockerfile
 
 #### 生成一个基本镜像
 
-```shellcat
->>  Dockerfile << EOF
+```shell
+cat >>  Dockerfile << EOF
 
 FROM jenkins
 
@@ -88,8 +87,8 @@ docker  build   -t  jenkins:v1  .
 
 #### 启动jenkins
 
-```shelldocker
-run -d \
+```shell
+docker run -d \
 --name jenkins \
 -p 8080:8080 \
 -v /var/jenkins_home/:/var/jenkins_home \
@@ -164,8 +163,8 @@ git@192.168.1.112:/home/git/solo.git
 
 ##### Execute shell
 
-```shellcd
-$WORKSPACE
+```shell
+cd $WORKSPACE
 cat > Dockerfile <<EOF
 FROM  /test/tomcat:v1
 
@@ -187,8 +186,8 @@ docker  push  /test/solo:v1
 
 ##### Execute shell script on remote host  using ssh
 
-```shelldocker
-rm -f    solol  | true
+```shell
+docker rm -f    solol  | true
 docker  rmi -f   /test/solo:v1  |  true
 
 docker  login -u hequan  -p  123456

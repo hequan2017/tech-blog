@@ -58,8 +58,8 @@ options = Object.assign(this.getInsideConfig(options.url), options)   // 添加 
 
 ##### 安装drf
 
-```shellpip
-install djangorestframework  django-cors-headers
+```shell
+pip install djangorestframework  django-cors-headers
 
 ##### settings.py
 
@@ -110,8 +110,8 @@ MIDDLEWARE_CLASSES = 'DisableCSRFCheck'
 
 ##### urls.py
 
-```pythonfrom
-rest_framework.authtoken import views
+```python
+from rest_framework.authtoken import views
 
 path('api-token-auth', views.obtain_auth_token),
 
@@ -120,8 +120,8 @@ path('get_info',GetInfo.as_view()),
 
 ##### views.py
 
-```pythonfrom
-rest_framework import permissions
+```python
+from rest_framework import permissions
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response

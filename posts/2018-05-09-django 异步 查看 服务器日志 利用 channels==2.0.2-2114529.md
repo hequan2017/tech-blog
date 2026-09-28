@@ -25,8 +25,8 @@ https:///hequan2017/chain
 
 安装后会有一个版本号报错，不影响
 
-```shellchannels
-==2.0.2
+```shell
+channels ==2.0.2
 channels-redis==2.1.0
 amqp==1.4.9
 anyjson==0.3.3
@@ -54,8 +54,8 @@ python3 setup.py install
 
 ### 目录
 
-```shellchain
-/
+```shell
+chain /
 		chain/
 			 settings.py
 			 asgi.py
@@ -87,13 +87,12 @@ CHANNEL_LAYERS = {
 
 # 配置ASGI
 ASGI_APPLICATION = "chain.routing.application"
-```pytho
-n
+```python
 
 #### consumers.py
 
-```pythonfrom
-asgiref.sync import async_to_sync
+```python
+from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 
 from channels.layers import get_channel_layer
@@ -127,8 +126,8 @@ class EchoConsumer(WebsocketConsumer):
 
 #### asgi.py
 
-```pythonimport
-os
+```python
+import os
 import django
 from channels.routing import get_default_application
 
@@ -139,8 +138,8 @@ application = get_default_application()
 
 #### routing.py
 
-```pythonfrom
-channels.auth import AuthMiddlewareStack
+```python
+from channels.auth import AuthMiddlewareStack
 from channels.routing import URLRouter, ProtocolTypeRouter
 from django.urls import path
 
@@ -251,8 +250,8 @@ path('tail.html', views.TasksTail.as_view(), name='tail'),
 
 #### views.py
 
-```pythonfrom
-asgiref.sync import async_to_sync
+```python
+from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 import json
 import paramiko

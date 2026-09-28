@@ -14,13 +14,13 @@ source: "https://blog.51cto.com/hequan/1832696"
 
 ---
 
-![openstack学习笔记十 neutron_OpenStack](assets/1832696/01_wKioL1eeT0fxFYT-AAHb7WtHzMg434.png)
+![手绘 neutron 网络架构图,标注 br-ex、br-int 网桥与各节点](assets/1832696/01_wKioL1eeT0fxFYT-AAHb7WtHzMg434.png)
 
-![openstack学习笔记十 neutron_neutron_02](assets/1832696/02_wKiom1eeT0eTF6jxAABR2D6JZ5o109.png)
+![openstack 网络拓扑图,公网经路由器连至 192.168.2.0/24 网段](assets/1832696/02_wKiom1eeT0eTF6jxAABR2D6JZ5o109.png)
 
-![openstack学习笔记十 neutron_OpenStack_03](assets/1832696/03_wKioL1eeT0fDFl1dAAAiOKTrt8g528.png)
+![openstack 网络拓扑图,network1 网段挂载控制节点与 h1](assets/1832696/03_wKioL1eeT0fDFl1dAAAiOKTrt8g528.png)
 
-![openstack学习笔记十 neutron_neutron_04](assets/1832696/04_wKiom1eeT0jylquOAAAokICe8eY326.png)
+![虚拟化管理平台虚机列表,h3 控制节点、h2 网络节点与 h1](assets/1832696/04_wKiom1eeT0jylquOAAAokICe8eY326.png)
 
 ---
 
@@ -48,8 +48,7 @@ vxlan（默认）    1600万个
 
 h2是网络节点
 
-```bas
-h
+```bash
 [root@h1 ~(key)]# keystone user-create  --name neutron  --pass  hequan
 [root@h1 ~(key)]# keystone  user-role-add  --user neutron --role admin  --tenant  services
 [root@h1 ~(key)]# keystone service-create  --name neutron  --type network  --description "neutron"
@@ -75,8 +74,7 @@ keystone  endpoint-create  --service-id  6e0c0784195f40658f725f796a35bc44�
 +-------------+----------------------------------+
 ```
 
-```bas
-h
+```bash
 [root@h1 ~(key)]# yum  install  openstack-neutron.noarch   openstack-neutron-ml2.noarch     ##在控制节点上安装
 ml2是  网络核心插件,不同租户隔离    作用：实用 VLNA 还是VXLAN  分配
 [root@h1 neutron(key)]# ls

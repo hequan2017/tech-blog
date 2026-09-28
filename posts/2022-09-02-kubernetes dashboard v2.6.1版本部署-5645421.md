@@ -14,8 +14,8 @@ source: "https://blog.51cto.com/hequan/5645421"
 
 ---
 
-```shellkubectl
-apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
+```shell
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
 
 kubectl edit svc -n kubernetes-dashboard kubernetes-dashboard
 

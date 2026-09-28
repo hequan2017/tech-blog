@@ -23,6 +23,6 @@ Error from server (Forbidden): Forbidden (user=system:anonymous, verb=get, resou
 
 绑定一个cluster-admin的权限。
 
-```shellkubectl
-create clusterrolebinding system:anonymous   --clusterrole=cluster-admin   --user=system:anonymous
+```shell
+kubectl create clusterrolebinding system:anonymous   --clusterrole=cluster-admin   --user=system:anonymous
 

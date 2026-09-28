@@ -16,8 +16,7 @@ source: "https://blog.51cto.com/hequan/1907759"
 
 3.15
 
-```htm
-l
+```html
 <a href="http://www.baidu.com">he&nbsp;quan</a> ##连接
 <p>123<br></p>    段落   br换行 <br />
 <h1>123</h1>   标题字体加大，到h6
@@ -37,8 +36,7 @@ ps:chorme审查元素的使用
 
 3.16
 
-```htm
-l
+```html
 登录
 <form action="http://localhost:8888/index"  method="get">
     <input type="text"  name="user" />
@@ -107,8 +105,7 @@ l
 
 3.17
 
-```htm
-l
+```html
 CSS
     在标签上设置style属性：
         background-color: #2459a2;

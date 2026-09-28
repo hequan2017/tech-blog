@@ -14,8 +14,7 @@ source: "https://blog.51cto.com/hequan/1954409"
 
 ---
 
-```htm
-l
+```html
 ##定义要显示的地方
 
 <script src="/static/js/echarts.min.js"></script> 
@@ -73,8 +72,7 @@ l
 </script>
 ```
 
-```pytho
-n
+```python
 @login_required(login_url="/login.html")
 def show(request):  ## 展示         第一次访问返回一个数据         
     name_id = models.JiguiInfo.objects.filter(id__gt=0)

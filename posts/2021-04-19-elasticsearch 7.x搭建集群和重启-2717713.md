@@ -14,8 +14,8 @@ source: "https://blog.51cto.com/hequan/2717713"
 
 ---
 
-```shellyum
-install java-11-openjdk-devel.x86_64
+```shell
+yum install java-11-openjdk-devel.x86_64
 
 echo vm.max_map_count=655360 >> /etc/sysctl.conf
 sysctl -p
@@ -46,11 +46,10 @@ cluster.initial_master_nodes: ["test1", "test2","test3"]
 
 http.cors.enabled: true
 http.cors.allow-origin: "*"
-```shel
-l
+```shell
 
-```shellcurl
--XGET http://192.168.100.101:9200/_cat/health?v
+```shell
+curl -XGET http://192.168.100.101:9200/_cat/health?v
 
 curl -XGET http://192.168.100.103:9200/_cat/nodes?v
 

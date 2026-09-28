@@ -255,8 +255,7 @@ ln -s /usr/local/inotify-tools-3.14  /usr/local/inotify
 
 vi /root/
 
-```bas
-h
+```bash
 #!/bin/sh 
 host1=192.168.10.10
 src=/data/

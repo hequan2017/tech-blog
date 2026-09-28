@@ -49,8 +49,7 @@ source: "https://blog.51cto.com/hequan/2416184"
 	}
 ]
 }
-```javascrip
-t
+```javascript
 
 ```shell
 $.getJSON(url, function (data, textStatus) {

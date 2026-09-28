@@ -22,18 +22,17 @@ source: "https://blog.51cto.com/hequan/2408482"
 
 #### 安装
 
-```shellgit
-clone https:///hanchuanchuan/goInception.git
+```shell
+git clone https:///hanchuanchuan/goInception.git
 cd goInception
-```shel
-l
+```shell
 
 #### 修改配置
 
 - 开启备份
 
-```shellvim
-config/config.toml
+```shell
+vim config/config.toml
 
 [inc]
 
@@ -45,20 +44,19 @@ backup_password="123456"
 
 #### 启动
 
-```shellmake
-parser
+```shell
+make parser
 go build -o goInception tidb-server/main.go
 
 ./goInception -config=config/config.toml
-```pytho
-n
+```python
 
 > pip install pymysql prettytable
 
 #### 代码
 
-```pythonimport
-pymysql
+```python
+import pymysql
 import prettytable as pt
 tb = pt.PrettyTable()
 

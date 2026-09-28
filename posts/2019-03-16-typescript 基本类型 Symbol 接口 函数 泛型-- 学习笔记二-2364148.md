@@ -14,8 +14,8 @@ source: "https://blog.51cto.com/hequan/2364148"
 
 #### 基本类型
 
-```shelllet
-bool:boolean = false
+```shell
+let bool:boolean = false
 let num:number = 123
 let str:string
 str = "abc"
@@ -76,13 +76,12 @@ const  getLength = (target:string | number) : number =>{
         return target.toString().length
     }
 }
-```javascrip
-t
+```javascript
 
 #### Symbol
 
-```shellconst
-s = Symbol("name") //唯一的值
+```shell
+const s = Symbol("name") //唯一的值
 
 const info ={
 [s]:'hequan'
@@ -152,13 +151,12 @@ const user1: User = {
     lastName: "o",
     age: 11,
 }
-```javascrip
-t
+```javascript
 
 #### 函数
 
-```shelllet
-add: (x: number, y: number) => number
+```shell
+let add: (x: number, y: number) => number
 
 add = (arg1: 1, arg2: 2): number => arg1 + arg2
 
@@ -183,8 +181,8 @@ function handleData(x: any): any {
 
 #### 泛型
 
-```shellconst
-getArry = <T>(value: T, times: number = 5): T[] => {
+```shell
+const getArry = <T>(value: T, times: number = 5): T[] => {
     return new Array(times).fill(value)
 }
 

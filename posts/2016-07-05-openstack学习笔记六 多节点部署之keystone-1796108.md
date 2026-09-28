@@ -33,8 +33,7 @@ keystone也必须知道这些组件到底在什么地方，比如在那台主机
 
 ![openstack学习笔记六 多节点部署之keystone_openstack_02](assets/1796108/02_wKioL1d7wtuQjIIKAAL5H8-n9Ow961.png)
 
-```bas
-h
+```bash
 [root@h1 ~]# source  keystonerc_admin
 [root@h1 ~(keystone_admin)]# keystone  endpoint-list
 +----------------------------------+-----------+-------------------------------------------------+-------------------------------------------------+--------------------------------------------+----------------------------------+
@@ -54,8 +53,7 @@ h
 +----------------------------------+-----------+-------------------------------------------------+-------------------------------------------------+--------------------------------------------+----------------------------------+
 ```
 
-```bas
-h
+```bash
 [root@h1 ~(keystone_admin)]# keystone service-list     服务
 +----------------------------------+------------+--------------+--------------------------------+
 |                id                |    name    |     type     |          description           |
@@ -74,8 +72,7 @@ h
 +----------------------------------+------------+--------------+--------------------------------+
 ```
 
-```bas
-h
+```bash
 [root@h1 ~(keystone_admin)]# keystone  role-list            角色
 +----------------------------------+---------------+
 |                id                |      name     |
@@ -87,8 +84,7 @@ h
 +----------------------------------+---------------+
 ```
 
-```bas
-h
+```bash
 [root@h1 ~(keystone_admin)]#  keystone  role-create  --name  test1 
 +----------+----------------------------------+
 | Property |              Value               |
@@ -99,8 +95,7 @@ h
 [root@h1 ~(keystone_admin)]#  keystone  role-delete  test1
 ```
 
-```bas
-h
+```bash
 [root@h1 ~(keystone_admin)]# keystone  user-list    用户
 +----------------------------------+------------+---------+----------------------+
 |                id                |    name    | enabled |        email         |
@@ -126,16 +121,14 @@ h
 +----------+----------------------------------+
 ```
 
-```bas
-h
+```bash
 [root@h1 ~(keystone_admin)]#  keystone  user-get     hequan              ##查看信息
 [root@h1 ~(keystone_admin)]#  keystone  user-delete    hequan
 [root@h1 ~(keystone_admin)]#  keystone  user-password-update    --pass  hequan1 hequan   ##密码更新
 [root@h1 ~(keystone_admin)]#   keystone  user-role-add  --user hequan  --role  _member_  --tenant=http  #划分角色和租户
 ```
 
-```bas
-h
+```bash
 [root@h1 ~(keystone_admin)]# keystone tenant-list                租户
 +----------------------------------+----------+---------+
 |                id                |   name   | enabled |
@@ -146,8 +139,7 @@ h
 +----------------------------------+----------+---------+
 ```
 
-```bas
-h
+```bash
 [root@h1 ~(keystone_admin)]# keystone tenant-create --name  123    ###创建租户123
 +-------------+----------------------------------+
 |   Property  |              Value               |
@@ -172,8 +164,7 @@ h
 
 基本环境
 
-```bas
-h
+```bash
 192.168.1.204            h4                     ##  keystone
 
 systemctl   stop    NetworkManager
@@ -182,8 +173,7 @@ systemctl   disable  NetworkManager
 [root@h4 ~]# yum install centos-release-openstack-liberty
 ```
 
-```bas
-h
+```bash
 [root@h4 ~]# yum install  openstack-keystone openstack-utils  openstack-selinux  -y
 [root@h4 ~]# openstack-db --init --service  keystone  --rootpw  123456    --password  keystone
 keystone default DB is not mysql. Would you like to reset to mysql now? (y/n): y
@@ -195,8 +185,7 @@ Initializing the keystone database, please wait...
 Complete!
 ```
 
-```bas
-h
+```bash
 [root@h4 ~]# mysql -uroot -p123456
 MariaDB [(none)]> show databases;
 
@@ -221,8 +210,7 @@ connection = mysql://keystone:keystone@192.168.1.204/keystone        �
 
 启动服务
 
-```bas
-h
+```bash
 [root@h4 keystone]# systemctl   list-unit-files  | grep keyston
 openstack-keystone.service             disabled
 
@@ -232,8 +220,7 @@ openstack-keystone.service             disabled
 
 现在没有用户，只有token
 
-```bas
-h
+```bash
 cat keystone_token               ##创建文件
 export   SERVICE_TOKEN=73fa731f6fa567630fdd
 export   SERVICE_ENDPOINT=http://192.168.1.204:35357/ v2.0
@@ -262,8 +249,7 @@ keystone service-list
 +-------------+----------------------------------+
 ```
 
-```bas
-h
+```bash
 [root@h4 ~]# keystone  endpoint-create  --service-id  e0c6163cb7dd42098225f13a3fa4220e  --publicurl  ''  --internalurl  ''  --adminurl  ''
 可以找一个模板去抄
 
@@ -290,8 +276,7 @@ h
 
 创建管理员
 
-```bas
-h
+```bash
 [root@h4 ~]# keystone tenant-create  --name  admin
 +-------------+----------------------------------+
 |   Property  |              Value               |
@@ -323,8 +308,7 @@ h
 [root@h4 ~]# keystone  user-role-add  --user admin --tenant admin --role admin
 ```
 
-```bas
-h
+```bash
 [root@h4 ~]# cp keystone_token keystone_token_admin
 [root@h4 ~(keystone_admin)]# cat keystone_token_admin
 unset   SERVICE_TOKEN
@@ -345,8 +329,7 @@ export PS1='[\u@\h \W(keystone_admin)]\$ '
 
 关闭token验证
 
-```bas
-h
+```bash
   12 #admin_token = 73fa731f6fa567630fdd                                               
   13
 ```

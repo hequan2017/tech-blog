@@ -16,8 +16,8 @@ source: "https://blog.51cto.com/hequan/2345510"
 
 ### pdf.js
 
-```shellhttps
-://mozilla.github.io/pdf.js/
+```shell
+https://mozilla.github.io/pdf.js/
 ```
 
 #### 使用报错

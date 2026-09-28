@@ -14,8 +14,8 @@ source: "https://blog.51cto.com/hequan/2327792"
 
 ---
 
-```shellcat
-<<EOF > /etc/yum.repos.d/kubernetes.repo
+```shell
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/

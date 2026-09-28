@@ -10,8 +10,8 @@ source: "https://blog.51cto.com/hequan/2383103"
 
 ---
 
-```pythonapi
-/user.js
+```python
+api /user.js
 
 export const login = ({ userName, password }) => {
   const data = {

@@ -14,8 +14,7 @@ source: "https://blog.51cto.com/hequan/1908641"
 
 ---
 
-```j
-s
+```js
 CSS补充
     position:  ##多层
         a. fiexd => 固定在页面的某个位置         ##返回顶端
@@ -43,8 +42,7 @@ CSS补充
 </div>
 ```
 
-```j
-s
+```js
 <script  src="路径">
 //javascript
 </script>
@@ -74,8 +72,7 @@ s
      }
 ```
 
-```j
-s
+```js
 定时器：
      setInterval('执行的代码',间隔时间5000);
 查找：
@@ -92,8 +89,7 @@ function func() {
 setInterval('func()',500);
 ```
 
-```j
-s
+```js
 for循环
      a = [11,22,33,44]
      for (var item in  a ){     //循环默认都是 key
@@ -119,8 +115,7 @@ for循环
      ||   or
 ```
 
-```j
-s
+```js
 1、找到标签
     获取单个元素        document.getElementById('i1')
     获取多个元素（列表）document.getElementsByTagName('div')
@@ -163,8 +158,7 @@ s
             checkbox对象.checked = true
 ```
 
-```j
-s
+```js
 例子
 function ShowModel(){
     document.getElementById('i1').classList.remove('hide');

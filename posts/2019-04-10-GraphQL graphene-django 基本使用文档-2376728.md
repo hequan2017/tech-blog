@@ -29,8 +29,8 @@ source: "https://blog.51cto.com/hequan/2376728"
 
 #### 模块
 
-```shellpip
-install  graphene-django
+```shell
+pip install  graphene-django
 ```
 
 #### 使用
@@ -55,8 +55,8 @@ from app.schema import schema
 
 #### app/schema.py
 
-```pythonfrom
-django.contrib.auth.models import  User  as Users
+```python
+from django.contrib.auth.models import  User  as Users
 from graphene_django import DjangoObjectType
 import graphene
 
@@ -157,8 +157,8 @@ schema = graphene.Schema(query=TQuery, mutation=Mutations)
 
 > GraphQL 请求参数
 
-```shellquery
-{
+```shell
+query {
   users{
     id,
     username,

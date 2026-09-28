@@ -94,8 +94,7 @@ ID " + session.getId()+"
      %>
      </body>
 </html>
-```ngin
-x
+```nginx
 
 ```shell
 ##配置 nginx负责均衡，进行测试

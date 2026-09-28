@@ -14,8 +14,8 @@ source: "https://blog.51cto.com/hequan/5659413"
 
 ---
 
-```shellkind
-: PersistentVolumeClaim
+```shell
+kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: nginx-web-claim

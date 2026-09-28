@@ -16,13 +16,13 @@ source: "https://blog.51cto.com/hequan/1783481"
 
 **摘要：**CentOS开发人员兼维护者Johnny Hughes于5月25号宣布了CentOS Linux 6.8操作系统已经正式发布的消息。其基于红帽6.8企业版（RHEL）打造，并迎来了多处改动，比如最新的Linux 2.6.32内核，支持在XFS文件系统上存储高达300TB的数据；网络连接管理实用工具NetworkManager中的虚拟专用网终端解决方案，现已提供libreswan库（而不是此前所使用的Openswan IPsec）。
 
-![CentOS Linux 6.8 正式发布 新版内核+大量更新_centos6.8](assets/1783481/01_975B8AFA944E1B54FE97F6011325DAAE.jpg)
+![CentOS 6.8 LiveCD 的 GNOME 桌面截图](assets/1783481/01_975B8AFA944E1B54FE97F6011325DAAE.jpg)
 
 系统安全服务守护程序（SSSD）似乎默认禁用了SSLv2协议，此外还支持智能卡。Johnny Hughes在公告中称：
 
 > 与此前的CentOS Linux 6相比，本次发行版中有许多根本性的变化，所有6.8上流发行版的镜像均已零时差更新。你可以通过各种媒介安装CentOS 6.8，并在安装完成后经常运行“yum update”。
 
-![CentOS Linux 6.8 正式发布 新版内核+大量更新_centos6.8_02](assets/1783481/02_496CEE008842F1F7632B9457892DC2AC.jpg)
+![CentOS 6.8 终端执行 uname 查询系统版本信息](assets/1783481/02_496CEE008842F1F7632B9457892DC2AC.jpg)
 
 CentOS Linux 6.8还包含了许多应用程序的更新，其中包括长期支持的LibreOffice 4.3.7办公套件、Squid 3.4缓存、以及转发网络代理。
 

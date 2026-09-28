@@ -10,6 +10,6 @@ source: "https://blog.51cto.com/hequan/4837471"
 
 ---
 
-```shelldb
-.Where("toFloat64(test)  = ?",test)
+```shell
+db .Where("toFloat64(test)  = ?",test)
 ```

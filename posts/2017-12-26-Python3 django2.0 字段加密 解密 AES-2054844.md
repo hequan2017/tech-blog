@@ -16,8 +16,8 @@ source: "https://blog.51cto.com/hequan/2054844"
 
 以下设置，适用于python3.5及以前的
 
-```pythonpip
-install   pycrypto
+```python
+pip install   pycrypto
 
 import base64
 from Crypto.Cipher import AES
@@ -51,13 +51,12 @@ print(b1,type(b),type(b1))
 
 c = a.decrypt(enc='N4wGyzPTnggQtUr_gyGcsxMzU136thzPIc8y3mJ2uxg=')
 print(c)
-```pytho
-n
+```python
 
 python3.6版本的
 
-```pythonpip
-install  cryptography
+```python
+pip install  cryptography
 
 from cryptography.fernet import Fernet
 
