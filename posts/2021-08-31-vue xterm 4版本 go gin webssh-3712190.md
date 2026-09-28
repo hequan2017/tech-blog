@@ -6,7 +6,11 @@ source: "https://blog.51cto.com/hequan/3712190"
 ---
 > **内容介绍**
 >
-> 本文是Go 语言后端开发实战,记录了「vue xterm 4版本 go gin webssh」的相关内容。主要涉及:### 效果图 ### 前端 ### 地址…
+> 实现一个基于 Vue + xterm.js 4.x 的 WebSSH 前端：页面加载后通过 WebSocket 连接 Go/Gin 后端，初始化终端并加载 `AttachAddon`、`FitAddon` 插件，把用户输入封装成 JSON 指令（`Op: stdin`）发送到后端，再把返回的终端流渲染到 xterm 画布上。
+
+> **技术备注**
+>
+> 示例基于 xterm.js 4.x 编写；xterm.js 5.x 起 API 与插件包名已调整（如 `@xterm/xterm`、`@xterm/addon-fit`），且 `rendererType: "canvas"` 已废弃。原文 GitHub 链接被截断，完整地址为 https://github.com/hequan2017/go-webssh。
 
 ---
 
@@ -16,7 +20,7 @@ source: "https://blog.51cto.com/hequan/3712190"
 
 ### 前端
 
-```javascript
+```vue
 <template>
   <div>
     <div id="log" style="margin-top:20px;">
@@ -195,5 +199,8 @@ export default {
 
 ### 后端
 
-> BaseRouter.GET("ws", v1.WsSsh)
-> 可以参考我的项目    https:///hequan2017/go-webssh
+```go
+BaseRouter.GET("ws", v1.WsSsh)
+```
+
+> 可以参考我的项目 https://github.com/hequan2017/go-webssh
