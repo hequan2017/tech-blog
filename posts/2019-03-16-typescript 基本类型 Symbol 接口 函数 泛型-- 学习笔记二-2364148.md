@@ -6,7 +6,11 @@ source: "https://blog.51cto.com/hequan/2364148"
 ---
 > **内容介绍**
 >
-> 本文是TypeScript 学习笔记,记录了「typescript 基本类型 | Symbol | 接口| 函数| 泛型-- 学习笔记二」的相关内容。主要涉及:### typescript 基本类型 | Symbol | 接口| 函数 -- 学习笔记二 #### 基本类型 #### Symbol…
+> TypeScript 学习笔记第二篇，系统梳理 TS 基础语法：布尔/数字/字符串/数组/元组/枚举/any/void/never/object 等基本类型与类型断言，Symbol 的唯一值与全局注册用法，接口（可选属性、索引签名、继承），函数类型别名、默认参数与重载，以及泛型函数与泛型约束。
+>
+> **技术备注**
+>
+> 文中语法在 TS 3.x 至当前 5.x 均有效；注意尖括号断言 `<string>target` 在 .tsx 文件中与 JSX 冲突，建议统一用 `as` 语法。tslint 已废弃，tsconfig 建议开启 strict。
 
 ---
 
@@ -14,7 +18,7 @@ source: "https://blog.51cto.com/hequan/2364148"
 
 #### 基本类型
 
-```shell
+```typescript
 let bool:boolean = false
 let num:number = 123
 let str:string
@@ -76,11 +80,11 @@ const  getLength = (target:string | number) : number =>{
         return target.toString().length
     }
 }
-```javascript
+```
 
 #### Symbol
 
-```shell
+```typescript
 const s = Symbol("name") //唯一的值
 
 const info ={
@@ -96,11 +100,9 @@ Symbol.keyFor(s1) // 只查找 for创建的
 
 #### 接口
 
-```shell
-"tslint.autoFixOnSave": true,
+tslint 配置（VS Code 设置 `"tslint.autoFixOnSave": true`，执行 `tslint --init` 生成）：
 
-tslint  --init
-
+```json
 {
     "root": false,
     "defaultSeverity": "error",
@@ -116,7 +118,11 @@ tslint  --init
     },
     "rulesDirectory": []
 }
+```
 
+接口示例：
+
+```typescript
 interface NameInfo {
     firstName?: string, // ? 可选
     lastName: string,  // readonly lastName: string,
@@ -151,11 +157,11 @@ const user1: User = {
     lastName: "o",
     age: 11,
 }
-```javascript
+```
 
 #### 函数
 
-```shell
+```typescript
 let add: (x: number, y: number) => number
 
 add = (arg1: 1, arg2: 2): number => arg1 + arg2
@@ -181,7 +187,7 @@ function handleData(x: any): any {
 
 #### 泛型
 
-```shell
+```typescript
 const getArry = <T>(value: T, times: number = 5): T[] => {
     return new Array(times).fill(value)
 }
