@@ -4,6 +4,15 @@ date: "2016-04-16 16:12:06"
 category: "Linux"
 source: "https://blog.51cto.com/hequan/1764502"
 ---
+> **内容介绍**
+>
+> 本文是Linux 系统运维笔记,记录了「linux grep awk sed  find  cut」的相关内容。主要涉及:grep ^：锚定行首的符合条件的内容，用法格式“^pattern”； $: 锚定行尾的符合条件的内容，用法格式“pattern$”；…
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 grep
 
