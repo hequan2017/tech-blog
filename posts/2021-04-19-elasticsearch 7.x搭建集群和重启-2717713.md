@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/2717713"
 ---
 > **内容介绍**
 >
-> 本文是服务器集群与高可用架构实践,记录了「elasticsearch 7.x搭建集群和重启」的相关内容。
+> 演示在 CentOS 7 上手工搭建 Elasticsearch 7.3 三节点集群：安装 OpenJDK 11、调整 `vm.max_map_count`、配置 `elasticsearch.yml` 中的集群名、节点角色、发现种子与初始主节点，并通过 `_cat/health`、`_cat/nodes` 验证集群状态。后半部分给出安全重启步骤：先关闭分片分配、执行 `synced flush`，重启后再恢复自动分片。
 
 > **技术备注**
 >
-> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+> 示例基于 Elasticsearch 7.3.2 与 CentOS 7 编写；CentOS 7 已于 2024 年 6 月 30 日 EOL，Elasticsearch 7.x 也已停止更新，建议生产环境迁移至 Rocky Linux/AlmaLinux 并升级到 Elasticsearch 8.x（需处理安全认证与 TLS 默认开启的变化）。原文配置片段缺少 `cluster.name` 与 `node.name` 的键名，且 `discovery.zen.*` 参数在 7.x 中已被 `discovery.seed_hosts` / `cluster.initial_master_nodes` 取代。
 
 ---
 
@@ -28,8 +28,8 @@ chown -R es /data/elasticsearch-7.3.2
 
 bin/elasticsearch
 
-: es-cluster
-: test1
+cluster.name: es-cluster
+node.name: test1
 node.master: true
 node.data: true
 http.port: 9200
@@ -46,7 +46,7 @@ cluster.initial_master_nodes: ["test1", "test2","test3"]
 
 http.cors.enabled: true
 http.cors.allow-origin: "*"
-```shell
+```
 
 ```shell
 curl -XGET http://192.168.100.101:9200/_cat/health?v
