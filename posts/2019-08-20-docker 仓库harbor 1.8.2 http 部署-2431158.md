@@ -4,6 +4,15 @@ date: "2019-08-20 18:04:14"
 category: "kubernetes"
 source: "https://blog.51cto.com/hequan/2431158"
 ---
+> **内容介绍**
+>
+> 本文是Kubernetes 云原生容器编排实践,记录了「docker 仓库harbor 1.8.2 http 部署」的相关内容。主要涉及:### docker 仓库harbor 1.8.2 http 部署 Harbor是VMware公司开源的企业级Docker Registry项目，项目地址： h…
+
+> **技术备注**
+>
+> Docker 与 Kubernetes 生态演进较快,新版 K8s 默认运行时为 containerd,请注意适配。
+
+---
 
 ### docker 仓库harbor 1.8.2 http 部署
 
@@ -19,8 +28,7 @@ Harbor是VMware公司开源的企业级Docker Registry项目，项目地址： h
 
 #### 部署
 
-```
-curl -L https:///docker/compose/releases/download/1.25.0-rc2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+```shellcurl -L https:///docker/compose/releases/download/1.25.0-rc2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 
 chmod +x /usr/local/bin/docker-compose
 
@@ -29,8 +37,7 @@ wget https://storage.googleapis.com/harbor-releases/release-1.8.0/harbor-offline
 tar xf  harbor-offline-installer-v1.8.2.tgz
 ```
 
-```
-cd harbor/
+```shellcd harbor/
 
 vim harbor.yml
 hostname: 192.168.100.150
@@ -45,8 +52,7 @@ docker-compose  ps
 
 #### 客户端
 
-```
-免https
+```shell免https
 
 vi /etc/docker/daemon.json
 
@@ -58,8 +64,7 @@ vi /etc/docker/daemon.json
 }
 ```
 
-```
-docker  login  192.168.100.150   -u admin -p Harbor12345
+```shelldocker  login  192.168.100.150   -u admin -p Harbor12345
 docker tag centos  192.168.100.150/test/centos:v1
 docker push 192.168.100.150/test/centos:v1
 ```
