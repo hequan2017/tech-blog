@@ -4,11 +4,15 @@ date: "2019-07-02 14:20:24"
 category: "前端"
 source: "https://blog.51cto.com/hequan/2416184"
 ---
+> **内容介绍**
+>
+> 本文是前端开发学习与实践,记录了「jquery  datatable ajax 获取数据/重新加载」的相关内容。主要涉及:### table ### js…
+
+---
 
 ### table
 
-```
-   <table class="table table-striped table-bordered table-hover "  style="width: 100%;"
+```html   <table class="table table-striped table-bordered table-hover "  style="width: 100%;"
                                                id="table1">
 					<thead>
 					<tr>
@@ -30,8 +34,7 @@ source: "https://blog.51cto.com/hequan/2416184"
 
 ### js
 
-```
-data:
+```shelldata:
 {
 "data":[
 	{"1":1,
@@ -50,8 +53,7 @@ data:
 }
 ```
 
-```
-				 $.getJSON(url, function (data, textStatus) {
+```shell				 $.getJSON(url, function (data, textStatus) {
 
 										$("#table1").dataTable().fnClearTable();
                     $("#table1").dataTable().fnDestroy();
