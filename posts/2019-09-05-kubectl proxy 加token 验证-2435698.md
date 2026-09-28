@@ -4,6 +4,15 @@ date: "2019-09-05 10:35:07"
 category: "kubernetes"
 source: "https://blog.51cto.com/hequan/2435698"
 ---
+> **内容介绍**
+>
+> 本文是Kubernetes 云原生容器编排实践,记录了「kubectl  proxy  加token 验证」的相关内容。主要涉及:### kubectl proxy 加token 验证 > proxy 不支持token加验证，只能再封装了一层代理，进行加验证。 #### 开启代理…
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 ### kubectl  proxy  加token 验证
 
@@ -11,14 +20,12 @@ source: "https://blog.51cto.com/hequan/2435698"
 
 #### 开启代理
 
-```
-kubectl  proxy  --port=8089  --address=127.0.0.1   --accept-hosts='^*$'　　# 后面这个可以去掉，不用允许所有
+```shellkubectl  proxy  --port=8089  --address=127.0.0.1   --accept-hosts='^*$'　　# 后面这个可以去掉，不用允许所有
 ```
 
 #### 代码
 
-```
-mkdir go-proxy
+```pythonmkdir go-proxy
 cd go-proxy
 go mod init go-proxy
 
@@ -109,16 +116,14 @@ func main() {
 }
 ```
 
-```
-go run  main.go
+```shellgo run  main.go
 ```
 
 #### 注意
 
 > 主要修改的地方有２个
 
-```
-  if  ctx.Req.Header.Get("token") != "1234" {    这里是输入你的token密码
+```shell  if  ctx.Req.Header.Get("token") != "1234" {    这里是输入你的token密码
 	
 	return url.Parse("http://127.0.0.1:8089")   这里是你本地的 proxy　接口
 	
