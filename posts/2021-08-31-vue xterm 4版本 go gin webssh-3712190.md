@@ -4,6 +4,11 @@ date: "2021-08-31 17:27:27"
 category: "go"
 source: "https://blog.51cto.com/hequan/3712190"
 ---
+> **内容介绍**
+>
+> 本文是Go 语言后端开发实战,记录了「vue xterm 4版本 go gin webssh」的相关内容。主要涉及:### 效果图 ### 前端 ### 地址…
+
+---
 
 ### 效果图
 
