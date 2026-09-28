@@ -4,11 +4,19 @@ date: "2017-12-26 17:40:05"
 category: "python"
 source: "https://blog.51cto.com/hequan/2054844"
 ---
+> **内容介绍**
+>
+> 本文是Python 编程实战笔记,记录了「Python3  django2.0  字段加密 解密 AES」的相关内容。主要涉及:以下设置，适用于python3.5及以前的 python3.6版本的…
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 以下设置，适用于python3.5及以前的
 
-```
-pip  install   pycrypto
+```pythonpip  install   pycrypto
 
 import base64
 from Crypto.Cipher import AES
@@ -46,8 +54,7 @@ print(c)
 
 python3.6版本的
 
-```
-pip install  cryptography
+```pythonpip install  cryptography
 
 from cryptography.fernet import Fernet
 
