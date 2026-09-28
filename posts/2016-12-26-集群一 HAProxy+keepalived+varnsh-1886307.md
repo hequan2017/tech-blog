@@ -4,6 +4,15 @@ date: "2016-12-26 20:03:26"
 category: "集群"
 source: "https://blog.51cto.com/hequan/1886307"
 ---
+> **内容介绍**
+>
+> 本文是服务器集群与高可用架构实践,记录了「集群一 HAProxy+keepalived+varnsh」的相关内容。
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 ```bash
 一、部署HAProxy(2台)
