@@ -4,13 +4,17 @@ date: "2019-03-16 20:14:18"
 category: "typescript"
 source: "https://blog.51cto.com/hequan/2364148"
 ---
+> **内容介绍**
+>
+> 本文是TypeScript 学习笔记,记录了「typescript 基本类型 | Symbol | 接口| 函数| 泛型-- 学习笔记二」的相关内容。主要涉及:### typescript 基本类型 | Symbol | 接口| 函数 -- 学习笔记二 #### 基本类型 #### Symbol…
+
+---
 
 ### typescript 基本类型 | Symbol | 接口| 函数 -- 学习笔记二
 
 #### 基本类型
 
-```
-let bool:boolean = false
+```shelllet bool:boolean = false
 let num:number = 123
 let str:string
 str = "abc"
@@ -75,8 +79,7 @@ const  getLength = (target:string | number) : number =>{
 
 #### Symbol
 
-```
-const s = Symbol("name") //唯一的值
+```shellconst s = Symbol("name") //唯一的值
 
 const info ={
 [s]:'hequan'
@@ -91,8 +94,7 @@ Symbol.keyFor(s1) // 只查找 for创建的
 
 #### 接口
 
-```
-"tslint.autoFixOnSave": true,
+```shell"tslint.autoFixOnSave": true,
 
 tslint  --init
 
@@ -150,8 +152,7 @@ const user1: User = {
 
 #### 函数
 
-```
-let add: (x: number, y: number) => number
+```shelllet add: (x: number, y: number) => number
 
 add = (arg1: 1, arg2: 2): number => arg1 + arg2
 
@@ -176,8 +177,7 @@ function handleData(x: any): any {
 
 #### 泛型
 
-```
-const getArry = <T>(value: T, times: number = 5): T[] => {
+```shellconst getArry = <T>(value: T, times: number = 5): T[] => {
     return new Array(times).fill(value)
 }
 
