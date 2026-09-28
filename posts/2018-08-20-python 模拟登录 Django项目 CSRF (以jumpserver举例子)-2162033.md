@@ -6,15 +6,15 @@ source: "https://blog.51cto.com/hequan/2162033"
 ---
 > **内容介绍**
 >
-> 本文是Python 编程实战笔记,记录了「python 模拟登录 Django项目 CSRF (以jumpserver举例子)」的相关内容。主要涉及:### 目录: - config.ini - jumpserver.py…
+> 演示用 requests 模拟登录带 CSRF 防护的 Django 站点：先 GET 登录页用正则提取 `csrfmiddlewaretoken`，再携带 token 提交登录表单，之后复用同一个 Session 调用用户列表和创建用户接口。以 JumpServer 为例，配置走 config.ini。
 
 > **技术备注**
 >
-> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+> 适用于 Django 1.x/2.x 时代的表单登录方式；JumpServer 新版本（2.x 以后）已改为 REST API + Token/AccessKey 认证，建议直接用其官方 API。requests + 正则提取 CSRF token 的思路对任何 Django 表单站点仍然有效。
 
 ---
 
-### 目录:
+### 文件目录
 
 - config.ini
 - jumpserver.py
@@ -23,7 +23,7 @@ source: "https://blog.51cto.com/hequan/2162033"
 
 ### config.ini
 
-```shell
+```ini
 [local_environment]
 title = 本地测试环境
 url = http://192.168.100.28/
