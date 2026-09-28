@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/2316781"
 ---
 > **内容介绍**
 >
-> 本文是后端服务开发笔记,记录了「django-rest-framework     自动生成接口说明文档」的相关内容。主要涉及:### 自动生成接口说明文档 #### 安装 #### urls.py…
+> 本文演示了如何用 Django REST framework 自带的 include_docs_urls 自动生成 API 接口说明文档：在 urls.py 挂载 docs/ 路由后，结合 serializers 字段的 help_text 与视图 docstring，DRF 会渲染出包含参数说明和可在线调试的文档页面。文中以一个简单的 Asset 资产模型为例给出了 models、serializers、views 的配套写法。
 
 > **技术备注**
 >
-> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+> DRF 自带的 include_docs_urls 依赖 coreapi，该方案自 DRF 3.10 起已标记废弃并在 DRF 3.16 中移除。目前官方推荐基于 OpenAPI 的 drf-spectacular（或较早的 drf-yasg）来生成 Swagger/Redoc 接口文档。
 
 ---
 
@@ -50,7 +50,7 @@ class Asset(models.Model):
 
     def __str__(self):
         return self.hostname
-```python
+```
 
 #### serializers.py
 
@@ -84,9 +84,8 @@ class AssetInfo(generics.ListCreateAPIView):
     queryset = Asset.objects.get_queryset().order_by('id')
     serializer_class = AssetSerializer
     permission_classes = (permissions.IsAdminUser,)
+```
 
 #### docs
-
-```
 
 ![drf 自动生成的 API 接口文档页面,含参数说明](assets/2316781/01_3391fe36a610f5961dab6ac9359e1121.jpg)
