@@ -4,13 +4,20 @@ date: "2022-03-24 21:46:11"
 category: "kubernetes"
 source: "https://blog.51cto.com/hequan/5146223"
 ---
+> **内容介绍**
+>
+> 本文是Kubernetes 云原生容器编排实践,记录了「dockerfile  vue+go 发布 例子  docker-compose」的相关内容。
 
-```
-来自 https:///flipped-aurora/gin-vue-admin 转载
+> **技术备注**
+>
+> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+
+---
+
+```shell来自 https:///flipped-aurora/gin-vue-admin 转载
 ```
 
-```
-docker-compose.yaml
+```shelldocker-compose.yaml
 version: "3"
 
 # 声明一个名为network的networks,subnet为network的子网地址,默认网关是177.7.0.1
@@ -89,8 +96,7 @@ services:
         ipv4_address: 177.7.0.14
 ```
 
-```
-server/Dockerfile 
+```shellserver/Dockerfile 
 FROM golang:alpine as builder
 
 WORKDIR /go/src//flipped-aurora/gin-vue-admin/server
@@ -117,8 +123,7 @@ EXPOSE 8888
 ENTRYPOINT ./server -c config.docker.yaml
 ```
 
-```
-web/Dockerfile 
+```shellweb/Dockerfile 
 FROM node:16
 
 WORKDIR /gva_web/
