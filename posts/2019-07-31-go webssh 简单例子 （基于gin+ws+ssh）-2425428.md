@@ -4,6 +4,11 @@ date: "2019-07-31 22:00:42"
 category: "go"
 source: "https://blog.51cto.com/hequan/2425428"
 ---
+> **内容介绍**
+>
+> 本文是Go 语言后端开发实战,记录了「go webssh  简单例子 （基于gin+ws+ssh）」的相关内容。主要涉及:### 项目地址 > https:///hequan2017/go-webssh #### go-webssh…
+
+---
 
 ### 项目地址
 
@@ -21,8 +26,7 @@ go版本 webssh
 
 > 修改 core/ssh.go 里面的账号密码地址等信息。 也可以自己修改成用密钥登录。
 
-```
-func NewSshClient() (*ssh.Client, error) {
+```gofunc NewSshClient() (*ssh.Client, error) {
 					config := &ssh.ClientConfig{
 						Timeout:         time.Second * 5,
 						User:            "root",
