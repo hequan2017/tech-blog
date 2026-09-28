@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技术博客 · hequan</title>
+<meta name="description" content="hequan 的技术博客全集 — Go / Python / Linux / 云计算 / 运维,共 416 篇">
+<style>
+:root{
+  --blue:#3e71f6; --dark:#1f2d3d; --bg:#f5f7fa; --card:#fff;
+  --text:#24292f; --muted:#6a737d; --border:#e4e8ee; --radius:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+header{background:var(--dark);color:#fff;padding:0 24px;height:60px;
+  display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:10}
+header .brand{font-size:19px;font-weight:700;color:#fff;white-space:nowrap}
+header .brand:hover{text-decoration:none}
+header .brand span{color:var(--blue)}
+#search{flex:1;max-width:460px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  border-radius:8px;padding:8px 14px;color:#fff;font-size:14px;outline:none}
+#search::placeholder{color:rgba(255,255,255,.55)}
+#search:focus{background:rgba(255,255,255,.2);border-color:var(--blue)}
+header .meta{font-size:12.5px;color:#9aa7b5;white-space:nowrap}
+header .meta a{color:#9aa7b5}
+
+.layout{display:flex;max-width:1280px;margin:0 auto;gap:22px;padding:22px 16px}
+aside{width:230px;flex-shrink:0}
+aside .box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 0;position:sticky;top:82px;max-height:calc(100vh - 104px);overflow:auto}
+aside h3{font-size:13px;color:var(--muted);padding:2px 18px 8px;font-weight:600}
+aside a.cat{display:flex;justify-content:space-between;padding:7px 18px;color:var(--text);font-size:14px}
+aside a.cat:hover{background:#f0f4ff;text-decoration:none}
+aside a.cat.active{background:#e8effe;color:var(--blue);font-weight:600;border-right:3px solid var(--blue)}
+aside a.cat .n{color:var(--muted);font-size:12px}
+
+main{flex:1;min-width:0}
+#stats{font-size:13px;color:var(--muted);margin-bottom:12px}
+.cards{display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:15px 18px;transition:box-shadow .15s,border-color .15s}
+.card:hover{box-shadow:0 3px 12px rgba(31,45,61,.08);border-color:#c9d6f5}
+.card .t{font-size:16px;font-weight:600;display:inline-block}
+.card .info{display:flex;gap:10px;align-items:center;margin-top:6px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.badge{background:#eef3fe;color:var(--blue);border-radius:20px;padding:2px 10px;font-size:12px}
+button#more{display:block;margin:20px auto;background:#fff;border:1px solid var(--border);
+  color:var(--text);border-radius:8px;padding:9px 30px;font-size:14px;cursor:pointer}
+button#more:hover{border-color:var(--blue);color:var(--blue)}
+
+article.view{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:34px 40px}
+.back{display:inline-block;margin-bottom:16px;font-size:13.5px}
+h1.pt{font-size:24px;margin-bottom:10px}
+.pmeta{font-size:13px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;
+  padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:22px}
+.markdown{font-size:15px}
+.markdown h1,.markdown h2,.markdown h3,.markdown h4{margin:26px 0 12px;line-height:1.35}
+.markdown h1{font-size:21px}.markdown h2{font-size:19px}.markdown h3{font-size:17px}.markdown h4{font-size:15px}
+.markdown p{margin:12px 0}
+.markdown pre{background:#f6f8fa;border:1px solid var(--border);border-radius:8px;
+  padding:14px;overflow:auto;font-size:13px;line-height:1.5}
+.markdown code{font-family:Consolas,"Courier New",monospace;font-size:13px;background:#f6f8fa;
+  border-radius:4px;padding:2px 5px}
+.markdown pre code{background:none;padding:0}
+.markdown table{border-collapse:collapse;margin:14px 0;display:block;overflow:auto;max-width:100%}
+.markdown th,.markdown td{border:1px solid var(--border);padding:7px 12px;font-size:14px}
+.markdown th{background:#f6f8fa}
+.markdown img{max-width:100%;border-radius:6px;border:1px solid var(--border);margin:8px 0;cursor:zoom-in}
+.markdown blockquote{border-left:4px solid var(--blue);background:#f6f9ff;
+  padding:8px 16px;margin:14px 0;color:#4b5563;border-radius:0 6px 6px 0}
+.markdown ul,.markdown ol{padding-left:26px;margin:12px 0}
+.markdown hr{border:none;border-top:1px solid var(--border);margin:22px 0}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:26px 0 40px}
+
+@media (max-width:860px){
+  aside{display:none}
+  header{padding:0 14px;gap:12px}
+  header .meta{display:none}
+  article.view{padding:22px 18px}
+  .markdown{font-size:14.5px}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#/">技术<span>博客</span></a>
+  <input id="search" type="search" placeholder="搜索标题… 416 篇文章">
+  <div class="meta"><a href="https://github.com/hequan2017/tech-blog" target="_blank">GitHub</a> ·
+    <a href="https://blog.51cto.com/hequan" target="_blank">51CTO 原站</a> · hequan</div>
+</header>
+<div class="layout">
+  <aside><div class="box"><h3>分类</h3><nav id="cats"></nav></div></aside>
+  <main>
+    <div id="stats"></div>
+    <div class="cards" id="list"></div>
+    <button id="more" hidden>加载更多</button>
+    <article class="view" id="view" hidden></article>
+  </main>
+</div>
+<footer>技术博客 · 共 416 篇(2016–2025) · 基于 <a href="https://github.com/hequan2017/tech-blog" target="_blank">hequan2017/tech-blog</a> 构建 · 文章版权归原作者所有</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css">
+<script>
+'use strict';
+let POSTS = [], PAGE = 0;
+const PER = 60;
+const $ = s => document.querySelector(s);
+
+function encPath(p){ return p.split('/').map(encodeURIComponent).join('/'); }
+
+function esc(s){ return s.replace(/[&<>"']/g,
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+async function loadIndex(){
+  const r = await fetch('posts-index.json');
+  POSTS = await r.json();
+  POSTS.sort((a,b) => b.d.localeCompare(a.d));
+  renderCats();
+  route();
+}
+
+function currentCat(){
+  const m = location.hash.match(/^#\/c\/(.+)$/);
+  return m ? decodeURIComponent(m[1]) : '';
+}
+
+function renderCats(){
+  const counts = {};
+  POSTS.forEach(p => counts[p.c] = (counts[p.c]||0)+1);
+  const order = Object.keys(counts).sort((a,b) => counts[b]-counts[a]);
+  const cur = currentCat();
+  let h = `<a class="cat${cur===''?' active':''}" href="#/">全部<span class="n">${POSTS.length}</span></a>`;
+  order.forEach(c => {
+    h += `<a class="cat${c===cur?' active':''}" href="#/c/${encodeURIComponent(c)}">
+      ${esc(c)}<span class="n">${counts[c]}</span></a>`;
+  });
+  $('#cats').innerHTML = h;
+}
+
+function filtered(){
+  const q = $('#search').value.trim().toLowerCase();
+  const cat = currentCat();
+  return POSTS.filter(p =>
+    (!cat || p.c === cat) && (!q || p.t.toLowerCase().includes(q)));
+}
+
+function renderList(reset){
+  if(reset){ PAGE = 0; $('#list').innerHTML = ''; }
+  const items = filtered();
+  const slice = items.slice(PAGE*PER, (PAGE+1)*PER);
+  const cat = currentCat();
+  const q = $('#search').value.trim();
+  $('#stats').textContent = (cat ? `分类「${cat}」` : '全部文章') +
+    (q ? ` · 搜索“${q}”` : '') + ` · ${items.length} 篇`;
+  $('#view').hidden = true;
+  $('#list').hidden = false;
+  const h = slice.map(p =>
+    `<div class="card"><a class="t" href="#/p/${encPath(p.f)}">${esc(p.t)}</a>
+     <div class="info"><span>${p.d}</span><span class="badge">${esc(p.c)}</span></div></div>`).join('');
+  $('#list').insertAdjacentHTML('beforeend', h);
+  PAGE++;
+  $('#more').hidden = PAGE*PER >= items.length;
+}
+
+async function renderPost(file){
+  $('#list').hidden = true; $('#more').hidden = true;
+  const art = POSTS.find(p => p.f === file) || {t:file, d:'', c:'', u:''};
+  const r = await fetch(encPath(file));
+  if(!r.ok){ $('#view').hidden = false;
+    $('#view').innerHTML = `<a class="back" href="#/">← 返回列表</a>
+      <h1 class="pt">文章加载失败</h1>`; return; }
+  let md = await r.text();
+  md = md.replace(/^---\n[\s\S]*?\n---\n*/, '');  // 去 front-matter
+  $('#view').hidden = false;
+  $('#view').innerHTML = `<a class="back" href="#/">← 返回列表</a>
+    <h1 class="pt">${esc(art.t)}</h1>
+    <div class="pmeta"><span>📅 ${art.d}</span><span class="badge">${esc(art.c)}</span>
+      <a href="${art.u}" target="_blank" rel="noopener">原文链接 ↗</a></div>
+    <div class="markdown" id="md"></div>`;
+  $('#md').innerHTML = marked.parse(md);
+  $('#md').querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
+  // 文章内相对图片:相对 posts/ 目录 → 站点根下 posts/assets/…
+  $('#md').querySelectorAll('img').forEach(im => {
+    const s = im.getAttribute('src') || '';
+    if(!/^(https?:)?\/\//.test(s)) im.src = 'posts/' + s.replace(/^\.\//,'');
+    im.title = im.alt || '点击查看大图';
+    im.addEventListener('click', () => window.open(im.src, '_blank', 'noopener'));
+  });
+  $('#md').querySelectorAll('a').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if(!/^(https?:|#|mailto:)/.test(href)) a.href = 'posts/' + href.replace(/^\.\//,'');
+  });
+  window.scrollTo(0, 0);
+}
+
+function route(){
+  const h = location.hash || '#/';
+  const m = h.match(/^#\/p\/(.+)$/);
+  if(m){ renderPost(decodeURIComponent(m[1])); }
+  else { renderList(true); }
+}
+
+$('#more').addEventListener('click', () => renderList(false));
+$('#search').addEventListener('input', () => renderList(true));
+window.addEventListener('hashchange', () => { renderCats(); route(); });
+marked.setOptions({ breaks:true, gfm:true });
+loadIndex();
+</script>
+</body>
+</html>
