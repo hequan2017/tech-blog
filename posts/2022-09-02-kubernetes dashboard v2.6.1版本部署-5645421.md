@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/5645421"
 ---
 > **内容介绍**
 >
-> 本文是服务器集群与高可用架构实践,记录了「kubernetes dashboard v2.6.1版本部署」的相关内容。
-
+> 本文记录 Kubernetes Dashboard v2.6.1 的部署与访问配置：通过官方 recommended.yaml 一键安装，将 Service 改为 NodePort 暴露 443 端口，创建 ServiceAccount 与 Secret 并绑定 cluster-admin ClusterRole，最后通过 describe secret 获取登录 Token。
+>
 > **技术备注**
 >
-> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+> Dashboard v2.6.1 发布于 2022 年，仅支持较旧 Kubernetes；当前最新 v3.x 采用独立 chart 部署。另外，为安全起见，生产环境不建议直接绑定 cluster-admin，应使用最小权限 RBAC。
 
 ---
 
