@@ -4,9 +4,17 @@ date: "2022-09-02 16:21:41"
 category: "集群"
 source: "https://blog.51cto.com/hequan/5645421"
 ---
+> **内容介绍**
+>
+> 本文是服务器集群与高可用架构实践,记录了「kubernetes dashboard v2.6.1版本部署」的相关内容。
 
-```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
+> **技术备注**
+>
+> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+
+---
+
+```shellkubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
 
 kubectl edit svc -n kubernetes-dashboard kubernetes-dashboard
 
