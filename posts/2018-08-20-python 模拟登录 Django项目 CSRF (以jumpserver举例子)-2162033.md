@@ -4,6 +4,15 @@ date: "2018-08-20 16:21:13"
 category: "python"
 source: "https://blog.51cto.com/hequan/2162033"
 ---
+> **内容介绍**
+>
+> 本文是Python 编程实战笔记,记录了「python 模拟登录 Django项目 CSRF (以jumpserver举例子)」的相关内容。主要涉及:### 目录: - config.ini - jumpserver.py…
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 ### 目录:
 
@@ -14,8 +23,7 @@ source: "https://blog.51cto.com/hequan/2162033"
 
 ### config.ini
 
-```
-[local_environment]
+```shell[local_environment]
 title = 本地测试环境
 url = http://192.168.100.28/
 login_url= http://192.168.100.28/users/login/
@@ -29,8 +37,7 @@ password = admin
 
 ### jumpserver.py
 
-```
-#!/usr/bin/env python3
+```python#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
 import configparser
