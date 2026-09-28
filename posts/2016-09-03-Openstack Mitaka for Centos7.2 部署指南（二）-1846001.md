@@ -6,76 +6,71 @@ source: "https://blog.51cto.com/hequan/1846001"
 ---
 > **内容介绍**
 >
-> 本文是OpenStack 私有云部署与运维笔记,记录了「Openstack Mitaka for  Centos7.2 部署指南（二）」的相关内容。主要涉及:4.4 计算服务配置（Compute Service Nova） 部署节点：Controller Node 在Controller节点上需要安装novaapi …
+> 本篇是 CentOS 7.2 部署 OpenStack Mitaka 系列的第二部分，包含三个组件的完整配置：nova 计算服务（控制节点装 api/conductor/scheduler/novncproxy，计算节点装 nova-compute，含 VNC 与硬件加速检测）、neutron 网络服务（采用 Linux Bridge + VXLAN 的 Self-Service 网络架构，覆盖控制/网络/计算三类节点）以及 horizon 仪表盘（local_settings 关键配置）。
 
 > **技术备注**
 >
-> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+> 本文基于 Mitaka：nova consoleauth 服务已在新版本中移除；neutron 独立 CLI（agent-list/ext-list）已并入 `openstack` 命令；`auth_plugin` 已更名为 `auth_type`；`rpc_backend` 写法已被 `transport_url` 取代；horizon 的 `vnc_auto.html` 已改为 `vnc_lite.html`。文中 4.5 节"配置计算节点使用网络"里 `auth_url = http://controller1:35357` 的主机名 controller1 疑为笔误（应为 controller），按上下文已修正。
 
 ---
 
-4.4 计算服务配置（Compute Service Nova）
+## 4.4 计算服务配置（Compute Service Nova）
 
-部署节点：Controller Node
+### 控制节点
 
-在Controller节点上需要安装novaapi  novaconductor  novaconsoleauth  novanovncproxy  novascheduler
+在 Controller 节点上需要安装 nova-api、nova-conductor、nova-consoleauth、nova-novncproxy、nova-scheduler。
 
-```bash
-mysql -u root  -p123456
-CREATE DATABASE nova_api;
-CREATE DATABASE nova;
-GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' IDENTIFIED BY 'novaapi';
-GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' IDENTIFIED BY 'novaapi';
-GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY 'nova';
-GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY 'nova';
+创建 nova 数据库：
+
+```sql
+mysql -u root -p123456
+CREATE DATABASE nova_api;
+CREATE DATABASE nova;
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' IDENTIFIED BY 'novaapi';
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' IDENTIFIED BY 'novaapi';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY 'nova';
+GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY 'nova';
 ```
 
+创建用户、服务与 endpoint：
+
 ```bash
-openstack user create --domain default   --password-prompt nova
-openstack role add --project service --user nova admin
-openstack service create --name nova   --description "OpenStack Compute" compute
-openstack endpoint create --region RegionOne   compute public http://controller:8774/v2.1/%\(tenant_id\)s
-openstack endpoint create --region RegionOne   compute internal http://controller:8774/v2.1/%\(tenant_id\)s
-openstack endpoint create --region RegionOne   compute admin http://controller:8774/v2.1/%\(tenant_id\)s
+openstack user create --domain default --password-prompt nova
+openstack role add --project service --user nova admin
+openstack service create --name nova --description "OpenStack Compute" compute
+openstack endpoint create --region RegionOne compute public http://controller:8774/v2.1/%\(tenant_id\)s
+openstack endpoint create --region RegionOne compute internal http://controller:8774/v2.1/%\(tenant_id\)s
+openstack endpoint create --region RegionOne compute admin http://controller:8774/v2.1/%\(tenant_id\)s
 ```
 
-安装计算服务组件
-
-① 安装Nova组件
+安装 Nova 组件：
 
 ```bash
-yum install openstack-nova-api openstack-nova-conductor   openstack-nova-console openstack-nova-novncproxy   openstack-nova-scheduler
+yum install openstack-nova-api openstack-nova-conductor openstack-nova-console openstack-nova-novncproxy openstack-nova-scheduler
 ```
 
-② 修改配置文件sudo vi /etc/nova/nova.conf 。
+修改配置文件 `sudo vi /etc/nova/nova.conf`。
 
-在[DEFAULT] 处只启用compute 和metadata APIs，将
+在 [DEFAULT] 处只启用 compute 和 metadata APIs：
 
-```bash
-267 #enabled_apis=osapi_compute,metadata
-改为
-enabled_apis = osapi_compute,metadata
+```ini
+enabled_apis = osapi_compute,metadata
 ```
 
-在[api_database] 和[database] 处配置数据库访问连接（若没有[api_database] 和[database] 标记，则
+在 [api_database] 和 [database] 处配置数据库访问连接（若没有这两个标记则手动添加；将 NOVA_DBPASS 替换为实际密码）：
 
-手动添加）
-
-注：将NOVA_DBPASS 替换为前面设计的实际密码
-
-```bash
+```ini
 [api_database]
 ...
-connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova_api
+connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova_api
 [database]
 ...
-connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova
+connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova
 ```
 
-在[DEFAULT] 和[oslo_messaging_rabbit] 处配置RabbitMQ消息队里访问
+在 [DEFAULT] 和 [oslo_messaging_rabbit] 处配置 RabbitMQ 消息队列访问（将 RABBIT_PASS 替换为实际密码）：
 
-注：将RABBIT_PASS 替换为前面设计的实际密码
-
+```ini
 [DEFAULT]
 ...
 rpc_backend = rabbit
@@ -84,15 +79,12 @@ rpc_backend = rabbit
 ...
 rabbit_host = controller
 rabbit_userid = openstack
-
 rabbit_password = RABBIT_PASS
+```
 
-在[DEFAULT] 和[keystone_authtoken] 处配置身份服务访问
+在 [DEFAULT] 和 [keystone_authtoken] 处配置身份服务访问（将 NOVA_PASS 替换为实际密码；注释或删除 [keystone_authtoken] 处其他内容）：
 
-注：将NOVA_PASS 替换为前面设计的实际密码
-
-注：注释或删除[keystone_authtoken] 处其他内容
-
+```ini
 [DEFAULT]
 ...
 auth_strategy = keystone
@@ -106,98 +98,90 @@ auth_type = password
 project_domain_name = default
 user_domain_name = default
 project_name = service
-
 username = nova
+password = NOVA_PASS
+```
 
-password = nova
+在 [DEFAULT] 处配置 my_ip 为 Controller 节点 Management Network 网口地址：
 
-在[DEFAULT] 处配置my_ip 为Controller节点Management Network网口地址
-
+```ini
 my_ip = 10.0.0.11
+```
 
-在[DEFAULT] 处启用网络服务支持
+在 [DEFAULT] 处启用网络服务支持（默认情况下计算服务使用主机内部防火墙驱动，因此必须禁用 OpenStack 网络服务中的防火墙驱动）：
 
-注：默认情况下，计算服务使用主机内部防火墙驱动，因此必须禁用OpenStack网络服务中的防火墙驱动。
-
+```ini
 use_neutron = True
-
 firewall_driver = nova.virt.firewall.NoopFirewallDriver
+```
 
-在[vnc] 处，使用Controller节点Management Network网口地址配置VNC代理（VNC proxy）。
+在 [vnc] 处，使用 Controller 节点 Management Network 网口地址配置 VNC 代理：
 
+```ini
 [vnc]
 ...
 vncserver_listen = $my_ip
-
 vncserver_proxyclient_address = $my_ip
+```
 
-在[glance] 处配置镜像服务API位置
+在 [glance] 处配置镜像服务 API 位置：
 
+```ini
 [glance]
 ...
+api_servers = http://controller:9292
+```
 
-api_servers = [http://controller:9292](http://controller:9292)
+在 [oslo_concurrency] 处配置 lock_path：
 
-在[oslo_concurrency] 处配置lock_path
-
+```ini
 [oslo_concurrency]
 ...
-
 lock_path = /var/lib/nova/tmp
-
-将配置信息写入计算服务数据库nova
-
-```bash
-# su -s /bin/sh -c "nova-manage api_db sync" nova
-# su -s /bin/sh -c "nova-manage db sync" nova
 ```
 
-重启计算服务
+将配置信息写入计算服务数据库：
 
 ```bash
- systemctl enable openstack-nova-api.service   openstack-nova-consoleauth.service openstack-nova-scheduler.service   openstack-nova-conductor.service openstack-nova-novncproxy.service
- systemctl start openstack-nova-api.service   openstack-nova-consoleauth.service openstack-nova-scheduler.service   openstack-nova-conductor.service openstack-nova-novncproxy.service
+su -s /bin/sh -c "nova-manage api_db sync" nova
+su -s /bin/sh -c "nova-manage db sync" nova
 ```
 
-部署节点：Compute Node
-
-在Compute节点上需要安装novacompute
-
-。
-
-注：以下步骤在Compute节点上执行
-
-安装配置计算服务组件
-
-安装nova‐compute 组件
+启动计算服务：
 
 ```bash
-yum install openstack-nova-compute
+systemctl enable openstack-nova-api.service openstack-nova-consoleauth.service openstack-nova-scheduler.service openstack-nova-conductor.service openstack-nova-novncproxy.service
+systemctl start openstack-nova-api.service openstack-nova-consoleauth.service openstack-nova-scheduler.service openstack-nova-conductor.service openstack-nova-novncproxy.service
 ```
 
-修改配置文件sudo vi /etc/nova/nova.conf
+### 计算节点
 
-① 在[DEFAULT] 和[oslo_messaging_rabbit] 处配置RabbitMQ消息队列访问
+在 Compute 节点上需要安装 nova-compute（以下步骤在 Compute 节点上执行）。
 
-注：将RABBIT_PASS 替换为前面设计的实际密码
+安装 nova-compute 组件：
 
 ```bash
+yum install openstack-nova-compute
+```
+
+修改配置文件 `sudo vi /etc/nova/nova.conf`。
+
+在 [DEFAULT] 和 [oslo_messaging_rabbit] 处配置 RabbitMQ 消息队列访问：
+
+```ini
 [DEFAULT]
 ...
-rpc_backend = rabbit
+rpc_backend = rabbit
 [oslo_messaging_rabbit]
 ...
-rabbit_host = controller
-rabbit_userid = openstack
-rabbit_password = RABBIT_PASS
+rabbit_host = controller
+rabbit_userid = openstack
+rabbit_password = RABBIT_PASS
 ```
 
-② 在[DEFAULT] 和[keystone_authtoken] 处配置身份服务访问
+在 [DEFAULT] 和 [keystone_authtoken] 处配置身份服务访问：
 
-注：将NOVA_PASS 替换为前面设计的实际密码
-
-注：注释或删除[keystone_authtoken] 处其他内容
-
+```ini
 [DEFAULT]
 ...
 auth_strategy = keystone
@@ -212,449 +196,391 @@ project_domain_name = default
 user_domain_name = default
 project_name = service
 username = nova
-
 password = NOVA_PASS
-
-在[DEFAULT] 处配置my_ip 为Compute节点Management Network网口地址
-
-my_ip=10.0.0.31
-
-在[DEFAULT] 处启用网络服务支持
-
-```bash
-[DEFAULT]
-...
-use_neutron = True
-firewall_driver = nova.virt.firewall.NoopFirewallDriver
 ```
 
-在[vnc] 处配置远程控制访问
+在 [DEFAULT] 处配置 my_ip 为 Compute 节点 Management Network 网口地址：
 
-```bash
+```ini
+my_ip=10.0.0.31
+```
+
+在 [DEFAULT] 处启用网络服务支持：
+
+```ini
+[DEFAULT]
+...
+use_neutron = True
+firewall_driver = nova.virt.firewall.NoopFirewallDriver
+```
+
+在 [vnc] 处配置远程控制访问：
+
+```ini
 [vnc]
 ...
-enabled = True
-vncserver_listen = 0.0.0.0
-vncserver_proxyclient_address = $my_ip
-novncproxy_base_url = http://controller:6080/vnc_auto.html
+enabled = True
+vncserver_listen = 0.0.0.0
+vncserver_proxyclient_address = $my_ip
+novncproxy_base_url = http://controller:6080/vnc_auto.html
 ```
 
-注： VNC服务器端监听所有地址，VNC代理客户端只监听Compute节点Management Network网口地址，
+注：VNC 服务器端监听所有地址，VNC 代理客户端只监听 Compute 节点 Management Network 网口地址，base URL 设置 Compute 节点远程控制台浏览器访问地址（若浏览器无法解析 controller，则需替换为相应 IP 地址）。
 
-base URL设置Compute节点远程控制台浏览器访问地址（若浏览无法解析controller，则需替换为相应IP地
+在 [glance] 处配置镜像服务 API：
 
-址）。
+```ini
+api_servers = http://controller:9292
+```
 
-在[glance] 处配置镜像服务API
+在 [oslo_concurrency] 处配置 lock_path：
+
+```ini
+lock_path = /var/lib/nova/tmp
+```
+
+完成安装，启动计算服务。先检测是否支持虚拟机硬件加速：
 
 ```bash
-api_servers = http://controller:9292
+egrep -c '(vmx|svm)' /proc/cpuinfo
 ```
 
-在[oslo_concurrency] 处配置lock_path
+若返回结果大于等于 1，则支持，无需做额外配置；若返回结果 0，则不支持硬件加速，需要修改配置文件 `/etc/nova/nova-compute.conf` 中的 libvirt 设置项，使用 QEMU 代替 KVM：
 
-```bash
-lock_path = /var/lib/nova/tmp
-```
-
-完成安装，重启计算服务
-
-① 检测是否支持虚拟机硬件加速
-
-```bash
-egrep ‐c '(vmx|svm)' /proc/cpuinfo
-```
-
-若返回结果大于等于1，则支持，无需做额外配置；
-
-若返回结果0，则不支持硬件加速，需要做以下额外配置：修改配置文件sudo vi /etc/nova/novacompute.
-
-conf 中的libvirt 设置项，使用QEMU 代替KVM 。
-
+```ini
 [libvirt]
-
 virt_type = qemu
-
-```bash
-systemctl enable libvirtd.service openstack-nova-compute.service
-systemctl start libvirtd.service openstack-nova-compute.service
 ```
 
-验证计算服务是否安装正确
+```bash
+systemctl enable libvirtd.service openstack-nova-compute.service
+systemctl start libvirtd.service openstack-nova-compute.service
+```
 
-注：以下步骤需在Controller节点执行
+### 验证计算服务
 
-① 设置OpenStack admin 用户环境变量
+以下步骤需在 Controller 节点执行：
 
+```bash
 source admin-openrc
-
-② 打印服务组件列表，验证每个成功启动和注册的进程。
-
-```bash
-[root@controller ~]# openstack compute service list
-+----+-----------------+------------+----------+---------+-------+------------------+
-| Id | Binary          | Host       | Zone     | Status  | State | Updated At       |
-+----+-----------------+------------+----------+---------+-------+------------------+
-|  1 | nova-           | controller | internal | enabled | up    | 2016-09-03T09:29 |
-|    | consoleauth     |            |          |         |       | :56.000000       |
-|  2 | nova-conductor  | controller | internal | enabled | up    | 2016-09-03T09:29 |
-|    |                 |            |          |         |       | :56.000000       |
-|  3 | nova-scheduler  | controller | internal | enabled | up    | 2016-09-03T09:29 |
-|    |                 |            |          |         |       | :56.000000       |
-|  7 | nova-compute    | compute    | nova     | enabled | up    | 2016-09-03T09:29 |
-|    |                 |            |          |         |       | :56.000000       |
-+----+-----------------+------------+----------+---------+-------+------------------+
 ```
 
----
-
-4.5 网络服务配置（Networking Service Neutron）
-
-部署节点：Controller Node
-
-在MariaDB（MySQL）中创建neutron 数据库
+打印服务组件列表，验证每个进程成功启动和注册：
 
 ```bash
-mysql -u root -p
-CREATE DATABASE neutron;
-GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost'  IDENTIFIED BY 'neutron';
-GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%'   IDENTIFIED BY 'neutron';
+[root@controller ~]# openstack compute service list
++----+------------------+------------+----------+---------+-------+----------------------------+
+| Id | Binary           | Host       | Zone     | Status  | State | Updated At                 |
++----+------------------+------------+----------+---------+-------+----------------------------+
+|  1 | nova-consoleauth | controller | internal | enabled | up    | 2016-09-03T09:29:56.000000 |
+|  2 | nova-conductor   | controller | internal | enabled | up    | 2016-09-03T09:29:56.000000 |
+|  3 | nova-scheduler   | controller | internal | enabled | up    | 2016-09-03T09:29:56.000000 |
+|  7 | nova-compute     | compute    | nova     | enabled | up    | 2016-09-03T09:29:56.000000 |
++----+------------------+------------+----------+---------+-------+----------------------------+
 ```
 
-创建网络服务证书和API路径
+## 4.5 网络服务配置（Networking Service Neutron）
 
-```bash
-openstack user create --domain default --password-prompt neutron
-openstack role add --project service --user neutron admin
-openstack service create --name neutron   --description "OpenStack Networking" network
-openstack endpoint create --region RegionOne   network public http://controller:9696
-openstack endpoint create --region RegionOne   network internal http://controller:9696
-openstack endpoint create --region RegionOne   network admin http://controller:9696
+### 控制节点
+
+在 MariaDB（MySQL）中创建 neutron 数据库：
+
+```sql
+mysql -u root -p
+CREATE DATABASE neutron;
+GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost' IDENTIFIED BY 'neutron';
+GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' IDENTIFIED BY 'neutron';
 ```
 
-安装配置neutron‐server 服务组件
-
-yum install openstack-neutron openstack-neutron-ml2
-
-修改配置文件sudo vi /etc/neutron/neutron.conf
+创建网络服务证书和 API 路径：
 
 ```bash
-vi /etc/neutron/neutron.conf
+openstack user create --domain default --password-prompt neutron
+openstack role add --project service --user neutron admin
+openstack service create --name neutron --description "OpenStack Networking" network
+openstack endpoint create --region RegionOne network public http://controller:9696
+openstack endpoint create --region RegionOne network internal http://controller:9696
+openstack endpoint create --region RegionOne network admin http://controller:9696
+```
+
+安装配置 neutron-server 服务组件：
+
+```bash
+yum install openstack-neutron openstack-neutron-ml2
+vi /etc/neutron/neutron.conf
+```
+
+```ini
 [database]
-connection = mysql://neutron:neutron@controller/neutron
-[DEFAULT] 
-core_plugin = ml2
-service_plugins = router
-allow_overlapping_ips = True
+connection = mysql://neutron:neutron@controller/neutron
 [DEFAULT]
-rpc_backend = rabbit
+core_plugin = ml2
+service_plugins = router
+allow_overlapping_ips = True
+rpc_backend = rabbit
+auth_strategy = keystone
+notify_nova_on_port_status_changes = True
+notify_nova_on_port_data_changes = True
+verbose = True
 [oslo_messaging_rabbit]
-rabbit_host = controller
-rabbit_userid = openstack
-rabbit_password = openstack
-[DEFAULT]
-auth_strategy = keystone
-[keystone_authtoken]  
-auth_uri = http://controller:5000
-auth_url = http://controller:35357
-auth_plugin = password
-project_domain_id = default
-user_domain_id = default
-project_name = service
-username = neutron
-password = neutron
-[DEFAULT]
-notify_nova_on_port_status_changes = True
-notify_nova_on_port_data_changes = True
+rabbit_host = controller
+rabbit_userid = openstack
+rabbit_password = openstack
+[keystone_authtoken]
+auth_uri = http://controller:5000
+auth_url = http://controller:35357
+auth_plugin = password
+project_domain_id = default
+user_domain_id = default
+project_name = service
+username = neutron
+password = neutron
 [nova]
-auth_url = http://controller:35357
-auth_plugin = password
-project_domain_id = default
-user_domain_id = default
-region_name = RegionOne
-project_name = service
-username = nova
-password = nova
+auth_url = http://controller:35357
+auth_plugin = password
+project_domain_id = default
+user_domain_id = default
+region_name = RegionOne
+project_name = service
+username = nova
+password = nova
 [oslo_concurrency]
-lock_path = /var/lib/neutron/tmp
-[DEFAULT]
-verbose = True
+lock_path = /var/lib/neutron/tmp
 ```
 
-配置ML2插件   配置LINUX桥接代理 配置元数据代理
+配置 ML2 插件：使用 Linux 网桥机制为 OpenStack 实例建立 layer2 虚拟网络设施（桥接和交换）。修改配置文件 `/etc/neutron/plugins/ml2/ml2_conf.ini`：
 
-```bash
-ML2 plugin
-使用Linux网桥机制为OpenStack实例建立layer2
-虚拟网络设施（桥接和交换）。修改配置文件sudo vi /etc/neutron/plugins/ml2/ml2_conf.ini
-vi /etc/neutron/plugins/ml2/ml2_conf.ini
+```ini
 [ml2]
-type_drivers = flat,vlan,vxlan   #配置ML2后如果移除此项目会引起数据库不一致
-[ml2]
-tenant_network_types = vxlan
-[ml2]
-mechanism_drivers = linuxbridge,l2population
-[ml2]
-extension_drivers = port_security  ##启用端口安全扩展驱动
+type_drivers = flat,vlan,vxlan   # 配置ML2后如果移除此项目会引起数据库不一致
+tenant_network_types = vxlan
+mechanism_drivers = linuxbridge,l2population
+extension_drivers = port_security   ## 启用端口安全扩展驱动
 [ml2_type_flat]
-flat_networks = public  ##运营商虚拟网络为flat network
+flat_networks = public   ## 运营商虚拟网络为flat network
 [ml2_type_vxlan]
-vni_ranges = 1:1000
+vni_ranges = 1:1000
 [securitygroup]
-enable_ipset = True  ##启用ipset 来增强安全组规则的效率
+enable_ipset = True   ## 启用ipset来增强安全组规则的效率
 ```
 
-将配置信息写入neutron 数据库
+将配置信息写入 neutron 数据库：
 
 ```bash
-su ‐s /bin/sh ‐c "neutron‐db‐manage ‐‐config‐file /etc/neutron/neutron.conf ‐‐config‐file
-/etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
+su -s /bin/sh -c "neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
 ```
 
-配置计算节点使用网络
+配置计算节点使用网络，修改 `vi /etc/nova/nova.conf`：
 
-```bash
-vi /etc/nova/nova.conf
+```ini
 [neutron]
-url = http://controller:9696
-auth_url = http://controller1:35357
-auth_plugin = password
-project_domain_id = default
-user_domain_id = default
-region_name = RegionOne
-project_name = service
-username = neutron
-password = neutron
-service_metadata_proxy = True
-metadata_proxy_shared_secret = metadata
+url = http://controller:9696
+auth_url = http://controller:35357
+auth_plugin = password
+project_domain_id = default
+user_domain_id = default
+region_name = RegionOne
+project_name = service
+username = neutron
+password = neutron
+service_metadata_proxy = True
+metadata_proxy_shared_secret = metadata
 ```
 
-创建文件连接
-
-ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini
-
-重启服务
+创建文件链接：
 
 ```bash
-systemctl restart openstack-nova-api.service
-systemctl restart neutron-server.service
-systemctl  start  neutron-metadata-agent.service
-systemctl enable neutron-server.service
-systemctl  enable neutron-metadata-agent.service
+ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini
 ```
 
-**部署节点：Network Node**
-
-在Network 节点上部署组件：
-
-网络服务部署架构有两种方式Provider Networks 和Self‐Service Networks ，在本文开头作了简要介绍。本文采
-
-用Self‐Service Networks 方式部署。
-
-参考文档：Deploy Networking Service using the Architecture of SelfService
-
-Networks
+启动服务：
 
 ```bash
-yum install  openstack-neutron-ml2   openstack-neutron-linuxbridge   ebtables
+systemctl restart openstack-nova-api.service
+systemctl restart neutron-server.service
+systemctl start neutron-metadata-agent.service
+systemctl enable neutron-server.service
+systemctl enable neutron-metadata-agent.service
 ```
 
-配置公共服务组件
+### 网络节点
 
-公共组件配置包括认证机制、消息队列。修改配置文件sudo vi /etc/neutron/neutron.conf
+网络服务部署架构有两种方式：Provider Networks 和 Self-Service Networks，本文采用 Self-Service Networks 方式部署。
 
 ```bash
+yum install openstack-neutron-ml2 openstack-neutron-linuxbridge ebtables
+```
+
+配置公共服务组件（认证机制、消息队列），修改 `/etc/neutron/neutron.conf`：
+
+```ini
 [DEFAULT]
-rpc_backend = rabbit
+rpc_backend = rabbit
+auth_strategy = keystone
 [oslo_messaging_rabbit]
-rabbit_host = controller
-rabbit_userid = openstack
-rabbit_password = openstack
-[DEFAULT]
-auth_strategy = keystone
+rabbit_host = controller
+rabbit_userid = openstack
+rabbit_password = openstack
 [keystone_authtoken]
-auth_uri = http://controller:5000
-auth_url = http://controller:35357
-memcached_servers = controller:11211
-auth_type = password
-project_domain_name = default
-user_domain_name = default
-project_name = service
-username = neutron
-password = neutron
-配置Linux网桥代理
-Linux bridge agent为实例建立了二层虚拟网络设施，而且可以管理安全组。
-修改配置文件sudo vi /etc/neutron/plugins/ml2/linuxbridge_agent.ini
-vim /etc/neutron/plugins/ml2/linuxbridge_agent.ini   #注意桥接的网卡名称
+auth_uri = http://controller:5000
+auth_url = http://controller:35357
+memcached_servers = controller:11211
+auth_type = password
+project_domain_name = default
+user_domain_name = default
+project_name = service
+username = neutron
+password = neutron
+```
+
+配置 Linux 网桥代理。Linux bridge agent 为实例建立了二层虚拟网络设施，而且可以管理安全组。修改配置文件 `/etc/neutron/plugins/ml2/linuxbridge_agent.ini`：
+
+```ini
 [linux_bridge]
-physical_interface_mappings = public:eth0
+physical_interface_mappings = public:eth0   # 注意桥接的网卡名称
 [vxlan]
-enable_vxlan = True
-local_ip = 10.0.0.21  #物理公共网络接口地址(controller)
-l2_population = True
+enable_vxlan = True
+local_ip = 10.0.0.21   # 物理公共网络接口地址
+l2_population = True
 [agent]
-prevent_arp_spoofing = True
+prevent_arp_spoofing = True
 [securitygroup]
-enable_security_group = True
-firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+enable_security_group = True
+firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
 ```
 
-配置三层网络代理
+配置三层网络代理。L3(Layer-3) Agent 为自服务网络提供了路由和 NAT 服务。修改配置文件 `/etc/neutron/l3_agent.ini`，在 [DEFAULT] 处配置 Linux 网桥接口驱动和外网网桥：
 
-L3(Layer‐3) Agent 位自服务网络提供了路由和NAT服务。
+```ini
+[DEFAULT]
+interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
+external_network_bridge =    #### 注：值故意空缺，这样可使多个外部网络共用一个代理
+verbose = True
+```
 
-修改配置文件sudo vi /etc/neutron/l3_agent.ini ，在[DEFAULT] 处配置Linux网桥接口驱动（Linux BridgeInterface Driver）和外网网桥。
+修改配置文件 `/etc/neutron/dhcp_agent.ini`，在 [DEFAULT] 处配置 Linux bridge interface driver 和 Dnsmasq DHCP driver，启用独立的 metadata 使运营商网络实例可以访问虚拟网络元信息：
+
+```ini
+[DEFAULT]
+interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
+dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
+enable_isolated_metadata = True
+verbose = True
+```
+
+配置元数据代理。元数据代理提供一些诸如证书之类的配置信息。修改配置文件 `/etc/neutron/metadata_agent.ini`，在 [DEFAULT] 处配置元数据主机和共享密钥（将 METADATA_SECRET 替换为实际密码）：
+
+```ini
+[DEFAULT]
+nova_metadata_ip = controller
+metadata_proxy_shared_secret = metadata
+```
+
+启动服务：
 
 ```bash
- vi /etc/neutron/l3_agent.ini
-[DEFAULT]
-interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
-external_network_bridge =   ####注： external_network_bridge 值故意空缺，这样可使多个外部网络共用一个代理。
-[DEFAULT]
-verbose = True
+systemctl start neutron-linuxbridge-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service neutron-l3-agent.service
+systemctl enable neutron-linuxbridge-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service neutron-l3-agent.service
 ```
 
-修改配置文件sudo vi /etc/neutron/dhcp_agent.ini ，在[DEFAULT] 处配置Linux bridge interface
+### 计算节点
 
-driver 和Dnsmasq DHCP driver ，启用独立的metadata 使运营商网络实例可以访问虚拟网络元信息。
+安装网络服务组件：
 
 ```bash
-vi /etc/neutron/dhcp_agent.ini
-[DEFAULT]
-interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
-dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
-enable_isolated_metadata = True
-[DEFAULT]
-verbose = True
-```
-
-配置元数据代理
-
-元数据代理提供一些诸如证书之类的配置信息。
-
-修改配置文件sudo vi /etc/neutron/metadata_agent.ini ，在[DEFAULT] 处配置元数据主机和共享密钥。
-
-注：将METADATA_SECRET 替换为前面设计的实际密码
-
-```bash
-[DEFAULT]
-nova_metadata_ip = controller
-metadata_proxy_shared_secret = metadata
-```
-
-```bash
-systemctl start neutron-linuxbridge-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service neutron-l3-agent.service
-systemctl enable neutron-linuxbridge-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service neutron-l3-agent.service
-```
-
-部署节点：Compute Node
-
-安装网络服务组件
-
 [root@compute ~]# yum install openstack-neutron-linuxbridge
+```
 
-配置公共组件
+配置公共组件（认证机制、消息队列、插件）：
 
-公共组件配置包括认证机制、消息队列、插件。
-
-```bash
-[root@compute ~]# cat /etc/neutron/neutron.conf
+```ini
+[root@compute ~]# cat /etc/neutron/neutron.conf
 [DEFAULT]
-rpc_backend = rabbit
+rpc_backend = rabbit
+auth_strategy = keystone
 [oslo_messaging_rabbit]
-rabbit_host = controller
-rabbit_userid = openstack
-rabbit_password = openstack
-[DEFAULT]
-auth_strategy = keystone
+rabbit_host = controller
+rabbit_userid = openstack
+rabbit_password = openstack
 [keystone_authtoken]
-auth_uri = http://controller:5000
-auth_url = http://controller:35357
-memcached_servers = controller:11211
-auth_type = password
-project_domain_name = default
-user_domain_name = default
-project_name = service
-username = neutron
-password = neutron
+auth_uri = http://controller:5000
+auth_url = http://controller:35357
+memcached_servers = controller:11211
+auth_type = password
+project_domain_name = default
+user_domain_name = default
+project_name = service
+username = neutron
+password = neutron
 ```
 
-配置网络设置
+配置 Linux 网桥代理，修改配置文件 `/etc/neutron/plugins/ml2/linuxbridge_agent.ini`：
 
-配置Linux网桥代理，修改配置文件sudo vi /etc/neutron/plugins/ml2/linuxbridge_agent.ini
-
-```bash
-[root@compute ~]# cat   /etc/neutron/plugins/ml2/linuxbridge_agent.ini
+```ini
 [linux_bridge]
-physical_interface_mappings = provider:eth0
+physical_interface_mappings = provider:eth0
 [vxlan]
-enable_vxlan = True
-local_ip = 10.0.0.31
-l2_population = True
+enable_vxlan = True
+local_ip = 10.0.0.31
+l2_population = True
 [securitygroup]
-enable_security_group = True
-firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+enable_security_group = True
+firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
 ```
 
-配置计算服务访问网络
+配置计算服务访问网络，修改配置文件 `/etc/nova/nova.conf`：
 
-修改配置文件sudo vi /etc/nova/nova.conf
-
-```bash
-[root@compute ~]# vi /etc/nova/nova.conf
+```ini
 [neutron]
-url = http://controller:9696
-auth_url = http://controller:35357
-auth_type = password
-project_domain_name = default
-user_domain_name = default
-region_name = RegionOne
-project_name = service
-username = neutron
-password = neutron
+url = http://controller:9696
+auth_url = http://controller:35357
+auth_type = password
+project_domain_name = default
+user_domain_name = default
+region_name = RegionOne
+project_name = service
+username = neutron
+password = neutron
 ```
 
-重启服务
+重启服务：
 
 ```bash
- systemctl  restart openstack-nova-compute.service
-systemctl restart neutron-linuxbridge-agent.service
-systemctl enable  neutron-linuxbridge-agent.service
+systemctl restart openstack-nova-compute.service
+systemctl restart neutron-linuxbridge-agent.service
+systemctl enable neutron-linuxbridge-agent.service
 ```
 
-验证
+验证：
 
 ```bash
-[root@controller ~]# neutron  ext-list
-[root@controller ~]# neutron  agent-list                   
+[root@controller ~]# neutron ext-list
+[root@controller ~]# neutron agent-list
 +--------------------------------------+--------------------+------------+-------------------+-------+----------------+---------------------------+
-| id                                   | agent_type         | host       | availability_zone | alive | admin_state_up | binary                    |
+| id                                   | agent_type         | host       | availability_zone | alive | admin_state_up | binary                    |
 +--------------------------------------+--------------------+------------+-------------------+-------+----------------+---------------------------+
-| 0e1c9f6f-a56b-40d1-b43e-91754cabcf75 | Metadata agent     | network    |                   | :-)   | True           | neutron-metadata-agent    |
-| 24c8daec-b495-48ba-b70d-f7d103c8cda1 | Linux bridge agent | compute    |                   | :-)   | True           | neutron-linuxbridge-agent |
-| 2e93bf03-e095-444d-8f74-0b832db4a0be | Linux bridge agent | network    |                   | :-)   | True           | neutron-linuxbridge-agent |
-| 456c754a-d2c0-4ce5-8d9b-b0089fb77647 | Metadata agent     | controller |                   | :-)   | True           | neutron-metadata-agent    |
-| 8a1c7895-fc44-407f-b74b-55bb1b4519d8 | DHCP agent         | network    | nova              | :-)   | True           | neutron-dhcp-agent        |
-| 93ad18bf-d961-4d00-982c-6c617dbc0a5e | L3 agent           | network    | nova              | :-)   | True           | neutron-l3-agent          |
+| 0e1c9f6f-a56b-40d1-b43e-91754cabcf75 | Metadata agent     | network    |                   | :-)   | True           | neutron-metadata-agent    |
+| 24c8daec-b495-48ba-b70d-f7d103c8cda1 | Linux bridge agent | compute    |                   | :-)   | True           | neutron-linuxbridge-agent |
+| 2e93bf03-e095-444d-8f74-0b832db4a0be | Linux bridge agent | network    |                   | :-)   | True           | neutron-linuxbridge-agent |
+| 456c754a-d2c0-4ce5-8d9b-b0089fb77647 | Metadata agent     | controller |                   | :-)   | True           | neutron-metadata-agent    |
+| 8a1c7895-fc44-407f-b74b-55bb1b4519d8 | DHCP agent         | network    | nova              | :-)   | True           | neutron-dhcp-agent        |
+| 93ad18bf-d961-4d00-982c-6c617dbc0a5e | L3 agent           | network    | nova              | :-)   | True           | neutron-l3-agent          |
 +--------------------------------------+--------------------+------------+-------------------+-------+----------------+---------------------------+
 ```
 
----
+## 4.6 仪表盘服务配置（Dashboard Service Horizon）
 
-4.6 仪表盘服务配置（Dashboard Service Horizon）
-
-仪表盘是一个Web接口，可使云管理员和用户管理各种各样的OpenStack资源和服务。本文采用Apache Web
-
-Server 部署Dashboard 服务。
+仪表盘是一个 Web 接口，可使云管理员和用户管理各种各样的 OpenStack 资源和服务。本文采用 Apache Web Server 部署 Dashboard 服务。
 
 部署节点：Controller Node
 
 ```bash
-yum install openstack-dashboard
+yum install openstack-dashboard
 ```
 
-修改配置文件sudo vim /etc/openstack‐dashboard/local_settings
+修改配置文件 `sudo vim /etc/openstack-dashboard/local_settings`：
 
+```python
 OPENSTACK_HOST = "controller"
 
 ALLOWED_HOSTS = ['*', ]
@@ -662,10 +588,10 @@ ALLOWED_HOSTS = ['*', ]
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': 'controller:11211',
-    }
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': 'controller:11211',
+    }
 }
 
 OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
@@ -673,9 +599,9 @@ OPENSTACK_KEYSTONE_URL = "http://%s:5000/v3" % OPENSTACK_HOST
 OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True
 
 OPENSTACK_API_VERSIONS = {
-    "identity": 3,
-    "p_w_picpath": 2,
-    "volume": 2,
+    "identity": 3,
+    "image": 2,
+    "volume": 2,
 }
 
 OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "default"
@@ -683,17 +609,20 @@ OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "default"
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "user"
 
 OPENSTACK_NEUTRON_NETWORK = {
-    ...
-    'enable_router': False,
-    'enable_quotas': False,
-    'enable_distributed_router': False,
-    'enable_ha_router': False,
-    'enable_lb': False,
-    'enable_firewall': False,
-    'enable_vpn': False,
-    'enable_fip_topology_check': False,
+    ...
+    'enable_router': False,
+    'enable_quotas': False,
+    'enable_distributed_router': False,
+    'enable_ha_router': False,
+    'enable_lb': False,
+    'enable_firewall': False,
+    'enable_vpn': False,
+    'enable_fip_topology_check': False,
 }
 
 TIME_ZONE = "TIME_ZONE"
+```
 
+```bash
 systemctl restart httpd.service memcached.service
+```
