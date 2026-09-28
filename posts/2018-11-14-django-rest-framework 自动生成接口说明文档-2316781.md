@@ -4,19 +4,26 @@ date: "2018-11-14 14:45:01"
 category: "后端"
 source: "https://blog.51cto.com/hequan/2316781"
 ---
+> **内容介绍**
+>
+> 本文是后端服务开发笔记,记录了「django-rest-framework     自动生成接口说明文档」的相关内容。主要涉及:### 自动生成接口说明文档 #### 安装 #### urls.py…
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 ### 自动生成接口说明文档
 
 #### 安装
 
-```
-pip install djangorestframework 
+```shellpip install djangorestframework 
 ```
 
 #### urls.py
 
-```
-from rest_framework.documentation import include_docs_urls
+```pythonfrom rest_framework.documentation import include_docs_urls
 
     path('docs/', include_docs_urls(title='文档')),
 	
@@ -24,8 +31,7 @@ from rest_framework.documentation import include_docs_urls
 
 #### models.py
 
-```
-from django.db import models
+```pythonfrom django.db import models
 
 # Create your models here.
 
@@ -45,8 +51,7 @@ class Asset(models.Model):
 
 #### serializers.py
 
-```
-from rest_framework import serializers
+```pythonfrom rest_framework import serializers
 from .models import Asset
 
 class AssetSerializer(serializers.ModelSerializer):
@@ -59,8 +64,7 @@ class AssetSerializer(serializers.ModelSerializer):
 
 #### views.py
 
-```
-import json
+```pythonimport json
 from django.shortcuts import HttpResponse
 from rest_framework import permissions
 from rest_framework import generics
@@ -79,8 +83,7 @@ class AssetInfo(generics.ListCreateAPIView):
 
 #### docs
 
-```
-http://127.0.0.1:8000/docs/
+```shellhttp://127.0.0.1:8000/docs/
 ```
 
 ![](assets/2316781/01_3391fe36a610f5961dab6ac9359e1121.jpg)
