@@ -4,13 +4,21 @@ date: "2018-11-14 17:47:56"
 category: "前端"
 source: "https://blog.51cto.com/hequan/2316979"
 ---
+> **内容介绍**
+>
+> 本文是前端开发学习与实践,记录了「iview-admin 2.1  + django 2.1 （一） 登录认证+修改请求头 简单例子」的相关内容。主要涉及:### 登录认证+修改请求头 #### 前端 #### 后端…
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 ### 登录认证+修改请求头
 
 #### 前端
 
-```
-登录
+```shell登录
 
 config/index.js
 
@@ -49,14 +57,12 @@ options = Object.assign(this.getInsideConfig(options.url), options)   // 添加 
 
 ##### 安装drf
 
-```
-pip install djangorestframework  django-cors-headers
+```shellpip install djangorestframework  django-cors-headers
 ```
 
 ##### settings.py
 
-```
-'rest_framework',
+```python'rest_framework',
 'rest_framework.authtoken',
 'corsheaders',
 'django_filters'
@@ -104,8 +110,7 @@ MIDDLEWARE_CLASSES = 'DisableCSRFCheck'
 
 ##### urls.py
 
-```
-from rest_framework.authtoken import views
+```pythonfrom rest_framework.authtoken import views
 
 path('api-token-auth', views.obtain_auth_token),
 
@@ -114,8 +119,7 @@ path('get_info',GetInfo.as_view()),
 
 ##### views.py
 
-```
-from rest_framework import permissions
+```pythonfrom rest_framework import permissions
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
