@@ -4,6 +4,15 @@ date: "2016-07-05 18:01:09"
 category: "openstack"
 source: "https://blog.51cto.com/hequan/1796041"
 ---
+> **内容介绍**
+>
+> 本文是OpenStack 私有云部署与运维笔记,记录了「openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据」的相关内容。主要涉及:- 元数据 - **rabbitmq信息中枢** ---…
+
+> **技术备注**
+>
+> OpenStack 各版本迭代较快,部署时请以官方文档对应版本为准;生产中也可考虑 Kolla-Ansible 等容器化部署方案。
+
+---
 
 - 元数据
 - **rabbitmq信息中枢**
