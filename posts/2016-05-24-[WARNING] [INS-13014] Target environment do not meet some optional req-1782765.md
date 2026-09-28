@@ -4,6 +4,15 @@ date: "2016-05-24 23:16:29"
 category: "Linux"
 source: "https://blog.51cto.com/hequan/1782765"
 ---
+> **内容介绍**
+>
+> 本文是Linux 系统运维笔记,记录了「[WARNING] [INS-13014] Target environment do not meet some optional requirements.」的相关内容。主要涉及:oracle报警 查看日志是缺少软件包及SWAP太小了。…
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 oracle报警
 
