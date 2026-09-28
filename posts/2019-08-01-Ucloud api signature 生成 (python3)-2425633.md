@@ -4,9 +4,13 @@ date: "2019-08-01 15:11:54"
 category: "python"
 source: "https://blog.51cto.com/hequan/2425633"
 ---
+> **内容介绍**
+>
+> 本文是Python 编程实战笔记,记录了「Ucloud  api  signature 生成  (python3)」的相关内容。
 
-```
-import hashlib
+---
+
+```pythonimport hashlib
 
 def _verfy_ac(private_key, params):
     items = sorted(params.items(), key=lambda x: x[0])
