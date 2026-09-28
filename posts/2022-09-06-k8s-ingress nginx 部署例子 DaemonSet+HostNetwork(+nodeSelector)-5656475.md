@@ -4,6 +4,15 @@ date: "2022-09-06 18:57:08"
 category: "集群"
 source: "https://blog.51cto.com/hequan/5656475"
 ---
+> **内容介绍**
+>
+> 本文是服务器集群与高可用架构实践,记录了「k8s-ingress nginx 部署例子  DaemonSet+HostNetwork(+nodeSelector)」的相关内容。主要涉及:kubectl create ns test nginx-deployment.yaml apiVersion: apps/v1…
+
+> **技术备注**
+>
+> Nginx 配置在不同大版本间略有差异,建议以当前稳定版(1.24+/1.26+)官方文档为准。
+
+---
 
 kubectl create ns test
 
