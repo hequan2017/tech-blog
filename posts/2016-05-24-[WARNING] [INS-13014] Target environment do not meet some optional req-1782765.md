@@ -6,11 +6,15 @@ source: "https://blog.51cto.com/hequan/1782765"
 ---
 > **内容介绍**
 >
-> 本文是Linux 系统运维笔记,记录了「[WARNING] [INS-13014] Target environment do not meet some optional requirements.」的相关内容。主要涉及:oracle报警 查看日志是缺少软件包及SWAP太小了。…
+> 本文记录 Oracle 安装过程中出现 [INS-13014] 警告的排查过程：通过查看
+> installActions 日志定位到交换空间不足，以及缺少 compat-libstdc++-33、
+> libaio-devel、libgcc、unixODBC-devel、pdksh 等依赖包的问题。
 
 > **技术备注**
 >
-> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+> 示例环境为早期 Linux 发行版与 Oracle 安装器；现代系统建议使用 Oracle
+> 官方 preinstall RPM 或对应发行版的依赖包组，swap 与依赖检查逻辑已随
+> 版本变化，请以当前 Oracle 版本安装文档为准。
 
 ---
 
