@@ -6,15 +6,28 @@ source: "https://blog.51cto.com/hequan/2106949"
 ---
 > **内容介绍**
 >
-> 本文是Kubernetes 云原生容器编排实践,记录了「docker-compose  zabbix」的相关内容。
+> 本文给出一份一键拉起 Zabbix 监控套件的 docker-compose 编排：包含
+> mysql-server（5.7、utf8 字符集）、zabbix-server-mysql（10051）、
+> zabbix-web-nginx-mysql（80 端口、Asia/Shanghai 时区）与 zabbix-agent
+> （10050）四个服务，通过自建 bridge 网络互联，并给出各服务的环境变量
+> 与数据卷挂载配置。
 
 > **技术备注**
 >
-> Docker 与 Kubernetes 生态演进较快,新版 K8s 默认运行时为 containerd,请注意适配。
+> - Docker 与 Kubernetes 生态演进较快,新版 K8s 默认运行时为 containerd,
+>   请注意适配。
+> - `version` 字段在 Compose V2 中已废弃，可直接省略；`links` 也已被
+>   官方标记弃用，同一自定义网络内用服务名（如 mysql-server）互访即可。
+> - mysql:5.7 已于 2023 年 10 月 EOL；zabbix 官方镜像建议固定版本 tag
+>   而非 latest，避免升级后数据库结构不兼容。
+> - 文中 DB_SERVER_HOST 写死宿主机 IP 172.31.180.21，换环境需同步修改
+>   （或改为服务名）。
 
 ---
 
-```shell
+## 1. docker-compose.yml
+
+```yaml
 version: '3.6'
 services:
   mysql-server:
