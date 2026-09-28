@@ -4,6 +4,15 @@ date: "2016-04-17 20:48:01"
 category: "Linux"
 source: "https://blog.51cto.com/hequan/1764833"
 ---
+> **内容介绍**
+>
+> 本文是Linux 系统运维笔记,记录了「linux apache 2.4.20版本安装」的相关内容。主要涉及:centos 6.7_64位 apache 2.4.20版本 apr中包含了一些通用的开发组件，包括mmap，DSO等等 apr-util该目录中也是包含了一些…
+
+> **技术备注**
+>
+> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+
+---
 
 centos  6.7_64位                apache 2.4.20版本
 
