@@ -4,9 +4,13 @@ date: "2019-04-23 11:04:47"
 category: "vue"
 source: "https://blog.51cto.com/hequan/2383103"
 ---
+> **内容介绍**
+>
+> 本文是Vue 前端工程化实践,记录了「iview-admin 2.5.0  登录」的相关内容。
 
-```
-api/user.js
+---
+
+```pythonapi/user.js
 
 export const login = ({ userName, password }) => {
   const data = {
