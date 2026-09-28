@@ -26,6 +26,7 @@ sendEmail发邮件的时候，出现的报错，然后查阅了很多资料
 
 **Q:** I get the error "invalid SSL_version specified at /System/Library/Perl/Extras/5.16/IO/Socket/SSL.pm line 332.a on my Apple. What do I do?
 **A:** Here's what I got from one user. It's a workaround until I put a real fix in:
+
 > Fixed it by using Perl v5.12 that's still on OSX Mavericks. > (just changed sendEmail line 1 from #!/usr/bin/perl -w to #!/usr/bin/perl5.12 -w)
 
 centos7.2默认是 perl的版本是5.16，centos6.5的是5.10，后来把7的版本换成5.10，就可以正常发邮件了。

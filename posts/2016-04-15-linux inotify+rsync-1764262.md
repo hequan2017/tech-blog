@@ -172,7 +172,9 @@ hosts deny = 0.0.0.0/0  //禁止主机
 1. **chmod 600 /etc/hequan.pwd**
 2. **chmod 600 /etc/rsyncd.conf**
 3. 创建用户，授权     写入用户名密码
+
 # **useradd rsync  -s /sbin/nologin**
+
 # **chown  -R  rsync.rsync  /hequan/**
 
 5、建立motd文件（可有可无）

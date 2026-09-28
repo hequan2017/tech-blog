@@ -289,9 +289,11 @@ memcache_servers = controller:11211
 yum install xfsprogs rsync -y
 
 # mkfs.xfs /dev/sdb
+
 # mkfs.xfs /dev/sdc
 
 # mkdir -p /srv/node/sdb
+
 # mkdir -p /srv/node/sdc
 
 /dev/sdb /srv/node/sdb xfs noatime,nodiratime,nobarrier,logbufs=8 0 2

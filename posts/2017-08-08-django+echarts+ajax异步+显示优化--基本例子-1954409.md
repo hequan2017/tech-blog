@@ -5,8 +5,6 @@ category: "python"
 source: "https://blog.51cto.com/hequan/1954409"
 ---
 
-django+echarts+ajax异步+显示优化--基本例子
-
 ```html
 ##定义要显示的地方
 
