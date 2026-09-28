@@ -4,6 +4,15 @@ date: "2024-08-01 17:51:49"
 category: "集群"
 source: "https://blog.51cto.com/hequan/11633590"
 ---
+> **内容介绍**
+>
+> 本文是服务器集群与高可用架构实践,记录了「nvidia-docker + helm+cuda+gpu_burn」的相关内容。
+
+> **技术备注**
+>
+> Docker 与 Kubernetes 生态演进较快,新版 K8s 默认运行时为 containerd,请注意适配。
+
+---
 
 ```shell
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
