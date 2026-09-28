@@ -6,11 +6,16 @@ source: "https://blog.51cto.com/hequan/1783481"
 ---
 > **内容介绍**
 >
-> 本文是Linux 系统运维笔记,记录了「CentOS Linux 6.8 正式发布 新版内核+大量更新」的相关内容。主要涉及:**摘要：**CentOS开发人员兼维护者Johnny Hughes于5月25号宣布了CentOS Linux 6.8操作系统已经正式发布的消息。其基于红帽6.…
+> 本文转载 CentOS Linux 6.8 正式发布的消息：基于 RHEL 6.8 打造，搭载
+> Linux 2.6.32 内核，XFS 支持 300TB 存储，NetworkManager 改用 libreswan
+> 替代 Openswan；同时默认禁用 SSLv2/SSLv3、支持 TLS 1.2，并更新
+> LibreOffice、Squid 等应用。
 
 > **技术备注**
 >
-> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+> CentOS 6.8 属于历史版本，CentOS 6 系列已于 2020 年 11 月 EOL；生产
+> 环境建议迁移至 Rocky Linux、AlmaLinux 或 Ubuntu LTS，文中下载地址
+> 已指向 CentOS 官方最新版本页。
 
 ---
 
