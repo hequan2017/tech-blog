@@ -4,6 +4,15 @@ date: "2021-10-15 10:58:13"
 category: "go"
 source: "https://blog.51cto.com/hequan/4221137"
 ---
+> **内容介绍**
+>
+> 本文是Go 语言后端开发实战,记录了「gocelery 测试例子(windows会有报错，建议linux执行)」的相关内容。主要涉及:### celery > python也可以调用 go的server，具体方法 可以看github ### server…
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 ### celery
 
