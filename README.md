@@ -1,5 +1,7 @@
 # 技术博客
 
+> 🌐 **在线阅读:<https://hequan2017.github.io/tech-blog/>** — Vue 文档风格界面,支持分类目录、搜索、页内大纲跳转
+
 > [hequan](https://blog.51cto.com/hequan) 的 51CTO 博客文章全集备份 · 共 **416** 篇(2016–2025)
 
 本仓库将博主在 [51CTO 博客](https://blog.51cto.com/hequan) 发布的全部技术文章抓取并转换为 Markdown,

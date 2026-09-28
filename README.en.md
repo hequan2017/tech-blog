@@ -1,5 +1,7 @@
 # Tech Blog
 
+> 🌐 **Read online: <https://hequan2017.github.io/tech-blog/>** — Vue-docs style UI with category sidebar, search and on-page TOC
+
 > Complete archive of [hequan](https://blog.51cto.com/hequan)'s blog posts on 51CTO · **416** articles (2016–2025)
 
 All articles were scraped from the author's [51CTO blog](https://blog.51cto.com/hequan) and converted to Markdown.

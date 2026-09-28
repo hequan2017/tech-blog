@@ -5,209 +5,457 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>技术博客 · hequan</title>
 <meta name="description" content="hequan 的技术博客全集 — Go / Python / Linux / 云计算 / 运维,共 416 篇">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21 2 4h5l5 9 5-9h5z' fill='%2342b883'/%3E%3C/svg%3E">
+<link id="hljs-light" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css">
+<link id="hljs-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github-dark.min.css" disabled>
 <style>
 :root{
-  --blue:#3e71f6; --dark:#1f2d3d; --bg:#f5f7fa; --card:#fff;
-  --text:#24292f; --muted:#6a737d; --border:#e4e8ee; --radius:10px;
+  --brand:#42b883; --brand-1:#33a06f; --brand-soft:rgba(66,184,131,.12);
+  --bg:#ffffff; --bg-alt:#f6f6f7; --bg-soft:#f9f9fa;
+  --text:#24292f; --muted:#6b7280; --border:#e5e7eb;
+  --code-bg:#f6f8fa; --code-head:#d0d7de;
+  --header-bg:rgba(255,255,255,.86); --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.06);
+}
+html.dark{
+  --brand:#42d392; --brand-1:#5ce0a8; --brand-soft:rgba(66,211,146,.14);
+  --bg:#1e1e22; --bg-alt:#17171a; --bg-soft:#232329;
+  --text:#e5e7eb; --muted:#8b949e; --border:#30363d;
+  --code-bg:#16181d; --code-head:#2d333b;
+  --header-bg:rgba(30,30,34,.86); --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-  background:var(--bg);color:var(--text);line-height:1.6}
-a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:underline}
+  background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--brand-1);text-decoration:none}
+a:hover{color:var(--brand)}
+mark{background:var(--brand-soft);color:inherit;border-radius:2px;padding:0 1px}
 
-header{background:var(--dark);color:#fff;padding:0 24px;height:60px;
-  display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:10}
-header .brand{font-size:19px;font-weight:700;color:#fff;white-space:nowrap}
-header .brand:hover{text-decoration:none}
-header .brand span{color:var(--blue)}
-#search{flex:1;max-width:460px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
-  border-radius:8px;padding:8px 14px;color:#fff;font-size:14px;outline:none}
-#search::placeholder{color:rgba(255,255,255,.55)}
-#search:focus{background:rgba(255,255,255,.2);border-color:var(--blue)}
-header .meta{font-size:12.5px;color:#9aa7b5;white-space:nowrap}
-header .meta a{color:#9aa7b5}
+/* ---------- 顶栏 ---------- */
+header{position:sticky;top:0;z-index:20;height:56px;display:flex;align-items:center;gap:14px;
+  padding:0 20px;background:var(--header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;color:var(--text);white-space:nowrap}
+.brand:hover{color:var(--text)}
+.brand svg{flex-shrink:0}
+.brand .sub{font-size:12px;font-weight:400;color:var(--muted)}
+#search{flex:1;max-width:380px;height:34px;background:var(--bg-alt);border:1px solid transparent;border-radius:8px;
+  padding:0 12px;color:var(--text);font-size:13.5px;outline:none;transition:border-color .15s,background .15s}
+#search::placeholder{color:var(--muted)}
+#search:focus{border-color:var(--brand);background:var(--bg)}
+header .links{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:13px;color:var(--muted);white-space:nowrap}
+header .links a{color:var(--muted);padding:4px 8px;border-radius:6px}
+header .links a:hover{color:var(--brand-1);background:var(--bg-alt)}
+#theme-btn{width:32px;height:32px;border:none;background:none;border-radius:8px;cursor:pointer;
+  color:var(--muted);display:flex;align-items:center;justify-content:center}
+#theme-btn:hover{color:var(--brand-1);background:var(--bg-alt)}
+#theme-btn svg{width:17px;height:17px}
+html.dark .ico-sun{display:none}
+html:not(.dark) .ico-moon{display:none}
 
-.layout{display:flex;max-width:1280px;margin:0 auto;gap:22px;padding:22px 16px}
-aside{width:230px;flex-shrink:0}
-aside .box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-  padding:14px 0;position:sticky;top:82px;max-height:calc(100vh - 104px);overflow:auto}
-aside h3{font-size:13px;color:var(--muted);padding:2px 18px 8px;font-weight:600}
-aside a.cat{display:flex;justify-content:space-between;padding:7px 18px;color:var(--text);font-size:14px}
-aside a.cat:hover{background:#f0f4ff;text-decoration:none}
-aside a.cat.active{background:#e8effe;color:var(--blue);font-weight:600;border-right:3px solid var(--blue)}
-aside a.cat .n{color:var(--muted);font-size:12px}
+/* ---------- 布局 ---------- */
+.layout{display:flex;max-width:1440px;margin:0 auto;align-items:flex-start}
+aside.side{width:260px;flex-shrink:0;position:sticky;top:56px;max-height:calc(100vh - 56px);overflow-y:auto;
+  padding:20px 8px 32px 16px;border-right:1px solid var(--border);scrollbar-width:thin}
+.side h3{font-size:12.5px;color:var(--muted);font-weight:600;padding:4px 12px 8px;letter-spacing:.3px}
+.side a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 12px;margin:1px 0;
+  font-size:13.8px;color:var(--text);border-radius:6px;border-left:2px solid transparent}
+.side a:hover{background:var(--bg-soft);color:var(--brand-1);text-decoration:none}
+.side a.active{background:var(--brand-soft);color:var(--brand-1);font-weight:600;border-left-color:var(--brand)}
+.side a .n{font-size:12px;color:var(--muted)}
+.side a.active .n{color:var(--brand-1)}
+.side .back{color:var(--muted);font-size:13px}
+.side .posts a{font-size:13.2px;padding:5px 12px 5px 14px}
+.side .posts a .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-main{flex:1;min-width:0}
-#stats{font-size:13px;color:var(--muted);margin-bottom:12px}
-.cards{display:grid;gap:12px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-  padding:15px 18px;transition:box-shadow .15s,border-color .15s}
-.card:hover{box-shadow:0 3px 12px rgba(31,45,61,.08);border-color:#c9d6f5}
-.card .t{font-size:16px;font-weight:600;display:inline-block}
-.card .info{display:flex;gap:10px;align-items:center;margin-top:6px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
-.badge{background:#eef3fe;color:var(--blue);border-radius:20px;padding:2px 10px;font-size:12px}
-button#more{display:block;margin:20px auto;background:#fff;border:1px solid var(--border);
-  color:var(--text);border-radius:8px;padding:9px 30px;font-size:14px;cursor:pointer}
-button#more:hover{border-color:var(--blue);color:var(--blue)}
+main{flex:1;min-width:0;padding:0 32px 40px}
+.container{max-width:820px;margin:0 auto}
 
-article.view{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:34px 40px}
-.back{display:inline-block;margin-bottom:16px;font-size:13.5px}
-h1.pt{font-size:24px;margin-bottom:10px}
-.pmeta{font-size:13px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;
-  padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:22px}
-.markdown{font-size:15px}
-.markdown h1,.markdown h2,.markdown h3,.markdown h4{margin:26px 0 12px;line-height:1.35}
-.markdown h1{font-size:21px}.markdown h2{font-size:19px}.markdown h3{font-size:17px}.markdown h4{font-size:15px}
-.markdown p{margin:12px 0}
-.markdown pre{background:#f6f8fa;border:1px solid var(--border);border-radius:8px;
-  padding:14px;overflow:auto;font-size:13px;line-height:1.5}
-.markdown code{font-family:Consolas,"Courier New",monospace;font-size:13px;background:#f6f8fa;
-  border-radius:4px;padding:2px 5px}
-.markdown pre code{background:none;padding:0}
-.markdown table{border-collapse:collapse;margin:14px 0;display:block;overflow:auto;max-width:100%}
-.markdown th,.markdown td{border:1px solid var(--border);padding:7px 12px;font-size:14px}
-.markdown th{background:#f6f8fa}
-.markdown img{max-width:100%;border-radius:6px;border:1px solid var(--border);margin:8px 0;cursor:zoom-in}
-.markdown blockquote{border-left:4px solid var(--blue);background:#f6f9ff;
-  padding:8px 16px;margin:14px 0;color:#4b5563;border-radius:0 6px 6px 0}
-.markdown ul,.markdown ol{padding-left:26px;margin:12px 0}
-.markdown hr{border:none;border-top:1px solid var(--border);margin:22px 0}
-footer{text-align:center;color:var(--muted);font-size:12.5px;padding:26px 0 40px}
+/* ---------- 首页 ---------- */
+.hero{padding:44px 0 10px}
+.hero h1{font-size:30px;letter-spacing:.5px}
+.hero h1 .g{color:var(--brand)}
+.hero p{color:var(--muted);font-size:14.5px;margin-top:8px}
+.hero .hint{font-size:13px;margin-top:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.hero kbd{background:var(--bg-alt);border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;
+  padding:1px 7px;font-size:12px;font-family:inherit;color:var(--text)}
+#stats{font-size:13px;color:var(--muted);margin:22px 0 10px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+h2.year{font-size:14px;color:var(--muted);font-weight:600;margin:24px 0 4px;padding-bottom:6px;border-bottom:1px dashed var(--border)}
+.row{display:flex;align-items:baseline;gap:12px;padding:9px 12px;margin:1px -12px;border-radius:8px}
+.row:hover{background:var(--bg-soft)}
+.row .t{flex:1;min-width:0;font-size:15px;font-weight:500;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row:hover .t{color:var(--brand-1)}
+.row .d{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;flex-shrink:0}
+.badge{background:var(--brand-soft);color:var(--brand-1);border-radius:20px;padding:2px 10px;font-size:12px;flex-shrink:0}
+.empty{padding:48px 0;text-align:center;color:var(--muted);font-size:14px}
+button#more{display:block;margin:24px auto 6px;background:var(--bg);border:1px solid var(--border);color:var(--text);
+  border-radius:8px;padding:8px 28px;font-size:13.5px;cursor:pointer;transition:border-color .15s,color .15s}
+button#more:hover{border-color:var(--brand);color:var(--brand-1)}
 
-@media (max-width:860px){
-  aside{display:none}
-  header{padding:0 14px;gap:12px}
-  header .meta{display:none}
-  article.view{padding:22px 18px}
-  .markdown{font-size:14.5px}
+/* ---------- 文章页 ---------- */
+#view{max-width:1080px;margin:0 auto;position:relative;padding-top:28px}
+.back{display:inline-flex;align-items:center;gap:4px;font-size:13.5px;color:var(--muted);margin-bottom:18px}
+.back:hover{color:var(--brand-1)}
+.doc{max-width:768px}
+h1.pt{font-size:28px;line-height:1.4;font-weight:700;margin-bottom:14px}
+.pmeta{font-size:13px;color:var(--muted);display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  padding-bottom:18px;border-bottom:1px solid var(--border);margin-bottom:26px}
+.pmeta a{color:var(--muted)}
+.pmeta a:hover{color:var(--brand-1)}
+
+/* 右侧本页目录 */
+.toc{position:absolute;top:28px;right:0;width:240px;display:none}
+@media (min-width:1280px){ .toc{display:block} }
+.toc-inner{position:sticky;top:76px;max-height:calc(100vh - 100px);overflow-y:auto;border-left:2px solid var(--border);
+  padding-left:14px;scrollbar-width:thin}
+.toc-inner h4{font-size:12.5px;color:var(--muted);font-weight:600;margin-bottom:8px;letter-spacing:.3px}
+.toc-inner a{display:block;font-size:12.8px;color:var(--muted);padding:4px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toc-inner a:hover{color:var(--brand-1)}
+.toc-inner a.lv3{padding-left:14px}
+.toc-inner a.cur{color:var(--brand-1);font-weight:600}
+
+/* ---------- Markdown 排版(VitePress 风格) ---------- */
+.markdown{font-size:16px;line-height:1.8;overflow-wrap:break-word}
+.markdown h1,.markdown h2,.markdown h3,.markdown h4{position:relative;font-weight:600;line-height:1.4;
+  margin:28px 0 14px;scroll-margin-top:76px}
+.markdown h1{font-size:24px}.markdown h2{font-size:21px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.markdown h3{font-size:18px}.markdown h4{font-size:16px}
+.markdown h1 .anchor,.markdown h2 .anchor,.markdown h3 .anchor,.markdown h4 .anchor{position:absolute;
+  left:-22px;color:var(--brand);opacity:0;font-weight:400;transition:opacity .15s}
+.markdown h1:hover .anchor,.markdown h2:hover .anchor,.markdown h3:hover .anchor,.markdown h4:hover .anchor{opacity:1}
+.markdown p{margin:14px 0}
+.markdown a{text-decoration:underline;text-decoration-color:rgba(66,184,131,.4);text-underline-offset:3px}
+.markdown a:hover{text-decoration-color:currentColor}
+.markdown ul,.markdown ol{padding-left:26px;margin:14px 0}
+.markdown li{margin:4px 0}
+.markdown hr{border:none;border-top:1px solid var(--border);margin:26px 0}
+.markdown img{display:block;max-width:100%;margin:14px auto;border-radius:8px;border:1px solid var(--border);cursor:zoom-in}
+.markdown blockquote{border-left:3px solid var(--brand);background:var(--brand-soft);border-radius:0 8px 8px 0;
+  padding:10px 16px;margin:16px 0;color:var(--muted)}
+.markdown blockquote p{margin:6px 0}
+.markdown code{font-family:Consolas,"JetBrains Mono","Courier New",monospace;font-size:.84em;
+  background:var(--bg-alt);border-radius:4px;padding:2px 6px;color:var(--brand-1)}
+.markdown table{border-collapse:collapse;display:block;overflow:auto;max-width:100%;margin:16px 0;
+  font-size:14px;line-height:1.6}
+.markdown th,.markdown td{border:1px solid var(--border);padding:8px 13px}
+.markdown th{background:var(--bg-alt);font-weight:600}
+.markdown tr:nth-child(2n) td{background:var(--bg-soft)}
+.markdown pre{position:relative;background:var(--code-bg);border:1px solid var(--border);border-radius:10px;
+  padding:16px 16px;margin:16px 0;overflow:auto;font-size:13.5px;line-height:1.6;scrollbar-width:thin}
+.markdown pre code{background:none;padding:0;border-radius:0;color:var(--text);font-size:inherit}
+.markdown pre .lang{position:absolute;top:7px;left:14px;font-size:11.5px;color:var(--muted);
+  font-family:inherit;pointer-events:none;letter-spacing:.3px}
+.markdown pre .copy{position:absolute;top:6px;right:8px;border:none;background:none;color:var(--muted);
+  font-size:12px;padding:3px 8px;border-radius:6px;cursor:pointer;opacity:0;transition:opacity .15s}
+.markdown pre:hover .copy{opacity:1}
+.markdown pre .copy:hover{color:var(--brand-1);background:var(--bg-alt)}
+
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:30px 16px 44px;border-top:1px solid var(--border)}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--brand-1)}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:960px){
+  aside.side{display:none}
+  main{padding:0 18px 32px}
+  .hero{padding-top:26px}
+  header{padding:0 14px;gap:10px}
+  header .links .hide-s{display:none}
+  .markdown h2 .anchor,.markdown h3 .anchor{left:-14px}
+  .markdown{font-size:15px}
 }
 </style>
 </head>
 <body>
 <header>
-  <a class="brand" href="#/">技术<span>博客</span></a>
-  <input id="search" type="search" placeholder="搜索标题… 416 篇文章">
-  <div class="meta"><a href="https://github.com/hequan2017/tech-blog" target="_blank">GitHub</a> ·
-    <a href="https://blog.51cto.com/hequan" target="_blank">51CTO 原站</a> · hequan</div>
+  <a class="brand" href="#/">
+    <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true">
+      <path d="M12 21 2 4h5l5 9 5-9h5z" fill="var(--brand)"/>
+      <path d="M12 21 9 15.6 12 10.5l3 5.1z" fill="var(--brand-1)"/>
+    </svg>
+    技术博客<span class="sub">/ hequan</span>
+  </a>
+  <input id="search" type="search" placeholder="搜索文章标题 / 分类…  按 / 聚焦" autocomplete="off">
+  <div class="links">
+    <a class="hide-s" href="https://blog.51cto.com/hequan" target="_blank" rel="noopener">51CTO 原站</a>
+    <a href="https://github.com/hequan2017/tech-blog" target="_blank" rel="noopener">GitHub</a>
+    <button id="theme-btn" title="切换明暗主题" aria-label="切换明暗主题">
+      <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
 </header>
+
 <div class="layout">
-  <aside><div class="box"><h3>分类</h3><nav id="cats"></nav></div></aside>
+  <aside class="side"><div id="side"></div></aside>
   <main>
-    <div id="stats"></div>
-    <div class="cards" id="list"></div>
-    <button id="more" hidden>加载更多</button>
-    <article class="view" id="view" hidden></article>
+    <div id="home" class="container">
+      <div class="hero" id="hero">
+        <h1>技术<span class="g">博客</span></h1>
+        <p>hequan 的 51CTO 文章全集 · Go / Python / Linux / 云计算 / 运维</p>
+        <div class="hint"><kbd>/</kbd> 快速搜索 <span>·</span> 点击左侧分类目录浏览 <span>·</span> 明暗主题可切换</div>
+      </div>
+      <div id="stats"></div>
+      <div id="list"></div>
+      <button id="more" hidden>加载更多</button>
+    </div>
+    <article id="view" hidden></article>
   </main>
 </div>
-<footer>技术博客 · 共 416 篇(2016–2025) · 基于 <a href="https://github.com/hequan2017/tech-blog" target="_blank">hequan2017/tech-blog</a> 构建 · 文章版权归原作者所有</footer>
+
+<footer>技术博客 · 共 416 篇(2016–2025) · 基于 <a href="https://github.com/hequan2017/tech-blog" target="_blank" rel="noopener">hequan2017/tech-blog</a> 构建 · 文章版权归原作者所有</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css">
 <script>
 'use strict';
-let POSTS = [], PAGE = 0;
+let POSTS = [], PAGE = 0, FETCH_SEQ = 0;
 const PER = 60;
 const $ = s => document.querySelector(s);
 
+/* ---------- 基础工具 ---------- */
 function encPath(p){ return p.split('/').map(encodeURIComponent).join('/'); }
-
+function tryDecode(s){ try{ return decodeURIComponent(s); }catch(e){ return s; } }
 function esc(s){ return s.replace(/[&<>"']/g,
   c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-async function loadIndex(){
-  const r = await fetch('posts-index.json');
-  POSTS = await r.json();
-  POSTS.sort((a,b) => b.d.localeCompare(a.d));
-  renderCats();
-  route();
+function hi(text, q){ // 高亮匹配片段
+  const t = esc(text);
+  if(!q) return t;
+  const i = text.toLowerCase().indexOf(q.toLowerCase());
+  if(i < 0) return t;
+  return esc(text.slice(0,i)) + '<mark>' + esc(text.slice(i, i+q.length)) + '</mark>' + esc(text.slice(i+q.length));
 }
 
+/* ---------- 主题 ---------- */
+function applyTheme(dark){
+  document.documentElement.classList.toggle('dark', dark);
+  $('#hljs-light').disabled = dark;
+  $('#hljs-dark').disabled = !dark;
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+const savedTheme = localStorage.getItem('theme');
+applyTheme(savedTheme ? savedTheme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches);
+$('#theme-btn').addEventListener('click', () =>
+  applyTheme(!document.documentElement.classList.contains('dark')));
+
+/* ---------- 路由 ---------- */
 function currentCat(){
-  const m = location.hash.match(/^#\/c\/(.+)$/);
-  return m ? decodeURIComponent(m[1]) : '';
+  const m = location.hash.match(/^#\/c\/([^#]+)/);
+  return m ? tryDecode(m[1]) : '';
+}
+function currentPost(){
+  const m = location.hash.match(/^#\/p\/([^#]+)/);
+  return m ? tryDecode(m[1]) : '';
 }
 
-function renderCats(){
+function loadIndex(){
+  fetch('posts-index.json').then(r => r.json()).then(json => {
+    POSTS = json;
+    POSTS.sort((a,b) => b.d.localeCompare(a.d));
+    route();
+  });
+}
+
+/* ---------- 侧栏目录 ---------- */
+function renderSide(){
+  const postFile = currentPost();
+  const cur = currentCat();
+  let h = '';
+  if(postFile){
+    const art = POSTS.find(p => p.f === postFile);
+    const cat = art ? art.c : '';
+    h += `<h3>分类 · ${esc(cat || '未知')}</h3>
+      <a class="back" href="#/">← 返回全部文章</a><div style="height:8px"></div><div class="posts">`;
+    POSTS.filter(p => p.c === cat).forEach(p => {
+      h += `<a class="${p.f===postFile?'active':''}" href="#/p/${encPath(p.f)}" title="${esc(p.t)}">
+        <span class="t">${p.f===postFile ? esc(p.t) : hi(p.t, '')}</span></a>`;
+    });
+    h += '</div><div style="height:14px"></div><h3>所有分类</h3>';
+  } else {
+    h += '<h3>分类</h3>';
+  }
   const counts = {};
   POSTS.forEach(p => counts[p.c] = (counts[p.c]||0)+1);
   const order = Object.keys(counts).sort((a,b) => counts[b]-counts[a]);
-  const cur = currentCat();
-  let h = `<a class="cat${cur===''?' active':''}" href="#/">全部<span class="n">${POSTS.length}</span></a>`;
+  h += `<a class="${cur==='' && !currentPost() ? 'active':''}" href="#/">全部文章<span class="n">${POSTS.length}</span></a>`;
   order.forEach(c => {
-    h += `<a class="cat${c===cur?' active':''}" href="#/c/${encodeURIComponent(c)}">
+    h += `<a class="${c===cur && !currentPost() ? 'active':''}" href="#/c/${encodeURIComponent(c)}">
       ${esc(c)}<span class="n">${counts[c]}</span></a>`;
   });
-  $('#cats').innerHTML = h;
+  $('#side').innerHTML = h;
 }
 
+/* ---------- 列表 ---------- */
+function searchQuery(){ return $('#search').value.trim(); }
+
 function filtered(){
-  const q = $('#search').value.trim().toLowerCase();
+  const q = searchQuery().toLowerCase();
   const cat = currentCat();
   return POSTS.filter(p =>
-    (!cat || p.c === cat) && (!q || p.t.toLowerCase().includes(q)));
+    (!cat || p.c === cat) &&
+    (!q || p.t.toLowerCase().includes(q) || p.c.toLowerCase().includes(q)));
 }
 
 function renderList(reset){
   if(reset){ PAGE = 0; $('#list').innerHTML = ''; }
-  const items = filtered();
-  const slice = items.slice(PAGE*PER, (PAGE+1)*PER);
+  const q = searchQuery();
   const cat = currentCat();
-  const q = $('#search').value.trim();
+  const items = filtered();
+  const onHome = !cat && !q;
+  $('#hero').hidden = !onHome;
+  $('#view').hidden = true;
+  $('#home').hidden = false;
   $('#stats').textContent = (cat ? `分类「${cat}」` : '全部文章') +
     (q ? ` · 搜索“${q}”` : '') + ` · ${items.length} 篇`;
-  $('#view').hidden = true;
-  $('#list').hidden = false;
-  const h = slice.map(p =>
-    `<div class="card"><a class="t" href="#/p/${encPath(p.f)}">${esc(p.t)}</a>
-     <div class="info"><span>${p.d}</span><span class="badge">${esc(p.c)}</span></div></div>`).join('');
+
+  const slice = items.slice(PAGE*PER, (PAGE+1)*PER);
+  let h = '', lastYear = '';
+  slice.forEach(p => {
+    if(!q){ // 无搜索词时按年份分组
+      const y = p.d.slice(0,4);
+      if(y !== lastYear){ h += `<h2 class="year">${y}</h2>`; lastYear = y; }
+    }
+    h += `<div class="row"><a class="t" href="#/p/${encPath(p.f)}">${hi(p.t, q)}</a>
+      <span class="d">${p.d}</span>${cat ? '' : `<span class="badge">${esc(p.c)}</span>`}</div>`;
+  });
+  if(!h && reset) h = '<div class="empty">没有找到相关文章 🙈</div>';
   $('#list').insertAdjacentHTML('beforeend', h);
   PAGE++;
   $('#more').hidden = PAGE*PER >= items.length;
 }
 
+/* ---------- 文章 ---------- */
 async function renderPost(file){
-  $('#list').hidden = true; $('#more').hidden = true;
-  const art = POSTS.find(p => p.f === file) || {t:file, d:'', c:'', u:''};
-  const r = await fetch(encPath(file));
-  if(!r.ok){ $('#view').hidden = false;
-    $('#view').innerHTML = `<a class="back" href="#/">← 返回列表</a>
-      <h1 class="pt">文章加载失败</h1>`; return; }
-  let md = await r.text();
-  md = md.replace(/^---\n[\s\S]*?\n---\n*/, '');  // 去 front-matter
+  const my = ++FETCH_SEQ;
+  $('#home').hidden = true;
+  $('#more').hidden = true;
   $('#view').hidden = false;
+  $('#view').innerHTML = '<div class="back">正在加载文章…</div>';
+  const art = POSTS.find(p => p.f === file) || {t:file, d:'', c:'', u:''};
+  const r = await fetch(encPath(file)).catch(() => null);
+  if(my !== FETCH_SEQ) return;   // 已跳转到其他文章,丢弃过期响应
+  if(!r || !r.ok){
+    $('#view').innerHTML = `<a class="back" href="#/">← 返回列表</a>
+      <h1 class="pt">文章加载失败</h1><div class="empty">请确认文章存在,或<a href="#/">返回列表</a></div>`;
+    return;
+  }
+  let md = await r.text();
+  md = md.replace(/^﻿/, '').replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');  // 去 front-matter(兼容 CRLF)
+  document.title = `${art.t} · 技术博客`;
   $('#view').innerHTML = `<a class="back" href="#/">← 返回列表</a>
-    <h1 class="pt">${esc(art.t)}</h1>
-    <div class="pmeta"><span>📅 ${art.d}</span><span class="badge">${esc(art.c)}</span>
-      <a href="${art.u}" target="_blank" rel="noopener">原文链接 ↗</a></div>
-    <div class="markdown" id="md"></div>`;
+    <div class="doc"><h1 class="pt">${esc(art.t)}</h1>
+    <div class="pmeta"><span>📅 ${art.d}</span>${art.c ? `<a href="#/c/${encodeURIComponent(art.c)}"><span class="badge">${esc(art.c)}</span></a>` : ''}
+      ${art.u ? `<a href="${esc(art.u)}" target="_blank" rel="noopener">原文链接 ↗</a>` : ''}</div>
+    <div class="markdown" id="md"></div></div>
+    <div class="toc"><div class="toc-inner"><h4>本页目录</h4><nav id="toc-nav"></nav></div></div>`;
   $('#md').innerHTML = marked.parse(md);
-  $('#md').querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
-  // 文章内相对图片:相对 posts/ 目录 → 站点根下 posts/assets/…
-  $('#md').querySelectorAll('img').forEach(im => {
+  decorateArticle();
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+/* 文章渲染后的目录 / 锚点 / 复制按钮等增强 */
+function decorateArticle(){
+  const md = $('#md');
+  // 代码高亮 + 语言标签 + 复制按钮
+  md.querySelectorAll('pre').forEach(pre => {
+    const code = pre.querySelector('code');
+    if(code && code.className.match(/language-[\w-]+/)){
+      try{ hljs.highlightElement(code); }catch(e){}
+      const lang = code.className.match(/language-([\w-]+)/)[1];
+      pre.insertAdjacentHTML('afterbegin', `<span class="lang">${esc(lang)}</span>`);
+    }
+    const btn = document.createElement('button');
+    btn.className = 'copy'; btn.type = 'button'; btn.textContent = '复制';
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(code ? code.innerText : pre.innerText).then(() => {
+        btn.textContent = '已复制 ✓';
+        setTimeout(() => btn.textContent = '复制', 1600);
+      });
+    });
+    pre.appendChild(btn);
+  });
+  // 图片:相对路径基于 posts/,点击看大图;外层若包着失效的 51CTO 原图链接则一并替换
+  md.querySelectorAll('img').forEach(im => {
     const s = im.getAttribute('src') || '';
     if(!/^(https?:)?\/\//.test(s)) im.src = 'posts/' + s.replace(/^\.\//,'');
     im.title = im.alt || '点击查看大图';
-    im.addEventListener('click', () => window.open(im.src, '_blank', 'noopener'));
+    if(im.parentElement && im.parentElement.tagName === 'A') im.parentElement.href = im.src;
+    im.addEventListener('click', ev => {
+      ev.preventDefault(); ev.stopPropagation();
+      window.open(im.src, '_blank', 'noopener');
+    });
   });
-  $('#md').querySelectorAll('a').forEach(a => {
+  // 相对链接基于 posts/
+  md.querySelectorAll('a').forEach(a => {
     const href = a.getAttribute('href') || '';
     if(!/^(https?:|#|mailto:)/.test(href)) a.href = 'posts/' + href.replace(/^\.\//,'');
   });
-  window.scrollTo(0, 0);
+  // 标题锚点 + 右侧目录
+  const heads = md.querySelectorAll('h2, h3');
+  let toc = '';
+  heads.forEach((hd, i) => {
+    hd.id = 'sec-' + i;
+    hd.insertAdjacentHTML('afterbegin', `<a class="anchor" href="#sec-${i}" onclick="return false">#</a>`);
+    hd.querySelector('.anchor').addEventListener('click', ev => {
+      ev.preventDefault();
+      hd.scrollIntoView({behavior:'smooth'});
+    });
+    toc += `<a class="lv${hd.tagName==='H3' ? 3 : 2}" data-i="${i}" href="#sec-${i}" onclick="return false"
+      title="${esc(hd.textContent.replace(/^#\s*/,''))}">${esc(hd.textContent.replace(/^#\s*/,''))}</a>`;
+  });
+  const nav = $('#toc-nav');
+  if(nav){
+    nav.innerHTML = toc || '<a style="cursor:default">无小节</a>';
+    if(toc){
+      nav.querySelectorAll('a[data-i]').forEach(a => a.addEventListener('click', ev => {
+        ev.preventDefault();
+        const hd = document.getElementById('sec-' + a.dataset.i);
+        if(hd) hd.scrollIntoView({behavior:'smooth'});
+      }));
+      spyHeads(heads);
+    }
+  }
 }
 
+/* 滚动时高亮当前小节 */
+function spyHeads(heads){
+  const links = [...$('#toc-nav').querySelectorAll('a[data-i]')];
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    let cur = 0;
+    heads.forEach((hd, i) => { if(hd.getBoundingClientRect().top < 100) cur = i; });
+    links.forEach((a, i) => a.classList.toggle('cur', i === cur));
+  };
+  window.onscroll = () => {
+    if(!ticking){ ticking = true; requestAnimationFrame(update); }
+  };
+  update();
+}
+
+/* ---------- 路由分发 ---------- */
 function route(){
-  const h = location.hash || '#/';
-  const m = h.match(/^#\/p\/(.+)$/);
-  if(m){ renderPost(decodeURIComponent(m[1])); }
-  else { renderList(true); }
+  window.onscroll = null;
+  if(currentPost()){ renderPost(currentPost()); }
+  else { document.title = '技术博客 · hequan'; renderList(true); }
+  renderSide();
 }
 
+/* ---------- 事件 ---------- */
 $('#more').addEventListener('click', () => renderList(false));
-$('#search').addEventListener('input', () => renderList(true));
-window.addEventListener('hashchange', () => { renderCats(); route(); });
+$('#search').addEventListener('input', () => {
+  if(location.hash !== '#/') location.hash = '#/';  // 触发 hashchange → renderList
+  else renderList(true);
+});
+$('#search').addEventListener('keydown', e => {
+  if(e.key === 'Escape'){ e.target.value = ''; renderList(true); e.target.blur(); }
+});
+document.addEventListener('keydown', e => {
+  if(e.key === '/' && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)){
+    e.preventDefault(); $('#search').focus();
+  }
+});
+window.addEventListener('hashchange', route);
+
 marked.setOptions({ breaks:true, gfm:true });
 loadIndex();
 </script>
