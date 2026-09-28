@@ -6,40 +6,29 @@ source: "https://blog.51cto.com/hequan/2296381"
 ---
 > **内容介绍**
 >
-> 本文是Python 编程实战笔记,记录了「ServerUnreachable Unable to connect server: timed」的相关内容。主要涉及:阿里云 创建主机 报错: 原因:…
+> 解决调用阿里云 SDK 创建 ECS 时报 `SDK.ServerUnreachable Unable to connect server: timed out` 的问题：旧版 SDK 对请求设置了固定的默认超时（Python SDK 为 10 秒），CreateInstance 这类慢请求容易超时，需要显式调大 timeout。
 
 > **技术备注**
 >
-> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+> 该问题针对旧版 aliyun-python-sdk；新版阿里云 V2 SDK 已支持通过 `config.connect_timeout` / `read_timeout` 配置超时，且有自动重试机制，一般不再需要手动处理。文中 `timeout=30` 的用法在旧版 core 中仍有效。
 
 ---
 
 阿里云 创建主机
 报错:
 
-```shell
+```text
 SDK.ServerUnreachable Unable to connect server: timed out
 ```
 
 原因:
 
-```
+旧版 SDK 对所有类型的请求均设置了一个固定的超时时间（Java SDK 为 15 秒，Python SDK 为 10 秒，.NET SDK 为 100 秒）。所以，当某次 ECS CreateInstance 请求的执行时间超过上述 SDK 超时时间设置后，timeout 错误就发生了。这个问题是 SDK 的一个已知问题。
 
-但SDK对所有类型的请求均设置了一个固定的超时时间
+解决办法：对 SDK 设置一个合适的超时时间。
 
-（Java SDK为15秒，Python SDK为10秒，.NET SDK为100秒， PHP SDK超时时间不详）。
-
-所以，当某次ECS CreateInstance请求的执行时间超过上述SDK超时时间设置后，timeout错误就发生了。
-
-这个问题是SDK的一个已知问题。
-
-阿里云计划在未来的版本中修正这个问题。
-
-现在，解决这个问题的办法是对SDK设置一个合适的超时时间
-
-解决办法：
-
-```shell
-# 把超时时间 延长
+```python
+# 把超时时间延长
 createclt = client.AcsClient(self.AccessKeyId, self.AccessKeySecret, region_id, timeout=30)
+```
 
