@@ -4,6 +4,15 @@ date: "2017-03-21 09:29:13"
 category: "python"
 source: "https://blog.51cto.com/hequan/1908641"
 ---
+> **内容介绍**
+>
+> 本文是Python 编程实战笔记,记录了「day15CSS+JavaScript+DOM」的相关内容。
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 ```js
 CSS补充
