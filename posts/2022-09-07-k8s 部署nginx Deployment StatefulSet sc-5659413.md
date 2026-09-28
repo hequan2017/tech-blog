@@ -4,9 +4,17 @@ date: "2022-09-07 16:59:43"
 category: "集群"
 source: "https://blog.51cto.com/hequan/5659413"
 ---
+> **内容介绍**
+>
+> 本文是服务器集群与高可用架构实践,记录了「k8s  部署nginx    Deployment/StatefulSet    sc」的相关内容。
 
-```
-kind: PersistentVolumeClaim
+> **技术备注**
+>
+> Nginx 配置在不同大版本间略有差异,建议以当前稳定版(1.24+/1.26+)官方文档为准。
+
+---
+
+```shellkind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: nginx-web-claim
