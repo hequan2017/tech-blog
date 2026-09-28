@@ -4,6 +4,15 @@ date: "2016-07-06 15:52:06"
 category: "zabbix"
 source: "https://blog.51cto.com/hequan/1811246"
 ---
+> **内容介绍**
+>
+> 本文是Zabbix 监控系统实践,记录了「sendEmail报错：at /usr/share/perl5/vendor_perl/IO/Socket/SSL.pm」的相关内容。主要涉及:sendEmail发邮件的时候，出现的报错，然后查阅了很多资料 在[http://caspian.dotconf.net/menu/Software/SendE…
+
+> **技术备注**
+>
+> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+
+---
 
 ```bash
 *******************************************************************
