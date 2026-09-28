@@ -70,14 +70,36 @@ aside.side{width:260px;flex-shrink:0;position:sticky;top:56px;max-height:calc(10
 main{flex:1;min-width:0;padding:0 32px 40px}
 .container{max-width:820px;margin:0 auto}
 
-/* ---------- 首页 ---------- */
-.hero{padding:44px 0 10px}
-.hero h1{font-size:30px;letter-spacing:.5px}
-.hero h1 .g{color:var(--brand)}
-.hero p{color:var(--muted);font-size:14.5px;margin-top:8px}
-.hero .hint{font-size:13px;margin-top:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.hero kbd{background:var(--bg-alt);border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;
+/* ---------- 首页介绍 ---------- */
+.intro{padding:52px 0 6px;text-align:center}
+.intro h1{font-size:42px;letter-spacing:1px;line-height:1.25}
+.intro h1 .g{background:linear-gradient(120deg,var(--brand),#3e71f6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro .tag{margin-top:12px;font-size:16.5px;font-weight:500;color:var(--text)}
+.intro .desc{margin:10px auto 0;max-width:620px;font-size:14px;color:var(--muted);line-height:1.75}
+.intro .actions{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 24px;border-radius:10px;font-size:14px;
+  font-weight:500;border:1px solid transparent;cursor:pointer}
+.btn.primary{background:var(--brand);color:#fff}
+.btn.primary:hover{background:var(--brand-1);color:#fff}
+.btn.ghost{border-color:var(--border);color:var(--text)}
+.btn.ghost:hover{border-color:var(--brand);color:var(--brand-1)}
+.intro kbd{background:var(--bg-alt);border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;
   padding:1px 7px;font-size:12px;font-family:inherit;color:var(--text)}
+.intro .hint{font-size:13px;color:var(--muted);margin-top:16px}
+.stats{display:flex;justify-content:center;gap:46px;margin:30px 0 4px;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;gap:2px}
+.stat b{font-size:24px;font-weight:700;color:var(--brand-1);font-variant-numeric:tabular-nums}
+.stat span{font-size:12.5px;color:var(--muted)}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px;margin:28px 0 10px;text-align:left}
+.feat{display:block;padding:17px 18px 15px;border:1px solid var(--border);border-radius:12px;background:var(--bg);
+  transition:transform .15s,box-shadow .15s,border-color .15s}
+.feat:hover{transform:translateY(-3px);border-color:var(--brand);box-shadow:var(--shadow);text-decoration:none}
+.feat .ico{font-size:22px;line-height:1}
+.feat .ft{margin-top:10px;font-size:15.5px;font-weight:600;color:var(--text);
+  display:flex;justify-content:space-between;align-items:center;gap:8px}
+.feat .ft .n{flex-shrink:0;font-size:12px;font-weight:500;color:var(--brand-1);background:var(--brand-soft);border-radius:20px;padding:2px 9px}
+.feat:hover .ft{color:var(--brand-1)}
+.feat .fd{margin-top:7px;font-size:13px;color:var(--muted);line-height:1.65}
 #stats{font-size:13px;color:var(--muted);margin:22px 0 10px;padding-bottom:12px;border-bottom:1px solid var(--border)}
 h2.year{font-size:14px;color:var(--muted);font-weight:600;margin:24px 0 4px;padding-bottom:6px;border-bottom:1px dashed var(--border)}
 .row{display:flex;align-items:baseline;gap:12px;padding:9px 12px;margin:1px -12px;border-radius:8px}
@@ -157,7 +179,9 @@ footer a:hover{color:var(--brand-1)}
 @media (max-width:960px){
   aside.side{display:none}
   main{padding:0 18px 32px}
-  .hero{padding-top:26px}
+  .intro{padding-top:28px}
+  .intro h1{font-size:32px}
+  .stats{gap:26px}
   header{padding:0 14px;gap:10px}
   header .links .hide-s{display:none}
   .markdown h2 .anchor,.markdown h3 .anchor{left:-14px}
@@ -189,10 +213,31 @@ footer a:hover{color:var(--brand-1)}
   <aside class="side"><div id="side"></div></aside>
   <main>
     <div id="home" class="container">
-      <div class="hero" id="hero">
+      <div class="intro" id="intro">
         <h1>技术<span class="g">博客</span></h1>
-        <p>hequan 的 51CTO 文章全集 · Go / Python / Linux / 云计算 / 运维</p>
-        <div class="hint"><kbd>/</kbd> 快速搜索 <span>·</span> 点击左侧分类目录浏览 <span>·</span> 明暗主题可切换</div>
+        <p class="tag">hequan 的 51CTO 博客文章全集 · 2016–2025</p>
+        <p class="desc">十年运维与开发实战笔记 — 涵盖 Go、Python、Linux、Kubernetes 云原生与自动化运维等方向,
+          共 416 篇,支持分类浏览、即时搜索、页内大纲跳转与明暗主题阅读。</p>
+        <div class="actions">
+          <button class="btn primary" id="btn-start">开始阅读 ↓</button>
+          <a class="btn ghost" href="https://github.com/hequan2017/tech-blog" target="_blank" rel="noopener">GitHub 仓库</a>
+        </div>
+        <div class="hint">按 <kbd>/</kbd> 快速搜索 · 点击下方分类卡片直达对应文章</div>
+        <div class="stats">
+          <div class="stat"><b>416</b><span>篇文章</span></div>
+          <div class="stat"><b>19</b><span>个分类</span></div>
+          <div class="stat"><b>10</b><span>年 · 2016–2025</span></div>
+        </div>
+        <div class="feats">
+          <a class="feat" href="#/c/python"><div class="ico">🐍</div><div class="ft">Python<span class="n">88 篇</span></div><div class="fd">爬虫与数据抓取、Django 全栈 CMDB 系列、自动化脚本与消息队列实战</div></a>
+          <a class="feat" href="#/c/go"><div class="ico">🐹</div><div class="ft">Go<span class="n">64 篇</span></div><div class="fd">gin / WebSSH、jumpserver API 资产对接、CLI 工具与后端服务开发</div></a>
+          <a class="feat" href="#/c/Linux"><div class="ico">🐧</div><div class="ft">Linux 与运维<span class="n">65 篇</span></div><div class="fd">基础命令与权限、磁盘/网络、SSH、Nginx、rsync 等系统运维实战</div></a>
+          <a class="feat" href="#/c/kubernetes"><div class="ico">☸️</div><div class="ft">云原生与集群<span class="n">82 篇</span></div><div class="fd">kubernetes · 集群 · openstack:K8s 部署、Ingress、PV/PVC 与 GPU 调度</div></a>
+          <a class="feat" href="#/c/lnmp"><div class="ico">🧱</div><div class="ft">Web 服务<span class="n">39 篇</span></div><div class="fd">lnmp · tomcat:LNMP/LAMP 架构、Nginx/Apache 配置与性能优化</div></a>
+          <a class="feat" href="#/c/前端"><div class="ico">🎨</div><div class="ft">前端<span class="n">26 篇</span></div><div class="fd">前端 · vue · typescript · 后端:Vue 工程化、TS 与构建部署</div></a>
+          <a class="feat" href="#/c/ansible"><div class="ico">🔧</div><div class="ft">自动化运维<span class="n">25 篇</span></div><div class="fd">shell · ansible · zabbix · autoops · cobbler:批量部署与监控告警</div></a>
+          <a class="feat" href="#/c/未分类"><div class="ico">🗂️</div><div class="ft">未分类<span class="n">27 篇</span></div><div class="fd">未归类的技术随笔与实践记录</div></a>
+        </div>
       </div>
       <div id="stats"></div>
       <div id="list"></div>
@@ -301,7 +346,7 @@ function renderList(reset){
   const cat = currentCat();
   const items = filtered();
   const onHome = !cat && !q;
-  $('#hero').hidden = !onHome;
+  $('#intro').hidden = !onHome;
   $('#view').hidden = true;
   $('#home').hidden = false;
   $('#stats').textContent = (cat ? `分类「${cat}」` : '全部文章') +
@@ -441,6 +486,7 @@ function route(){
 }
 
 /* ---------- 事件 ---------- */
+$('#btn-start').addEventListener('click', () => $('#stats').scrollIntoView({behavior:'smooth'}));
 $('#more').addEventListener('click', () => renderList(false));
 $('#search').addEventListener('input', () => {
   if(location.hash !== '#/') location.hash = '#/';  // 触发 hashchange → renderList
