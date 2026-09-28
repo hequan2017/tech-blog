@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/2106618"
 ---
 > **内容介绍**
 >
-> 本文是Kubernetes 云原生容器编排实践,记录了「kubernetes 1.10.1 版本 部署」的相关内容。主要涉及:### kubernetes组件 Master组件： Node组件：…
+> 在 CentOS 7 上用二进制方式手工部署 Kubernetes 1.10.1 三节点集群（1 master + 2 node）的完整教程：cfssl 自签 TLS 证书、部署 etcd 集群、Flannel vxlan 网络、生成 kubelet/kube-proxy 的 kubeconfig，再以 systemd 服务方式运行 apiserver、controller-manager、scheduler 与 kubelet、kube-proxy，最后通过 TLS Bootstrapping 批准 CSR 让节点加入集群。
 
 > **技术备注**
 >
-> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+> Kubernetes 1.10 是 2018 年的版本，二进制手工部署方式如今基本只用于学习原理，生产请用 kubeadm、kops 或各云厂商托管集群。文中多处已过时：`--insecure-port` 在 1.20 起被移除；`--experimental-bootstrap-kubeconfig` 已转正为 `--bootstrap-kubeconfig`；docker 的 daemon.json 中 `graph` 键已改为 `data-root`；K8s 1.24 起默认运行时不再是 Docker 而是 containerd；flannel 的 etcd v2 接口 (`/coreos.com/network`) 也已弃用，现在以 DaemonSet + kube-subnet-mgr 方式运行。CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL)。
 
 ---
 
@@ -18,8 +18,8 @@ source: "https://blog.51cto.com/hequan/2106618"
 
 Master组件：
 
-```shell
-kube -apiserver
+```text
+kube-apiserver
 Kubernetes API，集群的统一入口，各组件协调者，以HTTP API提供接口服务，所有对象资源的增删改查和监听操作都交给APIServer处理后再提交
 
 kube-controller-manager
@@ -31,8 +31,8 @@ kube-scheduler
 
 Node组件：
 
-```shell
-kubele t
+```text
+kubelet
 kubelet是Master在Node节点上的Agent，管理本机运行容器的生命周期，比如创建容器、 Pod挂载数据卷、
 下载secret、获取容器和节点状态等工作。 kubelet将每个Pod转换成一组容器。
 
@@ -45,10 +45,10 @@ docker或rocket/rkt
 
 第三方服务：
 
-```shell
+```text
 etcd
 分布式键值存储系统。用于保持集群状态，比如Pod、 Service等对象信息。
-```shell
+```
 
 ---
 
@@ -93,7 +93,7 @@ systemctl start docker.service
 
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
-{"graph": "/data/docker"}
+{"data-root": "/data/docker"}
 EOF
 sudo systemctl daemon-reload
 
@@ -121,7 +121,7 @@ mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
 mv cfssl-certinfo_linux-amd64 /usr/bin/cfssl-certinfo
 
 cd /data/ssl/
-```shell
+```
 
 创建certificate.sh
 
@@ -274,7 +274,7 @@ admin-csr.json  ca-config.json  ca-key.pem   kube-proxy-csr.json  server.csr    
 #### 4 部署Etcd
 
 ```shell
-二进制包下载地址： https:///coreos/etcd/releases/tag/v3.2.12
+二进制包下载地址： https://github.com/coreos/etcd/releases/tag/v3.2.12
 
 3个节点
 
@@ -291,7 +291,7 @@ cp ca*pem  server*pem  /opt/kubernetes/ssl/
 
 scp -r /opt/kubernetes/*  192.168.1.111:/opt/kubernetes
 scp -r /opt/kubernetes/*  192.168.1.14:/opt/kubernetes
-```shell
+```
 
 ```shell
 cd /data/etcd
@@ -397,7 +397,7 @@ cd /opt/kubernetes/ssl
 下载二进制包
 
 ```shell
-wget https:///coreos/flannel/releases/download/v0.10.0/flannel-v0.10.0-linux-amd64.tar.gz
+wget https://github.com/coreos/flannel/releases/download/v0.10.0/flannel-v0.10.0-linux-amd64.tar.gz
 ```
 
 配置flanneld--三个节点 操作
@@ -432,7 +432,7 @@ Before=docker.service
 Type=notify
 EnvironmentFile=/opt/kubernetes/cfg/flanneld
 ExecStart=/opt/kubernetes/bin/flanneld --ip-masq \$FLANNEL_OPTIONS
-ExecStartPost=/opt/kubernetes/bin/ -k DOCKER_NETWORK_OPTIONS -d /run/flannel/subnet.env
+ExecStartPost=/opt/kubernetes/bin/mk-docker-opts.sh -k DOCKER_NETWORK_OPTIONS -d /run/flannel/subnet.env
 Restart=on-failure
 
 [Install]
@@ -590,7 +590,7 @@ scp *kubeconfig root@192.168.1.14:/opt/kubernetes/cfg
 #### 7  获取K8S二进制包
 
 ```shell
-https:///kubernetes/kubernetes/blob/master/#v1101
+https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.10.md#v1101
 
 kubernetes-server-linux-amd64.tar.gz
 ```
@@ -771,9 +771,11 @@ scheduler            Healthy   ok
 etcd-0               Healthy   {"health": "true"}
 etcd-1               Healthy   {"health": "true"}
 etcd-2               Healthy   {"health": "true"}
+```
 
 #### 9 运行Node组件
 
+```shell
 #!/bin/bash
 
 NODE_ADDRESS=${1:-"192.168.1.111"}
@@ -845,7 +847,7 @@ EOF
 systemctl daemon-reload
 systemctl enable kube-proxy
 systemctl restart kube-proxy
-```shell
+```
 
 node1    node2重复此步骤
 
@@ -878,7 +880,7 @@ kubectl get node
 NAME            STATUS     ROLES     AGE       VERSION
 192.168.1.111   Ready      <none>    11m       v1.10.1
 192.168.1.14    NotReady   <none>    8s        v1.10.1
-```shell
+```
 
 #### 10 查询集群状态
 
