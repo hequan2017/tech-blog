@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/2059436"
 ---
 > **内容介绍**
 >
-> 本文是LNMP/LAMP Web 服务架构与优化,记录了「MySQL InnoDB Cluser  |  Mysql 5.7 集群」的相关内容。主要涉及:> - 目前 本集群 应用在自己的 django demo 环境上，暂时稳定运行。 > - 欢迎加群 620176501 讨论 Mysql 集群的应用。 ---…
+> 基于 MySQL 5.7.21 的 InnoDB Cluster（Group Replication + MySQL Shell + MySQL Router）三节点集群实操。内容：mysql-shell 的 dba.checkInstanceConfiguration 预检、dba.configureLocalInstance 自动修复 GTID/binlog 等参数、createCluster/addInstance 建集群、mysqlrouter --bootstrap 生成 6446/6447 读写与只读路由端口，以及节点宕机自动切换、rejoinInstance、rebootClusterFromCompleteOutage 等故障处理与报错总结。
 
 > **技术备注**
 >
-> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+> MySQL 5.7 已于 2023 年 10 月 EOL，建议升级到 MySQL 8.0 LTS。InnoDB Cluster 在 8.0 中 mysql-shell 版本需与服务器版本匹配（8.0 集群不能再用 1.x 的 shell），且默认身份认证改为 caching_sha2_password，旧客户端要改 `default_authentication_plugin`。文中密码 `123456` 仅为演示，生产严禁使用。
 
 ---
 
@@ -25,7 +25,7 @@ source: "https://blog.51cto.com/hequan/2059436"
 * MySQL 5.7 引入了 Group Replication 功能，可以在一组 MySQL 服务器之间实现自动主机选举，形成一主多从结构。经过高级配置后，可以实现多主多从结构。
 * MySQL Router 是一个轻量级透明中间件，可以自动获取上述集群的状态，规划 SQL 语句，分配到合理的 MySQL 后端进行执行。
 * MySQL Shell 是一个同时支持 JavaScript 和 SQL 的交互程序，可以快速配置 InnoDB Cluster。
-```shell
+```
 
 ![](assets/2059436/01_8815cd9266b5f987ffcdd17c72341bf2.png)
 
@@ -52,7 +52,7 @@ http://blog.51cto.com/hequan/2067341
 ```shell
 wget https://cdn.mysql.com//Downloads/MySQL-Shell/mysql-shell-1.0.11-1.el7.x86_64.rpm
 yum install mysql-shell-1.0.11-1.el7.x86_64.rpm  -y
-```sql
+```
 
 - 设置相关用户的权限，生产环境   可以不是  root用户
 
@@ -107,7 +107,7 @@ The instance 'db1:3306' is valid for Cluster usage
 {
     "status": "ok"
 }
-```javascript
+```
 
 ```shell
 ## 登陆
@@ -148,7 +148,7 @@ cluster.status();
 ```shell
 wget https://cdn.mysql.com//Downloads/MySQL-Router/mysql-router-2.1.4-1.el7.x86_64.rpm
 yum install -y mysql-router-2.1.4-1.el7.x86_64.rpm
-```sql
+```
 
 ```shell
 ## 此命令会更新 /etc/mysqlrouter/mysqlrouter.conf 中的配置信息, 可以是别的机器 这里选择的为db2
@@ -269,7 +269,7 @@ The instance 'db3:3306' was part of the cluster configuration.
 Would you like to rejoin it to the cluster? [y|N]: y
 
 The cluster was successfully rebooted.
-```shell
+```
 
 ---
 
