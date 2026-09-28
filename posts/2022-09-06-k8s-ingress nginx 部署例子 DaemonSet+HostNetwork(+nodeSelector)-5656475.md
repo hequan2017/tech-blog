@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/5656475"
 ---
 > **内容介绍**
 >
-> 本文是服务器集群与高可用架构实践,记录了「k8s-ingress nginx 部署例子  DaemonSet+HostNetwork(+nodeSelector)」的相关内容。主要涉及:kubectl create ns test nginx-deployment.yaml apiVersion: apps/v1…
-
+> 本文给出 ingress-nginx 在 Kubernetes 中的完整应用示例：创建 nginx Deployment（3 副本）与 Service（8000 端口），再通过 Ingress 将 `www.xxxx.com/web` 路径路由到该 Service。适用于配合 DaemonSet + HostNetwork 模式的 ingress-controller 使用。
+>
 > **技术备注**
 >
-> Nginx 配置在不同大版本间略有差异,建议以当前稳定版(1.24+/1.26+)官方文档为准。
+> Ingress API 在 Kubernetes 1.22+ 已从 `extensions/v1beta1` 迁移至 `networking.k8s.io/v1`，文中 `apiVersion: /v1` 存在拼写错误，正确应为 `networking.k8s.io/v1`；`kubernetes.io/ingress.class` 注解已废弃，建议统一使用 `ingressClassName` 字段。
 
 ---
 
