@@ -4,11 +4,19 @@ date: "2018-08-03 16:40:39"
 category: "python"
 source: "https://blog.51cto.com/hequan/2154170"
 ---
+> **内容介绍**
+>
+> 本文是Python 编程实战笔记,记录了「python  aiohttp  asyncio  异步请求」的相关内容。主要涉及:转自：https:///xianhu/LearnPython…
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 转自：https:///xianhu/LearnPython
 
-```
-# _*_ coding: utf-8 _*_
+```python# _*_ coding: utf-8 _*_
 
 """
 python_aiohttp.py by xianhu
