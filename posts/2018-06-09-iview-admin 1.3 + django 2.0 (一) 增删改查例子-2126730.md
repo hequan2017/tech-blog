@@ -6,48 +6,63 @@ source: "https://blog.51cto.com/hequan/2126730"
 ---
 > **内容介绍**
 >
-> 本文是Vue 前端工程化实践,记录了「iview-admin 1.3 + django 2.0 (一)  增删改查例子」的相关内容。主要涉及:以下为利用iview-admin + django 做的一个最基本的增删改查例子。 ### 前端iview-admin #### src/main.js…
+> 本文是 iview-admin 1.3（Vue2 + iView）+ Django 2.0 前后端分离系列第一篇，用资产
+> 管理做最基础的增删改查例子：前端在克隆下来的 iview-admin 模板上修改 ESLint 与
+> webpack 配置、引入 axios，新增资产路由与 asset / asset-add / asset-info /
+> asset-edit 四个页面，通过 axios 调用 localhost:8000 的接口完成列表、新增、详情、
+> 编辑与删除；后端用 DRF 的 ListCreateAPIView / RetrieveUpdateDestroyAPIView 两个
+> 通用视图配合 ModelSerializer 暴露 /asset 接口，并用 django-cors-headers 处理跨域。
 
 > **技术备注**
 >
-> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+> Django 2.0 已于 2019 年 8 月停止支持；iView 2019 年 10 月起更名为 View UI（Vue3
+> 版为 View UI Plus），本例基于 vue2 的 iview-admin 1.3 模板；
+> axios 请求里的 {emulateJSON: true} 是 vue-resource 的参数，对 axios 无效，提交
+> JSON 应由后端解析或改发 FormData；
+> 原文若干内容被编辑器吃掉，已补全：git 克隆地址、asset.vue / asset-add.vue 的
+> <template> 标签、按钮事件中丢失的 params.row.id，以及 models.py 的 Meta 缩进。
 
 ---
 
-以下为利用iview-admin + django 做的一个最基本的增删改查例子。
+以下为利用 iview-admin + django 做的一个最基本的增删改查例子。
 
-### 前端iview-admin
+## 1. 前端 iview-admin
+
+### 克隆与启动
 
 ```shell
-git clone https:///iview/iview-admin.git
+git clone https://github.com/iview/iview-admin.git
 cd iview-admin
-
-修改.eslintrc.json
-17 "no-console": ["off"],
-21"no-fallthrough": 0,
-
 npm install
 npm run dev
-
-如果报错修改
-build/webpack.dev.config.js
-11 const buf = Buffer.from('export default "development";');
-build/webpack.prod.config.js
-15 const buf = Buffer.from('export default "development";');
 ```
 
-#### src/main.js
+修改 `.eslintrc.json`（第 17、21 行），放开 console 与 switch 穿透告警：
 
-```python
+```json
+"no-console": ["off"],
+"no-fallthrough": 0,
+```
+
+`npm run dev` 报错时，修改 `build/webpack.dev.config.js`（第 11 行）与
+`build/webpack.prod.config.js`（第 15 行）：
+
+```javascript
+const buf = Buffer.from('export default "development";');
+```
+
+### src/main.js
+
+先安装依赖：`npm install axios`，再把 axios 挂到 Vue 原型上：
+
+```javascript
 import axios from 'axios';
 Vue.prototype.axios = axios;
-
-npm install axios
 ```
 
-#### src/router/router.js
+### src/router/router.js
 
-```shell
+```javascript
 export const otherRouter = {
     path: '/',
     name: 'otherRouter',
@@ -73,11 +88,12 @@ export const appRouter = [
         ]
     },
 ]
+```
 
-### src/views/asset/
+### src/views/asset/asset.vue
 
-#### asset.vue
-
+```html
+<template>
     <div>
         <Row>
             <Card>
@@ -137,7 +153,7 @@ export const appRouter = [
                                 },
                                 on: {
                                     click: () => {
-                                        let argu = { id:  };
+                                        let argu = { id: params.row.id };
                                         this.$router.push({
                                             name: 'asset-info',
                                             params: argu
@@ -164,7 +180,7 @@ export const appRouter = [
                                     },
                                     on: {
                                         click: () => {
-                                            let argu = { id:  };
+                                            let argu = { id: params.row.id };
                                             this.$router.push({
                                                 name: 'asset-edit',
                                                 params: argu
@@ -182,7 +198,7 @@ export const appRouter = [
                                     },
                                     on: {
                                         click: () => {
-                                            this.$ajax.delete('http://localhost:8000/asset/' + )
+                                            this.$ajax.delete('http://localhost:8000/asset/' + params.row.id)
                                                 .then(response => {
                                                     this.$Message.success('提交成功');
                                                     this.remove(params.index);
@@ -226,9 +242,12 @@ export const appRouter = [
 
     };
 </script>
+```
 
-#### asset-add.vue
+### src/views/asset/asset-add.vue
 
+```html
+<template>
     <div>
         <Row>
             <Card>
@@ -311,9 +330,9 @@ export const appRouter = [
         }
     };
 </script>
-```javascript
+```
 
-#### asset-info.vue
+### src/views/asset/asset-info.vue
 
 ```html
 <style lang="less" scoped>
@@ -402,7 +421,7 @@ export const appRouter = [
 </script>
 ```
 
-#### asset-edit.vue
+### src/views/asset/asset-edit.vue
 
 ```html
 <template>
@@ -507,21 +526,24 @@ export const appRouter = [
 </script>
 ```
 
----
+## 2. 后端 Django
 
-### 后端 Django
+### 新建一个 asset 的 app
 
-#### 新建一个asset的app
+```shell
+pip install djangorestframework  django-cors-headers
+```
+
+`settings.py`：
 
 ```python
-pip install djangorestframework  django-cors-headers
-
-settings.py
 INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 ]
+```
 
+```python
 # http://www.django-rest-framework.org/api-guide/permissions/#api-reference
 # rest-framework    权限分类，现在是默认管理员可以访问
 REST_FRAMEWORK = {
@@ -535,21 +557,26 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.IsAdminUser',
     ),
 }
+```
 
+```python
 MIDDLEWARE = [
-...
-    'corsheaders.middleware.CorsMiddleware',  ##添加此项目
+    ...
+    'corsheaders.middleware.CorsMiddleware',  ## 添加此项目
     'django.middleware.common.CommonMiddleware',
-...
+    ...
 ]
 
-##允许跨域的地址
+## 允许跨域的地址
 CORS_ORIGIN_WHITELIST = (
     "localhost:8080"
 )
 APPEND_SLASH=False
+```
 
-asset/models.py
+`asset/models.py`：
+
+```python
 class AssetLoginUser(models.Model):
     hostname = models.CharField(max_length=64, verbose_name='名称', unique=True)
     username = models.CharField(max_length=64, verbose_name="用户名", default='root', null=True, blank=True)
@@ -558,19 +585,25 @@ class AssetLoginUser(models.Model):
     ctime = models.DateTimeField(auto_now_add=True, null=True, verbose_name='创建时间', blank=True)
     utime = models.DateTimeField(auto_now=True, null=True, verbose_name='更新时间', blank=True)
 
-class Meta:
-    db_table = "AssetLoginUser"
-    verbose_name = "资产用户"
-    verbose_name_plural = '资产用户'
+    class Meta:
+        db_table = "AssetLoginUser"
+        verbose_name = "资产用户"
+        verbose_name_plural = '资产用户'
 
     def __str__(self):
         return self.hostname
+```
 
-urls.py
+`urls.py`：
+
+```python
 path('asset', api.AssetList.as_view(), name='asset_api_list'),
 path('asset/<int:pk>', api.AssetDetail.as_view(), name='asset_api_detail'),
+```
 
-asset/serializers.py
+`asset/serializers.py`：
+
+```python
 from rest_framework import serializers
 from .models import AssetLoginUser
 
@@ -578,8 +611,11 @@ class AssetSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssetLoginUser
         fields = '__all__'
+```
 
-asset/api.py
+`asset/api.py`：
+
+```python
 from rest_framework import generics
 from .models import AssetLoginUser
 from .serializers import AssetSerializer
