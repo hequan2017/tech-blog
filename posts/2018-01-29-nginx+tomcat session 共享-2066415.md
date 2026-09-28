@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/2066415"
 ---
 > **内容介绍**
 >
-> 本文是Tomcat 中间件部署与调优,记录了「nginx+tomcat   session 共享」的相关内容。主要涉及:Tomcat 工作模式必须为Nio 模式。…
+> 用 nginx 反向代理两台 Tomcat 并通过 Tomcat 自身的 Tribes 集群实现 Session 复制的方案：server.xml 配置 SimpleTcpCluster/DeltaManager/McastService/NioReceiver，web.xml 加 `<distributable/>`，最后用 nginx upstream 做负载均衡验证 session 在两台 Tomcat 间同步。
 
 > **技术备注**
 >
-> Nginx 配置在不同大版本间略有差异,建议以当前稳定版(1.24+/1.26+)官方文档为准。
+> Tomcat 自带的组播 Session 复制适合小规模集群，节点多时网络开销明显；现在更常见的是把 Session 外置到 Redis（如 spring-session、tomcat-redis-session-manager）或干脆 JWT 无状态化。Nginx 负载均衡部分参数至今通用；文中 Tomcat 9 的 Cluster 配置在 Tomcat 10 仍兼容，但需注意 Tomcat 10 的包名迁移到 jakarta。
 
 ---
 
@@ -80,12 +80,9 @@ vim      index.jsp
         <title>Cluster App Test</title>
     </head>
     <body>
-    Server Info: <%  out.println(request.getLocalAddr() + " : " + request.getLocalPort()+"
-");%>
+    Server Info: <%  out.println(request.getLocalAddr() + " : " + request.getLocalPort()+"<br/>");%>
     <%
-    out.println("
-ID " + session.getId()+"
-");   // 如果有新的 Session 属性设置
+    out.println("<br/> ID " + session.getId()+"<br/>");   // 如果有新的 Session 属性设置
     String dataName = request.getParameter("dataName");
         if (dataName != null && dataName.length() > 0) {
             String dataValue = request.getParameter("dataValue");
@@ -94,7 +91,7 @@ ID " + session.getId()+"
      %>
      </body>
 </html>
-```nginx
+```
 
 ```shell
 ##配置 nginx负责均衡，进行测试
