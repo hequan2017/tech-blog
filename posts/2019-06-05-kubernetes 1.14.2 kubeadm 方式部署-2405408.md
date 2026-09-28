@@ -4,6 +4,15 @@ date: "2019-06-05 15:43:40"
 category: "kubernetes"
 source: "https://blog.51cto.com/hequan/2405408"
 ---
+> **内容介绍**
+>
+> 本文是Kubernetes 云原生容器编排实践,记录了「kubernetes 1.14.2  kubeadm 方式部署」的相关内容。主要涉及:### kubernetes 1.14.2 kubeadm方式部署 #### 主机 > 192.168.100.111 k8s-master…
+
+> **技术备注**
+>
+> 文中 Kubernetes 版本较旧,kubeadm 部署方式在 1.24+ 后已默认使用 containerd 运行时(dockershim 已移除),请注意版本差异。
+
+---
 
 ### kubernetes 1.14.2  kubeadm方式部署
 
@@ -15,8 +24,7 @@ source: "https://blog.51cto.com/hequan/2405408"
 
 #### 基本环境
 
-```
-systemctl stop firewalld
+```shellsystemctl stop firewalld
 ystemctl disable firewalld
 sed -i 's/enforcing/disabled/' /etc/selinux/config
 setenforce 0
@@ -49,8 +57,7 @@ sysctl -p
 
 #### 部署
 
-```
-cat << EOF > /etc/yum.repos.d/kubernetes.repo
+```shellcat << EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
@@ -107,8 +114,7 @@ docker tag /google_containers/coredns:$DNS_VERSION /coredns:$DNS_VERSION
 
 #### 安装
 
-```
-kubeadm init --kubernetes-version=1.14.2 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.100.111
+```shellkubeadm init --kubernetes-version=1.14.2 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.100.111
 
 To start using your cluster, you need to run the following as a regular user:
 
@@ -128,8 +134,7 @@ kubeadm join 192.168.100.111:6443 --token ws2hxe.zeq9skej2ppjx4ip \
     --discovery-token-ca-cert-hash sha256:abf8f2694f738fcd199aa5bbf99491b0f9248b3750b1df7ba47450bbe9a75f81
 ```
 
-```
-mkdir -p $HOME/.kube
+```shellmkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
@@ -151,8 +156,7 @@ EOF
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.10.0/Documentation/kube-flannel.yml
 ```
 
-```
-kubectl get nodes
+```shellkubectl get nodes
 NAME         STATUS   ROLES    AGE   VERSION
 k8s-master   Ready    master   50m   v1.14.2
 k8s-node1    Ready    <none>   46m   v1.14.2
