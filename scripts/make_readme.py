@@ -45,22 +45,6 @@ def index_table(index):
     return "\n".join(lines)
 
 
-def write_index_md(index):
-    per_year = defaultdict(list)
-    for a in index:
-        per_year[year(a)].append(a)
-    parts = ["# 文章总索引(按年份)\n"]
-    for y in sorted(per_year, reverse=True):
-        parts.append(f"## {y} 年({len(per_year[y])} 篇)\n")
-        parts.append("| 日期 | 标题 | 分类 |")
-        parts.append("| --- | --- | --- |")
-        for a in sorted(per_year[y], key=lambda x: x["date"], reverse=True):
-            parts.append(f"| {a['date'][:10]} | [{a['title']}]({a['file']}) "
-                         f"| {a['category'] or '未分类'} |")
-        parts.append("")
-    (REPO / "INDEX.md").write_text("\n".join(parts), encoding="utf-8")
-
-
 def stats(index):
     cats = defaultdict(int)
     for a in index:
@@ -70,12 +54,30 @@ def stats(index):
     return cats, y_min, y_max
 
 
+def gh_anchor(text: str) -> str:
+    """按 GitHub 标题锚点规则生成锚点:小写、去标点、空格转连字符。"""
+    a = re.sub(r"[^\w\u4e00-\u9fff -]", "", text).strip().lower()
+    return a.replace(" ", "-")
+
+
+def cat_links(index):
+    """生成可点击分类目录:点击直达 INDEX.md 对应分类段落。"""
+    cats = defaultdict(int)
+    for a in index:
+        cats[a["category"] or "未分类"] += 1
+    return [(c, n, f"[{c}({n})](INDEX.md#{gh_anchor(c + f'({n} 篇)')})")
+            for c, n in sorted(cats.items(), key=lambda kv: -kv[1])]
+
+
 def main():
     REPO.mkdir(exist_ok=True)
     index = load()
     cats, y_min, y_max = stats(index)
     cat_line = " · ".join(f"{c}({n})" for c, n in
                           sorted(cats.items(), key=lambda kv: -kv[1]))
+    links = cat_links(index)
+    toc_zh = " · ".join(l for _, _, l in links)
+    toc_en = toc_zh  # 分类名源自博客本身,保持中文
 
     zh = f"""# 技术博客
 
@@ -85,14 +87,13 @@ def main():
 图片已本地化至 `posts/assets/`,可离线阅读、全文检索。每篇文章的 front-matter 保留原标题、发布时间、
 分类与原文链接(`source`)。
 
-## 分类概览
+## 目录(点击直达)
 
-{cat_line}
+{toc_zh}
 
-## 目录
+📖 完整目录:[INDEX.md](INDEX.md) — 分类×年份双视图 + 按年总表
 
-- [文章总索引(按年份)](INDEX.md)
-- 所有文章位于 [`posts/`](posts/) 目录,文件名格式:`YYYY-MM-DD-标题-文章ID.md`
+所有文章位于 [`posts/`](posts/) 目录,文件名格式:`YYYY-MM-DD-标题-文章ID.md`
 
 ## 说明
 
@@ -112,14 +113,13 @@ All articles were scraped from the author's [51CTO blog](https://blog.51cto.com/
 Images are localized under `posts/assets/` for offline reading and full-text search.
 Each article keeps its original title, publish date, category and source URL in the front-matter.
 
-## Categories
+## Contents (clickable)
 
-{cat_line_en}
+{toc_en}
 
-## Contents
+📖 Full index: [INDEX.md](INDEX.md) — categories × years + yearly tables
 
-- [Full article index by year](INDEX.md)
-- All posts live in [`posts/`](posts/), named `YYYY-MM-DD-title-postID.md`
+All posts live in [`posts/`](posts/), named `YYYY-MM-DD-title-postID.md`
 
 ## Notes
 
@@ -129,8 +129,7 @@ Each article keeps its original title, publish date, category and source URL in 
 """
     (REPO / "README.en.md").write_text(en, encoding="utf-8")
 
-    write_index_md(index)
-    print(f"README.md / README.en.md / INDEX.md 生成完毕,共 {TOTAL} 篇")
+    print(f"README.md / README.en.md 生成完毕,共 {TOTAL} 篇")
     print("分类:", dict(sorted(cats.items(), key=lambda kv: -kv[1])))
 
 

@@ -6,14 +6,13 @@
 图片已本地化至 `posts/assets/`,可离线阅读、全文检索。每篇文章的 front-matter 保留原标题、发布时间、
 分类与原文链接(`source`)。
 
-## 分类概览
+## 目录(点击直达)
 
-python(88) · go(64) · Linux(62) · 集群(39) · lnmp(33) · 未分类(27) · kubernetes(23) · openstack(20) · 前端(13) · shell(9) · vue(7) · tomcat(6) · autoops(5) · ansible(5) · zabbix(4) · 运维基础(3) · 后端(3) · typescript(3) · cobbler(2)
+[python(88)](INDEX.md#python88-篇) · [go(64)](INDEX.md#go64-篇) · [Linux(62)](INDEX.md#linux62-篇) · [集群(39)](INDEX.md#集群39-篇) · [lnmp(33)](INDEX.md#lnmp33-篇) · [未分类(27)](INDEX.md#未分类27-篇) · [kubernetes(23)](INDEX.md#kubernetes23-篇) · [openstack(20)](INDEX.md#openstack20-篇) · [前端(13)](INDEX.md#前端13-篇) · [shell(9)](INDEX.md#shell9-篇) · [vue(7)](INDEX.md#vue7-篇) · [tomcat(6)](INDEX.md#tomcat6-篇) · [autoops(5)](INDEX.md#autoops5-篇) · [ansible(5)](INDEX.md#ansible5-篇) · [zabbix(4)](INDEX.md#zabbix4-篇) · [运维基础(3)](INDEX.md#运维基础3-篇) · [后端(3)](INDEX.md#后端3-篇) · [typescript(3)](INDEX.md#typescript3-篇) · [cobbler(2)](INDEX.md#cobbler2-篇)
 
-## 目录
+📖 完整目录:[INDEX.md](INDEX.md) — 分类×年份双视图 + 按年总表
 
-- [文章总索引(按年份)](INDEX.md)
-- 所有文章位于 [`posts/`](posts/) 目录,文件名格式:`YYYY-MM-DD-标题-文章ID.md`
+所有文章位于 [`posts/`](posts/) 目录,文件名格式:`YYYY-MM-DD-标题-文章ID.md`
 
 ## 说明
 
