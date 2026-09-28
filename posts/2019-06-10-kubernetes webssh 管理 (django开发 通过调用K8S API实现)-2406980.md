@@ -4,6 +4,11 @@ date: "2019-06-10 17:30:35"
 category: "kubernetes"
 source: "https://blog.51cto.com/hequan/2406980"
 ---
+> **内容介绍**
+>
+> 本文是Kubernetes 云原生容器编排实践,记录了「kubernetes webssh  管理  (django开发/通过调用K8S API实现)」的相关内容。主要涉及:### 项目地址 > https:///hequan2017/seal/ ### demo…
+
+---
 
 ### 项目地址
 
