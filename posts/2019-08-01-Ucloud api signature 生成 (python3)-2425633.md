@@ -10,7 +10,8 @@ source: "https://blog.51cto.com/hequan/2425633"
 
 ---
 
-```pythonimport hashlib
+```pythonimport
+hashlib
 
 def _verfy_ac(private_key, params):
     items = sorted(params.items(), key=lambda x: x[0])

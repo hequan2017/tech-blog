@@ -18,7 +18,8 @@ source: "https://blog.51cto.com/hequan/2126730"
 
 ### 前端iview-admin
 
-```shellgit clone https:///iview/iview-admin.git
+```shellgit
+clone https:///iview/iview-admin.git
 cd iview-admin
 
 修改.eslintrc.json
@@ -37,7 +38,8 @@ build/webpack.prod.config.js
 
 #### src/main.js
 
-```pythonimport axios from 'axios';
+```pythonimport
+axios from 'axios';
 Vue.prototype.axios = axios;
 
 npm install axios
@@ -45,7 +47,8 @@ npm install axios
 
 #### src/router/router.js
 
-```shellexport const otherRouter = {
+```shellexport
+const otherRouter = {
     path: '/',
     name: 'otherRouter',
     redirect: '/home',
@@ -308,11 +311,13 @@ export const appRouter = [
         }
     };
 </script>
-```javascript
+```javascrip
+t
 
 #### asset-info.vue
 
-```html<style lang="less" scoped>
+```html
+<style lang="less" scoped>
     @import '../../styles/common.less';
     @import './components/table.less';
 </style>
@@ -400,7 +405,8 @@ export const appRouter = [
 
 #### asset-edit.vue
 
-```html<template>
+```html
+<template>
     <div>
         <Row>
             <Card>
@@ -508,7 +514,8 @@ export const appRouter = [
 
 #### 新建一个asset的app
 
-```pythonpip install djangorestframework  django-cors-headers
+```pythonpip
+install djangorestframework  django-cors-headers
 
 settings.py
 INSTALLED_APPS = [

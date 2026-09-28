@@ -14,7 +14,8 @@ source: "https://blog.51cto.com/hequan/2106949"
 
 ---
 
-```shellversion: '3.6'
+```shellversion
+: '3.6'
 services:
   mysql-server:
     hostname: mysql-server

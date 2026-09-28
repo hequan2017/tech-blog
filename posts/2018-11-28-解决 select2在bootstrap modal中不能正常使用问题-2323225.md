@@ -18,7 +18,8 @@ source: "https://blog.51cto.com/hequan/2323225"
 
 #### 设置CSS
 
-```shell        .select2-drop {
+```shell
+.select2-drop {
             z-index: 10050 !important;
         }
 

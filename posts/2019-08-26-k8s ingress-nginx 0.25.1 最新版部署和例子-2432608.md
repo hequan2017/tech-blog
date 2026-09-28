@@ -18,14 +18,16 @@ source: "https://blog.51cto.com/hequan/2432608"
 
 #### 说明
 
-```shellhttps:///kubernetes/ingress-nginx/blob/master/docs/deploy/
+```shellhttps
+:///kubernetes/ingress-nginx/blob/master/docs/deploy/
 
 增加了7层的识别能力，可以根据 http header, path 等进行路由转发
 ```
 
 #### 部署
 
-```shellwget  https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
+```shellwget
+https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
 
 sed -i 's#quay.io/kubernetes-ingress-controller/nginx-ingress-controller#/google_containers/nginx-ingress-controller#g' mandatory.yaml
 
@@ -54,22 +56,27 @@ spec:
   selector:
     /name: ingress-nginx
     /part-of: ingress-nginx
-```shell
+```shel
+l
 
-```shellkubectl create -f  mandatory.yaml
+```shellkubectl
+create -f  mandatory.yaml
 kubectl create -f  service-nodeport.yaml
 ```
 
 #### 检查
 
-```shellkubectl get pod -n ingress-nginx -o wide
+```shellkubectl
+get pod -n ingress-nginx -o wide
 
 kubectl scale --replicas=2  deploy/nginx-ingress-controller -n ingress-nginx
-```shell
+```shel
+l
 
 #### 例子
 
-```shellvim  deploy-demo.yaml
+```shellvim
+deploy-demo.yaml
 apiVersion: v1
 kind: Service
 metadata:

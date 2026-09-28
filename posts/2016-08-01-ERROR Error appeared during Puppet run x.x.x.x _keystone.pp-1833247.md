@@ -16,7 +16,8 @@ source: "https://blog.51cto.com/hequan/1833247"
 
 报错
 
-```shellERROR : Error appeared during Puppet run: x.x.x.x_keystone.pp
+```shell
+ERROR : Error appeared during Puppet run: x.x.x.x_keystone.pp
 Error: /Stage[main]/Keystone::Db::Sync/Exec[keystone-manage db_sync]: Failed to call refresh: Command exceeded timeout
 You will find full trace in log /var/tmp/packstack/20160801-185048-pwY8Y8/manifests/x.x.x.x_keystone.pp.log
 Please check log file /var/tmp/packstack/20160801-185048-pwY8Y8/openstack-setup.log for more information
@@ -32,7 +33,8 @@ inet 192.168.1.7/24 brd 192.168.1.255 scope global dynamic eth0           �
 
 查看日志
 
-```shell[root@controller ~]# cd /var/log/keystone/
+```shell
+[root@controller ~]# cd /var/log/keystone/
 [root@controller keystone]# ls
 keystone.log
 2016-08-01 20:34:33.513 14145 ERROR keystone.common.wsgi DBConnectionError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'x.x.x.x' ([Errno 110] Connection timed out)")
@@ -42,7 +44,8 @@ keystone.log
 
 查看数据库
 
-```shellMariaDB [(none)]> show databases;
+```shell
+MariaDB [(none)]> show databases;
 +--------------------+
 | Database           |
 +--------------------+
@@ -82,7 +85,8 @@ MariaDB [mysql]> select  host,user  from user;
 +-----------+----------------+
 9 rows in set (0.00 sec)
 权限是  %，应该是可以的，
-```sql
+```sq
+l
 
 参考   mysql授权localhost&%区别及一直授权错误解决办法
 
@@ -193,7 +197,8 @@ Please, find your login credentials stored in the keystonerc_admin in your home 
 
 * The generated manifests are available at: /var/tmp/packstack/20160801-224547-mTb9CN/manifests
 
-```shell[root@controller ~]# netstat -lntup
+```shell
+[root@controller ~]# netstat -lntup
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
 tcp        0      0 0.0.0.0:8774            0.0.0.0:*               LISTEN      21105/python2

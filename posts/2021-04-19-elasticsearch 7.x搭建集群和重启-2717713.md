@@ -14,7 +14,8 @@ source: "https://blog.51cto.com/hequan/2717713"
 
 ---
 
-```shellyum install java-11-openjdk-devel.x86_64
+```shellyum
+install java-11-openjdk-devel.x86_64
 
 echo vm.max_map_count=655360 >> /etc/sysctl.conf
 sysctl -p
@@ -45,9 +46,11 @@ cluster.initial_master_nodes: ["test1", "test2","test3"]
 
 http.cors.enabled: true
 http.cors.allow-origin: "*"
-```shell
+```shel
+l
 
-```shellcurl -XGET http://192.168.100.101:9200/_cat/health?v
+```shellcurl
+-XGET http://192.168.100.101:9200/_cat/health?v
 
 curl -XGET http://192.168.100.103:9200/_cat/nodes?v
 
@@ -58,7 +61,8 @@ curl -XPUT http://192.168.100.102:9200/cmdb/user/4 -d "{\"email\":\"test@\",\"na
 curl -XGET http://192.168.100.101:9200/cmdb/user/1
 ```
 
-```shell一：关闭自动分片，即使新建index也无法分配数据分片。
+```shell
+一：关闭自动分片，即使新建index也无法分配数据分片。
 curl -XPUT http://192.168.100.102:9200/_cluster/settings -d '{
   "transient" : {
     "cluster.routing.allocation.enable" : "none"

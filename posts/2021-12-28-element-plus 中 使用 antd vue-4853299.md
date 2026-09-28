@@ -12,7 +12,8 @@ source: "https://blog.51cto.com/hequan/4853299"
 
 #### main.js
 
-```pythonimport { createApp } from 'vue'
+```pythonimport
+{ createApp } from 'vue'
 import 'element-plus/dist/index.css'
 import './style/element_visiable.scss'
 import ElementPlus from 'element-plus'
@@ -41,11 +42,13 @@ app.use(run)
   .use(ElementPlus, { locale: zhCn }).mount('#app')
 
 export default app
-```python
+```pytho
+n
 
 #### 主要
 
-```pythonimport App from './App.vue'
+```pythonimport
+App from './App.vue'
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 

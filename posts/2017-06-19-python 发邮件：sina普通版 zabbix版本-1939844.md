@@ -14,7 +14,8 @@ source: "https://blog.51cto.com/hequan/1939844"
 
 ---
 
-```python
+```pytho
+n
 from email.mime.text import MIMEText
 from email.header import Header
 from smtplib import SMTP_SSL
@@ -38,7 +39,8 @@ def send_mail(sender_sina='',pwd='',receiver='',mail_title='',mail_content=''):
 send_mail("hequan2011","密码","hequan2011@sina.com","标题",'内容')
 ```
 
-```python
+```pytho
+n
 #!/usr/bin/python
 #coding:utf-8
 from email.mime.text import MIMEText

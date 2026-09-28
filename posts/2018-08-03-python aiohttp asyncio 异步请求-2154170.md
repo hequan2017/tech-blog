@@ -16,7 +16,8 @@ source: "https://blog.51cto.com/hequan/2154170"
 
 转自：https:///xianhu/LearnPython
 
-```python# _*_ coding: utf-8 _*_
+```python
+# _*_ coding: utf-8 _*_
 
 """
 python_aiohttp.py by xianhu

@@ -25,7 +25,8 @@ https:///hequan2017/chain
 
 安装后会有一个版本号报错，不影响
 
-```shellchannels==2.0.2
+```shellchannels
+==2.0.2
 channels-redis==2.1.0
 amqp==1.4.9
 anyjson==0.3.3
@@ -53,7 +54,8 @@ python3 setup.py install
 
 ### 目录
 
-```shellchain/
+```shellchain
+/
 		chain/
 			 settings.py
 			 asgi.py
@@ -68,7 +70,8 @@ python3 setup.py install
 
 #### settings.py
 
-```shellINSTALLED_APPS = [
+```shell
+INSTALLED_APPS = [
     'channels',
 ]
 
@@ -84,11 +87,13 @@ CHANNEL_LAYERS = {
 
 # 配置ASGI
 ASGI_APPLICATION = "chain.routing.application"
-```python
+```pytho
+n
 
 #### consumers.py
 
-```pythonfrom asgiref.sync import async_to_sync
+```pythonfrom
+asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 
 from channels.layers import get_channel_layer
@@ -122,7 +127,8 @@ class EchoConsumer(WebsocketConsumer):
 
 #### asgi.py
 
-```pythonimport os
+```pythonimport
+os
 import django
 from channels.routing import get_default_application
 
@@ -133,7 +139,8 @@ application = get_default_application()
 
 #### routing.py
 
-```pythonfrom channels.auth import AuthMiddlewareStack
+```pythonfrom
+channels.auth import AuthMiddlewareStack
 from channels.routing import URLRouter, ProtocolTypeRouter
 from django.urls import path
 
@@ -161,7 +168,8 @@ application = ProtocolTypeRouter({
 2. 后端去利用 paramiko 执行命令，一直读取此接口，先返回一遍信息，如有新日志生成，再次返回给前端。
 3. 点击停止，会修改一个环境变量， 上面paramiko监测到此环境变量为false后，就停止执行命令。
 
-```html <a id="tail" class="btn btn-primary"  type="submit">查看</a>
+```html
+<a id="tail" class="btn btn-primary"  type="submit">查看</a>
 <a id="tail_stop" class="btn btn-danger"  type="submit">不看了,必须点停止</a>
 
  <div class="ibox-content" >
@@ -235,14 +243,16 @@ function CreateWebSocket() {
 
 #### urls.py
 
-```shell    path('tail.html', views.TasksTail.as_view(), name='tail'),
+```shell
+path('tail.html', views.TasksTail.as_view(), name='tail'),
     path('tailperform.html', views.taskstailperform, name='tail_perform'),
     path('tailperform-stop.html', views.taskstailstopperform, name='tail_perform_stop'),
 ```
 
 #### views.py
 
-```pythonfrom asgiref.sync import async_to_sync
+```pythonfrom
+asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 import json
 import paramiko

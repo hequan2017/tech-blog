@@ -16,7 +16,8 @@ source: "https://blog.51cto.com/hequan/2437663"
 
 ### k8s  StatefulSet例子
 
-```shellapiVersion: v1
+```shellapi
+Version: v1
 kind: Service
 metadata:
   name: nginx
@@ -66,7 +67,8 @@ spec:
           storage: 1Gi
 ```
 
-```shellapiVersion: extensions/v1beta1
+```shellapi
+Version: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ingress-web

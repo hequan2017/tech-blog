@@ -20,12 +20,15 @@ source: "https://blog.51cto.com/hequan/2435698"
 
 #### 开启代理
 
-```shellkubectl  proxy  --port=8089  --address=127.0.0.1   --accept-hosts='^*$'　　# 后面这个可以去掉，不用允许所有
-```go
+```shellkubectl
+proxy  --port=8089  --address=127.0.0.1   --accept-hosts='^*$'　　# 后面这个可以去掉，不用允许所有
+```g
+o
 
 #### 代码
 
-```pythonmkdir go-proxy
+```pythonmkdir
+go-proxy
 cd go-proxy
 go mod init go-proxy
 
@@ -116,14 +119,16 @@ func main() {
 }
 ```
 
-```shellgo run  main.go
+```shellgo
+run  main.go
 ```
 
 #### 注意
 
 > 主要修改的地方有２个
 
-```shell  if  ctx.Req.Header.Get("token") != "1234" {    这里是输入你的token密码
+```shell
+if  ctx.Req.Header.Get("token") != "1234" {    这里是输入你的token密码
 
 	return url.Parse("http://127.0.0.1:8089")   这里是你本地的 proxy　接口
 

@@ -48,7 +48,8 @@ vxlan（默认）    1600万个
 
 h2是网络节点
 
-```bash
+```bas
+h
 [root@h1 ~(key)]# keystone user-create  --name neutron  --pass  hequan
 [root@h1 ~(key)]# keystone  user-role-add  --user neutron --role admin  --tenant  services
 [root@h1 ~(key)]# keystone service-create  --name neutron  --type network  --description "neutron"
@@ -74,7 +75,8 @@ keystone  endpoint-create  --service-id  6e0c0784195f40658f725f796a35bc44�
 +-------------+----------------------------------+
 ```
 
-```bash
+```bas
+h
 [root@h1 ~(key)]# yum  install  openstack-neutron.noarch   openstack-neutron-ml2.noarch     ##在控制节点上安装
 ml2是  网络核心插件,不同租户隔离    作用：实用 VLNA 还是VXLAN  分配
 [root@h1 neutron(key)]# ls

@@ -18,7 +18,8 @@ source: "https://blog.51cto.com/hequan/2491810"
 
 > 可以根据mac 地址 调用API 创建任务，安装完成之后，再把任务删除掉。
 
-```python#!/usr/bin/python3.6
+```python
+#!/usr/bin/python3.6
 
 import xmlrpc.client
 

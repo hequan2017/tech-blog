@@ -22,15 +22,18 @@ source: "https://blog.51cto.com/hequan/2408482"
 
 #### 安装
 
-```shellgit clone https:///hanchuanchuan/goInception.git
+```shellgit
+clone https:///hanchuanchuan/goInception.git
 cd goInception
-```shell
+```shel
+l
 
 #### 修改配置
 
 - 开启备份
 
-```shellvim  config/config.toml
+```shellvim
+config/config.toml
 
 [inc]
 
@@ -42,17 +45,20 @@ backup_password="123456"
 
 #### 启动
 
-```shellmake parser
+```shellmake
+parser
 go build -o goInception tidb-server/main.go
 
 ./goInception -config=config/config.toml
-```python
+```pytho
+n
 
 > pip install pymysql prettytable
 
 #### 代码
 
-```pythonimport pymysql
+```pythonimport
+pymysql
 import prettytable as pt
 tb = pt.PrettyTable()
 
@@ -79,7 +85,8 @@ print(tb)
 
 #### 结果
 
-```shell+----------+----------+-------------+----------------------+---------------+----------------------------------------------------+---------------+------------------------+------------------------+--------------+---------+-------------+
+```shell
++----------+----------+-------------+----------------------+---------------+----------------------------------------------------+---------------+------------------------+------------------------+--------------+---------+-------------+
 | order_id |  stage   | error_level |     stage_status     | error_message |                        sql                         | affected_rows |        sequence        |     backup_dbname      | execute_time | sqlsha1 | backup_time |
 +----------+----------+-------------+----------------------+---------------+----------------------------------------------------+---------------+------------------------+------------------------+--------------+---------+-------------+
 |    1     | EXECUTED |      0      | Execute Successfully |      None     |                       use go                       |       0       | 1560411582_21_00000000 |          None          |    0.000     |   None  |      0      |

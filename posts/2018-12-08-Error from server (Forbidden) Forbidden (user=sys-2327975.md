@@ -16,11 +16,13 @@ source: "https://blog.51cto.com/hequan/2327975"
 
 ### 报错
 
-```shellError from server (Forbidden): Forbidden (user=system:anonymous, verb=get, resource=nodes, subresource=proxy)
+```shell
+Error from server (Forbidden): Forbidden (user=system:anonymous, verb=get, resource=nodes, subresource=proxy)
 
 ### 暂时解决办法
 
 绑定一个cluster-admin的权限。
 
-```shellkubectl create clusterrolebinding system:anonymous   --clusterrole=cluster-admin   --user=system:anonymous
+```shellkubectl
+create clusterrolebinding system:anonymous   --clusterrole=cluster-admin   --user=system:anonymous
 

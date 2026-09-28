@@ -14,7 +14,8 @@ source: "https://blog.51cto.com/hequan/5146223"
 
 ---
 
-```shell来自 https:///flipped-aurora/gin-vue-admin 转载
+```shell
+来自 https:///flipped-aurora/gin-vue-admin 转载
 version: "3"
 
 # 声明一个名为network的networks,subnet为network的子网地址,默认网关是177.7.0.1

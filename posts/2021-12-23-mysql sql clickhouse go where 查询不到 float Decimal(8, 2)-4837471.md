@@ -10,5 +10,6 @@ source: "https://blog.51cto.com/hequan/4837471"
 
 ---
 
-```shelldb.Where("toFloat64(test)  = ?",test)
+```shelldb
+.Where("toFloat64(test)  = ?",test)
 ```

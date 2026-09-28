@@ -24,7 +24,8 @@ source: "https://blog.51cto.com/hequan/2405408"
 
 #### 基本环境
 
-```shellsystemctl stop firewalld
+```shellsystemctl
+stop firewalld
 ystemctl disable firewalld
 sed -i 's/enforcing/disabled/' /etc/selinux/config
 setenforce 0
@@ -53,11 +54,13 @@ net.bridge.bridge-nf-call-iptables = 1
 net.bridge.bridge-nf-call-arptables = 1
 
 sysctl -p
-```shell
+```shel
+l
 
 #### 部署
 
-```shellcat << EOF > /etc/yum.repos.d/kubernetes.repo
+```shellcat
+<< EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
@@ -114,7 +117,8 @@ docker tag /google_containers/coredns:$DNS_VERSION /coredns:$DNS_VERSION
 
 #### 安装
 
-```shellkubeadm init --kubernetes-version=1.14.2 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.100.111
+```shellkubeadm
+init --kubernetes-version=1.14.2 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.100.111
 
 To start using your cluster, you need to run the following as a regular user:
 
@@ -132,9 +136,11 @@ Then you can join any number of worker nodes by running the following on each as
 ## node 节点执行
 kubeadm join 192.168.100.111:6443 --token ws2hxe.zeq9skej2ppjx4ip \
     --discovery-token-ca-cert-hash sha256:abf8f2694f738fcd199aa5bbf99491b0f9248b3750b1df7ba47450bbe9a75f81
-```shell
+```shel
+l
 
-```shellmkdir -p $HOME/.kube
+```shellmkdir
+-p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
@@ -156,7 +162,8 @@ EOF
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.10.0/Documentation/kube-flannel.yml
 ```
 
-```shellkubectl get nodes
+```shellkubectl
+get nodes
 NAME         STATUS   ROLES    AGE   VERSION
 k8s-master   Ready    master   50m   v1.14.2
 k8s-node1    Ready    <none>   46m   v1.14.2

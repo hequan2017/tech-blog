@@ -23,7 +23,8 @@ source: "https://blog.51cto.com/hequan/2162033"
 
 ### config.ini
 
-```shell[local_environment]
+```shell
+[local_environment]
 title = 本地测试环境
 url = http://192.168.100.28/
 login_url= http://192.168.100.28/users/login/
@@ -37,7 +38,8 @@ password = admin
 
 ### jumpserver.py
 
-```python#!/usr/bin/env python3
+```python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import os
 import configparser

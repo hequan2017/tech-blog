@@ -27,7 +27,8 @@ qpid
 
 rabbitmq    端口5672       sll加密 5671
 
-```bash
+```bas
+h
 192.168.1.201            h1
 192.168.1.202            h2
 192.168.1.203            h3
@@ -35,7 +36,8 @@ rabbitmq    端口5672       sll加密 5671
 
 在h3上操作  配置YUM源   把openstack软件包上传到openstack目录下
 
-```bash
+```bas
+h
 [openstack]
 name=openstack
 baseurl=file:///openstack
@@ -46,7 +48,8 @@ yum makecache
 [root@h1 yum.repos.d]# yum  install -y rabbitmq-server.noarch
 ```
 
-```bash
+```bas
+h
 [root@h3 ~]# systemctl   start rabbitmq-server.service
 [root@h3 ~]# systemctl   enable rabbitmq-server.service      
  [root@h3 ~]# netstat -lntup | grep  5672
@@ -54,7 +57,8 @@ tcp        0      0 0.0.0.0:25672           0.0.0.0:*�
 tcp6       0      0 :::5672                 :::*                    LISTEN      1354/beam.smp  #使用这个
 ```
 
-```bash
+```bas
+h
 [root@h1 keystone]# egrep  -v  '^$|^#'  keystone.conf  | grep rabbit
 [oslo_messaging_rabbit]
 rabbit_host = localhost
@@ -74,7 +78,8 @@ NODE_PORT=5672
 
 可以用web管理
 
-```bash
+```bas
+h
 [root@h3 rabbitmq]# rabbitmq-plugins  list   ##查看插件
 [root@h3 rabbitmq]# rabbitmq-plugins   enable   rabbitmq_management  ##启用管理插件
 The following plugins have been enabled:
@@ -100,7 +105,8 @@ http://192.168.1.203:15672/              用户guest  密码guest
 
 查看控制节点 网卡设置是否有问题
 
-```bash
+```bas
+h
 [root@h1 ~]# ovs-vsctl show
 c34056d1-7b80-437f-b73c-5bf05258d303
     Bridge br-ex
@@ -126,7 +132,8 @@ c34056d1-7b80-437f-b73c-5bf05258d303
 
 ![openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据_中枢_03](assets/1796041/03_wKioL1d7hSbTug-WAAGDLh0x_JY828.png)
 
-```bash
+```bas
+h
 [root@h2 ~]# cd /etc/nova/
 [root@h2 nova]# grep metadata nova.conf
 # Number of metadata items allowed per instance (integer value)
@@ -161,7 +168,8 @@ metadata_host=192.168.1.201                 ################主
 
 可以查看metadate的设置数据
 
-```bash
+```bas
+h
 curl  htt://169.254.169.254/2009-04-04/meta-data/
 hostname        
 local-ipv4

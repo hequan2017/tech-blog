@@ -16,7 +16,8 @@ source: "https://blog.51cto.com/hequan/1764833"
 
 centos  6.7_64位                apache 2.4.20版本
 
-```bash
+```bas
+h
 yum install   gcc     gcc-c++   make    uuid-devel    libuuid-devel    unzip  zlib-devel zlib  -y
 ```
 
@@ -30,7 +31,8 @@ apr-iconv包中的文件主要用于实现iconv编码。目前的大部分编码
 
 **（1）、安装apr**
 
-```bash
+```bas
+h
 wget http:////apr/apr-1.5.2.tar.gz
 tar zxvf apr-1.5.2.tar.gz
 cd apr-1.5.2
@@ -40,7 +42,8 @@ make   &&   make install
 
 **（2）、安装apr-iconv**
 
-```bash
+```bas
+h
 wget http:////apr/apr-iconv-1.2.1.tar.gz
 tar -zxvf apr-iconv-1.2.1.tar.gz
 cd apr-iconv-1.2.1
@@ -50,7 +53,8 @@ make   &&   make install
 
 **（3）、安装apr-util**
 
-```bash
+```bas
+h
 wget http:///apache//apr/apr-util-1.5.4.tar.gz
 tar zxvf apr-util-1.5.4.tar.gz
 cd apr-util-1.5.4
@@ -60,7 +64,8 @@ make    &&   make install
 
 **（4）、安装 pcre**
 
-```bash
+```bas
+h
 wget  http://120.52.73.44/nchc.dl.sourceforge.net/project/pcre/pcre/8.38/pcre-8.38.zip
 unzip  -o pcre-8.38.zip
 cd pcre-8.38
@@ -70,7 +75,8 @@ make    &&   make install
 
 **开始正式安装apache**
 
-```bash
+```bas
+h
 wget   http:///apache/httpd/httpd-2.4.20.tar.gz
 ```
 
@@ -80,13 +86,15 @@ wget   http:///apache/httpd/httpd-2.4.20.tar.gz
 
 8.0M httpd-2.4.20.tar.gz
 
-```bash
+```bas
+h
 tar  zxvf   httpd-2.4.20.tar.gz
 ```
 
 **[http:///apache/httpd/httpd-2.4.20.tar.gz](http:///apache/httpd/httpd-2.4.20.tar.gz)**
 
-```bash
+```bas
+h
 cd httpd-2.4.20
 ```
 
@@ -104,7 +112,8 @@ $ make install
 
 $ PREFIX/bin/apachectl start
 
-```bash
+```bas
+h
 ./configure \
 --prefix=/application/apache2.4.20  \
 --enable-deflate \
@@ -128,7 +137,8 @@ Server version: Apache/2.4.20 (Unix)
 
 启动
 
-```bash
+```bas
+h
 /application/apache2.4.20/bin/apachectl   start
 ```
 

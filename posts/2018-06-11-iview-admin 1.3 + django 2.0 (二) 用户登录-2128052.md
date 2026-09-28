@@ -18,7 +18,8 @@ source: "https://blog.51cto.com/hequan/2128052"
 
 #### main.js
 
-```pythonimport axios from 'axios';
+```pythonimport
+axios from 'axios';
 axios.interceptors.request.use(
     config => {
         let ttoken = JSON.parse(localStorage.getItem('token'));
@@ -33,11 +34,13 @@ axios.interceptors.request.use(
 
 axios.defaults.withCredentials = true;
 Vue.prototype.$ajax = axios;
-```shell
+```shel
+l
 
 #### logo.vue
 
-```python<Alert v-show="isshow" type="error" show-icon closable>
+```python
+<Alert v-show="isshow" type="error" show-icon closable>
     提交错误
     <span slot="desc">{{ e }} </span>
 </Alert>
@@ -101,7 +104,8 @@ export default {
 
 #### settings.py
 
-```shellINSTALLED_APPS = [
+```shell
+INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -133,14 +137,16 @@ APPEND_SLASH=False
 
 #### urls.py
 
-```pythonfrom rest_framework.authtoken import views
+```pythonfrom
+rest_framework.authtoken import views
 
 path('api-token-auth', views.obtain_auth_token),
 ```
 
 #### api.py
 
-```pythonfrom .serializers import AssetSerializer
+```pythonfrom
+.serializers import AssetSerializer
 
 from rest_framework import permissions
 from rest_framework import generics

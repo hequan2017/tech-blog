@@ -16,7 +16,8 @@ source: "https://blog.51cto.com/hequan/1782765"
 
 oracle报警
 
-```bash
+```bas
+h
 [WARNING] [INS-13014] Target environment do not meet some optional requirements.
    CAUSE: Some of the optional prerequisites are not met. See logs for details. /opt/logs/installActions2014-02-12_11-09-40AM.log
    ACTION: Identify the list of failed prerequisite checks from the log: /opt/logs/installActions2014-02-12_11-09-40AM.log. Then either from the log file or from installation manual find the appropriate configuration to meet the prerequisites and fix it manually.
@@ -26,7 +27,8 @@ You can find the log of this install session at:
 
 查看日志是缺少软件包及SWAP太小了。
 
-```bash
+```bas
+h
 INFO: 交换空间大小: 此先决条件将测试系统是否具有足够的总交换空间。
 INFO: Severity:IGNORABLE
 INFO: OverallStatus:OPERATION_FAILED

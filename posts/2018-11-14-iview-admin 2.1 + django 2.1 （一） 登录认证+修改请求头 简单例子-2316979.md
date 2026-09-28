@@ -18,7 +18,8 @@ source: "https://blog.51cto.com/hequan/2316979"
 
 #### 前端
 
-```shell登录
+```shell
+登录
 
 config/index.js
 
@@ -57,7 +58,8 @@ options = Object.assign(this.getInsideConfig(options.url), options)   // 添加 
 
 ##### 安装drf
 
-```shellpip install djangorestframework  django-cors-headers
+```shellpip
+install djangorestframework  django-cors-headers
 
 ##### settings.py
 
@@ -108,7 +110,8 @@ MIDDLEWARE_CLASSES = 'DisableCSRFCheck'
 
 ##### urls.py
 
-```pythonfrom rest_framework.authtoken import views
+```pythonfrom
+rest_framework.authtoken import views
 
 path('api-token-auth', views.obtain_auth_token),
 
@@ -117,7 +120,8 @@ path('get_info',GetInfo.as_view()),
 
 ##### views.py
 
-```pythonfrom rest_framework import permissions
+```pythonfrom
+rest_framework import permissions
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response

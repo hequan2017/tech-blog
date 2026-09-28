@@ -10,7 +10,8 @@ source: "https://blog.51cto.com/hequan/5359730"
 
 ---
 
-```pythonpackage main
+```pythonpackage
+main
 
 import (
     "database/sql"

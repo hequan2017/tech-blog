@@ -21,7 +21,8 @@ source: "https://blog.51cto.com/hequan/2095114"
 
 #### git服务器
 
-```shellyum install git
+```shellyum
+install git
 useradd git
 passwd git
 
@@ -33,7 +34,8 @@ git --bare  init  ##初始化仓库
 
 #### docker
 
-```shellcat >> /etc/docker/daemon.json　<< EOF
+```shellcat
+>> /etc/docker/daemon.json　<< EOF
 {
 "insecure-registries":[":5000"]
 }
@@ -42,7 +44,8 @@ EOF
 
 #### Jenkins服务器
 
-```shellwget https://codeload.github.com/b3log/solo/zip/master
+```shellwget
+https://codeload.github.com/b3log/solo/zip/master
 unzip master
 
 ##用来让 jenkins 免密钥 拉代码
@@ -62,11 +65,13 @@ serverPort=80
 git add .
 git commit  -m "all"
 git push origin  master
-```dockerfile
+```dockerfil
+e
 
 #### 生成一个基本镜像
 
-```shellcat >>  Dockerfile << EOF
+```shellcat
+>>  Dockerfile << EOF
 
 FROM jenkins
 
@@ -83,7 +88,8 @@ docker  build   -t  jenkins:v1  .
 
 #### 启动jenkins
 
-```shelldocker run -d \
+```shelldocker
+run -d \
 --name jenkins \
 -p 8080:8080 \
 -v /var/jenkins_home/:/var/jenkins_home \
@@ -97,7 +103,8 @@ jenkins:v1
 
 #### tomcat 上传到harbor服务器
 
-```shellFROM centos:7
+```shell
+FROM centos:7
 MAINTAINER   hequan
 
 RUN yum install unzip iproute -y
@@ -118,12 +125,14 @@ docker  push  /test/tomcat:v1
 
 ---
 
-```shell启动 设置jdk,git,maven
+```shell
+启动 设置jdk,git,maven
 
 插件-高级    http:///jenkins/updates/update-center.json
 ```
 
-```shell配置 Credentials -- (global) -- Add Credentials
+```shell
+配置 Credentials -- (global) -- Add Credentials
 SSH Username with private key
 root
 From the Jenkins master ~/.ssh
@@ -137,12 +146,14 @@ hosts
 
 #### git
 
-```shell    git@192.168.1.112:/home/git/solo.git
+```shell
+git@192.168.1.112:/home/git/solo.git
 ```
 
 #### Poll SCM
 
-```shell     * * * * *
+```shell
+* * * * *
 ```
 
 #### Build
@@ -153,7 +164,8 @@ hosts
 
 ##### Execute shell
 
-```shellcd $WORKSPACE
+```shellcd
+$WORKSPACE
 cat > Dockerfile <<EOF
 FROM  /test/tomcat:v1
 
@@ -175,7 +187,8 @@ docker  push  /test/solo:v1
 
 ##### Execute shell script on remote host  using ssh
 
-```shelldocker  rm -f    solol  | true
+```shelldocker
+rm -f    solol  | true
 docker  rmi -f   /test/solo:v1  |  true
 
 docker  login -u hequan  -p  123456

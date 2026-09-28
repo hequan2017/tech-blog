@@ -10,7 +10,8 @@ source: "https://blog.51cto.com/hequan/5654734"
 
 ---
 
-```shellContainer runtime network not ready" networkReady="NetworkRe
+```shell
+Container runtime network not ready" networkReady="NetworkRe
 
 报错解决：
 

@@ -16,7 +16,8 @@ source: "https://blog.51cto.com/hequan/1795594"
 
 RDO模式安装报错
 
-```bash
+```bas
+h
 ERROR : Error appeared during Puppet run: 192.168.1.201_mariadb.pp
 Error: Execution of '/usr/bin/yum -d 0 -e 0 -y install mariadb' returned 1: Error: Package: 1:mariadb-5.5.44-2.el7.centos.x86_64 (dvd)
 You will find full trace in log /var/tmp/packstack/20160704-142958-_jXSqZ/manifests/192.168.1.201_mariadb.pp.log
@@ -24,7 +25,8 @@ You will find full trace in log /var/tmp/packstack/20160704-142958-_jXSqZ
 
 怀疑是软件问题，查看
 
-```bash
+```bas
+h
 [root@h1 ~]# yum -d 0 -e 0 -y install mariadb-5.5.44-2.el7.centos.x86_64
 错误：软件包：1:mariadb-5.5.44-2.el7.centos.x86_64 (dvd)
           需要：mariadb-libs(x86-64) = 1:5.5.44-2.el7.centos
@@ -38,7 +40,8 @@ You will find full trace in log /var/tmp/packstack/20160704-142958-_jXSqZ
 
 一个是5.5.44  一个是5.5.47
 
-```bash
+```bas
+h
 [root@h1 Packages]# rpm -e --nodeps mariadb-libs-5.5.47-1.el7_2.x86_64
 [root@h1 Packages]# rpm -qa mariadb-libs                              
 [root@h1 Packages]# rpm -ivh mariadb-libs-5.5.44-2.el7.centos.x86_64.rpm

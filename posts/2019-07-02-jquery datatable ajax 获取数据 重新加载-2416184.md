@@ -12,7 +12,8 @@ source: "https://blog.51cto.com/hequan/2416184"
 
 ### table
 
-```html   <table class="table table-striped table-bordered table-hover "  style="width: 100%;"
+```html
+<table class="table table-striped table-bordered table-hover "  style="width: 100%;"
                                                id="table1">
 					<thead>
 					<tr>
@@ -48,9 +49,11 @@ source: "https://blog.51cto.com/hequan/2416184"
 	}
 ]
 }
-```javascript
+```javascrip
+t
 
-```shell				 $.getJSON(url, function (data, textStatus) {
+```shell
+$.getJSON(url, function (data, textStatus) {
 
 										$("#table1").dataTable().fnClearTable();
                     $("#table1").dataTable().fnDestroy();

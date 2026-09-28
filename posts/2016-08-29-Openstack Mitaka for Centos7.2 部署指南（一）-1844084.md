@@ -30,7 +30,8 @@ OpenStack Mitaka for Ubuntu 16.04 LTS 部署指南
 
 **4.1配置OpenStack**
 
-```bash
+```bas
+h
 yum install centos-release-openstack-mitaka
 
 安装OpenStack client：
@@ -60,7 +61,8 @@ mysql_secure_installation  ##设置密码
 
 Controller Node
 
-```bash
+```bas
+h
 ① 安装MongoDB
 yum install mongodb-server mongodb
 [root@controller ~]# vim /etc/mongod.conf
@@ -76,7 +78,8 @@ Controller Node
 
 ① 安装RabbitMQ
 
-```bash
+```bas
+h
 yum install rabbitmq-server
 systemctl enable rabbitmq-server.service
 systemctl start rabbitmq-server.service
@@ -94,7 +97,8 @@ Controller Node
 
 ① 安装Memcached
 
-```bash
+```bas
+h
 yum install memcached python-memcached
 systemctl enable memcached.service
 systemctl start memcached.service
@@ -110,7 +114,8 @@ Identity服务采用RESTful设计，使用REST API提供Web服务接口。
 
 在MariaDB（MySQL）中创建Keystone数据库
 
-```bash
+```bas
+h
 mysql -uroot -p123456
 CREATE DATABASE keystone;
 GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIED BY  'keystone';
@@ -125,7 +130,8 @@ quit;
 
 生成一个随机值，作为keystone初始配置时的ADMIN_TOKEN
 
-```bash
+```bas
+h
 openssl rand  -hex 10
 2d3c132acf773c01838e
 ```
@@ -134,7 +140,8 @@ openssl rand  -hex 10
 
 本文采用Apache HTTP server with mod_wsgi 监听端口5000 和35357 提供身份服务。默认keystone 服务已经监听端口5000 和35357 ，为避免冲突，需首先关闭keystone服务
 
-```bash
+```bas
+h
 yum install openstack-keystone httpd mod_wsgi
 vim  /etc/keystone/keystone.conf
 admin_token = ADMIN_TOKEN
@@ -183,14 +190,16 @@ Listen 5000Listen 35357
 
 </Directory></VirtualHost>
 
-```bash
+```bas
+h
 systemctl enable httpd.service
 systemctl start httpd.service
 ```
 
 创建服务实体（Service Entity）和API路径（API Endpoints）
 
-```bash
+```bas
+h
 vim admin ##设置环境变量
 export OS_TOKEN=2d3c132acf773c01838e
 export OS_URL=http://controller:35357/v3
@@ -202,7 +211,8 @@ source admin
 
 身份服务管理着一个OpenStack的服务目录，通过服务目录确定其他服务是否可用
 
-```bash
+```bas
+h
 openstack service create --name keystone --description "OpenStack Identity" identity
 ```
 
@@ -212,7 +222,8 @@ OpenStack每个服务可使用三种API路径变体： admin ， internal 和pub
 
 API路径可修改用户（user）和租户（tenant），而internal 和public 类型的API路径不允许该操作。
 
-```bash
+```bas
+h
 openstack endpoint create --region RegionOne  identity public http://controller:5000/v3
 openstack endpoint create --region RegionOne  identity internal http://controller:5000/v3
 openstack endpoint create --region RegionOne identity admin http://controller:35357/v3
@@ -220,7 +231,8 @@ openstack endpoint create --region RegionOne identity admin http://contro
 
 创建域（Domain）、计划（Project）、用户（User）、角色（Role）：
 
-```bash
+```bas
+h
 openstack domain create --description "Default Domain" default
 openstack project create --domain default  --description "Admin Project" admin
 openstack user create --domain default  --password-prompt admin
@@ -229,19 +241,22 @@ openstack role create admin
 
 创建的任何角色都必须映射到OpenStack配置文件policy.json 指定的角色：
 
-```bash
+```bas
+h
 openstack role add --project admin --user admin admin
 ```
 
 创建服务计划
 
-```bash
+```bas
+h
 openstack project create --domain default --description "Service Project" service
 ```
 
 常规（非管理员）的任务应该使用一个普通的项目和用户。
 
-```bash
+```bas
+h
 openstack project create --domain default  --description "Demo Project" demo
 openstack user create --domain default  --password-prompt demo
 openstack role create user
@@ -249,7 +264,8 @@ openstack role create user
 
 将普通用户角色授予示例计划和示例用户：
 
-```bash
+```bas
+h
 openstack role add --project demo --user demo user
 ```
 
@@ -261,13 +277,15 @@ openstack role add --project demo --user demo user
 
 取消环境变量OS_TOKEN 和OS_URL
 
-```bash
+```bas
+h
 unset OS_TOKEN OS_URL
 ```
 
 为admin 用户申请一个身份认证令牌
 
-```bash
+```bas
+h
 openstack ‐‐os‐auth‐url http://controller:35357/v3 ‐‐os‐project‐domain‐name default ‐‐osuser‐domain‐name default ‐‐os‐project‐name admin ‐‐os‐username admin token issue
 
 为demo 用户申请一个身份认证令牌
@@ -278,7 +296,8 @@ openstack --os-auth-url http://controller:5000/v3   --os-project-domain-nam
 
 创建OpenStack客户端环境脚本方法
 
-```bash
+```bas
+h
 vim   admin-openrc
 export OS_PROJECT_DOMAIN_NAME=default
 export OS_USER_DOMAIN_NAME=default
@@ -312,7 +331,8 @@ openstack token issue
 
 部署节点：Controller Node
 
-```bash
+```bas
+h
 mysql -uroot -p123456
 CREATE DATABASE glance;
 GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost'  IDENTIFIED BY 'glance';
@@ -324,7 +344,8 @@ flush privileges;
 
 在OpenStack中创建一个glance用户
 
-```bash
+```bas
+h
 openstack user create --domain default --password-prompt glance
 User Password: glance
 Repeat User Password:glance
@@ -332,19 +353,22 @@ Repeat User Password:glance
 
 将admin 角色授予glance 用户和service 计划
 
-```bash
+```bas
+h
 openstack role add --project service --user glance admin
 ```
 
 创建glance服务实体
 
-```bash
+```bas
+h
 openstack service create --name glance --description "OpenStack Image" p_w_picpath
 ```
 
 创建镜像服务API路径
 
-```bash
+```bas
+h
 openstack endpoint create --region RegionOne   p_w_picpath public http://controller:9292
 openstack endpoint create --region RegionOne   p_w_picpath internal http://controller:9292
 openstack endpoint create --region RegionOne   p_w_picpath admin http://controller:9292
@@ -352,7 +376,8 @@ openstack endpoint create --region RegionOne   p_w_picpath admin http:/
 
 安装和配置Glance服务组件
 
-```bash
+```bas
+h
 yum install openstack-glance
 vim /etc/glance/glance-api.conf
 ```
@@ -388,7 +413,8 @@ default_store = file
 
 filesystem_store_datadir = /var/lib/glance/p_w_picpaths/
 
-```bash
+```bas
+h
 vim /etc/glance/glance-registry.conf
 connection = mysql+pymysql://glance:GLANCE_DBPASS@controller/glance
 [keystone_authtoken]
@@ -407,7 +433,8 @@ flavor = keystone
 
 将配置信息写入glance数据库
 
-```bash
+```bas
+h
  su -s /bin/sh -c "glance-manage  db_sync" glance
 ```
 
@@ -419,7 +446,8 @@ Option "verbose" from group "DEFAULT" is deprecated for removal.  Its value may
 
 expire_on_commit=expire_on_commit, _conf=conf)
 
-```bash
+```bas
+h
 systemctl enable openstack-glance-api.service   openstack-glance-registry.service
 systemctl start openstack-glance-api.service   openstack-glance-registry.service
 wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img

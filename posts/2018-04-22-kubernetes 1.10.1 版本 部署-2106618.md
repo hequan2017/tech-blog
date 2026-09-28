@@ -18,7 +18,8 @@ source: "https://blog.51cto.com/hequan/2106618"
 
 Master组件：
 
-```shellkube-apiserver
+```shellkube
+-apiserver
 Kubernetes API，集群的统一入口，各组件协调者，以HTTP API提供接口服务，所有对象资源的增删改查和监听操作都交给APIServer处理后再提交
 
 kube-controller-manager
@@ -30,7 +31,8 @@ kube-scheduler
 
 Node组件：
 
-```shellkubelet
+```shellkubele
+t
 kubelet是Master在Node节点上的Agent，管理本机运行容器的生命周期，比如创建容器、 Pod挂载数据卷、
 下载secret、获取容器和节点状态等工作。 kubelet将每个Pod转换成一组容器。
 
@@ -43,9 +45,11 @@ docker或rocket/rkt
 
 第三方服务：
 
-```shell etcd
-分布式键值存储系统。用于保持集群状态，比如Pod、 Service等对象信息。
 ```shell
+etcd
+分布式键值存储系统。用于保持集群状态，比如Pod、 Service等对象信息。
+```shel
+l
 
 ---
 
@@ -76,7 +80,8 @@ docker或rocket/rkt
 
 node1 node2
 
-```shellmkdir  /data/docker
+```shellmkdir
+/data/docker
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
@@ -103,7 +108,8 @@ sudo systemctl restart docker
 ![](assets/2106618/03_5e80df57b0fc6828c2dc630f67a00456.png)
 k8s-master 安装证书生成工具cfssl：
 
-```shellmkdir /data/ssl -p
+```shellmkdir
+/data/ssl -p
 
 wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
 wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
@@ -116,11 +122,13 @@ mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
 mv cfssl-certinfo_linux-amd64 /usr/bin/cfssl-certinfo
 
 cd /data/ssl/
-```shell
+```shel
+l
 
 创建certificate.sh
 
-```shellvim  certificate.sh
+```shellvim
+certificate.sh
 cat > ca-config.json <<EOF
 {
   "signing": {
@@ -249,14 +257,16 @@ cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kube
 
 修改如下，然后执行
 
-```shell50      "192.168.1.107",
+```shell
+50      "192.168.1.107",
 51      "192.168.1.111",
 52      "192.168.1.14",
 ```
 
 生成证书
 
-```shelladmin-key.pem   ca.csr       ca.pem               kube-proxy-key.pem  server-csr.json
+```shelladmin
+-key.pem   ca.csr       ca.pem               kube-proxy-key.pem  server-csr.json
 admin.csr       admin.pem       ca-csr.json  kube-proxy.csr       kube-proxy.pem      server-key.pem
 admin-csr.json  ca-config.json  ca-key.pem   kube-proxy-csr.json  server.csr          server.pem
 ```
@@ -265,7 +275,8 @@ admin-csr.json  ca-config.json  ca-key.pem   kube-proxy-csr.json  server.csr    
 
 #### 4 部署Etcd
 
-```shell二进制包下载地址： https:///coreos/etcd/releases/tag/v3.2.12
+```shell
+二进制包下载地址： https:///coreos/etcd/releases/tag/v3.2.12
 
 3个节点
 
@@ -282,9 +293,11 @@ cp ca*pem  server*pem  /opt/kubernetes/ssl/
 
 scp -r /opt/kubernetes/*  192.168.1.111:/opt/kubernetes
 scp -r /opt/kubernetes/*  192.168.1.14:/opt/kubernetes
-```shell
+```shel
+l
 
-```shellcd /data/etcd
+```shellcd
+/data/etcd
 vim
 
 #!/bin/bash
@@ -354,7 +367,8 @@ tailf /var/log/messages
 ps -ef | grep etcd
 ```
 
-```shell查看集群状态：
+```shell
+查看集群状态：
 cd /opt/kubernetes/ssl
 /opt/kubernetes/bin/etcdctl \
 --ca-file=ca.pem --cert-file=server.pem --key-file=server-key.pem \
@@ -373,7 +387,8 @@ cluster is healthy
 
 写入分配的子网段到etcd，供flanneld使用
 
-```shellcd /opt/kubernetes/ssl
+```shellcd
+/opt/kubernetes/ssl
 
 /opt/kubernetes/bin/etcdctl \
 > --ca-file=ca.pem --cert-file=server.pem --key-file=server-key.pem \
@@ -384,12 +399,14 @@ cluster is healthy
 
 下载二进制包
 
-```shellwget https:///coreos/flannel/releases/download/v0.10.0/flannel-v0.10.0-linux-amd64.tar.gz
+```shellwget
+https:///coreos/flannel/releases/download/v0.10.0/flannel-v0.10.0-linux-amd64.tar.gz
 ```
 
 配置flanneld--三个节点 操作
 
-```shellmkdir  /data/flanneld
+```shellmkdir
+/data/flanneld
 cd /data/flanneld
 tar xf flannel-v0.10.0-linux-amd64.tar.gz
 mv flanneld   /opt/kubernetes/bin/
@@ -470,7 +487,8 @@ DOCKER_NETWORK_OPTIONS=" --bip=172.17.1.1/24 --ip-masq=false --mtu=1450"
 
 查看配置
 
-```shellcd /opt/kubernetes/ssl
+```shellcd
+/opt/kubernetes/ssl
 /opt/kubernetes/bin/etcdctl --ca-file=ca.pem --cert-file=server.pem --key-file=server-key.pem --endpoints="https://192.168.1.107:2379,https://192.168.0.212:2379,https://192.168.0.213:2379"  ls /coreos.com/network/subnets
 
 /coreos.com/network/subnets/172.17.1.0-24
@@ -497,7 +515,8 @@ master节点操作
 - 创建kubelet kubeconfig
 - 创建kube-proxy kubeconfig
 
-```shellcd /data/ssl/
+```shellcd
+/data/ssl/
 vim           ##修改第10行 ip
 
 # 创建 TLS Bootstrapping Token
@@ -564,7 +583,8 @@ sh
 kube-proxy.csr  kube-proxy-key.pem   kube-proxy.pem bootstrap.kubeconfig
 ```
 
-```shellscp *kubeconfig root@192.168.1.111:/opt/kubernetes/cfg
+```shellscp
+*kubeconfig root@192.168.1.111:/opt/kubernetes/cfg
 scp *kubeconfig root@192.168.1.14:/opt/kubernetes/cfg
 ```
 
@@ -572,7 +592,8 @@ scp *kubeconfig root@192.168.1.14:/opt/kubernetes/cfg
 
 #### 7  获取K8S二进制包
 
-```shellhttps:///kubernetes/kubernetes/blob/master/#v1101
+```shellhttps
+:///kubernetes/kubernetes/blob/master/#v1101
 
 kubernetes-server-linux-amd64.tar.gz
 ```
@@ -590,7 +611,8 @@ node
 - kubelet
 - kube-proxy
 
-```shellvim
+```shellvi
+m
 #!/bin/bash
 
 MASTER_ADDRESS=${1:-"192.168.1.107"}
@@ -643,7 +665,8 @@ systemctl enable kube-apiserver
 systemctl restart kube-apiserver
 ```
 
-```shellvim
+```shellvi
+m
 #!/bin/bash
 
 MASTER_ADDRESS=${1:-"127.0.0.1"}
@@ -683,7 +706,8 @@ systemctl enable kube-controller-manager
 systemctl restart kube-controller-manager
 ```
 
-```shellvim
+```shellvi
+m
 #!/bin/bash
 
 MASTER_ADDRESS=${1:-"127.0.0.1"}
@@ -718,7 +742,8 @@ systemctl restart kube-scheduler
 
 #### 8 运行Master组件
 
-```shellmv kube-apiserver kube-controller-manager kube-scheduler kubectl /opt/kubernetes/bin
+```shellmv
+kube-apiserver kube-controller-manager kube-scheduler kubectl /opt/kubernetes/bin
 chmod +x /opt/kubernetes/bin/* && chmod +x *.sh
 
 cp ssl/token.csv /opt/kubernetes/cfg/
@@ -735,12 +760,14 @@ source /etc/profile
 
 创建用户
 
-```shellkubectl create clusterrolebinding  kubelet-bootstrap --clusterrole=system:node-bootstrapper  --user=kubelet-bootstrap
+```shellkubectl
+create clusterrolebinding  kubelet-bootstrap --clusterrole=system:node-bootstrapper  --user=kubelet-bootstrap
 ```
 
 检查
 
-```shellkubectl get cs
+```shellkubectl
+get cs
 NAME                 STATUS    MESSAGE              ERROR
 controller-manager   Healthy   ok
 scheduler            Healthy   ok
@@ -821,11 +848,13 @@ EOF
 systemctl daemon-reload
 systemctl enable kube-proxy
 systemctl restart kube-proxy
-```shell
+```shel
+l
 
 node1    node2重复此步骤
 
-```shellmv kubelet kube-proxy /opt/kubernetes/bin
+```shellmv
+kubelet kube-proxy /opt/kubernetes/bin
 chmod +x /opt/kubernetes/bin/* && chmod +x *.sh
 ./ 192.168.1.111 10.10.10.2
 ./ 192.168.1.111
@@ -837,7 +866,8 @@ node2
 
 master:
 
-```shellkubectl get csr
+```shellkubectl
+get csr
 NAME                                                   AGE       REQUESTOR           CONDITION
 node-csr-OBBWrBrJEDjmG2Cnu62ZGfRPfElYXbzrBOdwZoNP9GY   2m        kubelet-bootstrap   Pending
 
@@ -852,11 +882,13 @@ kubectl get node
 NAME            STATUS     ROLES     AGE       VERSION
 192.168.1.111   Ready      <none>    11m       v1.10.1
 192.168.1.14    NotReady   <none>    8s        v1.10.1
-```shell
+```shel
+l
 
 #### 10 查询集群状态
 
-```shellkubectl get componentstatus
+```shellkubectl
+get componentstatus
 kubectl get node
 ```
 

@@ -16,12 +16,14 @@ source: "https://blog.51cto.com/hequan/2345510"
 
 ### pdf.js
 
-```shellhttps://mozilla.github.io/pdf.js/
+```shellhttps
+://mozilla.github.io/pdf.js/
 ```
 
 #### 使用报错
 
-```shellSetting up fake worker failed: "Cannot load script at: http://127.0.0.1/build/pdf.worker.js".
+```shell
+Setting up fake worker failed: "Cannot load script at: http://127.0.0.1/build/pdf.worker.js".
 
 Not Found: /build/pdf.worker.js
 

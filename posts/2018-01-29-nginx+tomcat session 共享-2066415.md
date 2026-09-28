@@ -14,14 +14,16 @@ source: "https://blog.51cto.com/hequan/2066415"
 
 ---
 
-```shell* tomcat1   192.168.10.153
+```shell
+* tomcat1   192.168.10.153
 
 * tomcat2   192.168.10.154
 ```
 
 Tomcat  工作模式必须为Nio 模式。
 
-```html##添加如下内容，         注意更换   address="192.168.10.154"  为本机IP
+```html
+##添加如下内容，         注意更换   address="192.168.10.154"  为本机IP
 vim /usr/local/tomcat/conf/server.xml
 
 <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"
@@ -65,7 +67,8 @@ vim /usr/local/tomcat/conf/server.xml
         </Cluster>
 ```
 
-```html##  修改 web文件，在</web-app>  上面  添加一行内容
+```html
+##  修改 web文件，在</web-app>  上面  添加一行内容
 vim /usr/local/tomcat/webapps/ROOT/WEB-INF/web.xml
 
 <distributable/>
@@ -91,9 +94,11 @@ ID " + session.getId()+"
      %>
      </body>
 </html>
-```nginx
+```ngin
+x
 
-```shell##配置 nginx负责均衡，进行测试
+```shell
+##配置 nginx负责均衡，进行测试
 
         upstream tomcatserver {
 

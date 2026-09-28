@@ -17,7 +17,8 @@ source: "https://blog.51cto.com/hequan/2296381"
 阿里云 创建主机
 报错:
 
-```shellSDK.ServerUnreachable Unable to connect server: timed out
+```shell
+SDK.ServerUnreachable Unable to connect server: timed out
 ```
 
 原因:
@@ -38,6 +39,7 @@ source: "https://blog.51cto.com/hequan/2296381"
 
 解决办法：
 
-```shell# 把超时时间 延长
+```shell
+# 把超时时间 延长
 createclt = client.AcsClient(self.AccessKeyId, self.AccessKeySecret, region_id, timeout=30)
 

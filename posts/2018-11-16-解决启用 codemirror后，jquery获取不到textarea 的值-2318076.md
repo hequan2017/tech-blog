@@ -16,10 +16,13 @@ source: "https://blog.51cto.com/hequan/2318076"
 
 ### 例子
 
-```html <textarea id="config" name="config"  class="form-control"></textarea>
-```javascript
+```html
+<textarea id="config" name="config"  class="form-control"></textarea>
+```javascrip
+t
 
-```shell window.editor_two = CodeMirror.fromTextArea(document.getElementById("config"), {
+```shell
+window.editor_two = CodeMirror.fromTextArea(document.getElementById("config"), {
                             lineNumbers: true,
                             matchBrackets: true,
                             styleActiveLine: true

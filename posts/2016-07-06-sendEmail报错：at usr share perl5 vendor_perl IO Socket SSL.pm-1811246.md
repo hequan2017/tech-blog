@@ -14,7 +14,8 @@ source: "https://blog.51cto.com/hequan/1811246"
 
 ---
 
-```bash
+```bas
+h
 *******************************************************************
  Using the default of SSL_verify_mode of SSL_VERIFY_NONE for client
  is deprecated! Please set SSL_verify_mode to SSL_VERIFY_PEER
@@ -40,7 +41,8 @@ sendEmail发邮件的时候，出现的报错，然后查阅了很多资料
 
 centos7.2默认是 perl的版本是5.16，centos6.5的是5.10，后来把7的版本换成5.10，就可以正常发邮件了。
 
-```bash
+```bas
+h
 #### perl安装
      wget http://www.cpan.org/src/5.0/perl-5.10.0.tar.gz
      tar -zxf perl-5.10.0.tar.gz

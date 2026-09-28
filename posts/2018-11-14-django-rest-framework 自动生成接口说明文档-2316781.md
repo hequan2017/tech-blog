@@ -18,12 +18,14 @@ source: "https://blog.51cto.com/hequan/2316781"
 
 #### 安装
 
-```shellpip install djangorestframework
+```shellpip
+install djangorestframework
 ```
 
 #### urls.py
 
-```pythonfrom rest_framework.documentation import include_docs_urls
+```pythonfrom
+rest_framework.documentation import include_docs_urls
 
     path('docs/', include_docs_urls(title='文档')),
 
@@ -31,7 +33,8 @@ source: "https://blog.51cto.com/hequan/2316781"
 
 #### models.py
 
-```pythonfrom django.db import models
+```pythonfrom
+django.db import models
 
 # Create your models here.
 
@@ -47,11 +50,13 @@ class Asset(models.Model):
 
     def __str__(self):
         return self.hostname
-```python
+```pytho
+n
 
 #### serializers.py
 
-```pythonfrom rest_framework import serializers
+```pythonfrom
+rest_framework import serializers
 from .models import Asset
 
 class AssetSerializer(serializers.ModelSerializer):
@@ -64,7 +69,8 @@ class AssetSerializer(serializers.ModelSerializer):
 
 #### views.py
 
-```pythonimport json
+```pythonimport
+json
 from django.shortcuts import HttpResponse
 from rest_framework import permissions
 from rest_framework import generics

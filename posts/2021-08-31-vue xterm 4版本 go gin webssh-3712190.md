@@ -16,7 +16,8 @@ source: "https://blog.51cto.com/hequan/3712190"
 
 ### 前端
 
-```javascript
+```javascrip
+t
 <template>
   <div>
     <div id="log" style="margin-top:20px;">

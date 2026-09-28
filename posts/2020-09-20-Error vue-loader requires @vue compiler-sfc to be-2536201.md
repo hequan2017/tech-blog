@@ -16,12 +16,15 @@ source: "https://blog.51cto.com/hequan/2536201"
 
 ### 解决办法
 
-```shellnpm i -D vue-loader@14
-```shell
+```shellnpm
+i -D vue-loader@14
+```shel
+l
 
 - 如果还是报错执行
 
-```shellrm -rf node_modules
+```shellrm
+-rf node_modules
 rm package-lock.json
 npm cache clear --force
 npm install
