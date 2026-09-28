@@ -4,6 +4,15 @@ date: "2016-07-04 14:44:50"
 category: "openstack"
 source: "https://blog.51cto.com/hequan/1795594"
 ---
+> **内容介绍**
+>
+> 本文是OpenStack 私有云部署与运维笔记,记录了「ERROR : Error appeared during Puppet run: 192.168.1.201_mariadb.pp」的相关内容。主要涉及:RDO模式安装报错 怀疑是软件问题，查看 一个是5.5.44 一个是5.5.47…
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 RDO模式安装报错
 
