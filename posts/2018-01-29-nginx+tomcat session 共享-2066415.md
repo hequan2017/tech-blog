@@ -4,17 +4,24 @@ date: "2018-01-29 15:25:46"
 category: "tomcat"
 source: "https://blog.51cto.com/hequan/2066415"
 ---
+> **内容介绍**
+>
+> 本文是Tomcat 中间件部署与调优,记录了「nginx+tomcat   session 共享」的相关内容。主要涉及:Tomcat 工作模式必须为Nio 模式。…
 
-```
-* tomcat1   192.168.10.153
+> **技术备注**
+>
+> Nginx 配置在不同大版本间略有差异,建议以当前稳定版(1.24+/1.26+)官方文档为准。
+
+---
+
+```shell* tomcat1   192.168.10.153
 
 * tomcat2   192.168.10.154
 ```
 
 Tomcat  工作模式必须为Nio 模式。
 
-```
-##添加如下内容，         注意更换   address="192.168.10.154"  为本机IP
+```html##添加如下内容，         注意更换   address="192.168.10.154"  为本机IP
 vim /usr/local/tomcat/conf/server.xml
 
 <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"
@@ -58,15 +65,13 @@ vim /usr/local/tomcat/conf/server.xml
         </Cluster>
 ```
 
-```
-##  修改 web文件，在</web-app>  上面  添加一行内容
+```html##  修改 web文件，在</web-app>  上面  添加一行内容
 vim /usr/local/tomcat/webapps/ROOT/WEB-INF/web.xml
 
 <distributable/>
 ```
 
-```
-##添加测试文件
+```html##添加测试文件
 vim      index.jsp
 <%@ page contentType="text/html; charset=GBK" %>   
 <%@ page import="java.util.*" %>    
@@ -91,8 +96,7 @@ ID " + session.getId()+"
 </html>
 ```
 
-```
-##配置 nginx负责均衡，进行测试
+```shell##配置 nginx负责均衡，进行测试
 
         upstream tomcatserver {
        
