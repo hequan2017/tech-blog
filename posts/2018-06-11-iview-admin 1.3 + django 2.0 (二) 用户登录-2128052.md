@@ -6,20 +6,30 @@ source: "https://blog.51cto.com/hequan/2128052"
 ---
 > **内容介绍**
 >
-> 本文是Vue 前端工程化实践,记录了「iview-admin 1.3 + django 2.0 (二)  用户登录」的相关内容。主要涉及:### Iview-admin #### main.js #### logo.vue…
+> 本文是 iview-admin 1.3 + Django 2.0 前后端分离系列第二篇，实现用户登录鉴权：
+> 前端在 main.js 给 axios 注册请求拦截器，自动在请求头带上 localStorage 中保存的
+> Token；登录页 logo.vue 校验表单后提交到 DRF 的 /api-token-auth 接口换取 Token，
+> 写入 Cookie 与 localStorage 并跳转首页。后端 settings 启用
+> rest_framework.authtoken、默认权限改为 IsAuthenticated 并细化 CORS 配置，
+> api.py 增加 CSRF 豁免中间件与分页，资产接口从此必须携带 Token 访问。
 
 > **技术备注**
 >
-> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+> Django 2.0 已于 2019 年 8 月停止支持；DRF 的 obtain_auth_token 认证方式至今仍
+> 可用，更复杂的需求可换 djangorestframework-simplejwt；
+> iView 已更名为 View UI，本例基于 vue2 版 iview-admin 1.3；
+> 原文部分内容被编辑器吃掉：已补全 logo.vue 的 <template> 标签和 setAvator 头像
+> 的 ss1.bdstatic.com 域名；登录表单的 Form 模板原文已佚失，现仅保留错误提示与脚本逻辑。
 
 ---
 
-### Iview-admin
+## 1. 前端 iview-admin
 
-#### main.js
+### main.js：axios 请求拦截器
 
-```python
+```javascript
 import axios from 'axios';
+
 axios.interceptors.request.use(
     config => {
         let ttoken = JSON.parse(localStorage.getItem('token'));
@@ -34,15 +44,17 @@ axios.interceptors.request.use(
 
 axios.defaults.withCredentials = true;
 Vue.prototype.$ajax = axios;
-```shell
+```
 
-#### logo.vue
+### logo.vue：登录提交
 
-```python
-<Alert v-show="isshow" type="error" show-icon closable>
-    提交错误
-    <span slot="desc">{{ e }} </span>
-</Alert>
+```html
+<template>
+    <Alert v-show="isshow" type="error" show-icon closable>
+        提交错误
+        <span slot="desc">{{ e }} </span>
+    </Alert>
+</template>
 
 <script>
 import Cookies from 'js-cookie';
@@ -78,7 +90,7 @@ export default {
                             } else {
                                 Cookies.set('user', this.form.username);
                                 localStorage.setItem('token', JSON.stringify(res.data.token));
-                                this.$store.commit('setAvator', 'https:///70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg');
+                                this.$store.commit('setAvator', 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3448484253,3685836170&fm=27&gp=0.jpg');
                                 if (this.form.username === 'iview_admin') {
                                     Cookies.set('access', 0);
                                 } else {
@@ -97,13 +109,11 @@ export default {
 </script>
 ```
 
----
+## 2. 后端 Django
 
-### Django
+### settings.py
 
-#### settings.py
-
-```shell
+```python
 INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
@@ -134,7 +144,7 @@ CORS_ORIGIN_WHITELIST = (
 APPEND_SLASH=False
 ```
 
-#### urls.py
+### urls.py
 
 ```python
 from rest_framework.authtoken import views
@@ -142,7 +152,7 @@ from rest_framework.authtoken import views
 path('api-token-auth', views.obtain_auth_token),
 ```
 
-#### api.py
+### api.py
 
 ```python
 from .serializers import AssetSerializer
@@ -175,3 +185,6 @@ class AssetDetail(generics.RetrieveUpdateDestroyAPIView,DisableCSRFCheck):
     permission_classes = (permissions.IsAuthenticated,)
     pagination_class = StandardResultsSetPagination
 ```
+
+注意：api.py 里的 `AssetLoginUser` 来自上一篇的 asset 应用，别忘了
+`from .models import AssetLoginUser`。
