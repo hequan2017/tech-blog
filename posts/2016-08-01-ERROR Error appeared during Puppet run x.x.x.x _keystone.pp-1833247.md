@@ -4,11 +4,19 @@ date: "2016-08-01 22:21:00"
 category: ""
 source: "https://blog.51cto.com/hequan/1833247"
 ---
+> **内容介绍**
+>
+> 本文是技术实践笔记,记录了「ERROR : Error appeared during Puppet run: x.x.x.x _keystone.pp」的相关内容。主要涉及:报错 解决: 报错是 在用RDO模式 packstack安装openstack 最新版mitaka时出现的。…
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 报错
 
-```
-ERROR : Error appeared during Puppet run: x.x.x.x_keystone.pp
+```shellERROR : Error appeared during Puppet run: x.x.x.x_keystone.pp
 Error: /Stage[main]/Keystone::Db::Sync/Exec[keystone-manage db_sync]: Failed to call refresh: Command exceeded timeout
 You will find full trace in log /var/tmp/packstack/20160801-185048-pwY8Y8/manifests/x.x.x.x_keystone.pp.log
 Please check log file /var/tmp/packstack/20160801-185048-pwY8Y8/openstack-setup.log for more information
@@ -24,8 +32,7 @@ inet 192.168.1.7/24 brd 192.168.1.255 scope global dynamic eth0           �
 
 查看日志
 
-```
-[root@controller ~]# cd /var/log/keystone/
+```shell[root@controller ~]# cd /var/log/keystone/
 [root@controller keystone]# ls
 keystone.log
 2016-08-01 20:34:33.513 14145 ERROR keystone.common.wsgi DBConnectionError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'x.x.x.x' ([Errno 110] Connection timed out)")
@@ -35,8 +42,7 @@ keystone.log
 
 查看数据库
 
-```
-MariaDB [(none)]> show databases;
+```shellMariaDB [(none)]> show databases;
 +--------------------+
 | Database           |
 +--------------------+
@@ -88,8 +94,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'yunjisuan';
 
 flush privileges;
 
-```
-修改hosts
+```shell修改hosts
 [root@controller keystone]# cat   /etc/hosts
 127.0.0.1        controller             localhost localhost.localdomain localhost4 localhost4.localdomain4                  ##在127.0.0.1也添加主机名字
 ::1                   localhost localhost.localdomain localhost6 localhost6.localdomain6
@@ -188,8 +193,7 @@ Please, find your login credentials stored in the keystonerc_admin in your home 
 
 * The generated manifests are available at: /var/tmp/packstack/20160801-224547-mTb9CN/manifests
 
-```
-[root@controller ~]# netstat -lntup
+```shell[root@controller ~]# netstat -lntup
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
 tcp        0      0 0.0.0.0:8774            0.0.0.0:*               LISTEN      21105/python2       
