@@ -6,7 +6,11 @@ source: "https://blog.51cto.com/hequan/5654959"
 ---
 > **内容介绍**
 >
-> 本文是服务器集群与高可用架构实践,记录了「failed to get sandbox image 'k8s.gcr.io/pause:3.6': failed to pull image 'k8s.gcr.io/pause:3.6'」的相关内容。
+> 本文解决 kubeadm 集群节点启动 Pod 时报错 `failed to get sandbox image 'k8s.gcr.io/pause:3.6'` 的问题。原因是国内无法直接访问 k8s.gcr.io，通过 crictl 从阿里云镜像拉取 pause:3.6，再用 ctr 重打 tag 为 k8s.gcr.io/pause:3.6 即可恢复。
+>
+> **技术备注**
+>
+> k8s.gcr.io 自 2023 年起已全面迁移至 registry.k8s.io，旧地址已下线；现在应直接修改 containerd 配置 `sandbox_image = "registry.aliyuncs.com/google_containers/pause:3.6"` 或使用 kubeadm `--image-repository` 指定国内源。
 
 ---
 
