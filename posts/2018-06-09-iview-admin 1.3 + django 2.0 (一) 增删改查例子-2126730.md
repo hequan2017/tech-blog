@@ -4,13 +4,21 @@ date: "2018-06-09 16:29:33"
 category: "vue"
 source: "https://blog.51cto.com/hequan/2126730"
 ---
+> **内容介绍**
+>
+> 本文是Vue 前端工程化实践,记录了「iview-admin 1.3 + django 2.0 (一)  增删改查例子」的相关内容。主要涉及:以下为利用iview-admin + django 做的一个最基本的增删改查例子。 ### 前端iview-admin #### src/main.js…
+
+> **技术备注**
+>
+> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+
+---
 
 以下为利用iview-admin + django 做的一个最基本的增删改查例子。
 
 ### 前端iview-admin
 
-```
-git clone https:///iview/iview-admin.git
+```shellgit clone https:///iview/iview-admin.git
 cd iview-admin
 
 修改.eslintrc.json
@@ -29,8 +37,7 @@ build/webpack.prod.config.js
 
 #### src/main.js
 
-```
-import axios from 'axios';
+```pythonimport axios from 'axios';
 Vue.prototype.axios = axios;
 
 npm install axios
@@ -38,8 +45,7 @@ npm install axios
 
 #### src/router/router.js
 
-```
-export const otherRouter = {
+```shellexport const otherRouter = {
     path: '/',
     name: 'otherRouter',
     redirect: '/home',
@@ -70,8 +76,7 @@ export const appRouter = [
 
 #### asset.vue
 
-```
-<template>
+```html<template>
     <div>
         <Row>
             <Card>
@@ -224,8 +229,7 @@ export const appRouter = [
 
 #### asset-add.vue
 
-```
-<template>
+```html<template>
     <div>
         <Row>
             <Card>
@@ -312,8 +316,7 @@ export const appRouter = [
 
 #### asset-info.vue
 
-```
-<style lang="less" scoped>
+```html<style lang="less" scoped>
     @import '../../styles/common.less';
     @import './components/table.less';
 </style>
@@ -401,8 +404,7 @@ export const appRouter = [
 
 #### asset-edit.vue
 
-```
-<template>
+```html<template>
     <div>
         <Row>
             <Card>
@@ -510,8 +512,7 @@ export const appRouter = [
 
 #### 新建一个asset的app
 
-```
-pip install djangorestframework  django-cors-headers
+```pythonpip install djangorestframework  django-cors-headers
 
 settings.py
 INSTALLED_APPS = [
