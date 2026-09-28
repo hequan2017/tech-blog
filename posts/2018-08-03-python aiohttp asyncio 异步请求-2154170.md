@@ -6,15 +6,15 @@ source: "https://blog.51cto.com/hequan/2154170"
 ---
 > **内容介绍**
 >
-> 本文是Python 编程实战笔记,记录了「python  aiohttp  asyncio  异步请求」的相关内容。主要涉及:转自：https:///xianhu/LearnPython…
+> 一份 aiohttp + asyncio 异步 HTTP 请求的速查笔记：从一个最小 get 示例出发，整理了自定义 Header/Cookie、URL 参数、POST 表单与文件上传、超时、代理、读取大响应流、连接池 TCPConnector 等常用写法。代码转自 xianhu 的 LearnPython 项目。
 
 > **技术备注**
 >
-> 本文写于较早年代,文中软件版本与命令在新系统上可能有差异,执行前请核对当前环境。
+> aiohttp 3.x 写法至今通用，但注意 Python 3.10 起 `asyncio.get_event_loop()` 在无运行循环时会告警，推荐改用 `asyncio.run()`；aiohttp 3.9+ 中超时建议用 `aiohttp.ClientTimeout` 对象而不是裸数字。
 
 ---
 
-转自：https:///xianhu/LearnPython
+转自：https://github.com/xianhu/LearnPython（原文链接已失效，这里补全为 GitHub 项目地址）
 
 ```python
 # _*_ coding: utf-8 _*_
