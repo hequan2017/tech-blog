@@ -4,9 +4,13 @@ date: "2022-06-06 11:48:10"
 category: "go"
 source: "https://blog.51cto.com/hequan/5359730"
 ---
+> **内容介绍**
+>
+> 本文是Go 语言后端开发实战,记录了「tdengine 数据库 api 接口  sdk  go」的相关内容。
 
-```
-package main
+---
+
+```pythonpackage main
 
 import (
     "database/sql"
