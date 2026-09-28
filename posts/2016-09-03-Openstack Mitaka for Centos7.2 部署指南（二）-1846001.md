@@ -4,6 +4,15 @@ date: "2016-09-03 21:43:24"
 category: "openstack"
 source: "https://blog.51cto.com/hequan/1846001"
 ---
+> **内容介绍**
+>
+> 本文是OpenStack 私有云部署与运维笔记,记录了「Openstack Mitaka for  Centos7.2 部署指南（二）」的相关内容。主要涉及:4.4 计算服务配置（Compute Service Nova） 部署节点：Controller Node 在Controller节点上需要安装novaapi …
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 4.4 计算服务配置（Compute Service Nova）
 
