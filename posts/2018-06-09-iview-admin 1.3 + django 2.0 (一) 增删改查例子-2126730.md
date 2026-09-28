@@ -70,13 +70,11 @@ export const appRouter = [
         ]
     },
 ]
-```
 
 ### src/views/asset/
 
 #### asset.vue
 
-```html<template>
     <div>
         <Row>
             <Card>
@@ -225,11 +223,9 @@ export const appRouter = [
 
     };
 </script>
-```
 
 #### asset-add.vue
 
-```html<template>
     <div>
         <Row>
             <Card>
@@ -312,7 +308,7 @@ export const appRouter = [
         }
     };
 </script>
-```
+```javascript
 
 #### asset-info.vue
 

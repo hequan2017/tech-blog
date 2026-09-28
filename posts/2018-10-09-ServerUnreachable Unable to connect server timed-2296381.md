@@ -22,7 +22,7 @@ source: "https://blog.51cto.com/hequan/2296381"
 
 原因:
 
-```shellECS创建实例（CreateInstance请求）的最长等待时间为90秒，
+```
 
 但SDK对所有类型的请求均设置了一个固定的超时时间
 
@@ -35,10 +35,9 @@ source: "https://blog.51cto.com/hequan/2296381"
 阿里云计划在未来的版本中修正这个问题。
 
 现在，解决这个问题的办法是对SDK设置一个合适的超时时间
-```
 
 解决办法：
 
 ```shell# 把超时时间 延长
 createclt = client.AcsClient(self.AccessKeyId, self.AccessKeySecret, region_id, timeout=30)
-```
+

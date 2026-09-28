@@ -18,7 +18,7 @@ source: "https://blog.51cto.com/hequan/2316781"
 
 #### 安装
 
-```shellpip install djangorestframework 
+```shellpip install djangorestframework
 ```
 
 #### urls.py
@@ -26,7 +26,7 @@ source: "https://blog.51cto.com/hequan/2316781"
 ```pythonfrom rest_framework.documentation import include_docs_urls
 
     path('docs/', include_docs_urls(title='文档')),
-	
+
 ```
 
 #### models.py
@@ -47,7 +47,7 @@ class Asset(models.Model):
 
     def __str__(self):
         return self.hostname
-```
+```python
 
 #### serializers.py
 
@@ -79,11 +79,9 @@ class AssetInfo(generics.ListCreateAPIView):
     queryset = Asset.objects.get_queryset().order_by('id')
     serializer_class = AssetSerializer
     permission_classes = (permissions.IsAdminUser,)
-```
 
 #### docs
 
-```shellhttp://127.0.0.1:8000/docs/
 ```
 
 ![](assets/2316781/01_3391fe36a610f5961dab6ac9359e1121.jpg)

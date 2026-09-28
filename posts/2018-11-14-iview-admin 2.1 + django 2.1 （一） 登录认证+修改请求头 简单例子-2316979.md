@@ -37,7 +37,7 @@ libs/axios.js
 
 libs/axios.js
 
-getInsideConfig (url) {   
+getInsideConfig (url) {
   const config = {
     baseURL: this.baseUrl,
     headers: {
@@ -58,11 +58,9 @@ options = Object.assign(this.getInsideConfig(options.url), options)   // 添加 
 ##### 安装drf
 
 ```shellpip install djangorestframework  django-cors-headers
-```
 
 ##### settings.py
 
-```python'rest_framework',
 'rest_framework.authtoken',
 'corsheaders',
 'django_filters'

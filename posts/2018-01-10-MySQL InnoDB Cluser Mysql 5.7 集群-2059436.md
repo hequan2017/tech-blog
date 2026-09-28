@@ -24,7 +24,7 @@ source: "https://blog.51cto.com/hequan/2059436"
 ```shell* MySQL 5.7 引入了 Group Replication 功能，可以在一组 MySQL 服务器之间实现自动主机选举，形成一主多从结构。经过高级配置后，可以实现多主多从结构。
 * MySQL Router 是一个轻量级透明中间件，可以自动获取上述集群的状态，规划 SQL 语句，分配到合理的 MySQL 后端进行执行。
 * MySQL Shell 是一个同时支持 JavaScript 和 SQL 的交互程序，可以快速配置 InnoDB Cluster。
-```
+```shell
 
 ![](assets/2059436/01_8815cd9266b5f987ffcdd17c72341bf2.png)
 
@@ -48,7 +48,7 @@ source: "https://blog.51cto.com/hequan/2059436"
 
 ```shellwget https://cdn.mysql.com//Downloads/MySQL-Shell/mysql-shell-1.0.11-1.el7.x86_64.rpm
 yum install mysql-shell-1.0.11-1.el7.x86_64.rpm  -y
-```
+```sql
 
 - 设置相关用户的权限，生产环境   可以不是  root用户
 
@@ -67,7 +67,7 @@ flush privileges;
 ```shell[root@db1 ~]#  mysqlsh
 
 ## 检查mysql 配置文件   (3台主机都要操作此步骤)
-dba.checkInstanceConfiguration('root@db1:3306') 
+dba.checkInstanceConfiguration('root@db1:3306')
 
 +----------------------------------+---------------+----------------+--------------------------------------------------+
 | Variable                         | Current Value | Required Value | Note                                             |
@@ -83,9 +83,8 @@ dba.checkInstanceConfiguration('root@db1:3306')
 +----------------------------------+---------------+----------------+--------------------------------------------------+
 
 ## 修复mysql 配置文件，    必须用 root(3台主机都要操作此步骤)
-dba.configureLocalInstance('root@db1:3306')  
+dba.configureLocalInstance('root@db1:3306')
 
-       
 Please provide the password for 'root@db1:3306':
 Detecting the configuration file...
 Found configuration file at standard location: /etc/my.cnf
@@ -93,8 +92,8 @@ Do you want to modify this file? [Y|n]:  [Y|n]: Y
 
 ## 重启mysql
 
-## 重新检查  (3台主机都要操作此步骤)            
-dba.checkInstanceConfiguration('root@db1:3306')    
+## 重新检查  (3台主机都要操作此步骤)
+dba.checkInstanceConfiguration('root@db1:3306')
 Please provide the password for 'root@db1:3306':
 Validating instance...
 
@@ -102,10 +101,10 @@ The instance 'db1:3306' is valid for Cluster usage
 {
     "status": "ok"
 }
-```
+```javascript
 
 ```shell## 登陆
-mysqlsh --uri root@db1:3306   
+mysqlsh --uri root@db1:3306
 
 ## 创建集群     main
 mysql-js> var cluster = dba.createCluster('main')
@@ -141,7 +140,7 @@ cluster.status();
 
 ```shellwget https://cdn.mysql.com//Downloads/MySQL-Router/mysql-router-2.1.4-1.el7.x86_64.rpm
 yum install -y mysql-router-2.1.4-1.el7.x86_64.rpm
-```
+```sql
 
 ```shell## 此命令会更新 /etc/mysqlrouter/mysqlrouter.conf 中的配置信息, 可以是别的机器 这里选择的为db2
 
@@ -173,10 +172,10 @@ systemctl enable mysqlrouter
 ## 查看端口
 [root@db2 ~]# netstat -lntup
 Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
-tcp        0      0 0.0.0.0:64460           0.0.0.0:*               LISTEN      2958/mysqlrouter    
-tcp        0      0 0.0.0.0:6446            0.0.0.0:*               LISTEN      2958/mysqlrouter    
-tcp        0      0 0.0.0.0:6447            0.0.0.0:*               LISTEN      2958/mysqlrouter    
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:64460           0.0.0.0:*               LISTEN      2958/mysqlrouter
+tcp        0      0 0.0.0.0:6446            0.0.0.0:*               LISTEN      2958/mysqlrouter
+tcp        0      0 0.0.0.0:6447            0.0.0.0:*               LISTEN      2958/mysqlrouter
 tcp        0      0 0.0.0.0:64470           0.0.0.0:*               LISTEN      2958/mysqlrouter
 
 ## 验证
@@ -241,7 +240,7 @@ mysql> select @@hostname;
                 "status": "(MISSING)"
 
 cluster.rejoinInstance('root@db2:3306')
-The instance 'db2:3306' was successfully added to the MySQL Cluster.  
+The instance 'db2:3306' was successfully added to the MySQL Cluster.
 ```
 
 ```shell## 所有节点都重启了，重新加入
@@ -258,19 +257,19 @@ The instance 'db3:3306' was part of the cluster configuration.
 Would you like to rejoin it to the cluster? [y|N]: y
 
 The cluster was successfully rebooted.
-```
+```shell
 
 ---
 
 ### 报错总结：
 
-```shell##如果节点在加入集群前，执行了写操作，加入集群时会报错
+```
 ERROR: Error joining instance to cluster: 'db2:3306' - Query failed. MySQL Error (3092): The server is not configured properly to be an active member of the group. Please see more details on error log.. Query: START group_replication (RuntimeError)
 
 ##登陆 db2 数据库 执行 reset master;
 ```
 
-```shell## 如果出现了   "status": "NO_QUORUM"     执行修复，重新加入   
+```shell## 如果出现了   "status": "NO_QUORUM"     执行修复，重新加入
 ## 暂未测试
 
 cluster.forceQuorumUsingPartitionOf("db1:3306")

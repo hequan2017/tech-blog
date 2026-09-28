@@ -39,7 +39,7 @@ services:
     image: zabbix/zabbix-web-nginx-mysql:latest
     networks:
       - zabbix
-    links: 
+    links:
       - mysql-server:mysql-server
       - zabbix-server:zabbix-server
     ports:
@@ -54,13 +54,13 @@ services:
       PHP_TZ: Asia/Shanghai
 
   zabbix-server:
-    hostname: zabbix-server-mysql 
+    hostname: zabbix-server-mysql
     image: zabbix/zabbix-server-mysql:latest
     networks:
       - zabbix
     links:
       - mysql-server:mysql-server
-    container_name: zabbix-server-mysql 
+    container_name: zabbix-server-mysql
     ports:
       - 10051:10051
     environment:
@@ -71,7 +71,7 @@ services:
       MYSQL_ROOT_PASSWORD: 123456
       ZBX_AGENT: zabbix-agent
 
-	  
+
   zabbix-agent:
     hostname: zabbix-agent
     image: zabbix/zabbix-agent:latest
@@ -86,9 +86,9 @@ services:
       ZBX_HOSTNAME: monitor
       ZBX_UNSAFEUSERPARAMETERS: 1
 
-	  
+
 networks:
-  zabbix: 
+  zabbix:
     driver: bridge
     driver_opts:
       com.docker.network.enable_ipv6: "false"

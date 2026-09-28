@@ -42,27 +42,27 @@ EOF
 
 #### Jenkins服务器
 
-```shellwget https://codeload.github.com/b3log/solo/zip/master    
+```shellwget https://codeload.github.com/b3log/solo/zip/master
 unzip master
 
 ##用来让 jenkins 免密钥 拉代码
 ssh-keygen    -t rsa
 ssh-copy-id   git@
 
-git clone git@:/home/git/solo.git     
+git clone git@:/home/git/solo.git
 cp -rf solo-master/* solo/
 cd solo
 
  # docker服务器 ip  和 监听端口
 vim   src/main/resources/latke.properties
-serverHost=192.168.1.111         
+serverHost=192.168.1.111
 serverPort=80
 
 #上传代码
 git add .
 git commit  -m "all"
-git push origin  master 
-```
+git push origin  master
+```dockerfile
 
 #### 生成一个基本镜像
 
@@ -73,7 +73,7 @@ FROM jenkins
 USER root
 RUN echo '' > /etc/apt/sources.list.d/jessie-backports.list && \
     wget http://mirrors.163.com/.help/sources.list.jessie -O /etc/apt/sources.list
-    
+
 RUN apt-get update && apt-get install -y git libltdl-dev
 
 EOF
@@ -112,7 +112,7 @@ EXPOSE 8080
 ENTRYPOINT ["./bin/", "run"]
 
 docker  build  -t  /test/tomcat:v1  .
-docker  login -u hequan -p  123456  
+docker  login -u hequan -p  123456
 docker  push  /test/tomcat:v1
 ```
 
@@ -123,13 +123,13 @@ docker  push  /test/tomcat:v1
 插件-高级    http:///jenkins/updates/update-center.json
 ```
 
-```shell配置 Credentials -- (global) -- Add Credentials    
-SSH Username with private key    
-root    
+```shell配置 Credentials -- (global) -- Add Credentials
+SSH Username with private key
+root
 From the Jenkins master ~/.ssh
 配置　　免密登录 docker 服务器系统管理--系统设置--
-SSH remote 
-hosts  
+SSH remote
+hosts
 192.168.1.111 22root(docker)
 ```
 
@@ -162,15 +162,14 @@ COPY  target/solo.war  /tmp/ROOT.war
 RUN  rm -rf /usr/local/tomcat/webapps/*  && \
      unzip   /tmp/ROOT.war  -d  /usr/local/tomcat/webapps/ROOT  && \
      rm -f /tmp/ROOT.war
-     
-     
+
 WORKDIR /usr/local/tomcat
 EXPOSE 8080
 ENTRYPOINT  ["./bin/","run"]
 EOF
 
 docker  build  -t  /test/solo:v1  .
-docker  login -u hequan -p  123456  
+docker  login -u hequan -p  123456
 docker  push  /test/solo:v1
 ```
 
@@ -179,7 +178,7 @@ docker  push  /test/solo:v1
 ```shelldocker  rm -f    solol  | true
 docker  rmi -f   /test/solo:v1  |  true
 
-docker  login -u hequan  -p  123456   
+docker  login -u hequan  -p  123456
 docker  run   -itd   --name solol    -p 80:8080  -v /usr/local/jdk1.8.0_45/:/usr/local/jdk  /test/solo:v1
 ```
 

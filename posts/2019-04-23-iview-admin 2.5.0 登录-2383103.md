@@ -44,7 +44,7 @@ import { getToken } from '@/libs/util'
     }
     return config
   }
-  
+
 
 store/module/user.js
 

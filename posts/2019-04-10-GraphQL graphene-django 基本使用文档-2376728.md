@@ -47,8 +47,8 @@ from graphene_django.views import GraphQLView
 from app.schema import schema
 
     path('graphql/', GraphQLView.as_view(graphiql=True, schema=schema)),
-		
-		
+
+
 ```
 
 #### app/schema.py

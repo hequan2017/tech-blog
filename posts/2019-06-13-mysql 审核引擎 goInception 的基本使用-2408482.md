@@ -24,7 +24,7 @@ source: "https://blog.51cto.com/hequan/2408482"
 
 ```shellgit clone https:///hanchuanchuan/goInception.git
 cd goInception
-```
+```shell
 
 #### 修改配置
 
@@ -46,7 +46,7 @@ backup_password="123456"
 go build -o goInception tidb-server/main.go
 
 ./goInception -config=config/config.toml
-```
+```python
 
 > pip install pymysql prettytable
 

@@ -33,7 +33,7 @@ axios.interceptors.request.use(
 
 axios.defaults.withCredentials = true;
 Vue.prototype.$ajax = axios;
-```
+```shell
 
 #### logo.vue
 
@@ -108,7 +108,7 @@ export default {
 ]
 
 # http://www.django-rest-framework.org/api-guide/permissions/#api-reference
-# rest-framework  
+# rest-framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',

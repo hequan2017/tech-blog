@@ -17,14 +17,14 @@ source: "https://blog.51cto.com/hequan/2318076"
 ### 例子
 
 ```html <textarea id="config" name="config"  class="form-control"></textarea>
-```
+```javascript
 
 ```shell window.editor_two = CodeMirror.fromTextArea(document.getElementById("config"), {
                             lineNumbers: true,
                             matchBrackets: true,
                             styleActiveLine: true
                         });
-												
+
  var d = {'config': editor_two.getValue() };
 ```
 

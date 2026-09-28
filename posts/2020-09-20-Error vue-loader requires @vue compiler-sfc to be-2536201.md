@@ -17,7 +17,7 @@ source: "https://blog.51cto.com/hequan/2536201"
 ### 解决办法
 
 ```shellnpm i -D vue-loader@14
-```
+```shell
 
 - 如果还是报错执行
 

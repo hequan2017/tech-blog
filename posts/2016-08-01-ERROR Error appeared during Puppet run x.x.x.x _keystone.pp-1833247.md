@@ -82,7 +82,7 @@ MariaDB [mysql]> select  host,user  from user;
 +-----------+----------------+
 9 rows in set (0.00 sec)
 权限是  %，应该是可以的，
-```
+```sql
 
 参考   mysql授权localhost&%区别及一直授权错误解决办法
 
@@ -94,7 +94,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'yunjisuan';
 
 flush privileges;
 
-```shell修改hosts
+```
 [root@controller keystone]# cat   /etc/hosts
 127.0.0.1        controller             localhost localhost.localdomain localhost4 localhost4.localdomain4                  ##在127.0.0.1也添加主机名字
 ::1                   localhost localhost.localdomain localhost6 localhost6.localdomain6
@@ -143,7 +143,7 @@ MariaDB [keystone]> show tables;
 再次执行，又有新的报错
 
 RROR : Error appeared during Puppet run: x.x.x.x_cinder.pp
-Error: Could not prefetch cinder_type provider 'openstack': Execution of '/usr/bin/openstack volume type list --quiet --format csv --long' returned 1: Unable to 
+Error: Could not prefetch cinder_type provider 'openstack': Execution of '/usr/bin/openstack volume type list --quiet --format csv --long' returned 1: Unable to
 CONFIG_CINDER_NETAPP_ESERIES_HOST_TYPE=linux_dm_mp   ##这是  cinder_type
 
 MariaDB [keystone]> use  cinder
@@ -160,7 +160,7 @@ glance也没有生成表，，，只有keystone 的好了。
 Applying x.x.x.x_keystone.pp
 Applying x.x.x.x_glance.pp
 Applying x.x.x.x_cinder.pp
-x.x.x.x_keystone.pp:                              [ DONE ]     
+x.x.x.x_keystone.pp:                              [ DONE ]
 Testing if puppet apply is finished: x.x.x.x_cinder.pp    [ \ ]    $$$##卡在这里
 
 卸载数据库，从新测试，竟然可以了。。= =，我了个大去。感动老天了。。
@@ -195,42 +195,42 @@ Please, find your login credentials stored in the keystonerc_admin in your home 
 
 ```shell[root@controller ~]# netstat -lntup
 Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
-tcp        0      0 0.0.0.0:8774            0.0.0.0:*               LISTEN      21105/python2       
-tcp        0      0 0.0.0.0:8775            0.0.0.0:*               LISTEN      21105/python2       
-tcp        0      0 0.0.0.0:9191            0.0.0.0:*               LISTEN      19676/python2       
-tcp        0      0 0.0.0.0:5000            0.0.0.0:*               LISTEN      1307/httpd          
-tcp        0      0 0.0.0.0:8776            0.0.0.0:*               LISTEN      20207/python2       
-tcp        0      0 0.0.0.0:25672           0.0.0.0:*               LISTEN      10588/beam.smp      
-tcp        0      0 0.0.0.0:8777            0.0.0.0:*               LISTEN      1307/httpd          
-tcp        0      0 0.0.0.0:8041            0.0.0.0:*               LISTEN      1307/httpd          
-tcp        0      0 127.0.0.1:27017         0.0.0.0:*               LISTEN      31512/mongod        
-tcp        0      0 0.0.0.0:8042            0.0.0.0:*               LISTEN      1307/httpd          
-tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      17028/mysqld        
-tcp        0      0 0.0.0.0:11211           0.0.0.0:*               LISTEN      25302/memcached     
-tcp        0      0 0.0.0.0:9292            0.0.0.0:*               LISTEN      19705/python2       
-tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      22134/rpcbind       
-tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      1307/httpd          
-tcp        0      0 0.0.0.0:4369            0.0.0.0:*               LISTEN      1/systemd           
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      816/sshd            
-tcp        0      0 0.0.0.0:35357           0.0.0.0:*               LISTEN      1307/httpd          
-tcp        0      0 0.0.0.0:16509           0.0.0.0:*               LISTEN      22855/libvirtd      
-tcp        0      0 0.0.0.0:9696            0.0.0.0:*               LISTEN      24517/python2       
-tcp        0      0 0.0.0.0:6080            0.0.0.0:*               LISTEN      22974/python2       
-tcp6       0      0 :::5672                 :::*                    LISTEN      10588/beam.smp      
-tcp6       0      0 :::111                  :::*                    LISTEN      22134/rpcbind       
-tcp6       0      0 :::22                   :::*                    LISTEN      816/sshd            
-tcp6       0      0 :::16509                :::*                    LISTEN      22855/libvirtd      
-udp        0      0 0.0.0.0:11211           0.0.0.0:*                           25302/memcached     
-udp        0      0 0.0.0.0:11431           0.0.0.0:*                           585/dhclient        
-udp        0      0 0.0.0.0:8125            0.0.0.0:*                           29029/python2       
-udp        0      0 0.0.0.0:68              0.0.0.0:*                           585/dhclient        
-udp        0      0 0.0.0.0:111             0.0.0.0:*                           22134/rpcbind       
-udp        0      0 127.0.0.1:323           0.0.0.0:*                           558/chronyd         
-udp        0      0 0.0.0.0:685             0.0.0.0:*                           22134/rpcbind       
-udp        0      0 0.0.0.0:4952            0.0.0.0:*                           32304/python2       
-udp6       0      0 :::111                  :::*                                22134/rpcbind       
-udp6       0      0 ::1:323                 :::*                                558/chronyd         
-udp6       0      0 :::685                  :::*                                22134/rpcbind       
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:8774            0.0.0.0:*               LISTEN      21105/python2
+tcp        0      0 0.0.0.0:8775            0.0.0.0:*               LISTEN      21105/python2
+tcp        0      0 0.0.0.0:9191            0.0.0.0:*               LISTEN      19676/python2
+tcp        0      0 0.0.0.0:5000            0.0.0.0:*               LISTEN      1307/httpd
+tcp        0      0 0.0.0.0:8776            0.0.0.0:*               LISTEN      20207/python2
+tcp        0      0 0.0.0.0:25672           0.0.0.0:*               LISTEN      10588/beam.smp
+tcp        0      0 0.0.0.0:8777            0.0.0.0:*               LISTEN      1307/httpd
+tcp        0      0 0.0.0.0:8041            0.0.0.0:*               LISTEN      1307/httpd
+tcp        0      0 127.0.0.1:27017         0.0.0.0:*               LISTEN      31512/mongod
+tcp        0      0 0.0.0.0:8042            0.0.0.0:*               LISTEN      1307/httpd
+tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      17028/mysqld
+tcp        0      0 0.0.0.0:11211           0.0.0.0:*               LISTEN      25302/memcached
+tcp        0      0 0.0.0.0:9292            0.0.0.0:*               LISTEN      19705/python2
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      22134/rpcbind
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      1307/httpd
+tcp        0      0 0.0.0.0:4369            0.0.0.0:*               LISTEN      1/systemd
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      816/sshd
+tcp        0      0 0.0.0.0:35357           0.0.0.0:*               LISTEN      1307/httpd
+tcp        0      0 0.0.0.0:16509           0.0.0.0:*               LISTEN      22855/libvirtd
+tcp        0      0 0.0.0.0:9696            0.0.0.0:*               LISTEN      24517/python2
+tcp        0      0 0.0.0.0:6080            0.0.0.0:*               LISTEN      22974/python2
+tcp6       0      0 :::5672                 :::*                    LISTEN      10588/beam.smp
+tcp6       0      0 :::111                  :::*                    LISTEN      22134/rpcbind
+tcp6       0      0 :::22                   :::*                    LISTEN      816/sshd
+tcp6       0      0 :::16509                :::*                    LISTEN      22855/libvirtd
+udp        0      0 0.0.0.0:11211           0.0.0.0:*                           25302/memcached
+udp        0      0 0.0.0.0:11431           0.0.0.0:*                           585/dhclient
+udp        0      0 0.0.0.0:8125            0.0.0.0:*                           29029/python2
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           585/dhclient
+udp        0      0 0.0.0.0:111             0.0.0.0:*                           22134/rpcbind
+udp        0      0 127.0.0.1:323           0.0.0.0:*                           558/chronyd
+udp        0      0 0.0.0.0:685             0.0.0.0:*                           22134/rpcbind
+udp        0      0 0.0.0.0:4952            0.0.0.0:*                           32304/python2
+udp6       0      0 :::111                  :::*                                22134/rpcbind
+udp6       0      0 ::1:323                 :::*                                558/chronyd
+udp6       0      0 :::685                  :::*                                22134/rpcbind
 udp6       0      0 :::38397                :::*                                585/dhclient
 ```

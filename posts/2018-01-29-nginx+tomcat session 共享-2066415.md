@@ -69,41 +69,38 @@ vim /usr/local/tomcat/conf/server.xml
 vim /usr/local/tomcat/webapps/ROOT/WEB-INF/web.xml
 
 <distributable/>
-```
-
-```html##添加测试文件
 vim      index.jsp
-<%@ page contentType="text/html; charset=GBK" %>   
-<%@ page import="java.util.*" %>    
-<html>  
-    <head>  
-        <title>Cluster App Test</title>  
-    </head>   
-    <body>  
+<%@ page contentType="text/html; charset=GBK" %>
+<%@ page import="java.util.*" %>
+<html>
+    <head>
+        <title>Cluster App Test</title>
+    </head>
+    <body>
     Server Info: <%  out.println(request.getLocalAddr() + " : " + request.getLocalPort()+"
-");%>   
-    <%      
+");%>
+    <%
     out.println("
 ID " + session.getId()+"
-");   // 如果有新的 Session 属性设置      
-    String dataName = request.getParameter("dataName");     
-        if (dataName != null && dataName.length() > 0) {   
-            String dataValue = request.getParameter("dataValue");  
-            session.setAttribute(dataName, dataValue);     
-        }      
+");   // 如果有新的 Session 属性设置
+    String dataName = request.getParameter("dataName");
+        if (dataName != null && dataName.length() > 0) {
+            String dataValue = request.getParameter("dataValue");
+            session.setAttribute(dataName, dataValue);
+        }
      %>
-     </body>   
+     </body>
 </html>
-```
+```nginx
 
 ```shell##配置 nginx负责均衡，进行测试
 
         upstream tomcatserver {
-       
+
         server 192.168.10.153:8080 weight=5;
         server  192.168.10.154:8080  weight=5;
-    
-        }     
+
+        }
 
         location    / {
 

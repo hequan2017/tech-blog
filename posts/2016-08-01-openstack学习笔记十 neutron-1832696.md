@@ -14,13 +14,13 @@ source: "https://blog.51cto.com/hequan/1832696"
 
 ---
 
-[![openstack学习笔记十 neutron_OpenStack](assets/1832696/01_wKioL1eeT0fxFYT-AAHb7WtHzMg434.png)](http://s3.51cto.com/wyfs02/M01/85/40/wKioL1eeT0fxFYT-AAHb7WtHzMg434.png-wh_500x0-wm_3-wmp_4-s_1196143743.png)
+![openstack学习笔记十 neutron_OpenStack](assets/1832696/01_wKioL1eeT0fxFYT-AAHb7WtHzMg434.png)
 
-[![openstack学习笔记十 neutron_neutron_02](assets/1832696/02_wKiom1eeT0eTF6jxAABR2D6JZ5o109.png)](http://s3.51cto.com/wyfs02/M02/85/40/wKiom1eeT0eTF6jxAABR2D6JZ5o109.png-wh_500x0-wm_3-wmp_4-s_3743352585.png)
+![openstack学习笔记十 neutron_neutron_02](assets/1832696/02_wKiom1eeT0eTF6jxAABR2D6JZ5o109.png)
 
-[![openstack学习笔记十 neutron_OpenStack_03](assets/1832696/03_wKioL1eeT0fDFl1dAAAiOKTrt8g528.png)](http://s3.51cto.com/wyfs02/M02/85/40/wKioL1eeT0fDFl1dAAAiOKTrt8g528.png-wh_500x0-wm_3-wmp_4-s_3071133047.png)
+![openstack学习笔记十 neutron_OpenStack_03](assets/1832696/03_wKioL1eeT0fDFl1dAAAiOKTrt8g528.png)
 
-[![openstack学习笔记十 neutron_neutron_04](assets/1832696/04_wKiom1eeT0jylquOAAAokICe8eY326.png)](http://s5.51cto.com/wyfs02/M00/85/40/wKiom1eeT0jylquOAAAokICe8eY326.png-wh_500x0-wm_3-wmp_4-s_1226585640.png)
+![openstack学习笔记十 neutron_neutron_04](assets/1832696/04_wKiom1eeT0jylquOAAAokICe8eY326.png)
 
 ---
 

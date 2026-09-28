@@ -15,9 +15,6 @@ source: "https://blog.51cto.com/hequan/5146223"
 ---
 
 ```shell来自 https:///flipped-aurora/gin-vue-admin 转载
-```
-
-```shelldocker-compose.yaml
 version: "3"
 
 # 声明一个名为network的networks,subnet为network的子网地址,默认网关是177.7.0.1
@@ -27,12 +24,12 @@ networks:
       driver: default
       config:
         - subnet: '177.7.0.0/16'
-        
+
 # 设置mysql，redis持久化保存
 volumes:
   mysql:
   redis:
-  
+
 services:
   web:
     build:
@@ -94,9 +91,6 @@ services:
     networks:
       network:
         ipv4_address: 177.7.0.14
-```
-
-```shellserver/Dockerfile 
 FROM golang:alpine as builder
 
 WORKDIR /go/src//flipped-aurora/gin-vue-admin/server
@@ -121,9 +115,6 @@ COPY --from=0 /go/src//flipped-aurora/gin-vue-admin/server/config.docker.yaml ./
 
 EXPOSE 8888
 ENTRYPOINT ./server -c config.docker.yaml
-```
-
-```shellweb/Dockerfile 
 FROM node:16
 
 WORKDIR /gva_web/

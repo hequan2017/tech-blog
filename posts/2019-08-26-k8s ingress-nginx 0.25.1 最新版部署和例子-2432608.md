@@ -54,7 +54,7 @@ spec:
   selector:
     /name: ingress-nginx
     /part-of: ingress-nginx
-```
+```shell
 
 ```shellkubectl create -f  mandatory.yaml
 kubectl create -f  service-nodeport.yaml
@@ -65,7 +65,7 @@ kubectl create -f  service-nodeport.yaml
 ```shellkubectl get pod -n ingress-nginx -o wide
 
 kubectl scale --replicas=2  deploy/nginx-ingress-controller -n ingress-nginx
-```
+```shell
 
 #### 例子
 
@@ -84,7 +84,7 @@ spec:
     port: 80
     targetPort: 80
 ---
-            
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -120,7 +120,7 @@ annotations:
    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-  - host: 
+  - host:
     http:
      paths:
      - path:

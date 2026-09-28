@@ -84,7 +84,7 @@ CHANNEL_LAYERS = {
 
 # 配置ASGI
 ASGI_APPLICATION = "chain.routing.application"
-```
+```python
 
 #### consumers.py
 
@@ -286,8 +286,7 @@ def taskstailperform(request):
             return HttpResponse(json.dumps(ret))
 
         obj = AssetInfo.objects.get(id=ids)
-  
-     
+
         try:
             taillog(request, obj.network_ip, obj.port, obj.user.username, obj.user.password, obj.user.private_key, tail)
         except Exception as e:

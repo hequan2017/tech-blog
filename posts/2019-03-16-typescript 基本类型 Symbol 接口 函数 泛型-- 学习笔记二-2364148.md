@@ -75,7 +75,7 @@ const  getLength = (target:string | number) : number =>{
         return target.toString().length
     }
 }
-```
+```javascript
 
 #### Symbol
 
@@ -148,7 +148,7 @@ const user1: User = {
     lastName: "o",
     age: 11,
 }
-```
+```javascript
 
 #### 函数
 

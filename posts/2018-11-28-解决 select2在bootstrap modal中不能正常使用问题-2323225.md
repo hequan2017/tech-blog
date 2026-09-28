@@ -44,11 +44,9 @@ source: "https://blog.51cto.com/hequan/2323225"
         .select2-drop-active {
             z-index: 15995 !important;
         }
-```
 
 #### 设置下拉
 
-```shell$("#User").select2(
   {dropdownParent: $("#Modal")}
 )
 ```

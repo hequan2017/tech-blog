@@ -17,7 +17,7 @@ source: "https://blog.51cto.com/hequan/4312251"
 ### 搭建freeipa
 
 ```bash
-  
+
  	docker run --name dev-freeipa -ti -h  --read-only \
  -v /sys/fs/cgroup:/sys/fs/cgroup:ro  \
  -v /var/lib/ipa-data:/data:Z \

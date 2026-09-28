@@ -28,12 +28,12 @@ AttributeError: 'Worker' object has no attribute '_config'
 
 ```python
  from multiprocessing import current_process
- 
- 
+
+
 @app.task
 def  ansbile():
 
         current_process()._config = {'semprefix': '/mp'}
-		
+
 		print(123)
 ```

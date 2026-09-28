@@ -73,7 +73,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: 
+  - host:
     http:
      paths:
      - path:

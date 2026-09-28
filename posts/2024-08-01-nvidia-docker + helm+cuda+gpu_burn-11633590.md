@@ -49,7 +49,7 @@ vim   /etc/containerd/config.toml
 systemctl daemon-reload && systemctl restart containerd
 
 wget  https://get.helm.sh/helm-v3.15.3-linux-amd64.tar.gz
-tar xf 
+tar xf
 mv helm  /usr/bin/
 
 wget https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/cuda-rhel7.repo

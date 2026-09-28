@@ -41,7 +41,7 @@ app.use(run)
   .use(ElementPlus, { locale: zhCn }).mount('#app')
 
 export default app
-```
+```python
 
 #### 主要
 

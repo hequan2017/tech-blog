@@ -23,18 +23,15 @@ source: "https://blog.51cto.com/hequan/2416184"
 							<th>备注</th>
 					</tr>
 					</thead>
-					
-					
+
 					<tbody>
 
 					</tbody>
 
 </table>
-```
 
 ### js
 
-```shelldata:
 {
 "data":[
 	{"1":1,
@@ -51,14 +48,13 @@ source: "https://blog.51cto.com/hequan/2416184"
 	}
 ]
 }
-```
+```javascript
 
 ```shell				 $.getJSON(url, function (data, textStatus) {
 
 										$("#table1").dataTable().fnClearTable();
                     $("#table1").dataTable().fnDestroy();
-										
-										
+
                     var data1 = data['data']
 
                     $('#table1').DataTable({

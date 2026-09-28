@@ -24,8 +24,7 @@ tar -zxvf elasticsearch-7.3.2.tar.gz
 mv elasticsearch-7.3.2 /data
 adduser es
 chown -R es /data/elasticsearch-7.3.2
-    
-    
+
 bin/elasticsearch
 
 : es-cluster
@@ -46,7 +45,7 @@ cluster.initial_master_nodes: ["test1", "test2","test3"]
 
 http.cors.enabled: true
 http.cors.allow-origin: "*"
-```
+```shell
 
 ```shellcurl -XGET http://192.168.100.101:9200/_cat/health?v
 
@@ -64,7 +63,7 @@ curl -XPUT http://192.168.100.102:9200/_cluster/settings -d '{
   "transient" : {
     "cluster.routing.allocation.enable" : "none"
   }
-}'   -H "Content-Type: application/json"  
+}'   -H "Content-Type: application/json"
 
 二：同步刷新
 curl -X POST "192.168.100.102:9200/_flush/synced?pretty"
@@ -84,7 +83,7 @@ curl -XPUT http://192.168.100.102:9200/_cluster/settings -d '{
   "transient" : {
     "cluster.routing.allocation.enable" : "all"
   }
-}'   -H "Content-Type: application/json"  
+}'   -H "Content-Type: application/json"
 
 状态为: green
 curl -XGET http://192.168.100.101:9200/_cat/health?v

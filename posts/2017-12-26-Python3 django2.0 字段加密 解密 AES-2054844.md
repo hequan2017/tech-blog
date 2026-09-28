@@ -50,7 +50,7 @@ print(b1,type(b),type(b1))
 
 c = a.decrypt(enc='N4wGyzPTnggQtUr_gyGcsxMzU136thzPIc8y3mJ2uxg=')
 print(c)
-```
+```python
 
 python3.6版本的
 

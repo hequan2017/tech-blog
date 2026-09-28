@@ -54,7 +54,7 @@ export default {
   created() {
     const id = this.$route.query.id
     const res = findConfig({ID: id}).then(data => {
-       = 
+       =
     });
 
   },

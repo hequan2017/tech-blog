@@ -29,8 +29,8 @@ ystemctl disable firewalld
 sed -i 's/enforcing/disabled/' /etc/selinux/config
 setenforce 0
 
-swapoff -a  
-vim /etc/fstab 
+swapoff -a
+vim /etc/fstab
 
 cat /etc/hosts
 192.168.100.111 k8s-master
@@ -38,7 +38,7 @@ cat /etc/hosts
 192.168.100.113 k8s-node2
 
 yum install ntpdate -y
-ntpdate  
+ntpdate
 
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
@@ -53,7 +53,7 @@ net.bridge.bridge-nf-call-iptables = 1
 net.bridge.bridge-nf-call-arptables = 1
 
 sysctl -p
-```
+```shell
 
 #### 部署
 
@@ -129,10 +129,10 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-## node 节点执行 
+## node 节点执行
 kubeadm join 192.168.100.111:6443 --token ws2hxe.zeq9skej2ppjx4ip \
     --discovery-token-ca-cert-hash sha256:abf8f2694f738fcd199aa5bbf99491b0f9248b3750b1df7ba47450bbe9a75f81
-```
+```shell
 
 ```shellmkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config

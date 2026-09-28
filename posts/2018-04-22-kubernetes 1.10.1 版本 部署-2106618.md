@@ -45,7 +45,7 @@ docker或rocket/rkt
 
 ```shell etcd
 分布式键值存储系统。用于保持集群状态，比如Pod、 Service等对象信息。
-```
+```shell
 
 ---
 
@@ -84,7 +84,7 @@ sudo yum makecache fast
 sudo yum -y install docker-ce
 
 docker version
-systemctl enable docker.service    
+systemctl enable docker.service
 systemctl start docker.service
 
 sudo mkdir -p /etc/docker
@@ -116,7 +116,7 @@ mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
 mv cfssl-certinfo_linux-amd64 /usr/bin/cfssl-certinfo
 
 cd /data/ssl/
-```
+```shell
 
 创建certificate.sh
 
@@ -282,10 +282,10 @@ cp ca*pem  server*pem  /opt/kubernetes/ssl/
 
 scp -r /opt/kubernetes/*  192.168.1.111:/opt/kubernetes
 scp -r /opt/kubernetes/*  192.168.1.14:/opt/kubernetes
-```
+```shell
 
 ```shellcd /data/etcd
-vim  
+vim
 
 #!/bin/bash
 
@@ -345,7 +345,7 @@ systemctl daemon-reload
 systemctl enable etcd
 systemctl restart etcd
 
-chmod +x 
+chmod +x
 master: ./  etcd01 192.168.1.107  etcd01=https://192.168.1.107:2380,etcd02=https://192.168.1.111:2380,etcd03=https://192.168.1.14:2380
 node1:./  etcd02 192.168.1.111  etcd01=https://192.168.1.107:2380,etcd02=https://192.168.1.111:2380,etcd03=https://192.168.1.14:2380
 node2:./  etcd03 192.168.1.14  etcd01=https://192.168.1.107:2380,etcd02=https://192.168.1.111:2380,etcd03=https://192.168.1.14:2380
@@ -394,7 +394,7 @@ cd /data/flanneld
 tar xf flannel-v0.10.0-linux-amd64.tar.gz
 mv flanneld   /opt/kubernetes/bin/
 
-vim 
+vim
 #!/bin/bash
 
 ETCD_ENDPOINTS=${1:-"http://127.0.0.1:2379"}
@@ -459,7 +459,7 @@ systemctl enable flanneld
 systemctl restart flanneld
 systemctl restart docker
 
-chmod +x 
+chmod +x
 ./  https://192.168.1.107:2379,https://192.168.1.111:2379,https://192.168.1.14:2379
 cat /run/flannel/subnet.env
 DOCKER_OPT_BIP="--bip=172.17.1.1/24"
@@ -482,8 +482,8 @@ DOCKER_NETWORK_OPTIONS=" --bip=172.17.1.1/24 --ip-masq=false --mtu=1450"
 {"PublicIP":"192.168.1.107","BackendType":"vxlan","BackendData":{"VtepMAC":"4a:e5:53:6d:4a:66"}}
 
 netstat -antp | grep flanneld
-tcp        0      0 192.168.1.107:1618      192.168.1.14:2379       ESTABLISHED 1760/flanneld       
-tcp        0      0 192.168.1.107:1620      192.168.1.14:2379       ESTABLISHED 1760/flanneld       
+tcp        0      0 192.168.1.107:1618      192.168.1.14:2379       ESTABLISHED 1760/flanneld
+tcp        0      0 192.168.1.107:1620      192.168.1.14:2379       ESTABLISHED 1760/flanneld
 tcp        0      0 192.168.1.107:1616      192.168.1.14:2379       ESTABLISHED 1760/flanneld
 ```
 
@@ -558,7 +558,7 @@ kubectl config use-context default --kubeconfig=kube-proxy.kubeconfig
 ##  kubectl   软件在kubernetes-server-linux-amd64.tar.gz  里面,可从官网下载,下面的部署也需要这个软件包
 mv kubectl  /usr/bin/
 chmod +x /usr/bin/kubectl
-sh 
+sh
 
    kube-proxy-csr.json  kube-proxy.kubeconfig
 kube-proxy.csr  kube-proxy-key.pem   kube-proxy.pem bootstrap.kubeconfig
@@ -590,7 +590,7 @@ node
 - kubelet
 - kube-proxy
 
-```shellvim   
+```shellvim
 #!/bin/bash
 
 MASTER_ADDRESS=${1:-"192.168.1.107"}
@@ -643,7 +643,7 @@ systemctl enable kube-apiserver
 systemctl restart kube-apiserver
 ```
 
-```shellvim 
+```shellvim
 #!/bin/bash
 
 MASTER_ADDRESS=${1:-"127.0.0.1"}
@@ -683,7 +683,7 @@ systemctl enable kube-controller-manager
 systemctl restart kube-controller-manager
 ```
 
-```shellvim 
+```shellvim
 #!/bin/bash
 
 MASTER_ADDRESS=${1:-"127.0.0.1"}
@@ -742,16 +742,14 @@ source /etc/profile
 
 ```shellkubectl get cs
 NAME                 STATUS    MESSAGE              ERROR
-controller-manager   Healthy   ok                   
-scheduler            Healthy   ok                   
-etcd-0               Healthy   {"health": "true"}   
-etcd-1               Healthy   {"health": "true"}   
-etcd-2               Healthy   {"health": "true"}   
-```
+controller-manager   Healthy   ok
+scheduler            Healthy   ok
+etcd-0               Healthy   {"health": "true"}
+etcd-1               Healthy   {"health": "true"}
+etcd-2               Healthy   {"health": "true"}
 
 #### 9 运行Node组件
 
-```shellvim  
 #!/bin/bash
 
 NODE_ADDRESS=${1:-"192.168.1.111"}
@@ -793,9 +791,6 @@ EOF
 systemctl daemon-reload
 systemctl enable kubelet
 systemctl restart kubelet
-```
-
-```shellvim 
 #!/bin/bash
 
 NODE_ADDRESS=${1:-"192.168.1.111"}
@@ -826,7 +821,7 @@ EOF
 systemctl daemon-reload
 systemctl enable kube-proxy
 systemctl restart kube-proxy
-```
+```shell
 
 node1    node2重复此步骤
 
@@ -857,7 +852,7 @@ kubectl get node
 NAME            STATUS     ROLES     AGE       VERSION
 192.168.1.111   Ready      <none>    11m       v1.10.1
 192.168.1.14    NotReady   <none>    8s        v1.10.1
-```
+```shell
 
 #### 10 查询集群状态
 

@@ -92,7 +92,7 @@ tcp        0      0 0.0.0.0:15672     0.0.0.0:*      �
 
 http://192.168.1.203:15672/              用户guest  密码guest
 
-[![openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据_信息](assets/1796041/01_wKioL1d7hRPh4w6AAAAShd6x7Zw822.png)](http://s4.51cto.com/wyfs02/M00/83/C3/wKioL1d7hRPh4w6AAAAShd6x7Zw822.png)
+![openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据_信息](assets/1796041/01_wKioL1d7hRPh4w6AAAAShd6x7Zw822.png)
 
 ---
 
@@ -122,9 +122,9 @@ c34056d1-7b80-437f-b73c-5bf05258d303
 1
 ```
 
-[![openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据_信息_02](assets/1796041/02_wKiom1d7hSXwj1mVAAAQLlKyWX4805.png)](http://s5.51cto.com/wyfs02/M01/83/C4/wKiom1d7hSXwj1mVAAAQLlKyWX4805.png)
+![openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据_信息_02](assets/1796041/02_wKiom1d7hSXwj1mVAAAQLlKyWX4805.png)
 
-[![openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据_中枢_03](assets/1796041/03_wKioL1d7hSbTug-WAAGDLh0x_JY828.png)](http://s5.51cto.com/wyfs02/M02/83/C3/wKioL1d7hSbTug-WAAGDLh0x_JY828.png)
+![openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据_中枢_03](assets/1796041/03_wKioL1d7hSbTug-WAAGDLh0x_JY828.png)
 
 ```bash
 [root@h2 ~]# cd /etc/nova/

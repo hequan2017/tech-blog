@@ -240,7 +240,7 @@ IN_MOVE，文件被移动，等同于(IN_MOVED_FROM | IN_MOVED_TO)
 
 1. ls /proc/sys/fs/inotify
 
-[https://s4.51cto.com/attachment/201112/163215458.png](https://s4.51cto.com/attachment/201112/163215458.png)
+
 
 如果有 max_queued_events，max_user_instances，max_user_watches 三项就说明支持
 

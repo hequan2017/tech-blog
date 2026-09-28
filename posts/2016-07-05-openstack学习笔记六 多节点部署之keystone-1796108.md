@@ -18,7 +18,7 @@ source: "https://blog.51cto.com/hequan/1796108"
 
 keystone也必须知道这些组件到底在什么地方，比如在那台主机上。
 
-[![openstack学习笔记六 多节点部署之keystone_endpoint](assets/1796108/01_wKioL1d7wsrRg91LAAJhGY7B4eM943.png)](http://s3.51cto.com/wyfs02/M01/83/C5/wKioL1d7wsrRg91LAAJhGY7B4eM943.png)
+![openstack学习笔记六 多节点部署之keystone_endpoint](assets/1796108/01_wKioL1d7wsrRg91LAAJhGY7B4eM943.png)
 
 |  |  |
 | --- | --- |
@@ -31,7 +31,7 @@ keystone也必须知道这些组件到底在什么地方，比如在那台主机
 | Endpoint | 具体的一种服务，比如吃烧烤，打羽毛球 |
 | Role | VIP 等级，VIP越高，享有越高的权限 |
 
-[![openstack学习笔记六 多节点部署之keystone_openstack_02](assets/1796108/02_wKioL1d7wtuQjIIKAAL5H8-n9Ow961.png)](https://s2.51cto.com//wyfs02/M01/83/C5/wKioL1d7wtuQjIIKAAL5H8-n9Ow961.png)
+![openstack学习笔记六 多节点部署之keystone_openstack_02](assets/1796108/02_wKioL1d7wtuQjIIKAAL5H8-n9Ow961.png)
 
 ```bash
 [root@h1 ~]# source  keystonerc_admin
