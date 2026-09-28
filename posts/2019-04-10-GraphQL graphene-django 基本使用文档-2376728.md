@@ -4,6 +4,11 @@ date: "2019-04-10 17:07:29"
 category: "python"
 source: "https://blog.51cto.com/hequan/2376728"
 ---
+> **内容介绍**
+>
+> 本文是Python 编程实战笔记,记录了「GraphQL  graphene-django  基本使用文档」的相关内容。主要涉及:### graphene-django 基本使用文档 #### 介绍 > 一种用于 API 的查询语言…
+
+---
 
 ### graphene-django  基本使用文档
 
@@ -24,14 +29,12 @@ source: "https://blog.51cto.com/hequan/2376728"
 
 #### 模块
 
-```
-pip install  graphene-django
+```shellpip install  graphene-django
 ```
 
 #### 使用
 
-```
-INSTALLED_APPS = [
+```pythonINSTALLED_APPS = [
 	    'graphene_django',
 ]
 
@@ -50,8 +53,7 @@ from app.schema import schema
 
 #### app/schema.py
 
-```
-from django.contrib.auth.models import  User  as Users
+```pythonfrom django.contrib.auth.models import  User  as Users
 from graphene_django import DjangoObjectType
 import graphene
 
@@ -152,8 +154,7 @@ schema = graphene.Schema(query=TQuery, mutation=Mutations)
 
 > GraphQL 请求参数
 
-```
-query{
+```shellquery{
   users{
     id,
     username,
