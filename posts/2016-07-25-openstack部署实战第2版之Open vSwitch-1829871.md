@@ -4,6 +4,15 @@ date: "2016-07-25 21:59:47"
 category: "openstack"
 source: "https://blog.51cto.com/hequan/1829871"
 ---
+> **内容介绍**
+>
+> 本文是OpenStack 私有云部署与运维笔记,记录了「openstack部署实战第2版之Open vSwitch」的相关内容。主要涉及:本文是openstack部署实战第2版的实验手册，环境是阿里云上的，系统用得是centos7.2。 Open vSwitch 开放的软件虚拟机交换机 安装步骤…
+
+> **技术备注**
+>
+> CentOS 7 已于 2024 年 6 月 30 日停止维护(EOL),建议迁移至 Rocky Linux 9 / AlmaLinux 9 或国产 openEuler。
+
+---
 
 本文是openstack部署实战第2版的实验手册，环境是阿里云上的，系统用得是centos7.2。
 
