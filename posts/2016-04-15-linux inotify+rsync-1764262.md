@@ -4,6 +4,15 @@ date: "2016-04-15 17:56:10"
 category: "Linux"
 source: "https://blog.51cto.com/hequan/1764262"
 ---
+> **内容介绍**
+>
+> 本文是Linux 系统运维笔记,记录了「linux  inotify+rsync」的相关内容。主要涉及:一、系统环境： centos 6.5_64 更新源服务器：192.168.10.11…
+
+> **技术备注**
+>
+> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+
+---
 
 一、系统环境：
 
