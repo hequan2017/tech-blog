@@ -1,8 +1,0 @@
-2016-04-27-在CENTOS7 RHEL7修改网卡名称-1768380.md	改eth0四步:grub禁用一致性命名+udev绑定,附yum源与防火墙,修p_w_picmap乱码
-2016-04-28-nginx代理负载均衡简单-1768714.md	编译nginx配upstream+proxy_pass轮询两后端,ip_hash等四种会话保持,修isntall笔误
-2016-05-03-LAMP与LNMP加速与缓存优化(一)1-1769879.md	查各组件编译参数,phpize装eaccelerator/xcache,ZTS与non-ZTS目录之别
-2016-05-04-LAMP与LNMP加速与缓存优化(一)2-1770130.md	phpize编译memcache/PDO_MYSQL/ImageMagick/imagick四扩展,补OPcache时效备注
-2016-05-05-LAMP与LNMP加速与缓存优化(二)-1770388.md	php.ini加载扩展与phpinfo验证,eaccelerator缓存目录配置,xcache冲突处理
-2016-05-05-企业级nginx服务优化（一)-1770441.md	隐藏版本/worker绑核/epoll/超时/fastcgi缓存等13项调优,修fastcgi_buffers笔误
-2016-05-06-企业级nginx服务优化（二 )-1770627.md	gzip压缩/expires缓存/防爬虫403/日志切割/tmpfs等14项,修locaion与2>&1
-2016-05-06-企业级nginx服务优化（三 )Apache+防盗链-1770655.md	prefork与worker参数对比,MaxClients公式,Apache/nginx两种防盗链写法

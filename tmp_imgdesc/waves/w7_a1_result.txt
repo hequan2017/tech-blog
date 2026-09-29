@@ -1,8 +1,0 @@
-2018-05-26-mysql 8.0.11 二进制安装-2120497.md	重写介绍,安装脚本按流程拆7节;备注补8.0支持期与认证插件坑;修URL双斜杠
-2018-05-26-rabbitmq 3.6.15 yum安装部署-2120565.md	重写介绍分4节;备注修正为RabbitMQ3.6已EOL、下载目录迁移;管理台地址移出代码块
-2018-05-26-yum 安装 python36 及 pip-2120555.md	重写介绍分5节;补回被吃ius源地址;补IUS归档与Py3.6 EOL备注;加切换python警示
-2018-06-09-iview-admin 1.3 + django 2.0 (一) 增删改查例子-2126730.md	重写介绍分2章8节;补回git地址、template标签、params.row.id;修围栏与Meta缩进
-2018-06-09-jquery 方法常用整理-2126731.md	重写介绍,速查表按主题分7节;原行内说明归位为注释;补jQuery版本时效备注
-2018-06-11-iview-admin 1.3 + django 2.0 (二) 用户登录-2128052.md	重写介绍分2章5节;修错乱围栏;补template标签与bdstatic头像域名;备注改Django2.0 EOL
-2018-06-12-python 获取域名的IP、注册时间、过期时间-2128454.md	重写介绍分2节;补chinaz改版失效、whois/RDAP替代及弃用get_event_loop备注
-2018-11-28-django 2.x + celery 4.2.x 配置文件 设置-2323058.md	并发流程已处理故保留;修tasks.py缩进;空节补migrate与启动redis命令并备注

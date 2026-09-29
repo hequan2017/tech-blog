@@ -1,8 +1,0 @@
-2019-08-20-docker 仓库harbor 1.8.2 http 部署-2431158.md
-2019-08-26-k8s ingress-nginx 0.25.1 最新版部署和例子-2432608.md
-2019-09-05-kubectl proxy 加token 验证-2435698.md
-2019-09-11-k8s storageclass 例子-2437544.md
-2019-09-12-k8s StatefulSet ingress 例子-2437663.md
-2019-09-17-k8s python api二次封装 例子-2438485.md
-2019-11-01-Django之入门 CMDB系统 (一) 基础环境-2447140.md
-2019-11-01-Django之入门 CMDB系统 (四) 增删改查-2447147.md

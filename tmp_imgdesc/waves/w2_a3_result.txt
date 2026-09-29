@@ -1,8 +1,0 @@
-2016-05-06-企业级nginx服务优化（四 )伪静态+php.ini-1770778.md	重写介绍与备注,Apache/Nginx伪静态与php.ini参数分节入码块,修p hpinfo等笔误,2图改实际内容alt
-2016-05-07-COBBLER无人值守安装-----已用真实服务器测试-1770950.md	重排为编号分节+fenced码块,修p_w_picpaths残留/全角冒号MAC,删重复损坏脚本,5图alt按图面改写
-2016-05-09-MySQL安装+多实例-1771596.md	重写介绍,cmake编译与多实例3306/3307/3308分节,修mysql_safe/tail -l等笔误,备注补mysql_install_db替代
-2016-05-10-mysql基础操作-1771935.md	启动关闭/提示符/密码/找回root分节,修>/d ev/null笔误,备注补5.7+ authentication_string时效
-2016-05-15-mysql sql-1773728.md	SQL分类/建库字符集/授权/建表分节,修create tables笔误,备注补8.0 GRANT创建用户失效
-2016-05-16-mysql数据库应用管理+乱码+字符集-1773918.md	增删改查/binlog增量恢复/乱码排查/latin1转GBK八步分节,修兵输出不屑等笔误
-2016-05-17-mysql备份与恢复+ERROR 1046-1774511.md	按备份/压缩/分库脚本/binlog/恢复/1046排查分节,修/applicatiom路径笔误,备注补GTID提示
-2016-05-18-mysql主从复制-1774806.md	原理/主从搭建/状态检查/只读/跳错/级联分节,修二日志缺字,gif与png两张图alt按画面改写

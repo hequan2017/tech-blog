@@ -1,8 +1,0 @@
-2016-07-05-openstack学习笔记三 创建第一个实例-1795927.md	重写介绍按8节精读,理顺建网/ISO镜像/浮动IP/安全组/密钥对/云硬盘流程
-2016-07-05-openstack学习笔记六 多节点部署之keystone-1796108.md	重写介绍分3大节,类比表补表头,修实用/那台笔误与断行URL,备注补CLI移除
-2016-07-06-sendEmail报错：at usr share perl5 vendor_perl IO Socket SSL.pm-1811246.md	重写介绍分3节,修cd目录名笔误,备注补SSL_version改TLSv1的稳妥方案
-2016-07-09-openstack学习笔记七 swift安装-1812861.md	重写介绍分6节,修consisteny/acount/sufix/代维笔误,配置注释归位成ini块
-2016-07-13-参加云计算开源产业联盟成果发布会的一些照片-1826181.md	22张照片逐一识图改alt为具体场景,清理零宽字符与失效外链并分节
-2016-07-21-openstack学习笔记八 glance安装配置-1828592.md	保留并行精读稿,图alt改手绘Ceph架构,备注registry纠正为Rocky弃用Stein移除
-2016-05-30-LNMP_6.8+1.11.0+5.6.12+5.6.22-1784440.md	重写介绍分7节,修fiex/mysql启动名/断链URL,还原被滤软链名,备注补EOL
-2016-05-30-nginx重点优化合集一-1784366.md	重写介绍分9节,配置fenced块化,jpep/localtion/connet笔误修正,注释改#

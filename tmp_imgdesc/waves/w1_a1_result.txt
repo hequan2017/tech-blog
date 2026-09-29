@@ -1,8 +1,0 @@
-2016-03-30-linux文件权限-1758598.md	按chmod/umask/特殊权限分节,修"已root→以root"笔误,删残留空代码块
-2016-03-30-linux文件类型2-1758337.md	重组软硬链接、删除条件与日志占用实验分节,修apache2.2..17、"改变世界→时间"笔误
-2016-03-30-linux正则表达式BRE-1758538.md	整理BRE/ERE符号表与grep/sed/awk提IP实战分节,修"柜子→规则""ERF→ERE"笔误
-2016-03-31-Linux crond-1758943.md	梳理crond语法与生产规范分节,修%转义断行,补CentOS 7改用systemctl提示
-2016-03-31-linux用户管理-1759037.md	按useradd/passwd/sudo别名分节,修"授权柜子→规则"等笔误,补UID范围变化说明
-2016-04-03-linux NFS网络文件系统-1759919.md	梳理NFS部署与exports参数分节,修Netork/anngid笔误,补systemctl及NFSv4说明
-2016-04-06-linuxNFS优化及自动挂载autofs-1760940.md	重组挂载调优与autofs分节,修1677216、all_squah、nodirtime等笔误
-2016-04-06-《卫生行业信息安全等级保护工作的指导意见》的个人总结-1761088.md	按目标/原则/任务重组等保要点,修"第五季→第五级"等笔误,标注2008版标准已被等保2.0替代

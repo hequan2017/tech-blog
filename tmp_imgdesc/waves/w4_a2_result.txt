@@ -1,8 +1,0 @@
-2016-12-26-python笔记二 基础-1886269.md	重写介绍分6节,python块化,修无需/元祖/expantabs笔误,补py3除法备注
-2016-12-26-集群一 HAProxy+keepalived+varnsh-1886307.md	拆巨型bash块为haproxy/keepalived/py/vcl,修HAProxy大小写与p_w_picmaps,补py2邮件脚本备注
-2016-12-26-集群三 php+memcached缓存服务器-1886309.md	分8节,修断链URL/乱码/rstart/被吃软链名,备注CentOS6纠正为7并补PHP5.6 EOL
-2016-12-26-集群二 nginx-1886308.md	分5节,systemd单元与站点配置分别标注语言,补nginx1.10 EOL与--with-ipv6移除备注
-2016-12-26-集群四 mysql-5.7.16一键安装-1886310.md	脚本说明提为列表,脚本整体保留bash块,补MySQL5.7 EOL与kaist镜像失效备注
-2016-12-27-Python--day4--正则表达式 冒泡 时间复杂度-1886449.md	分3大节,修福鼎界定符/坏表格/丢O(1)/断链wiki,字符匹配改表格
-2016-12-28-Python--day6--面向对象学习-1886861.md	分5节,恢复被滤self.name与p1.ac等标识符并备注,修objcet/polymorphisn拼写
-2017-02-17-微信企业号开启回调模式--php-1898947.md	并发流程已改好仅查漏,读图后将通用alt改为回调配置页实际内容描述

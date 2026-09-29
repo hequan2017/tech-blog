@@ -1,8 +1,0 @@
-2016-05-20-mysql全备份+增量备份笔记总结-1775333.md	备份概念/mysqldump参数/分库/报错/恢复/主从配置七节,修en-dash与MySIM等笔误
-2016-05-23-mysql日志+引擎笔记-1782212.md	三类日志配置与MyISAM/InnoDB对比分节,修搞笑→高效等笔误,备注更正默认引擎版本
-2016-05-24-[WARNING] [INS-13014] Target environment do not meet some optional req-1782765.md	Oracle安装警告按报警/日志分析分节,备注补IGNORABLE可跳过与ksh替代pdksh
-2016-05-24-memcache安装-1782523.md	libevent/memcached/PHP扩展/session/监控五节,修192/168地址与extension行
-2016-05-25-GeoIP最快捷安装-1783283.md	数据包下载与EPEL安装分节,补全抓取丢失的geolite/fedoraproject主机名
-2016-05-26-CentOS Linux 6.8 正式发布 新版内核+大量更新-1783481.md	发布消息按概要/应用更新/下载分节,两张图alt按实际画面改写
-2016-07-05-openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据-1796041.md	rabbitmq与metadata篇分节,修实例列表图和手绘图两处alt与画面不符
-2016-07-05-openstack学习笔记四 组件框架-1795980.md	组件/节点/status分节,修Horizon截图图alt,还原http用户行与Nova服务表

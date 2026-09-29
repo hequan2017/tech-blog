@@ -1,8 +1,0 @@
-2016-05-20-mysql全备份+增量备份笔记总结-1775333.md
-2016-05-23-mysql日志+引擎笔记-1782212.md
-2016-05-24-[WARNING] [INS-13014] Target environment do not meet some optional req-1782765.md
-2016-05-24-memcache安装-1782523.md
-2016-05-25-GeoIP最快捷安装-1783283.md
-2016-05-26-CentOS Linux 6.8 正式发布 新版内核+大量更新-1783481.md
-2016-07-05-openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据-1796041.md
-2016-07-05-openstack学习笔记四 组件框架-1795980.md

@@ -1,8 +1,0 @@
-2016-05-19-庆祝自己博客访问上千，继续努力-1775211.md	随笔：访问量破千，自谦入门，跟老男孩视频学Linux，100集已看69集
-2016-05-31-个人画的第一幅图memcached-1784994.md	手绘memcached缓存流程图：命中返回，未命中回源RDBMS并写缓存
-2016-05-31-企业级nginx服务优化合集-1784987.md	四部分nginx/apache优化：版本/进程/fastcgi/gzip/防盗链/伪静态/php调优
-2016-06-01-LVS笔记-1785317.md	LVS集群概念/DR改MAC转发原理/调度算法/DR与RS端配置及ARP抑制
-2016-06-14-centos7.2系统基本优化-1789146.md	CentOS7.2装机后16项优化：eth0/yum源/sshd/ulimit/sysctl/chrony等
-2016-06-29-zabbix_agentd报错汇总-1794376.md	agent3.0.3两例报错：Hostname不一致与PID文件权限，附解决命令
-2016-07-04-openstack学习笔记二 网络设置基础-1795705.md	租户与VXLAN/OVS网桥/eth0桥接br-ex/dashboard建网建子网/拓扑
-2016-07-05-7月份 北京有关openstack的会议-1796068.md	2016年7月北京两会：7.13联盟发布会与7.18 CCUC2016，附联系方式

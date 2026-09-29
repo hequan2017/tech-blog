@@ -1,8 +1,0 @@
-2018-12-19-gorm 一对一 一对多 例子-2333058.md	重写介绍与备注;补被吃asset.ID;SQL块改sql标注;分3节
-2018-12-21-年轻人的第一个go程序 监控数据库字段 报警-2333786.md	重写介绍备注;补github import与tm.In(loc);代码块改go标注
-2018-12-25-go 方法接受者 是指针类型和非指针类型的 区别-2335277.md	补全被吃t.Name;改go标注;修错注释与tes t笔误;分3节加运行输出
-2018-12-26-Django 使用 用户名 或者 邮箱名进行登录验证-2335670.md	重写介绍备注;settings块改python标注;补Django版本与异常提示
-2019-07-02-jquery datatable ajax 获取数据 重新加载-2416184.md	补技术备注;修坏围栏与sInfoEmtpy笔误;数据样例改json并分3节
-2019-07-08-windows defender 关闭方法-2418274.md	重写介绍;新增技术备注(防篡改保护时效);cmd说明移出代码块
-2019-07-31-go webssh 简单例子 （基于gin+ws+ssh）-2425428.md	补全被吃的github地址;新增备注;修"用得是"笔误;分3节
-2019-08-01-Ucloud api signature 生成 (python3)-2425633.md	重写介绍;新增备注(_verfy_ac非笔误);补说明文字

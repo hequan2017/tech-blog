@@ -1,8 +1,0 @@
-2017-03-08-python3--zabbixapi 的使用-1904261.md	已被并发流程处理过,介绍/备注/代码标注均合格,查漏后保留原样
-2017-03-15-python3微信企业号 发送图文-1906922.md	重写介绍分节补备注;修p_w_picpath转义为image及purl1未定义变量
-2017-03-17-python--学习--day14--web基础 html css-1907759.md	HTML标签/表单/CSS选择器与布局笔记重组分节;修chorme等笔误后被并发流程合并
-2017-03-17-python3模拟登录zabbix-1907543.md	模拟登录脚本补思路小节;修错别字,备注新版建议走JSON-RPC API
-2017-03-21-day15CSS+JavaScript+DOM-1908641.md	CSS补充/JS基础/DOM操作分6节;修fiexd/opcity/nextElementtSibling等笔误
-2017-03-22-day16 js+dom-1909384.md	JS函数/作用域/面向对象/DOM/事件分6节;补全被吃掉的this.name代码
-2017-03-23-day17 Jquery-1909810.md	jQuery选择器至扩展分10节;补丢失官网链接,清加粗星号残留与重复段
-2017-03-23-day17 Jquery-1909811.md	与1909810同文重复发布,同样重写分节并修笔误,front-matter各自保留

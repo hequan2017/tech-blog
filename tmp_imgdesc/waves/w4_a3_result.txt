@@ -1,8 +1,0 @@
-2016-08-25-OpenStack Mitaka for Ubuntu 16.04 LTS 部署指南-1842494.md	已被前序流程处理,介绍备注完好,无图无笔误,保留原样
-2016-08-29-Openstack Mitaka for Centos7.2 部署指南（一）-1844084.md	保留并发成果,查漏补缺修「计划→项目」误译4处
-2016-08-31-puppet-笔记1-1844951.md	保留并发成果,补hosts引导句/安装命令注释/签证注释3处排版
-2016-09-03-Openstack Mitaka for Centos7.2 部署指南（二）-1846001.md	并发主笔重排nova/neutron/horizon,补TIME_ZONE占位符说明
-2016-09-04-Openstack Mitaka for Centos7.2 部署指南（三）-1846096.md	完整改写Cinder/Swift分节,修U+2010连字符/实验到次等笔误,补git.openstack.org退役备注
-2016-09-05-XX平台升级报告-1846566.md	重写介绍与备注,报告字段整理成表格,无实质内容如实说明
-2016-12-26-Python--day4--迭代器-生成器-装饰器-目录-1886276.md	完整改写,修乱码表格/粘连代码块/断链,补import time与py3差异备注
-2016-12-26-python笔记三 函数-1886270.md	完整改写函数笔记分节,修agr/元祖等笔误,补reduce移functools备注
