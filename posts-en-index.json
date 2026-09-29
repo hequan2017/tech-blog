@@ -241,5 +241,15 @@
  "2023-04-10-centos7 设置服务器为网络中转-6181184.md": "Setting Up a CentOS 7 Server as a Network Relay",
  "2023-04-14-爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。-6190425.md": "Building a Simulated PPPoE Dial-Up Environment with iKuai and a VMware VM",
  "2023-05-08-shell 根据网卡名字自动生成网卡文件，然后up。-6254471.md": "Shell Script to Auto-Generate NIC Config Files from Interface Names and Bring Them Up",
+ "2023-05-09-在jenkins构建时，先执行这个，钉钉审批通过，则继续执行，钉钉审批失败，则不执行简陋的审批工作流。-6258555.md": "Run This First in a Jenkins Build: Continue on DingTalk Approval, Skip on Rejection — a Minimal Approval Workflow",
+ "2023-05-17-docker 获取容器流量-6291868.md": "Measuring Container Network Traffic with Docker",
+ "2023-05-30-pcdn go 采集nat类型-6380661.md": "Collecting NAT Type in Go for PCDN",
+ "2023-05-30-PCDN 华为服务器 终端 二维码 乱码 界面办法-6380678.md": "Fixing Garbled QR Codes in the Terminal on Huawei PCDN Servers",
+ "2023-05-31-go 获取多核心CPU 使用率-6388467.md": "Getting Per-Core CPU Usage in Go",
+ "2023-06-01-docker部署influxdb-6396307.md": "Deploying InfluxDB with Docker",
+ "2023-06-01-go 调用influxdb 保存CPU 使用率-6396335.md": "Saving CPU Usage to InfluxDB from Go",
+ "2023-06-19-rps和rfs优化脚本-6515750.md": "RPS and RFS Optimization Script",
+ "2023-07-11-更换GORM默认的SQLite驱动-6690830.md": "Replacing GORM's Default SQLite Driver",
+ "2023-07-13-go influxdb 批量写入 api-6711517.md": "Go InfluxDB Batch Write API",
  "2024-12-25-kvm的安装 部署 测试 网络-12930481.md": "KVM Installation, Deployment, Testing, and Networking"
 }
