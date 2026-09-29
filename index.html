@@ -38,10 +38,10 @@ header{position:sticky;top:0;z-index:20;height:56px;display:flex;align-items:cen
 .brand:hover{color:var(--text)}
 .brand svg{flex-shrink:0}
 .brand .sub{font-size:12px;font-weight:400;color:var(--muted)}
-#search{flex:1;max-width:380px;height:34px;background:var(--bg-alt);border:1px solid transparent;border-radius:8px;
-  padding:0 12px;color:var(--text);font-size:13.5px;outline:none;transition:border-color .15s,background .15s}
+#search{flex:1;max-width:380px;height:34px;background:var(--bg-alt);border:1px solid transparent;border-radius:10px;
+  padding:0 12px;color:var(--text);font-size:13.5px;outline:none;transition:border-color .15s,background .15s,box-shadow .15s}
 #search::placeholder{color:var(--muted)}
-#search:focus{border-color:var(--brand);background:var(--bg)}
+#search:focus{border-color:var(--brand);background:var(--bg);box-shadow:0 0 0 3px var(--brand-soft)}
 header .links{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:13px;color:var(--muted);white-space:nowrap}
 header .links a{color:var(--muted);padding:4px 8px;border-radius:6px}
 header .links a:hover{color:var(--brand-1);background:var(--bg-alt)}
@@ -49,6 +49,9 @@ header .links a:hover{color:var(--brand-1);background:var(--bg-alt)}
   color:var(--muted);display:flex;align-items:center;justify-content:center}
 #theme-btn:hover{color:var(--brand-1);background:var(--bg-alt)}
 #theme-btn svg{width:17px;height:17px}
+#lang-btn{height:32px;min-width:36px;padding:0 9px;border:none;background:none;border-radius:8px;cursor:pointer;
+  color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.4px;font-family:inherit;transition:color .15s,background .15s}
+#lang-btn:hover{color:var(--brand-1);background:var(--bg-alt)}
 html.dark .ico-sun{display:none}
 html:not(.dark) .ico-moon{display:none}
 
@@ -71,16 +74,18 @@ main{flex:1;min-width:0;padding:0 32px 40px}
 .container{max-width:820px;margin:0 auto}
 
 /* ---------- 首页介绍 ---------- */
-.intro{padding:52px 0 6px;text-align:center}
+.intro{position:relative;padding:64px 0 6px;text-align:center;isolation:isolate}
+.intro::before{content:'';position:absolute;left:50%;top:-130px;width:680px;height:500px;transform:translateX(-50%);
+  background:radial-gradient(closest-side,var(--brand-soft),transparent 72%);pointer-events:none;z-index:-1}
 .intro h1{font-size:42px;letter-spacing:1px;line-height:1.25}
 .intro h1 .g{background:linear-gradient(120deg,var(--brand),#3e71f6);-webkit-background-clip:text;background-clip:text;color:transparent}
 .intro .tag{margin-top:12px;font-size:16.5px;font-weight:500;color:var(--text)}
 .intro .desc{margin:10px auto 0;max-width:620px;font-size:14px;color:var(--muted);line-height:1.75}
 .intro .actions{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 24px;border-radius:10px;font-size:14px;
-  font-weight:500;border:1px solid transparent;cursor:pointer}
-.btn.primary{background:var(--brand);color:#fff}
-.btn.primary:hover{background:var(--brand-1);color:#fff}
+  font-weight:500;border:1px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s,color .15s}
+.btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-1));color:#fff;box-shadow:0 4px 14px rgba(66,184,131,.3)}
+.btn.primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(66,184,131,.42);color:#fff}
 .btn.ghost{border-color:var(--border);color:var(--text)}
 .btn.ghost:hover{border-color:var(--brand);color:var(--brand-1)}
 .intro kbd{background:var(--bg-alt);border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;
@@ -88,18 +93,27 @@ main{flex:1;min-width:0;padding:0 32px 40px}
 .intro .hint{font-size:13px;color:var(--muted);margin-top:16px}
 .stats{display:flex;justify-content:center;gap:46px;margin:30px 0 4px;flex-wrap:wrap}
 .stat{display:flex;flex-direction:column;gap:2px}
-.stat b{font-size:24px;font-weight:700;color:var(--brand-1);font-variant-numeric:tabular-nums}
+.stat b{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;
+  background:linear-gradient(120deg,var(--brand-1),#3e71f6);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat span{font-size:12.5px;color:var(--muted)}
-.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px;margin:28px 0 10px;text-align:left}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:16px;margin:28px 0 10px;text-align:left}
 .feat{display:block;padding:17px 18px 15px;border:1px solid var(--border);border-radius:12px;background:var(--bg);
   transition:transform .15s,box-shadow .15s,border-color .15s}
 .feat:hover{transform:translateY(-3px);border-color:var(--brand);box-shadow:var(--shadow);text-decoration:none}
-.feat .ico{font-size:22px;line-height:1}
+.feat .ico{width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:21px;line-height:1;
+  background:var(--brand-soft);border-radius:10px}
 .feat .ft{margin-top:10px;font-size:15.5px;font-weight:600;color:var(--text);
   display:flex;justify-content:space-between;align-items:center;gap:8px}
 .feat .ft .n{flex-shrink:0;font-size:12px;font-weight:500;color:var(--brand-1);background:var(--brand-soft);border-radius:20px;padding:2px 9px}
 .feat:hover .ft{color:var(--brand-1)}
 .feat .fd{margin-top:7px;font-size:13px;color:var(--muted);line-height:1.65}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.intro>*{animation:rise .5s ease both}
+.intro>*:nth-child(2){animation-delay:.06s}.intro>*:nth-child(3){animation-delay:.12s}
+.intro>*:nth-child(4){animation-delay:.18s}.intro>*:nth-child(5){animation-delay:.24s}
+.intro>*:nth-child(6){animation-delay:.3s}.intro>*:nth-child(7){animation-delay:.36s}
+.intro>*:nth-child(8){animation-delay:.42s}
+@media (prefers-reduced-motion:reduce){.intro>*{animation:none}}
 
 /* 关于本项目 + 年份分布 */
 .about{margin:34px 0 8px;padding:22px 22px 18px;border:1px solid var(--border);border-radius:14px;
@@ -215,12 +229,13 @@ footer a:hover{color:var(--brand-1)}
       <path d="M12 21 2 4h5l5 9 5-9h5z" fill="var(--brand)"/>
       <path d="M12 21 9 15.6 12 10.5l3 5.1z" fill="var(--brand-1)"/>
     </svg>
-    技术博客<span class="sub">/ hequan</span>
+    <span id="brand-t">技术博客</span><span class="sub">/ hequan</span>
   </a>
   <input id="search" type="search" placeholder="搜索文章标题 / 分类…  按 / 聚焦" autocomplete="off">
   <div class="links">
     <a class="hide-s" href="https://blog.51cto.com/hequan" target="_blank" rel="noopener">51CTO 原站</a>
     <a href="https://github.com/hequan2017/tech-blog" target="_blank" rel="noopener">GitHub</a>
+    <button id="lang-btn" title="Switch language / 切换语言" aria-label="Switch language">EN</button>
     <button id="theme-btn" title="切换明暗主题" aria-label="切换明暗主题">
       <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -232,48 +247,7 @@ footer a:hover{color:var(--brand-1)}
   <aside class="side"><div id="side"></div></aside>
   <main>
     <div id="home" class="container">
-      <div class="intro" id="intro">
-        <h1>技术<span class="g">博客</span></h1>
-        <p class="tag">hequan 的 51CTO 博客文章全集 · 2016–2025</p>
-        <p class="desc">十年运维与开发实战笔记 — 涵盖 Go、Python、Linux、Kubernetes 云原生与自动化运维等方向,
-          共 416 篇,支持分类浏览、即时搜索、页内大纲跳转与明暗主题阅读。</p>
-        <div class="actions">
-          <button class="btn primary" id="btn-start">开始阅读 ↓</button>
-          <a class="btn ghost" href="https://github.com/hequan2017/tech-blog" target="_blank" rel="noopener">GitHub 仓库</a>
-        </div>
-        <div class="hint">按 <kbd>/</kbd> 快速搜索 · 点击下方分类卡片直达对应文章</div>
-        <div class="stats">
-          <div class="stat"><b>416</b><span>篇文章</span></div>
-          <div class="stat"><b>19</b><span>个分类</span></div>
-          <div class="stat"><b>10</b><span>年 · 2016–2025</span></div>
-        </div>
-        <div class="feats">
-          <a class="feat" href="#/c/python"><div class="ico">🐍</div><div class="ft">Python<span class="n">88 篇</span></div><div class="fd">爬虫与数据抓取、Django 全栈 CMDB 系列、自动化脚本与消息队列实战</div></a>
-          <a class="feat" href="#/c/go"><div class="ico">🐹</div><div class="ft">Go<span class="n">64 篇</span></div><div class="fd">gin / WebSSH、jumpserver API 资产对接、CLI 工具与后端服务开发</div></a>
-          <a class="feat" href="#/c/Linux"><div class="ico">🐧</div><div class="ft">Linux 与运维<span class="n">65 篇</span></div><div class="fd">基础命令与权限、磁盘/网络、SSH、Nginx、rsync 等系统运维实战</div></a>
-          <a class="feat" href="#/c/kubernetes"><div class="ico">☸️</div><div class="ft">云原生与集群<span class="n">82 篇</span></div><div class="fd">kubernetes · 集群 · openstack:K8s 部署、Ingress、PV/PVC 与 GPU 调度</div></a>
-          <a class="feat" href="#/c/lnmp"><div class="ico">🧱</div><div class="ft">Web 服务<span class="n">39 篇</span></div><div class="fd">lnmp · tomcat:LNMP/LAMP 架构、Nginx/Apache 配置与性能优化</div></a>
-          <a class="feat" href="#/c/前端"><div class="ico">🎨</div><div class="ft">前端<span class="n">26 篇</span></div><div class="fd">前端 · vue · typescript · 后端:Vue 工程化、TS 与构建部署</div></a>
-          <a class="feat" href="#/c/ansible"><div class="ico">🔧</div><div class="ft">自动化运维<span class="n">25 篇</span></div><div class="fd">shell · ansible · zabbix · autoops · cobbler:批量部署与监控告警</div></a>
-          <a class="feat" href="#/c/未分类"><div class="ico">🗂️</div><div class="ft">未分类<span class="n">27 篇</span></div><div class="fd">未归类的技术随笔与实践记录</div></a>
-        </div>
-        <div class="about" id="about">
-          <h2>📖 关于本项目</h2>
-          <p>本仓库是博主 <a href="https://blog.51cto.com/hequan" target="_blank" rel="noopener">hequan</a>
-            在 51CTO 发布的全部技术文章的离线备份与再整理,共 <b>416</b> 篇,时间跨度 2016–2025 共十年。
-            所有文章已转换为 Markdown,图片本地化至 <code>posts/assets/</code>,可离线阅读、全文检索,
-            每篇保留原标题、发布时间、分类与原文链接。</p>
-          <p>内容覆盖 <b>Go / Python 后端开发、Linux 系统运维、Kubernetes 云原生、OpenStack 私有云、
-            LNMP Web 架构、Ansible/Zabbix 自动化运维</b> 等方向,适合作为运维与后端开发的实战参考资料。
-            每篇文章顶部附有内容介绍与技术演进备注,帮助读者快速判断是否适用于当前环境。</p>
-          <div class="tags">
-            <span>Go</span><span>Python</span><span>Linux</span><span>Kubernetes</span>
-            <span>OpenStack</span><span>LNMP</span><span>Ansible</span><span>Zabbix</span>
-            <span>Docker</span><span>Vue</span><span>Shell</span><span>DevOps</span>
-          </div>
-          <div class="years" id="years"></div>
-        </div>
-      </div>
+      <div class="intro" id="intro"></div>
       <div id="stats"></div>
       <div id="list"></div>
       <button id="more" hidden>加载更多</button>
@@ -282,7 +256,7 @@ footer a:hover{color:var(--brand-1)}
   </main>
 </div>
 
-<footer>技术博客 · 共 416 篇(2016–2025) · 基于 <a href="https://github.com/hequan2017/tech-blog" target="_blank" rel="noopener">hequan2017/tech-blog</a> 构建 · 文章版权归原作者所有</footer>
+<footer id="footer"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
@@ -317,6 +291,134 @@ applyTheme(savedTheme ? savedTheme === 'dark' : matchMedia('(prefers-color-schem
 $('#theme-btn').addEventListener('click', () =>
   applyTheme(!document.documentElement.classList.contains('dark')));
 
+/* ---------- 多语言 ---------- */
+let LANG = localStorage.getItem('lang') === 'en' ? 'en' : 'zh';
+const T = {
+  zh: {
+    siteTitle:'技术博客 · hequan', brand:'技术博客', searchPh:'搜索文章标题 / 分类…  按 / 聚焦',
+    link51cto:'51CTO 原站', themeTitle:'切换明暗主题',
+    allPosts:'全部文章', categories:'分类', allCats:'所有分类', catDot:'分类 · ',
+    backAll:'← 返回全部文章', backList:'← 返回列表',
+    loading:'正在加载文章…', loadFail:'文章加载失败',
+    loadFailBody:'请确认文章存在,或<a href="#/">返回列表</a>', original:'原文链接 ↗',
+    onThisPage:'本页目录', noSections:'无小节', copy:'复制', copied:'已复制 ✓', viewImg:'点击查看大图',
+    more:'加载更多', empty:'没有找到相关文章 🙈',
+    catFmt:'分类「{c}」', searchFmt:' · 搜索“{q}”', countFmt:' · {n} 篇',
+    heroTag:'hequan 的 51CTO 博客文章全集 · 2016–2025',
+    heroDesc:'十年运维与开发实战笔记 — 涵盖 Go、Python、Linux、Kubernetes 云原生与自动化运维等方向,共 {n} 篇,支持分类浏览、即时搜索、页内大纲跳转与明暗主题阅读。',
+    startReading:'开始阅读 ↓', githubRepo:'GitHub 仓库',
+    hint:'按 <kbd>/</kbd> 快速搜索 · 点击下方分类卡片直达对应文章',
+    statPosts:'篇文章', statCats:'个分类', statYears:'年 · {r}',
+    aboutH2:'📖 关于本项目',
+    aboutP1:'本仓库是博主 <a href="https://blog.51cto.com/hequan" target="_blank" rel="noopener">hequan</a> 在 51CTO 发布的全部技术文章的离线备份与再整理,共 <b>{n}</b> 篇,时间跨度 2016–2025 共十年。所有文章已转换为 Markdown,图片本地化至 <code>posts/assets/</code>,可离线阅读、全文检索,每篇保留原标题、发布时间、分类与原文链接。',
+    aboutP2:'内容覆盖 <b>Go / Python 后端开发、Linux 系统运维、Kubernetes 云原生、OpenStack 私有云、LNMP Web 架构、Ansible/Zabbix 自动化运维</b> 等方向,适合作为运维与后端开发的实战参考资料。每篇文章顶部附有内容介绍与技术演进备注,帮助读者快速判断是否适用于当前环境。',
+    footer:'共 {n} 篇(2016–2025) · 基于 <a href="https://github.com/hequan2017/tech-blog" target="_blank" rel="noopener">hequan2017/tech-blog</a> 构建 · 文章版权归原作者所有',
+  },
+  en: {
+    siteTitle:'Tech Blog · hequan', brand:'Tech Blog', searchPh:'Search titles / categories…  Press / to focus',
+    link51cto:'51CTO Blog', themeTitle:'Toggle theme',
+    allPosts:'All Posts', categories:'Categories', allCats:'All Categories', catDot:'Category · ',
+    backAll:'← All Posts', backList:'← Back to list',
+    loading:'Loading article…', loadFail:'Failed to load article',
+    loadFailBody:'Check that the article exists, or <a href="#/">return to the list</a>', original:'Original ↗',
+    onThisPage:'On this page', noSections:'No sections', copy:'Copy', copied:'Copied ✓', viewImg:'Click to enlarge',
+    more:'Load more', empty:'No matching posts 🙈',
+    catFmt:'Category "{c}"', searchFmt:' · search "{q}"', countFmt:' · {n} posts',
+    heroTag:'The complete 51CTO blog archive of hequan · 2016–2025',
+    heroDesc:'A decade of hands-on ops & dev notes — Go, Python, Linux, Kubernetes cloud-native and automation, {n} posts in total. Browse by category, instant search, on-page outline and light/dark reading.',
+    startReading:'Start Reading ↓', githubRepo:'GitHub Repo',
+    hint:'Press <kbd>/</kbd> to search · Jump to a category via the cards below',
+    statPosts:'posts', statCats:'categories', statYears:' years · {r}',
+    aboutH2:'📖 About this project',
+    aboutP1:'Offline archive and re-edition of every article published on 51CTO by <a href="https://blog.51cto.com/hequan" target="_blank" rel="noopener">hequan</a> — <b>{n}</b> posts spanning 2016–2025. All articles are converted to Markdown with images localized under <code>posts/assets/</code> for offline reading and full-text search; original titles, dates, categories and source links are preserved.',
+    aboutP2:'Topics cover <b>Go / Python backend development, Linux system administration, Kubernetes cloud-native, OpenStack private cloud, LNMP web architecture and Ansible/Zabbix automation</b> — a practical reference for ops and backend engineers. Each article opens with a summary and tech-era notes to help you judge whether it fits your environment.',
+    footer:'{n} posts (2016–2025) · Built on <a href="https://github.com/hequan2017/tech-blog" target="_blank" rel="noopener">hequan2017/tech-blog</a> · Posts © their original author',
+  }
+};
+function t(k){ return (T[LANG] && T[LANG][k]) || T.zh[k] || k; }
+function tf(k, vars){ return t(k).replace(/\{(\w+)\}/g, (_, n) => vars[n]); }
+
+/* 首页分组卡片: 数量按 posts-index.json 动态计算 */
+const FEAT_GROUPS = [
+  {href:'#/c/python', ico:'🐍', cats:['python'], zh:['Python','爬虫与数据抓取、Django 全栈 CMDB 系列、自动化脚本与消息队列实战'], en:['Python','Web scraping, Django CMDB series, automation scripts & message queues']},
+  {href:'#/c/go', ico:'🐹', cats:['go'], zh:['Go','gin / WebSSH、jumpserver API 资产对接、CLI 工具与后端服务开发'], en:['Go','gin / WebSSH, jumpserver API integration, CLI tools & backend services']},
+  {href:'#/c/Linux', ico:'🐧', cats:['Linux','运维基础'], zh:['Linux 与运维','基础命令与权限、磁盘/网络、SSH、Nginx、rsync 等系统运维实战'], en:['Linux & Ops','Commands & permissions, disk/network, SSH, Nginx, rsync']},
+  {href:'#/c/kubernetes', ico:'☸️', cats:['kubernetes','集群','openstack'], zh:['云原生与集群','kubernetes · 集群 · openstack:K8s 部署、Ingress、PV/PVC 与 GPU 调度'], en:['Cloud Native','k8s · cluster · openstack: deployments, Ingress, PV/PVC & GPU scheduling']},
+  {href:'#/c/lnmp', ico:'🧱', cats:['lnmp','tomcat'], zh:['Web 服务','lnmp · tomcat:LNMP/LAMP 架构、Nginx/Apache 配置与性能优化'], en:['Web Serving','lnmp · tomcat: LNMP/LAMP, Nginx/Apache config & tuning']},
+  {href:'#/c/前端', ico:'🎨', cats:['前端','vue','typescript','后端'], zh:['前端','前端 · vue · typescript · 后端:Vue 工程化、TS 与构建部署'], en:['Frontend','frontend · vue · typescript: Vue engineering, TS, build & deploy']},
+  {href:'#/c/ansible', ico:'🔧', cats:['shell','ansible','zabbix','autoops','cobbler'], zh:['自动化运维','shell · ansible · zabbix · autoops · cobbler:批量部署与监控告警'], en:['Automation','shell · ansible · zabbix · autoops · cobbler: provisioning & monitoring']},
+  {href:'#/c/随笔', ico:'📝', cats:['随笔','安全'], zh:['随笔 · 安全','随笔 · 安全:学习总结、行业活动记录与信息安全等级保护笔记'], en:['Essays & Security','essays · security: study notes, event records & compliance notes']},
+];
+
+function renderHome(){
+  const L = LANG === 'en';
+  const counts = {};
+  POSTS.forEach(p => counts[p.c] = (counts[p.c]||0)+1);
+  const nOf = g => g.cats.reduce((s,c) => s + (counts[c]||0), 0);
+  const nCats = Object.keys(counts).length;
+  const ys = POSTS.map(p => p.d.slice(0,4)).sort();
+  const range = ys.length ? `${ys[0]}–${ys[ys.length-1]}` : '2016–2025';
+  const g = FEAT_GROUPS.map(x => {
+    const [ft, fd] = L ? x.en : x.zh;
+    return `<a class="feat" href="${x.href}"><div class="ico">${x.ico}</div>
+      <div class="ft">${esc(ft)}<span class="n">${nOf(x)} ${L?'posts':'篇'}</span></div>
+      <div class="fd">${esc(fd)}</div></a>`;
+  }).join('\n          ');
+  $('#intro').innerHTML = `
+        <h1>${L ? 'Tech <span class="g">Blog</span>' : '技术<span class="g">博客</span>'}</h1>
+        <p class="tag">${esc(t('heroTag'))}</p>
+        <p class="desc">${esc(tf('heroDesc', {n: POSTS.length}))}</p>
+        <div class="actions">
+          <button class="btn primary" id="btn-start">${esc(t('startReading'))}</button>
+          <a class="btn ghost" href="https://github.com/hequan2017/tech-blog" target="_blank" rel="noopener">${esc(t('githubRepo'))}</a>
+        </div>
+        <div class="hint">${t('hint')}</div>
+        <div class="stats">
+          <div class="stat"><b>${POSTS.length}</b><span>${esc(t('statPosts'))}</span></div>
+          <div class="stat"><b>${nCats}</b><span>${esc(t('statCats'))}</span></div>
+          <div class="stat"><b>${ys.length || 10}</b><span>${esc(tf('statYears', {r: range}))}</span></div>
+        </div>
+        <div class="feats">
+          ${g}
+        </div>
+        <div class="about" id="about">
+          <h2>${esc(t('aboutH2'))}</h2>
+          <p>${tf('aboutP1', {n: POSTS.length})}</p>
+          <p>${t('aboutP2')}</p>
+          <div class="tags">
+            <span>Go</span><span>Python</span><span>Linux</span><span>Kubernetes</span>
+            <span>OpenStack</span><span>LNMP</span><span>Ansible</span><span>Zabbix</span>
+            <span>Docker</span><span>Vue</span><span>Shell</span><span>DevOps</span>
+          </div>
+          <div class="years" id="years"></div>
+        </div>`;
+}
+
+function renderFooter(){
+  $('#footer').innerHTML = esc(t('brand')) + ' · ' + tf('footer', {n: POSTS.length});
+}
+
+function applyLang(lang, rerender){
+  LANG = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+  $('#lang-btn').textContent = lang === 'en' ? '中' : 'EN';
+  $('#brand-t').textContent = t('brand');
+  $('#search').placeholder = t('searchPh');
+  const l51 = document.querySelector('header .links .hide-s');
+  if(l51) l51.textContent = t('link51cto');
+  $('#theme-btn').title = t('themeTitle');
+  $('#theme-btn').setAttribute('aria-label', t('themeTitle'));
+  $('#more').textContent = t('more');
+  renderFooter();
+  document.title = t('siteTitle');
+  if(rerender && POSTS.length){
+    renderHome(); renderYears(); route();
+  }
+}
+applyLang(LANG, false);
+$('#lang-btn').addEventListener('click', () => applyLang(LANG === 'en' ? 'zh' : 'en', true));
+
 /* ---------- 路由 ---------- */
 function currentCat(){
   const m = location.hash.match(/^#\/c\/([^#]+)/);
@@ -331,6 +433,8 @@ function loadIndex(){
   fetch('posts-index.json').then(r => r.json()).then(json => {
     POSTS = json;
     POSTS.sort((a,b) => b.d.localeCompare(a.d));
+    renderFooter();
+    renderHome();
     renderYears();
     route();
   });
@@ -364,20 +468,20 @@ function renderSide(){
   if(postFile){
     const art = POSTS.find(p => p.f === postFile);
     const cat = art ? art.c : '';
-    h += `<h3>分类 · ${esc(cat || '未知')}</h3>
-      <a class="back" href="#/">← 返回全部文章</a><div style="height:8px"></div><div class="posts">`;
+    h += `<h3>${esc(t('catDot'))}${esc(cat || '…')}</h3>
+      <a class="back" href="#/">${esc(t('backAll'))}</a><div style="height:8px"></div><div class="posts">`;
     POSTS.filter(p => p.c === cat).forEach(p => {
       h += `<a class="${p.f===postFile?'active':''}" href="#/p/${encPath(p.f)}" title="${esc(p.t)}">
         <span class="t">${p.f===postFile ? esc(p.t) : hi(p.t, '')}</span></a>`;
     });
-    h += '</div><div style="height:14px"></div><h3>所有分类</h3>';
+    h += `</div><div style="height:14px"></div><h3>${esc(t('allCats'))}</h3>`;
   } else {
-    h += '<h3>分类</h3>';
+    h += `<h3>${esc(t('categories'))}</h3>`;
   }
   const counts = {};
   POSTS.forEach(p => counts[p.c] = (counts[p.c]||0)+1);
   const order = Object.keys(counts).sort((a,b) => counts[b]-counts[a]);
-  h += `<a class="${cur==='' && !currentPost() ? 'active':''}" href="#/">全部文章<span class="n">${POSTS.length}</span></a>`;
+  h += `<a class="${cur==='' && !currentPost() ? 'active':''}" href="#/">${esc(t('allPosts'))}<span class="n">${POSTS.length}</span></a>`;
   order.forEach(c => {
     h += `<a class="${c===cur && !currentPost() ? 'active':''}" href="#/c/${encodeURIComponent(c)}">
       ${esc(c)}<span class="n">${counts[c]}</span></a>`;
@@ -405,8 +509,8 @@ function renderList(reset){
   $('#intro').hidden = !onHome;
   $('#view').hidden = true;
   $('#home').hidden = false;
-  $('#stats').textContent = (cat ? `分类「${cat}」` : '全部文章') +
-    (q ? ` · 搜索“${q}”` : '') + ` · ${items.length} 篇`;
+  $('#stats').textContent = (cat ? tf('catFmt', {c: cat}) : t('allPosts')) +
+    (q ? tf('searchFmt', {q}) : '') + tf('countFmt', {n: items.length});
 
   const slice = items.slice(PAGE*PER, (PAGE+1)*PER);
   let h = '', lastYear = '';
@@ -418,7 +522,7 @@ function renderList(reset){
     h += `<div class="row"><a class="t" href="#/p/${encPath(p.f)}">${hi(p.t, q)}</a>
       <span class="d">${p.d}</span>${cat ? '' : `<span class="badge">${esc(p.c)}</span>`}</div>`;
   });
-  if(!h && reset) h = '<div class="empty">没有找到相关文章 🙈</div>';
+  if(!h && reset) h = `<div class="empty">${esc(t('empty'))}</div>`;
   $('#list').insertAdjacentHTML('beforeend', h);
   PAGE++;
   $('#more').hidden = PAGE*PER >= items.length;
@@ -430,24 +534,24 @@ async function renderPost(file){
   $('#home').hidden = true;
   $('#more').hidden = true;
   $('#view').hidden = false;
-  $('#view').innerHTML = '<div class="back">正在加载文章…</div>';
+  $('#view').innerHTML = `<div class="back">${esc(t('loading'))}</div>`;
   const art = POSTS.find(p => p.f === file) || {t:file, d:'', c:'', u:''};
   const r = await fetch(encPath(file)).catch(() => null);
   if(my !== FETCH_SEQ) return;   // 已跳转到其他文章,丢弃过期响应
   if(!r || !r.ok){
-    $('#view').innerHTML = `<a class="back" href="#/">← 返回列表</a>
-      <h1 class="pt">文章加载失败</h1><div class="empty">请确认文章存在,或<a href="#/">返回列表</a></div>`;
+    $('#view').innerHTML = `<a class="back" href="#/">${esc(t('backList'))}</a>
+      <h1 class="pt">${esc(t('loadFail'))}</h1><div class="empty">${t('loadFailBody')}</div>`;
     return;
   }
   let md = await r.text();
   md = md.replace(/^﻿/, '').replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');  // 去 front-matter(兼容 CRLF)
-  document.title = `${art.t} · 技术博客`;
-  $('#view').innerHTML = `<a class="back" href="#/">← 返回列表</a>
+  document.title = `${art.t} · ${t('brand')}`;
+  $('#view').innerHTML = `<a class="back" href="#/">${esc(t('backList'))}</a>
     <div class="doc"><h1 class="pt">${esc(art.t)}</h1>
     <div class="pmeta"><span>📅 ${art.d}</span>${art.c ? `<a href="#/c/${encodeURIComponent(art.c)}"><span class="badge">${esc(art.c)}</span></a>` : ''}
-      ${art.u ? `<a href="${esc(art.u)}" target="_blank" rel="noopener">原文链接 ↗</a>` : ''}</div>
+      ${art.u ? `<a href="${esc(art.u)}" target="_blank" rel="noopener">${esc(t('original'))}</a>` : ''}</div>
     <div class="markdown" id="md"></div></div>
-    <div class="toc"><div class="toc-inner"><h4>本页目录</h4><nav id="toc-nav"></nav></div></div>`;
+    <div class="toc"><div class="toc-inner"><h4>${esc(t('onThisPage'))}</h4><nav id="toc-nav"></nav></div></div>`;
   $('#md').innerHTML = marked.parse(md);
   decorateArticle();
   window.scrollTo({top:0, behavior:'instant'});
@@ -465,11 +569,11 @@ function decorateArticle(){
       pre.insertAdjacentHTML('afterbegin', `<span class="lang">${esc(lang)}</span>`);
     }
     const btn = document.createElement('button');
-    btn.className = 'copy'; btn.type = 'button'; btn.textContent = '复制';
+    btn.className = 'copy'; btn.type = 'button'; btn.textContent = t('copy');
     btn.addEventListener('click', () => {
       navigator.clipboard.writeText(code ? code.innerText : pre.innerText).then(() => {
-        btn.textContent = '已复制 ✓';
-        setTimeout(() => btn.textContent = '复制', 1600);
+        btn.textContent = t('copied');
+        setTimeout(() => btn.textContent = t('copy'), 1600);
       });
     });
     pre.appendChild(btn);
@@ -478,7 +582,7 @@ function decorateArticle(){
   md.querySelectorAll('img').forEach(im => {
     const s = im.getAttribute('src') || '';
     if(!/^(https?:)?\/\//.test(s)) im.src = 'posts/' + s.replace(/^\.\//,'');
-    im.title = im.alt || '点击查看大图';
+    im.title = im.alt || t('viewImg');
     if(im.parentElement && im.parentElement.tagName === 'A') im.parentElement.href = im.src;
     im.addEventListener('click', ev => {
       ev.preventDefault(); ev.stopPropagation();
@@ -505,7 +609,7 @@ function decorateArticle(){
   });
   const nav = $('#toc-nav');
   if(nav){
-    nav.innerHTML = toc || '<a style="cursor:default">无小节</a>';
+    nav.innerHTML = toc || `<a style="cursor:default">${esc(t('noSections'))}</a>`;
     if(toc){
       nav.querySelectorAll('a[data-i]').forEach(a => a.addEventListener('click', ev => {
         ev.preventDefault();
@@ -537,12 +641,14 @@ function spyHeads(heads){
 function route(){
   window.onscroll = null;
   if(currentPost()){ renderPost(currentPost()); }
-  else { document.title = '技术博客 · hequan'; renderList(true); }
+  else { document.title = t('siteTitle'); renderList(true); }
   renderSide();
 }
 
 /* ---------- 事件 ---------- */
-$('#btn-start').addEventListener('click', () => $('#stats').scrollIntoView({behavior:'smooth'}));
+$('#intro').addEventListener('click', ev => {
+  if(ev.target.closest('#btn-start')) $('#stats').scrollIntoView({behavior:'smooth'});
+});
 $('#more').addEventListener('click', () => renderList(false));
 $('#search').addEventListener('input', () => {
   if(location.hash !== '#/') location.hash = '#/';  // 触发 hashchange → renderList
