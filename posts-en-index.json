@@ -230,6 +230,16 @@
  "2023-02-21-拨号管理系统之创建ppp拨号-6076932.md": "Dial-up Management System: Creating a PPP Dial-up Connection",
  "2023-03-14-交换机 策划路由-6120846.md": "Switch Policy-Based Routing",
  "2023-03-14-数据库 添加 联合索引-6120828.md": "Adding a Composite Index to a Database Table",
+ "2023-03-16-go redis 基本使用-6125000.md": "Basic Redis Usage in Go",
+ "2023-03-16-go redis 生产者消费者-6125081.md": "Go Redis Producer-Consumer",
+ "2023-03-16-go redis 组订阅 并发 消费-6125408.md": "Go Redis Group Subscription and Concurrent Consumption",
+ "2023-03-16-华为交换机 配置vrp 路由分离-6125106.md": "Huawei Switch: VRP Configuration for Route Separation",
  "2023-03-21-centos7 tty模式不支持中文，需要去github找 修改后的内核-6140088.md": "CentOS 7 tty mode does not support Chinese; find a modified kernel on GitHub",
+ "2023-03-29-ppp拨号管理线路--自动检查默认脚本-6157332.md": "Managing PPP Dial-up Lines -- Auto-check Default Gateway Script",
+ "2023-03-31-ppp拨号管理线路--自动检查默认脚本--优化版本1-6161840.md": "PPP Dial-up Line Management -- Auto Default Route Check Script -- Optimized Version 1",
+ "2023-03-31-根据规则 生成mac地址。-6161915.md": "Generate a MAC Address According to Rules",
+ "2023-04-10-centos7 设置服务器为网络中转-6181184.md": "Setting Up a CentOS 7 Server as a Network Relay",
+ "2023-04-14-爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。-6190425.md": "Building a Simulated PPPoE Dial-Up Environment with iKuai and a VMware VM",
+ "2023-05-08-shell 根据网卡名字自动生成网卡文件，然后up。-6254471.md": "Shell Script to Auto-Generate NIC Config Files from Interface Names and Bring Them Up",
  "2024-12-25-kvm的安装 部署 测试 网络-12930481.md": "KVM Installation, Deployment, Testing, and Networking"
 }
