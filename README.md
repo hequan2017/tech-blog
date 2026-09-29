@@ -67,6 +67,7 @@ tech-blog/
 ├── posts-index.json      # 文章索引(标题/日期/分类/原文链接)
 ├── INDEX.md              # 完整目录(分类×年份)
 ├── README.md             # 本文件
+├── scripts/              # 工具链(抓取/组装/索引生成/文章校验)
 └── posts/                # 全部 416 篇文章
     ├── YYYY-MM-DD-标题-文章ID.md
     └── assets/           # 本地化图片资源

@@ -3,7 +3,7 @@
 import os, re, sys, io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-POSTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'posts')
+POSTS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'posts')
 
 issues = {
     'no_frontmatter': [],      # 缺 front-matter
