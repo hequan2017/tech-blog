@@ -1,7 +1,7 @@
 ---
 title: "ERROR : Error appeared during Puppet run: x.x.x.x _keystone.pp"
 date: "2016-08-01 22:21:00"
-category: ""
+category: "openstack"
 source: "https://blog.51cto.com/hequan/1833247"
 ---
 > **内容介绍**
