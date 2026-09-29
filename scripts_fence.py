@@ -6,11 +6,18 @@
 用法: python scripts_fence.py [--apply] [文件名...]
 """
 import os, re, sys, io, json
+from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, 'posts')
+POSTS_DIR = Path(POSTS).resolve()
 APPLY = '--apply' in sys.argv
+
+def safe_write(p, text):
+    rp = Path(p).resolve()
+    rp.relative_to(POSTS_DIR)
+    rp.write_text(text, encoding='utf-8', newline='\n')
 
 SHELL_HINT = re.compile(r'^\s*(\$ |yum |apt(-get)? |systemctl |kubectl |service |cd |mkdir |tar |wget |curl |rpm |ls\b|cat\b|grep |sed |awk |chmod |chown |useradd |echo |export |source |if \[ |for \[|while \[|fi\b|esac|then\b|#!/bin/(ba)?sh|->|^-)', re.M)
 PY = re.compile(r'^\s*(def |class \w|import \w+|from \w+ import|print\(|if __name__)', re.M)
@@ -123,7 +130,7 @@ for f in (ONLY if ONLY else sorted(os.listdir(POSTS))):
     if changed:
         new_body = re.sub(r'\n{3,}', '\n\n', '\n'.join(res))
         if APPLY:
-            open(p, 'w', encoding='utf-8', newline='\n').write(head + new_body)
+            safe_write(p, head + new_body)
         else:
             print('DRY', f)
 print(stats)

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """生成图片清单 manifest.json: 每张图的文章、上下文、当前 alt"""
 import os, re, sys, io, json
+from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 POSTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'posts')
@@ -24,8 +25,9 @@ for f in sorted(os.listdir(POSTS)):
                 'ctx_after': ctx_after,
             })
 
-out = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'img_manifest.json')
-json.dump(manifest, open(out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+out = Path(os.path.dirname(os.path.abspath(__file__)), 'img_manifest.json').resolve()
+out.relative_to(Path(__file__).resolve().parent)
+out.write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding='utf-8')
 print(f'total refs: {len(manifest)}')
 uniq = {m["src"] for m in manifest}
 print(f'unique imgs: {len(uniq)}')

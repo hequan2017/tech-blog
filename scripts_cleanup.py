@@ -6,11 +6,18 @@
 用法: python scripts_cleanup.py [--apply]  (默认 dry-run)
 """
 import os, re, sys, io
+from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, 'posts')
+ROOT_DIR = Path(ROOT).resolve()
 APPLY = '--apply' in sys.argv
+
+def safe_write(p, text):
+    rp = Path(p).resolve()
+    rp.relative_to(ROOT_DIR)
+    rp.write_text(text, encoding='utf-8', newline='\n')
 
 RE_UNWRAP = re.compile(r'\[(!\[[^\]]*\]\(assets/[^)]+\))\]\(https?://[^)\s]*51cto[^)\s]*\)')
 RE_DEADPAIR = re.compile(r'\[?(https?://s\d\.51cto\.com/[^\]\s]*)\]\(\1\)?', re.S)
@@ -49,7 +56,7 @@ for p in targets:
     if body != orig[m.end():] if m else body != orig:
         out = head + body
         if APPLY:
-            open(p, 'w', encoding='utf-8', newline='\n').write(out)
+            safe_write(p, out)
         print(('APPLY ' if APPLY else 'DRY   ') + os.path.relpath(p, ROOT))
 
 print(stats)

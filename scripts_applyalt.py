@@ -3,10 +3,17 @@
 result 行格式: src<TAB>描述
 """
 import os, re, sys, io, glob
+from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, 'posts')
+POSTS_DIR = Path(POSTS).resolve()
+
+def safe_write(p, text):
+    rp = Path(p).resolve()
+    rp.relative_to(POSTS_DIR)
+    rp.write_text(text, encoding='utf-8', newline='\n')
 
 mapping = {}
 for rf in sorted(glob.glob(os.path.join(ROOT, 'tmp_imgdesc', 'result_*.txt'))):
@@ -37,7 +44,7 @@ for f in sorted(os.listdir(POSTS)):
 
     new_body = re.sub(r'!\[([^\]]*)\]\((assets/[^)]+)\)', repl, body)
     if new_body != body:
-        open(p, 'w', encoding='utf-8', newline='\n').write(head + new_body)
+        safe_write(p, head + new_body)
         changed += 1
         print(f'updated {f}')
 

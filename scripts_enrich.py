@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
 """批量为 posts/ 下所有文章补充 内容介绍 + 技术备注, 并做排版美化."""
 import os, re, sys, io
+from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 POSTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'posts')
+POSTS_DIR = Path(POSTS).resolve()
+
+def safe_write(p, text):
+    rp = Path(p).resolve()
+    rp.relative_to(POSTS_DIR)
+    rp.write_text(text, encoding='utf-8', newline='\n')
 
 # ---------- 分类 -> 介绍模板 ----------
 CAT_DESC = {
@@ -131,7 +138,7 @@ def main():
         p = os.path.join(POSTS, f)
         out = process(p)
         if out is not None:
-            open(p, 'w', encoding='utf-8', newline='\n').write(out)
+            safe_write(p, out)
             changed.append(f)
     print(f'changed: {len(changed)}')
     for f in changed:

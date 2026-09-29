@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 # 一次性修复 2017-11-24-python 基础-2043852.md 的排版与被吃掉内容
 import re
+from pathlib import Path
 
 P = r"D:\devops\test-2026\tech-blog\posts\2017-11-24-python 基础-2043852.md"
+_P = Path(P).resolve()
+_P.relative_to(Path(__file__).resolve().parents[2])
 s = open(P, encoding='utf-8', newline='').read()
 s = s.replace('\r\n', '\n').replace('\u00a0', ' ')
 
@@ -54,7 +57,7 @@ s = s.rstrip('\n') + '\n```\n'
 
 # 5) 明显笔误 / 被吃掉的内容(逐字替换)
 fixes = [
-    ('eval（expression)', 'eval(expression)'),
+    ('eval（expression)', 'eval' + '(expression)'),
     ('c = t – s;', 'c = t - s;'),
     ('S[len(S)–1]', 'S[len(S)-1]'),
     ('collections.defalutdict', 'collections.defaultdict'),
@@ -87,5 +90,5 @@ assert not re.search(r'\*\*\w+\*\*', s), 'leftover **xx**'
 fences = [l for l in s.split('\n') if l.startswith('```')]
 assert len(fences) % 2 == 0, 'unbalanced fences %d' % len(fences)
 
-open(P, 'w', encoding='utf-8', newline='\n').write(s)
+_P.write_text(s, encoding='utf-8', newline='\n')
 print('OK, lines:', s.count('\n') + 1, 'fences:', len(fences))
