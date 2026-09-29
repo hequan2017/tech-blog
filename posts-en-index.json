@@ -187,5 +187,14 @@
  "2019-09-11-k8s storageclass 例子-2437544.md": "Kubernetes StorageClass Example",
  "2019-09-12-k8s StatefulSet ingress 例子-2437663.md": "k8s StatefulSet Ingress Example",
  "2019-09-17-k8s python api二次封装 例子-2438485.md": "K8s Python API Wrapper Example",
+ "2019-11-01-Django之入门 CMDB系统 (一) 基础环境-2447140.md": "Getting Started with Django: A CMDB System (Part 1) — Basic Environment",
+ "2019-11-01-Django之入门 CMDB系统 (三) 登录注销-2447145.md": "Getting Started with Django: CMDB System (Part 3) Login and Logout",
+ "2019-11-01-Django之入门 CMDB系统 (二) 前端模板-2447143.md": "Getting Started with Django: CMDB System (Part 2) - Front-end Templates",
+ "2019-11-01-Django之入门 CMDB系统 (四) 增删改查-2447147.md": "Getting Started with Django: A CMDB System (Part 4): CRUD",
+ "2019-11-14-Django之入门 CMDB系统 (五) 前后端分离之前端-2450408.md": "Getting Started with Django: A CMDB System (Part 5) - The Front End of Front-End/Back-End Separation",
+ "2019-11-15-Django之入门 CMDB系统 (六) 前后端分离之后端-2450628.md": "Getting Started with Django: A CMDB System (Part 6) — Backend for Front-End/Back-End Separation",
+ "2019-11-28-python jenkins 打包构建代码-2454600.md": "Packaging and Building Code with Python and Jenkins",
+ "2019-12-25-Go 车牌识别 （网络图片 本地图片）-2461676.md": "Go License Plate Recognition (Web Image | Local Image)",
+ "2019-12-25-python 开源 车牌 识别-2461730.md": "Python Open-Source License Plate Recognition",
  "2024-12-25-kvm的安装 部署 测试 网络-12930481.md": "KVM Installation, Deployment, Testing, and Networking"
 }
