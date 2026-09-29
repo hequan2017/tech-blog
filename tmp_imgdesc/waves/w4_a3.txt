@@ -1,0 +1,8 @@
+2016-08-25-OpenStack Mitaka for Ubuntu 16.04 LTS 部署指南-1842494.md
+2016-08-29-Openstack Mitaka for Centos7.2 部署指南（一）-1844084.md
+2016-08-31-puppet-笔记1-1844951.md
+2016-09-03-Openstack Mitaka for Centos7.2 部署指南（二）-1846001.md
+2016-09-04-Openstack Mitaka for Centos7.2 部署指南（三）-1846096.md
+2016-09-05-XX平台升级报告-1846566.md
+2016-12-26-Python--day4--迭代器-生成器-装饰器-目录-1886276.md
+2016-12-26-python笔记三 函数-1886270.md

@@ -1,0 +1,8 @@
+2017-11-14-顺利通过阿里云云计算专业ACP考试认证-1981486.md	介绍重写为证书喜报;补ACP有效期备注;图片alt改为证书实际内容
+2017-11-29-Mysql 5.7主从-2045634.md	介绍重写分4节;修req.sql笔误与en-dash参数;备注补8.0语法废弃与GTID建议
+2017-11-29-redis 4.0.1 cluster集群-2045790.md	介绍重写分5节;补mkdir丢失的redis_cluster前缀;备注补redis-trib.rb废弃
+2017-12-01-nginx+tomcat 动静分离 的配置文件-2046293.md	介绍重写;配置块改标nginx语言;备注提示jsp正则可选扩展名隐患
+2017-12-14-zabbix3.4.4 编译安装-2050520.md	大shell块拆为7节;修zabbix_agentd漏d笔误;补中文字体乱码处理说明
+2017-12-20-Centos7.4 安装 Inception-2052602.md	修CentOS6为7的错误备注;补github域名;删乱码f;补bison编译截断
+2017-12-28-zabbix3.4 监控 DELL 硬件模板 中文汉化-2055499.md	介绍重写;仓库链接补github域名;图alt改为汉化监控项列表
+2018-05-09-django 异步 查看 服务器日志 利用 channels==2.0.2-2114529.md	介绍重写分7节;补github域名与format花括号;修html/js代码块语言

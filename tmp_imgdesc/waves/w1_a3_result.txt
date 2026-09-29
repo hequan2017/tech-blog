@@ -1,0 +1,8 @@
+2016-04-14-linux rsync-1763780.md	按本地/远程/daemon三种方式重组分节,rsyncd.conf改ini代码块,修正daeman笔误并更新备注
+2016-04-15-Linux inotify-1764193.md	梳理inotify安装监控与同步脚本分节,清理重复四次下载链接,修正split笔误并补EOL说明
+2016-04-15-linux inotify+rsync-1764262.md	重组服务端/客户端部署流程,rsyncd.conf逐条详解列表化,修正脚本断字笔误并补失效链接说明
+2016-04-15-rsync深度实战-1764098.md	按启动/排除/--delete无差异同步分节,补超时日志说明并标注CentOS 6已EOL
+2016-04-16-linux grep awk sed find cut-1764502.md	grep/sed/awk/find/cut五命令各成章节示例入代码块,修正树种等笔误并更新python字典时效备注
+2016-04-17-Linux sersync-1764699.md	梳理选型对比与安装配置分节,修正GUN→GNU及错误连接线笔误,标注项目停更与EOL
+2016-04-17-linux apache 2.4.20版本安装-1764833.md	按依赖包与主程序分节,清理失效下载直链改官方归档并注明,标注2.4.20安全时效
+2016-04-19-linux 虚拟主机-1765392.md	重组vhosts三站点配置流程,配置入apache代码块,补Order语法2.4已废弃等时效备注

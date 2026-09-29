@@ -1,0 +1,33 @@
+assets/1795927/01_wKioL1d7Tu-hlh3NAAAzHfCiXes177.png	openstack 网络拓扑图,外部网经路由器连接内网 192.168.10.0/24
+assets/1795927/02_wKioL1d7TwHgJ4YXAACrnKTYMp4861.png	openstack 云主机控制台,显示实例 Linux 启动日志
+assets/1795927/03_wKioL1d7TzqQEx4TAAAwXHzeeUM037.png	openstack 分配浮动 IP 弹窗,资源池选择 put-ex
+assets/1795927/04_wKioL1d7T07yhUNjAAAP223Jx9M468.png	openstack 实例列表,云主机 test1 已绑定浮动 IP
+assets/1795927/05_wKiom1d7T1uwCXFUAACYS0oqxeA328.png	openstack 管理安全组规则页面,含 ICMP 与 SSH 规则
+assets/1795927/06_wKiom1d7T2iBX5L9AAAxGN4H1yQ601.png	openstack 创建密钥对弹窗,密钥对名称填写 k1
+assets/1795927/07_wKiom1d7T7fh_X5NAABvUbm8c_8131.png	openstack 创建云硬盘弹窗,名称 disk1 大小 1GB
+assets/1795927/08_wKioL1d7T-7TJixrAAA9HSMcgno421.png	openstack 管理连接云硬盘弹窗,选择连接到实例 test1
+assets/1795927/09_wKiom1d7UAiCxr_VAAAhqUpyQLI883.png	openstack 云硬盘列表,disk1 经 /dev/vda 连接到 test1
+assets/1795927/10_wKiom1d7UBPAczhyAABXyRPAONk031.png	openstack 对象存储容器页面,内含密钥文件 k1.pem
+assets/1832696/01_wKioL1eeT0fxFYT-AAHb7WtHzMg434.png	手绘 neutron 网络架构图,标注 br-ex、br-int 网桥与各节点
+assets/1832696/02_wKiom1eeT0eTF6jxAABR2D6JZ5o109.png	openstack 网络拓扑图,公网经路由器连至 192.168.2.0/24 网段
+assets/1832696/03_wKioL1eeT0fDFl1dAAAiOKTrt8g528.png	openstack 网络拓扑图,network1 网段挂载控制节点与 h1
+assets/1832696/04_wKiom1eeT0jylquOAAAokICe8eY326.png	虚拟化管理平台虚机列表,h3 控制节点、h2 网络节点与 h1
+assets/1899902/01_wKiom1iuTvGi6RgbAADSZJAhRuw490.png	微信企业号管理后台,应用回调模式已启用
+assets/1899902/02_wKioL1iuTz-guhB2AAAaoyDCnOE021.jpg	微信企业号回调 URL 及密钥配置页,含 Token 与加密密钥
+assets/1899902/03_wKioL1iuT86R-cgbAACR53Vm9FU959.jpg	微信企业号权限管理页,红箭头标注 CorpID 与 Secret
+assets/2106618/01_2cdbede321b5dd2c99b86fd888f0d8ec.png	kubernetes 部署环境版本表,含 k8s 1.10.1 与 docker 18.03
+assets/2106618/02_b1027ff737d664ae5ebb58389af36b3b.png	kubernetes 集群规划表,master 与两个 node 的组件分工
+assets/2106618/03_5e80df57b0fc6828c2dc630f67a00456.png	k8s 各组件证书对照表,列出 etcd、kubelet 所用证书
+assets/1783481/01_975B8AFA944E1B54FE97F6011325DAAE.jpg	CentOS 6.8 LiveCD 的 GNOME 桌面截图
+assets/1783481/02_496CEE008842F1F7632B9457892DC2AC.jpg	CentOS 6.8 终端执行 uname 查询系统版本信息
+assets/2095114/01_a2f996f35d2f81ba2ec75f4906b23bbf.jpg	Jenkins 自动化发布环境规划表,三台服务器的分工
+assets/2095114/02_20d586154eba556461fd88e24ecd513b.jpg	环境工具版本表,含 maven、jenkins 与 docker 版本
+assets/2602035/01_853a7df2365959872502b32175ffc262.png	postman 测试 nacos 未授权访问,伪造请求头绕过鉴权
+assets/2602035/02_a091c594ba4600f94997d6962a9d9d6d.png	postman 请求 nacos 配置接口,无鉴权返回配置 JSON
+assets/1785317/01_wKiom1dO60LgDDyGAABF6NNnh6s492.png	LVS-DR 负载均衡架构图,标注 VIP、RIP 与 ARP 抑制
+assets/1891703/01_wKioL1h4T_Oz4OcRAAHQU5MdAwM786.png	ansible 工作机制架构图,控制节点经 SSH 管理主机
+assets/2066721/01_ab8fc71f8f3f566445f57b2afc529a3f.gif	APP 上线架构图,Nginx、Redis、MySQL 主从与监控备份
+assets/2316781/01_3391fe36a610f5961dab6ac9359e1121.jpg	drf 自动生成的 API 接口文档页面,含参数说明
+assets/2450408/01_54c28138cadf3f5cf3fa71cbbe65d066.png	CMDB 前端演示页面,数据表格含编辑删除与分页
+assets/2607839/01_e1b84e5836dd9fa186002f3292e85c39.jpg	阿里云日志服务概览页,红框标注公网访问域名
+assets/6069335/01_0867c163225228739b8993274337198d8d510c.png	GitHub 仓库 go-ppp-console 页面,拨号管理界面项目

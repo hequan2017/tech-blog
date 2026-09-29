@@ -1,0 +1,8 @@
+2017-03-25-day18-django基础-1910348.md	重写介绍分8节;还原{{}}模板变量,修正正则误注true,备注Django2.0/4.0变化
+2017-03-26-day19-URL+视图+模板+ORM-1910512.md	介绍重写分6节;修projcet/retrun/外检/元祖等笔误,备注url()已被移除
+2017-03-29-day20 django-1911354.md	介绍重写分9节;修IntergerFiled/clink/试图函数笔误,还原模板变量与v3更正
+2017-04-05-day21 登录cookie-1913161.md	介绍重写分8节;修stringfy/serilize/reverser/reqeust笔误,补app_name时效备注
+2017-05-13-day22 session登录-1925359.md	介绍重写分10节;还原被打散的jquery.cookie代码,补js-cookie与Redis缓存备注
+2017-06-16-AutoOps 1.8 版本-1937439.md	按gitee原README修复打碎命令与残缺域名,9张截图alt改写为实际内容,补EOL备注
+2017-06-19-python 发邮件：sina普通版 zabbix版本-1939844.md	补全被吃掉的smtp.sina.com地址,分两节,备注授权码与alertscripts路径
+2017-07-17-ansible2.x 版本api 调用（适用于web开发使用）-1948209.md	补回被吃的play.get_name()与self.name,分4节,备注仅适用ansible2.3~2.7

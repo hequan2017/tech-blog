@@ -1,0 +1,8 @@
+2017-11-13-nginx-1.12.2 安装 配置文件 日志切割 启动文件-1981306.md	重写介绍分5节;修#path/2&1笔误与p_w_picpaths乱码;补ipv6参数移除等备注
+2017-11-15-PHP-7.1.11 YUM安装 编译安装-1982046.md	重写介绍分6节;补被吃掉的opcache扩展值;补PHP7.1 EOL与webtatic停更备注
+2017-11-16-mysql-5.7.20 二进制安装 备份恢复-1982428.md	重写介绍分2节;归一737处NBSP空格;补MySQL5.7 EOL与镜像失效备注
+2017-11-17-django1.11.6+nginx1.12.2+uwsgi2.0.15 部署-1982769.md	重写介绍分4节;补被吃pip镜像地址,修python –V;补py3.6/django1.11 EOL
+2017-11-22-tomcat8 安装 解决启动慢 进入管理 host-manager 403错误-1984005.md	重写介绍分6节;补被吃的catalina.sh/setenv.sh与XML标签;补8.5 EOL备注
+2017-11-24-python 基础-2043852.md	重写介绍分10节包代码块;还原全部被吃双下划线魔法名与self.name等;修笔误
+2017-11-27-Jemalloc 5.0.1 安装 nginx mysql 使用-2044761.md	重写介绍分3节;补被吃的github地址与libjemalloc.so.2文件名;补时效备注
+2017-11-28-jenkins 2.73.3 安装 、 配置git 、maven-2045232.md	重写介绍分5节;修坏围栏,补git/maven被吃地址;3图alt改为实际内容描述

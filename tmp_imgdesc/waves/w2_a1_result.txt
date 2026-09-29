@@ -1,0 +1,8 @@
+2016-04-20-lamp搭建-1765665.md	LAMP编译安装全流程:MySQL5.1编译初始化,PHP经apxs2入Apache,httpd.conf整合与测试页
+2016-04-25-Nginx简单安装-1767646.md	Nginx较Apache优势与LNMP架构,1.9.15编译安装、软链接、启动验证
+2016-04-26-linux lnmp安装-1768044.md	LNMP三件套:Nginx编译、MySQL5.5二进制部署、PHP依赖与--enable-fpm编译排错整合
+2016-04-26-nginx简单配置-1767844.md	nginx目录结构与默认配置逐行注释,虚拟主机/301/防绑定/日志切割/状态码
+2016-04-27-centos7下mariadb 首次修改密码及忘记密码处理方法-1768386.md	CentOS7下MariaDB首次设密码两法与忘记密码skip-grant-tables两种救援
+2016-04-27-nginx 修改并隐藏版本号-1768379.md	改源码宏与Server串伪造版本,或server_tokens off隐藏版本号
+2016-04-27-nginx.conf基本配置与参数说明-1768378.md	带中文注释的nginx.conf全解:events并发估算、http段、虚拟主机与PHP转发
+2016-04-27-你那么努力，吃了那么多苦，也没见你有多优秀啊？-1768419.md	转载职场随笔:努力不见优秀缘于缺目标与成长性,以笔谈女侍与听障销售为例

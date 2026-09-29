@@ -1,0 +1,8 @@
+2018-12-05-两数之和 go版本-2326340.md	重写介绍与备注;代码块python改go;补充重复元素下标缺陷说明
+2018-12-07-chrome 网页 左侧导航栏不展开-2327585.md	重写介绍分3节;HTML与JS拆块标注;排查文字移出代码块;补BS3/BS5备注
+2018-12-08-Error from server (Forbidden) Forbidden (user=sys-2327975.md	重写介绍分2节;修复嵌套错乱围栏;补匿名绑admin危险性备注
+2018-12-08-Etcd v3.3.10 版本部署(3台集群)-2327820.md	重写介绍分5节;修etc03表头笔误;补etcd下载缺github.com前缀;配置/服务拆块
+2018-12-08-centos 7 yum 设置 阿里云 kubernetes 库-2327792.md	重写介绍;补el7仓库停更与kubeadm替代时效备注;repo加分节标题
+2018-12-08-flanneld v0.10.0 版本部署-2327822.md	重写介绍分3节;补flannel下载前缀;还原被吃systemd指令与mk-docker-opts.sh
+2018-12-08-k8s v1.13 集群部署-2327910.md	重写介绍分7节;补Documentation前缀与apiVersion;修复8处错乱围栏;清理残行
+2018-12-14-go 读取 ini文件 并修改-2330712.md	重写介绍分4节;my.ini与main.go拆分标注ini/go;补module模式备注

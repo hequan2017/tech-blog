@@ -6,11 +6,11 @@ source: "https://blog.51cto.com/hequan/5442988"
 ---
 > **内容介绍**
 >
-> 本文是Python 编程实战笔记,记录了「kubernetes-dashboard  部署」的相关内容。
-
+> 本文演示 Kubernetes Dashboard v2.6.0 的快速部署与访问：通过官方 recommended.yaml 安装，使用 port-forward 将 Dashboard 服务映射到本地 8080 端口，并通过 admin-user 的 Secret 获取登录 Token。
+>
 > **技术备注**
 >
-> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+> Dashboard v2.6.0 仅支持 Kubernetes 1.21-1.25；当前最新版本已迁移至独立 Helm Chart。port-forward 方式仅适合本地调试，生产环境应使用 Ingress + TLS 或 NodePort 配合防火墙规则。
 
 ---
 
