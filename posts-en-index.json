@@ -211,5 +211,15 @@
  "2022-05-17-go 多平台打包工具 gox-5299065.md": "gox: A Go Cross-Platform Packaging Tool",
  "2022-06-06-tdengine 数据库 api 接口 sdk go-5359730.md": "TDengine Database API SDK in Go",
  "2022-06-09-minikube 部署使用-5370956.md": "minikube Deployment and Usage",
+ "2022-06-15-go 缩减编译后的文件 体积大小-5385060.md": "Reducing the Size of Go Compiled Binaries",
+ "2022-06-16-go 密码 token passwd 加密解密-5387561.md": "Go Password/Token Encryption and Decryption",
+ "2022-08-10-centos 自动 部署 系统 U盘-5563487.md": "CentOS Automated System Deployment USB Drive",
+ "2022-08-11-frp 部署使用 内网机器必备-5566644.md": "frp Deployment and Usage: A Must-Have for Machines Behind NAT",
+ "2022-11-09-自定义centos-5838986.md": "Customizing CentOS",
+ "2022-11-14-go 获取网卡1分钟网速数据-5849200.md": "Fetch 1-Minute NIC Speed Data with Go",
+ "2022-11-21-centos 盘点硬盘类型-5873999.md": "Taking Stock of Disk Types on CentOS",
+ "2022-11-21-go 循环生成交换机 ipv6 地址-5874000.md": "Generating Switch IPv6 Addresses with a Go Loop",
+ "2022-12-09-go 实现ping检查ip-5924570.md": "Ping IP Check in Go",
+ "2023-01-09-centos实现 登录窗口 1个免密登录 其他还是root登录-5997514.md": "CentOS: Password-Free Auto-Login on One Login Terminal, Root Login on the Others",
  "2024-12-25-kvm的安装 部署 测试 网络-12930481.md": "KVM Installation, Deployment, Testing, and Networking"
 }
