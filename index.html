@@ -154,6 +154,8 @@ button#more:hover{border-color:var(--brand);color:var(--brand-1)}
 #view{max-width:1080px;margin:0 auto;position:relative;padding-top:28px}
 .back{display:inline-flex;align-items:center;gap:4px;font-size:13.5px;color:var(--muted);margin-bottom:18px}
 .back:hover{color:var(--brand-1)}
+.en-fallback{font-size:13px;color:var(--muted);background:var(--bg-alt);border:1px dashed var(--border);
+  border-radius:8px;padding:8px 12px;margin-bottom:16px}
 .doc{max-width:768px}
 h1.pt{font-size:28px;line-height:1.4;font-weight:700;margin-bottom:14px}
 .pmeta{font-size:13px;color:var(--muted);display:flex;gap:14px;align-items:center;flex-wrap:wrap;
@@ -305,6 +307,7 @@ const T = {
     allPosts:'全部文章', categories:'分类', allCats:'所有分类', catDot:'分类 · ',
     backAll:'← 返回全部文章', backList:'← 返回列表',
     loading:'正在加载文章…', loadFail:'文章加载失败',
+    enFallback:'该文章的英文版尚未完成，先展示中文原文；翻译完成后切换语言即可阅读英文版。',
     loadFailBody:'请确认文章存在,或<a href="#/all">返回列表</a>', original:'原文链接 ↗',
     onThisPage:'本页目录', noSections:'无小节', copy:'复制', copied:'已复制 ✓', viewImg:'点击查看大图',
     more:'加载更多', empty:'没有找到相关文章 🙈',
@@ -325,6 +328,7 @@ const T = {
     allPosts:'All Posts', categories:'Categories', allCats:'All Categories', catDot:'Category · ',
     backAll:'← All Posts', backList:'← Back to list',
     loading:'Loading article…', loadFail:'Failed to load article',
+    enFallback:'The English translation of this post is not available yet — showing the Chinese original. Switch language any time.',
     loadFailBody:'Check that the article exists, or <a href="#/all">return to the list</a>', original:'Original ↗',
     onThisPage:'On this page', noSections:'No sections', copy:'Copy', copied:'Copied ✓', viewImg:'Click to enlarge',
     more:'Load more', empty:'No matching posts 🙈',
@@ -359,6 +363,21 @@ const CAT_GROUPS = [
 function groupOf(cat){ return CAT_GROUPS.find(g => g.cats.includes(cat)); }
 function groupById(id){ return CAT_GROUPS.find(g => g.id === id); }
 function grpLabel(g){ return LANG === 'en' ? g.en : g.zh; }
+
+/* 分类 id -> 界面显示名(id 多为英文单词,仅个别需要本地化) */
+const CAT_ZH = {cluster:'集群', frontend:'前端', backend:'后端', 'ops-basics':'运维基础', essays:'随笔', security:'安全'};
+const CAT_EN = {cluster:'Clusters', frontend:'Frontend', backend:'Backend', 'ops-basics':'Ops Basics', essays:'Essays', security:'Security'};
+function catLabel(c){ return LANG === 'en' ? (CAT_EN[c] || c) : (CAT_ZH[c] || c); }
+
+/* 英文版文章标题索引(posts-en-index.json,由 scripts/rebuild_en_index.py 生成) */
+let EN_TITLES = {};
+function postTitle(p){
+  if(LANG === 'en'){
+    const base = p.f.split('/').pop();
+    if(EN_TITLES[base]) return EN_TITLES[base];
+  }
+  return p.t;
+}
 
 function renderHome(){
   const L = LANG === 'en';
@@ -447,6 +466,10 @@ function isAllList(){
 }
 
 function loadIndex(){
+  fetch('posts-en-index.json').then(r => r.ok ? r.json() : {}).then(json => {
+    EN_TITLES = json || {};
+    if(LANG === 'en' && POSTS.length) route();
+  }).catch(() => {});
   fetch('posts-index.json').then(r => r.json()).then(json => {
     POSTS = json;
     POSTS.sort((a,b) => b.d.localeCompare(a.d));
@@ -486,11 +509,11 @@ function renderSide(){
   if(postFile){
     const art = POSTS.find(p => p.f === postFile);
     const cat = art ? art.c : '';
-    h += `<h3>${esc(t('catDot'))}${esc(cat || '…')}</h3>
+    h += `<h3>${esc(t('catDot'))}${esc(catLabel(cat) || '…')}</h3>
       <a class="back" href="#/all">${esc(t('backAll'))}</a><div style="height:8px"></div><div class="posts">`;
     POSTS.filter(p => p.c === cat).forEach(p => {
-      h += `<a class="${p.f===postFile?'active':''}" href="#/p/${encPath(p.f)}" title="${esc(p.t)}">
-        <span class="t">${p.f===postFile ? esc(p.t) : hi(p.t, '')}</span></a>`;
+      h += `<a class="${p.f===postFile?'active':''}" href="#/p/${encPath(p.f)}" title="${esc(postTitle(p))}">
+        <span class="t">${p.f===postFile ? esc(postTitle(p)) : hi(postTitle(p), '')}</span></a>`;
     });
     h += `</div><div style="height:14px"></div>`;
   }
@@ -504,12 +527,12 @@ function renderSide(){
       href="#/g/${g.id}">${esc(grpLabel(g))}<span class="n">${n}</span></a>`;
     g.cats.filter(c => counts[c]).sort((a,b) => counts[b]-counts[a]).forEach(c => {
       h += `<a class="sub${c === cur && !currentPost() ? ' active' : ''}" href="#/c/${encodeURIComponent(c)}">
-        ${esc(c)}<span class="n">${counts[c]}</span></a>`;
+        ${esc(catLabel(c))}<span class="n">${counts[c]}</span></a>`;
     });
   });
   Object.keys(counts).filter(c => !groupOf(c)).sort((a,b) => counts[b]-counts[a]).forEach(c => {
     h += `<a class="${c===cur && !currentPost() ? 'active':''}" href="#/c/${encodeURIComponent(c)}">
-      ${esc(c)}<span class="n">${counts[c]}</span></a>`;
+      ${esc(catLabel(c))}<span class="n">${counts[c]}</span></a>`;
   });
   $('#side').innerHTML = h;
 }
@@ -525,7 +548,8 @@ function filtered(){
   return POSTS.filter(p =>
     (!cat || p.c === cat) &&
     (!gc || gc.includes(p.c)) &&
-    (!q || p.t.toLowerCase().includes(q) || p.c.toLowerCase().includes(q)));
+    (!q || postTitle(p).toLowerCase().includes(q) || p.t.toLowerCase().includes(q)
+      || p.c.toLowerCase().includes(q) || catLabel(p.c).toLowerCase().includes(q)));
 }
 
 function renderList(reset){
@@ -545,7 +569,7 @@ function renderList(reset){
   if(reset){ PAGE = 0; $('#list').innerHTML = ''; }
   const items = filtered();
   $('#stats').hidden = false;
-  const scope = cat ? tf('catFmt', {c: cat})
+  const scope = cat ? tf('catFmt', {c: catLabel(cat)})
     : grp && groupById(grp) ? tf('catFmt', {c: grpLabel(groupById(grp))}) : t('allPosts');
   $('#stats').textContent = scope +
     (q ? tf('searchFmt', {q}) : '') + tf('countFmt', {n: items.length});
@@ -557,8 +581,8 @@ function renderList(reset){
       const y = p.d.slice(0,4);
       if(y !== lastYear){ h += `<h2 class="year">${y}</h2>`; lastYear = y; }
     }
-    h += `<div class="row"><a class="t" href="#/p/${encPath(p.f)}">${hi(p.t, q)}</a>
-      <span class="d">${p.d}</span>${cat ? '' : `<span class="badge">${esc(p.c)}</span>`}</div>`;
+    h += `<div class="row"><a class="t" href="#/p/${encPath(p.f)}">${hi(postTitle(p), q)}</a>
+      <span class="d">${p.d}</span>${cat ? '' : `<span class="badge">${esc(catLabel(p.c))}</span>`}</div>`;
   });
   if(!h && reset) h = `<div class="empty">${esc(t('empty'))}</div>`;
   $('#list').insertAdjacentHTML('beforeend', h);
@@ -587,6 +611,18 @@ function ensureLibs(){
 }
 
 /* ---------- 文章 ---------- */
+/* 英文模式优先抓 posts/en/<同名文件>;缺失则回退中文原文并提示 */
+async function fetchPost(file){
+  if(LANG === 'en'){
+    const enFile = file.slice('posts/'.length);
+    const r = await fetch(encPath('posts/en/' + enFile)).catch(() => null);
+    if(r && r.ok) return {text: await r.text(), en: true};
+  }
+  const r = await fetch(encPath(file)).catch(() => null);
+  if(r && r.ok) return {text: await r.text(), en: false};
+  return null;
+}
+
 async function renderPost(file){
   const my = ++FETCH_SEQ;
   const libs = ensureLibs();      // 与文章正文并行加载
@@ -595,31 +631,39 @@ async function renderPost(file){
   $('#view').hidden = false;
   $('#view').innerHTML = `<div class="back">${esc(t('loading'))}</div>`;
   const art = POSTS.find(p => p.f === file) || {t:file, d:'', c:'', u:''};
-  const r = await fetch(encPath(file)).catch(() => null);
+  const title = art.f ? postTitle(art) : file;
+  const res = await fetchPost(file);
   if(my !== FETCH_SEQ) return;   // 已跳转到其他文章,丢弃过期响应
-  if(!r || !r.ok){
+  if(!res){
     $('#view').innerHTML = `<a class="back" href="#/all">${esc(t('backList'))}</a>
       <h1 class="pt">${esc(t('loadFail'))}</h1><div class="empty">${t('loadFailBody')}</div>`;
     return;
   }
-  let md = await r.text();
+  let md = res.text;
   await libs.catch(() => {});    // CDN 失败则降级为原文展示
   if(my !== FETCH_SEQ) return;
   md = md.replace(/^﻿/, '').replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');  // 去 front-matter(兼容 CRLF)
-  document.title = `${art.t} · ${t('brand')}`;
+  document.title = `${title} · ${t('brand')}`;
+  const notice = LANG === 'en' && !res.en ? `<div class="en-fallback">${esc(t('enFallback'))}</div>` : '';
   $('#view').innerHTML = `<a class="back" href="#/all">${esc(t('backList'))}</a>
-    <div class="doc"><h1 class="pt">${esc(art.t)}</h1>
-    <div class="pmeta"><span>📅 ${art.d}</span>${art.c ? `<a href="#/c/${encodeURIComponent(art.c)}"><span class="badge">${esc(art.c)}</span></a>` : ''}
+    <div class="doc">${notice}<h1 class="pt">${esc(title)}</h1>
+    <div class="pmeta"><span>📅 ${art.d}</span>${art.c ? `<a href="#/c/${encodeURIComponent(art.c)}"><span class="badge">${esc(catLabel(art.c))}</span></a>` : ''}
       ${art.u ? `<a href="${esc(art.u)}" target="_blank" rel="noopener">${esc(t('original'))}</a>` : ''}</div>
     <div class="markdown" id="md"></div></div>
     <div class="toc"><div class="toc-inner"><h4>${esc(t('onThisPage'))}</h4><nav id="toc-nav"></nav></div></div>`;
   $('#md').innerHTML = window.marked ? marked.parse(md) : `<pre>${esc(md)}</pre>`;
-  decorateArticle();
+  decorateArticle(res.en);
   window.scrollTo({top:0, behavior:'instant'});
 }
 
-/* 文章渲染后的目录 / 锚点 / 复制按钮等增强 */
-function decorateArticle(){
+/* 文章渲染后的目录 / 锚点 / 复制按钮等增强; enMode 时正文相对路径基于 posts/en/ */
+function relAsset(s, enMode){   // 解析 markdown 里的相对资源路径
+  s = (s || '').replace(/^\.\//, '');
+  if(/^(https?:)?\/\//.test(s)) return s;
+  if(enMode && s.startsWith('../')) s = s.slice(3);       // ../assets/x -> posts/assets/x
+  return 'posts/' + (enMode && !s.startsWith('assets/') ? 'en/' : '') + s;
+}
+function decorateArticle(enMode){
   const md = $('#md');
   // 代码高亮 + 语言标签 + 复制按钮
   md.querySelectorAll('pre').forEach(pre => {
@@ -639,10 +683,10 @@ function decorateArticle(){
     });
     pre.appendChild(btn);
   });
-  // 图片:相对路径基于 posts/,点击看大图;外层若包着失效的 51CTO 原图链接则一并替换
+  // 图片:相对路径按文章所在目录解析,点击看大图;外层若包着失效的 51CTO 原图链接则一并替换
   md.querySelectorAll('img').forEach(im => {
     const s = im.getAttribute('src') || '';
-    if(!/^(https?:)?\/\//.test(s)) im.src = 'posts/' + s.replace(/^\.\//,'');
+    im.src = relAsset(s, enMode);
     im.title = im.alt || t('viewImg');
     if(im.parentElement && im.parentElement.tagName === 'A') im.parentElement.href = im.src;
     im.addEventListener('click', ev => {
@@ -650,10 +694,10 @@ function decorateArticle(){
       window.open(im.src, '_blank', 'noopener');
     });
   });
-  // 相对链接基于 posts/
+  // 相对链接按文章所在目录解析
   md.querySelectorAll('a').forEach(a => {
     const href = a.getAttribute('href') || '';
-    if(!/^(https?:|#|mailto:)/.test(href)) a.href = 'posts/' + href.replace(/^\.\//,'');
+    if(!/^(https?:|#|mailto:)/.test(href)) a.href = relAsset(href, enMode);
   });
   // 标题锚点 + 右侧目录
   const heads = md.querySelectorAll('h2, h3');
