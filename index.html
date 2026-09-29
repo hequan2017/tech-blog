@@ -6,6 +6,7 @@
 <title>技术博客 · hequan</title>
 <meta name="description" content="hequan 的技术博客全集 — Go / Python / Linux / 云计算 / 运维,共 416 篇">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21 2 4h5l5 9 5-9h5z' fill='%2342b883'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link id="hljs-light" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css">
 <link id="hljs-dark" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github-dark.min.css" disabled>
 <style>
@@ -264,8 +265,6 @@ footer a:hover{color:var(--brand-1)}
 
 <footer id="footer"></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
 <script>
 'use strict';
 let POSTS = [], PAGE = 0, FETCH_SEQ = 0;
@@ -306,13 +305,13 @@ const T = {
     allPosts:'全部文章', categories:'分类', allCats:'所有分类', catDot:'分类 · ',
     backAll:'← 返回全部文章', backList:'← 返回列表',
     loading:'正在加载文章…', loadFail:'文章加载失败',
-    loadFailBody:'请确认文章存在,或<a href="#/">返回列表</a>', original:'原文链接 ↗',
+    loadFailBody:'请确认文章存在,或<a href="#/all">返回列表</a>', original:'原文链接 ↗',
     onThisPage:'本页目录', noSections:'无小节', copy:'复制', copied:'已复制 ✓', viewImg:'点击查看大图',
     more:'加载更多', empty:'没有找到相关文章 🙈',
     catFmt:'分类「{c}」', searchFmt:' · 搜索“{q}”', countFmt:' · {n} 篇',
     heroTag:'hequan 的 51CTO 博客文章全集 · 2016–2025',
     heroDesc:'十年运维与开发实战笔记 — 涵盖 Go、Python、Linux、Kubernetes 云原生与自动化运维等方向,共 {n} 篇,支持分类浏览、即时搜索、页内大纲跳转与明暗主题阅读。',
-    startReading:'开始阅读 ↓', githubRepo:'GitHub 仓库',
+    startReading:'开始阅读 →', githubRepo:'GitHub 仓库',
     hint:'按 <kbd>/</kbd> 快速搜索 · 点击下方分类卡片直达对应文章',
     statPosts:'篇文章', statCats:'个分类', statYears:'年 · {r}',
     aboutH2:'📖 关于本项目',
@@ -326,13 +325,13 @@ const T = {
     allPosts:'All Posts', categories:'Categories', allCats:'All Categories', catDot:'Category · ',
     backAll:'← All Posts', backList:'← Back to list',
     loading:'Loading article…', loadFail:'Failed to load article',
-    loadFailBody:'Check that the article exists, or <a href="#/">return to the list</a>', original:'Original ↗',
+    loadFailBody:'Check that the article exists, or <a href="#/all">return to the list</a>', original:'Original ↗',
     onThisPage:'On this page', noSections:'No sections', copy:'Copy', copied:'Copied ✓', viewImg:'Click to enlarge',
     more:'Load more', empty:'No matching posts 🙈',
     catFmt:'Category "{c}"', searchFmt:' · search "{q}"', countFmt:' · {n} posts',
     heroTag:'The complete 51CTO blog archive of hequan · 2016–2025',
     heroDesc:'A decade of hands-on ops & dev notes — Go, Python, Linux, Kubernetes cloud-native and automation, {n} posts in total. Browse by category, instant search, on-page outline and light/dark reading.',
-    startReading:'Start Reading ↓', githubRepo:'GitHub Repo',
+    startReading:'Start Reading →', githubRepo:'GitHub Repo',
     hint:'Press <kbd>/</kbd> to search · Jump to a category via the cards below',
     statPosts:'posts', statCats:'categories', statYears:' years · {r}',
     aboutH2:'📖 About this project',
@@ -443,6 +442,9 @@ function currentPost(){
   const m = location.hash.match(/^#\/p\/([^#]+)/);
   return m ? tryDecode(m[1]) : '';
 }
+function isAllList(){
+  return /^#\/all\/?$/.test(location.hash);
+}
 
 function loadIndex(){
   fetch('posts-index.json').then(r => r.json()).then(json => {
@@ -485,7 +487,7 @@ function renderSide(){
     const art = POSTS.find(p => p.f === postFile);
     const cat = art ? art.c : '';
     h += `<h3>${esc(t('catDot'))}${esc(cat || '…')}</h3>
-      <a class="back" href="#/">${esc(t('backAll'))}</a><div style="height:8px"></div><div class="posts">`;
+      <a class="back" href="#/all">${esc(t('backAll'))}</a><div style="height:8px"></div><div class="posts">`;
     POSTS.filter(p => p.c === cat).forEach(p => {
       h += `<a class="${p.f===postFile?'active':''}" href="#/p/${encPath(p.f)}" title="${esc(p.t)}">
         <span class="t">${p.f===postFile ? esc(p.t) : hi(p.t, '')}</span></a>`;
@@ -493,7 +495,7 @@ function renderSide(){
     h += `</div><div style="height:14px"></div>`;
   }
   h += `<h3>${esc(t('categories'))}</h3>`;
-  h += `<a class="${!cur && !grp && !currentPost() ? 'active':''}" href="#/">${esc(t('allPosts'))}<span class="n">${POSTS.length}</span></a>`;
+  h += `<a class="${isAllList() && !currentPost() ? 'active':''}" href="#/all">${esc(t('allPosts'))}<span class="n">${POSTS.length}</span></a>`;
   const counts = {};
   POSTS.forEach(p => counts[p.c] = (counts[p.c]||0)+1);
   CAT_GROUPS.forEach(g => {
@@ -527,15 +529,22 @@ function filtered(){
 }
 
 function renderList(reset){
-  if(reset){ PAGE = 0; $('#list').innerHTML = ''; }
   const q = searchQuery();
   const cat = currentCat();
   const grp = currentGroup();
-  const items = filtered();
-  const onHome = !cat && !grp && !q;
+  const onHome = !cat && !grp && !q && !isAllList();
   $('#intro').hidden = !onHome;
   $('#view').hidden = true;
   $('#home').hidden = false;
+  if(onHome){                     // 首页只展示项目介绍,不渲染文章标题列表
+    $('#stats').hidden = true;
+    $('#list').innerHTML = '';
+    $('#more').hidden = true;
+    return;
+  }
+  if(reset){ PAGE = 0; $('#list').innerHTML = ''; }
+  const items = filtered();
+  $('#stats').hidden = false;
   const scope = cat ? tf('catFmt', {c: cat})
     : grp && groupById(grp) ? tf('catFmt', {c: grpLabel(groupById(grp))}) : t('allPosts');
   $('#stats').textContent = scope +
@@ -557,9 +566,30 @@ function renderList(reset){
   $('#more').hidden = PAGE*PER >= items.length;
 }
 
+/* ---------- 文章渲染库按需加载(首页不加载,加快首屏) ---------- */
+let libsP = null;
+function loadScript(src){
+  return new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = src; s.onload = res; s.onerror = () => rej(new Error(src));
+    document.head.appendChild(s);
+  });
+}
+function ensureLibs(){
+  if(!libsP){
+    const md = (window.marked ? Promise.resolve() :
+      loadScript('https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js'))
+      .then(() => marked.setOptions({ breaks:true, gfm:true }));
+    libsP = Promise.all([md, window.hljs ? Promise.resolve() :
+      loadScript('https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js')]);
+  }
+  return libsP;
+}
+
 /* ---------- 文章 ---------- */
 async function renderPost(file){
   const my = ++FETCH_SEQ;
+  const libs = ensureLibs();      // 与文章正文并行加载
   $('#home').hidden = true;
   $('#more').hidden = true;
   $('#view').hidden = false;
@@ -568,20 +598,22 @@ async function renderPost(file){
   const r = await fetch(encPath(file)).catch(() => null);
   if(my !== FETCH_SEQ) return;   // 已跳转到其他文章,丢弃过期响应
   if(!r || !r.ok){
-    $('#view').innerHTML = `<a class="back" href="#/">${esc(t('backList'))}</a>
+    $('#view').innerHTML = `<a class="back" href="#/all">${esc(t('backList'))}</a>
       <h1 class="pt">${esc(t('loadFail'))}</h1><div class="empty">${t('loadFailBody')}</div>`;
     return;
   }
   let md = await r.text();
+  await libs.catch(() => {});    // CDN 失败则降级为原文展示
+  if(my !== FETCH_SEQ) return;
   md = md.replace(/^﻿/, '').replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');  // 去 front-matter(兼容 CRLF)
   document.title = `${art.t} · ${t('brand')}`;
-  $('#view').innerHTML = `<a class="back" href="#/">${esc(t('backList'))}</a>
+  $('#view').innerHTML = `<a class="back" href="#/all">${esc(t('backList'))}</a>
     <div class="doc"><h1 class="pt">${esc(art.t)}</h1>
     <div class="pmeta"><span>📅 ${art.d}</span>${art.c ? `<a href="#/c/${encodeURIComponent(art.c)}"><span class="badge">${esc(art.c)}</span></a>` : ''}
       ${art.u ? `<a href="${esc(art.u)}" target="_blank" rel="noopener">${esc(t('original'))}</a>` : ''}</div>
     <div class="markdown" id="md"></div></div>
     <div class="toc"><div class="toc-inner"><h4>${esc(t('onThisPage'))}</h4><nav id="toc-nav"></nav></div></div>`;
-  $('#md').innerHTML = marked.parse(md);
+  $('#md').innerHTML = window.marked ? marked.parse(md) : `<pre>${esc(md)}</pre>`;
   decorateArticle();
   window.scrollTo({top:0, behavior:'instant'});
 }
@@ -676,11 +708,11 @@ function route(){
 
 /* ---------- 事件 ---------- */
 $('#intro').addEventListener('click', ev => {
-  if(ev.target.closest('#btn-start')) $('#stats').scrollIntoView({behavior:'smooth'});
+  if(ev.target.closest('#btn-start')) location.hash = '#/all';
 });
 $('#more').addEventListener('click', () => renderList(false));
 $('#search').addEventListener('input', () => {
-  if(location.hash !== '#/') location.hash = '#/';  // 触发 hashchange → renderList
+  if(!isAllList()) location.hash = '#/all';  // 触发 hashchange → renderList
   else renderList(true);
 });
 $('#search').addEventListener('keydown', e => {
@@ -693,7 +725,6 @@ document.addEventListener('keydown', e => {
 });
 window.addEventListener('hashchange', route);
 
-marked.setOptions({ breaks:true, gfm:true });
 loadIndex();
 </script>
 </body>
