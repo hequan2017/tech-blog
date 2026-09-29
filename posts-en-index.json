@@ -221,5 +221,15 @@
  "2022-11-21-go 循环生成交换机 ipv6 地址-5874000.md": "Generating Switch IPv6 Addresses with a Go Loop",
  "2022-12-09-go 实现ping检查ip-5924570.md": "Ping IP Check in Go",
  "2023-01-09-centos实现 登录窗口 1个免密登录 其他还是root登录-5997514.md": "CentOS: Password-Free Auto-Login on One Login Terminal, Root Login on the Others",
+ "2023-01-30-go 控制台 根据提示选择 go-prompt-6026499.md": "go Console: Menu Selection with go-prompt",
+ "2023-02-01-ks.cfg 设置IP 和选择硬盘-6031774.md": "ks.cfg: Setting the IP Address and Selecting the Installation Disk",
+ "2023-02-09-h3c 交换机 策划路由-6047016.md": "H3C Switch Policy-Based Routing",
+ "2023-02-20-拨号管理系统之0.1版本-6069335.md": "Dial-up Management System v0.1",
+ "2023-02-20-拨号管理系统之go-ppp增删改查-6068228.md": "go-ppp CRUD in the Dial-up Management System",
+ "2023-02-20-拨号管理系统之ui输入框-6069029.md": "UI Input Fields for the Dial-up Management System",
+ "2023-02-21-拨号管理系统之创建ppp拨号-6076932.md": "Dial-up Management System: Creating a PPP Dial-up Connection",
+ "2023-03-14-交换机 策划路由-6120846.md": "Switch Policy-Based Routing",
+ "2023-03-14-数据库 添加 联合索引-6120828.md": "Adding a Composite Index to a Database Table",
+ "2023-03-21-centos7 tty模式不支持中文，需要去github找 修改后的内核-6140088.md": "CentOS 7 tty mode does not support Chinese; find a modified kernel on GitHub",
  "2024-12-25-kvm的安装 部署 测试 网络-12930481.md": "KVM Installation, Deployment, Testing, and Networking"
 }
