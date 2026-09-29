@@ -78,6 +78,15 @@
  "2016-07-06-sendEmail报错：at usr share perl5 vendor_perl IO Socket SSL.pm-1811246.md": "sendEmail Error: at /usr/share/perl5/vendor_perl/IO/Socket/SSL.pm",
  "2016-07-09-openstack学习笔记七 swift安装-1812861.md": "OpenStack Study Notes 7: Installing Swift",
  "2016-07-13-参加云计算开源产业联盟成果发布会的一些照片-1826181.md": "Photos from the Cloud Computing Open Source Industry Alliance Achievements Release Event",
+ "2016-07-21-openstack学习笔记八 glance安装配置-1828592.md": "OpenStack Study Notes 8: Glance Installation and Configuration",
+ "2016-07-25-openstack部署实战第2版之Open vSwitch-1829871.md": "OpenStack Deployment in Practice, 2nd Edition: Open vSwitch",
+ "2016-07-28-openstack学习笔记九 cinder基础配置-1830981.md": "OpenStack Study Notes 9: Basic Cinder Configuration",
+ "2016-08-01-ERROR Error appeared during Puppet run x.x.x.x _keystone.pp-1833247.md": "ERROR : Error appeared during Puppet run: x.x.x.x _keystone.pp",
+ "2016-08-01-openstack学习笔记十 neutron-1832696.md": "OpenStack Study Notes 10: neutron",
+ "2016-08-01-openstack学习笔记十一 Nova-1832697.md": "OpenStack Study Notes 11: Nova",
+ "2016-08-29-Openstack Mitaka for Centos7.2 部署指南（一）-1844084.md": "OpenStack Mitaka for CentOS 7.2 Deployment Guide (Part 1)",
+ "2016-08-31-puppet-笔记1-1844951.md": "Puppet Notes 1",
+ "2016-09-03-Openstack Mitaka for Centos7.2 部署指南（二）-1846001.md": "OpenStack Mitaka Deployment Guide for CentOS 7.2 (Part 2)",
  "2018-05-26-mysql 8.0.11 二进制安装-2120497.md": "MySQL 8.0.11 Binary Installation",
  "2018-05-26-rabbitmq 3.6.15 yum安装部署-2120565.md": "Installing RabbitMQ 3.6.15 via YUM"
 }
