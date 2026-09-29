@@ -251,5 +251,15 @@
  "2023-06-19-rps和rfs优化脚本-6515750.md": "RPS and RFS Optimization Script",
  "2023-07-11-更换GORM默认的SQLite驱动-6690830.md": "Replacing GORM's Default SQLite Driver",
  "2023-07-13-go influxdb 批量写入 api-6711517.md": "Go InfluxDB Batch Write API",
+ "2023-08-10-vue 前端实现webssh 多窗口模式-7037245.md": "Implementing Multi-window WebSSH in a Vue Frontend",
+ "2023-08-18-docker zabbix-7132766.md": "docker zabbix",
+ "2023-10-11-linux 服务器 多网口判断网卡名字和实际网卡口顺序 对应关系-7815837.md": "Mapping NIC Names to Physical Port Order on Multi-Port Linux Servers",
+ "2024-04-09-ppp名字规范排序算法-10382879.md": "Canonical Sorting Algorithm for ppp Names",
+ "2024-04-26-go 下载限速器-10611790.md": "Go Download Rate Limiter",
+ "2024-07-05-p2p 点对点互拉带宽 第一版-11359758.md": "P2P Point-to-Point Bandwidth Peering, Version 1",
+ "2024-07-30-k8s kubeadm v1.30.2部署-11608966.md": "k8s kubeadm v1.30.2 Deployment",
+ "2024-07-30-rancher v2.7.9 部署-11613483.md": "Deploying Rancher v2.7.9",
+ "2024-07-31-nvidia驱动安装-11622160.md": "Installing the NVIDIA Driver",
+ "2024-08-01-nvidia-docker + helm+cuda+gpu_burn-11633590.md": "nvidia-docker + helm + cuda + gpu_burn",
  "2024-12-25-kvm的安装 部署 测试 网络-12930481.md": "KVM Installation, Deployment, Testing, and Networking"
 }
