@@ -220,7 +220,7 @@ openstack endpoint create --region RegionOne identity internal http://controller
 openstack endpoint create --region RegionOne identity admin http://controller:35357/v3
 ```
 
-创建域（Domain）、计划（Project）、用户（User）、角色（Role）：
+创建域（Domain）、项目（Project）、用户（User）、角色（Role）：
 
 ```bash
 openstack domain create --description "Default Domain" default
@@ -235,7 +235,7 @@ openstack role create admin
 openstack role add --project admin --user admin admin
 ```
 
-创建服务计划：
+创建服务项目：
 
 ```bash
 openstack project create --domain default --description "Service Project" service
@@ -249,7 +249,7 @@ openstack user create --domain default --password-prompt demo
 openstack role create user
 ```
 
-将普通用户角色授予示例计划和示例用户：
+将普通用户角色授予示例项目和示例用户：
 
 ```bash
 openstack role add --project demo --user demo user
@@ -345,7 +345,7 @@ User Password: glance
 Repeat User Password: glance
 ```
 
-将 admin 角色授予 glance 用户和 service 计划：
+将 admin 角色授予 glance 用户和 service 项目：
 
 ```bash
 openstack role add --project service --user glance admin

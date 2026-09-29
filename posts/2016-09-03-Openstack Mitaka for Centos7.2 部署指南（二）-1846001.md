@@ -623,6 +623,8 @@ OPENSTACK_NEUTRON_NETWORK = {
 TIME_ZONE = "TIME_ZONE"
 ```
 
+注：`TIME_ZONE` 的值为照抄官方文档的占位符，实际应填所在时区，如 `Asia/Shanghai`。
+
 ```bash
 systemctl restart httpd.service memcached.service
 ```
