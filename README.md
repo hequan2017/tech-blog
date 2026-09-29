@@ -56,7 +56,11 @@ Vue 文档风格界面,开箱即用:
 
 ## 🗂️ 分类目录(点击直达)
 
-[python(88)](INDEX.md#python88-篇) · [go(67)](INDEX.md#go67-篇) · [Linux(64)](INDEX.md#linux64-篇) · [集群(41)](INDEX.md#集群41-篇) · [lnmp(33)](INDEX.md#lnmp33-篇) · [kubernetes(24)](INDEX.md#kubernetes24-篇) · [openstack(21)](INDEX.md#openstack21-篇) · [前端(13)](INDEX.md#前端13-篇) · [vue(10)](INDEX.md#vue10-篇) · [shell(9)](INDEX.md#shell9-篇) · [随笔(9)](INDEX.md#随笔9-篇) · [autoops(7)](INDEX.md#autoops7-篇) · [tomcat(6)](INDEX.md#tomcat6-篇) · [运维基础(5)](INDEX.md#运维基础5-篇) · [ansible(5)](INDEX.md#ansible5-篇) · [zabbix(4)](INDEX.md#zabbix4-篇) · [后端(3)](INDEX.md#后端3-篇) · [typescript(3)](INDEX.md#typescript3-篇) · [cobbler(2)](INDEX.md#cobbler2-篇) · [安全(2)](INDEX.md#安全2-篇)
+- **[ops(176)](INDEX.md#ops176-篇)** — [Linux(64)](INDEX.md#linux64-篇) · [cluster(41)](INDEX.md#cluster41-篇) · [lnmp(33)](INDEX.md#lnmp33-篇) · [shell(9)](INDEX.md#shell9-篇) · [autoops(7)](INDEX.md#autoops7-篇) · [tomcat(6)](INDEX.md#tomcat6-篇) · [ops-basics(5)](INDEX.md#ops-basics5-篇) · [ansible(5)](INDEX.md#ansible5-篇) · [zabbix(4)](INDEX.md#zabbix4-篇) · [cobbler(2)](INDEX.md#cobbler2-篇)
+- **[backend(158)](INDEX.md#backend158-篇)** — [python(88)](INDEX.md#python88-篇) · [go(67)](INDEX.md#go67-篇) · [backend(3)](INDEX.md#backend3-篇)
+- **[cloud(45)](INDEX.md#cloud45-篇)** — [kubernetes(24)](INDEX.md#kubernetes24-篇) · [openstack(21)](INDEX.md#openstack21-篇)
+- **[frontend(26)](INDEX.md#frontend26-篇)** — [frontend(13)](INDEX.md#frontend13-篇) · [vue(10)](INDEX.md#vue10-篇) · [typescript(3)](INDEX.md#typescript3-篇)
+- **[essays(11)](INDEX.md#essays11-篇)** — [essays(9)](INDEX.md#essays9-篇) · [security(2)](INDEX.md#security2-篇)
 
 📖 完整目录:[INDEX.md](INDEX.md) — 分类 × 年份双视图 + 按年总表
 

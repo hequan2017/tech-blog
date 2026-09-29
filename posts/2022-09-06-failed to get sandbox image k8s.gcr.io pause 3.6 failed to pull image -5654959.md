@@ -1,7 +1,7 @@
 ---
 title: "failed to get sandbox image 'k8s.gcr.io/pause:3.6': failed to pull image 'k8s.gcr.io/pause:3.6'"
 date: "2022-09-06 11:36:38"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/5654959"
 ---
 > **内容介绍**

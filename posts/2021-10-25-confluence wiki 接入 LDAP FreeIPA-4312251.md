@@ -1,7 +1,7 @@
 ---
 title: "confluence  wiki 接入 LDAP FreeIPA"
 date: "2021-10-25 15:06:03"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/4312251"
 ---
 > **内容介绍**

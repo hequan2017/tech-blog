@@ -1,7 +1,7 @@
 ---
 title: "iview-admin 2.1  + django 2.1 （一） 登录认证+修改请求头 简单例子"
 date: "2018-11-14 17:47:56"
-category: "前端"
+category: "frontend"
 source: "https://blog.51cto.com/hequan/2316979"
 ---
 > **内容介绍**

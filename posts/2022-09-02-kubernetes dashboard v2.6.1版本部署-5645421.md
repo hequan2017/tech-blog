@@ -1,7 +1,7 @@
 ---
 title: "kubernetes dashboard v2.6.1版本部署"
 date: "2022-09-02 16:21:41"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/5645421"
 ---
 > **内容介绍**

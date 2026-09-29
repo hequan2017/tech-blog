@@ -1,7 +1,7 @@
 ---
 title: "集群一 HAProxy+keepalived+varnsh"
 date: "2016-12-26 20:03:26"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/1886307"
 ---
 > **内容介绍**

@@ -1,7 +1,7 @@
 ---
 title: "k8s-ingress nginx 部署例子  DaemonSet+HostNetwork(+nodeSelector)"
 date: "2022-09-06 18:57:08"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/5656475"
 ---
 > **内容介绍**

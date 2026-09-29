@@ -1,7 +1,7 @@
 ---
 title: "django-rest-framework     自动生成接口说明文档"
 date: "2018-11-14 14:45:01"
-category: "后端"
+category: "backend"
 source: "https://blog.51cto.com/hequan/2316781"
 ---
 > **内容介绍**

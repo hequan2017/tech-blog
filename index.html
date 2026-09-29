@@ -69,6 +69,12 @@ aside.side{width:260px;flex-shrink:0;position:sticky;top:56px;max-height:calc(10
 .side .back{color:var(--muted);font-size:13px}
 .side .posts a{font-size:13.2px;padding:5px 12px 5px 14px}
 .side .posts a .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.side a.grp{font-weight:600;margin-top:9px}
+.side a.grp.has{color:var(--brand-1)}
+.side a.sub{padding:4px 12px 4px 27px;font-size:12.6px;color:var(--muted)}
+.side a.sub .n{font-size:11.5px}
+.side a.sub:hover{color:var(--brand-1)}
+.side a.sub.active{background:var(--brand-soft);color:var(--brand-1);font-weight:600;border-left-color:var(--brand)}
 
 main{flex:1;min-width:0;padding:0 32px 40px}
 .container{max-width:820px;margin:0 auto}
@@ -338,17 +344,22 @@ const T = {
 function t(k){ return (T[LANG] && T[LANG][k]) || T.zh[k] || k; }
 function tf(k, vars){ return t(k).replace(/\{(\w+)\}/g, (_, n) => vars[n]); }
 
-/* 首页分组卡片: 数量按 posts-index.json 动态计算 */
-const FEAT_GROUPS = [
-  {href:'#/c/python', ico:'🐍', cats:['python'], zh:['Python','爬虫与数据抓取、Django 全栈 CMDB 系列、自动化脚本与消息队列实战'], en:['Python','Web scraping, Django CMDB series, automation scripts & message queues']},
-  {href:'#/c/go', ico:'🐹', cats:['go'], zh:['Go','gin / WebSSH、jumpserver API 资产对接、CLI 工具与后端服务开发'], en:['Go','gin / WebSSH, jumpserver API integration, CLI tools & backend services']},
-  {href:'#/c/Linux', ico:'🐧', cats:['Linux','运维基础'], zh:['Linux 与运维','基础命令与权限、磁盘/网络、SSH、Nginx、rsync 等系统运维实战'], en:['Linux & Ops','Commands & permissions, disk/network, SSH, Nginx, rsync']},
-  {href:'#/c/kubernetes', ico:'☸️', cats:['kubernetes','集群','openstack'], zh:['云原生与集群','kubernetes · 集群 · openstack:K8s 部署、Ingress、PV/PVC 与 GPU 调度'], en:['Cloud Native','k8s · cluster · openstack: deployments, Ingress, PV/PVC & GPU scheduling']},
-  {href:'#/c/lnmp', ico:'🧱', cats:['lnmp','tomcat'], zh:['Web 服务','lnmp · tomcat:LNMP/LAMP 架构、Nginx/Apache 配置与性能优化'], en:['Web Serving','lnmp · tomcat: LNMP/LAMP, Nginx/Apache config & tuning']},
-  {href:'#/c/前端', ico:'🎨', cats:['前端','vue','typescript','后端'], zh:['前端','前端 · vue · typescript · 后端:Vue 工程化、TS 与构建部署'], en:['Frontend','frontend · vue · typescript: Vue engineering, TS, build & deploy']},
-  {href:'#/c/ansible', ico:'🔧', cats:['shell','ansible','zabbix','autoops','cobbler'], zh:['自动化运维','shell · ansible · zabbix · autoops · cobbler:批量部署与监控告警'], en:['Automation','shell · ansible · zabbix · autoops · cobbler: provisioning & monitoring']},
-  {href:'#/c/随笔', ico:'📝', cats:['随笔','安全'], zh:['随笔 · 安全','随笔 · 安全:学习总结、行业活动记录与信息安全等级保护笔记'], en:['Essays & Security','essays · security: study notes, event records & compliance notes']},
+/* 大类 -> 小类 分级目录; 数量按 posts-index.json 动态计算 */
+const CAT_GROUPS = [
+  {id:'ops', ico:'🐧', zh:'运维', en:'Ops', zd:'系统运维、Web 架构、自动化与监控', ed:'sysadmin, web stacks, automation & monitoring',
+   cats:['Linux','cluster','lnmp','shell','autoops','tomcat','ops-basics','ansible','zabbix','cobbler']},
+  {id:'backend', ico:'⚙️', zh:'后端开发', en:'Backend', zd:'Go / Python 后端服务、Django 全栈、CLI 工具与消息队列', ed:'Go / Python services, Django apps, CLI tools & queues',
+   cats:['python','go','backend']},
+  {id:'cloud', ico:'☸️', zh:'云计算', en:'Cloud', zd:'K8s 部署与调度、OpenStack 私有云', ed:'K8s deployments & scheduling, OpenStack private cloud',
+   cats:['kubernetes','openstack']},
+  {id:'frontend', ico:'🎨', zh:'前端', en:'Frontend', zd:'Vue 工程化、组件实践、TS 与构建部署', ed:'Vue engineering, components, TS & builds',
+   cats:['frontend','vue','typescript']},
+  {id:'essays', ico:'📝', zh:'随笔 · 安全', en:'Essays & Sec', zd:'学习总结、活动记录与等级保护合规笔记', ed:'study notes, event records & compliance notes',
+   cats:['essays','security']},
 ];
+function groupOf(cat){ return CAT_GROUPS.find(g => g.cats.includes(cat)); }
+function groupById(id){ return CAT_GROUPS.find(g => g.id === id); }
+function grpLabel(g){ return LANG === 'en' ? g.en : g.zh; }
 
 function renderHome(){
   const L = LANG === 'en';
@@ -358,11 +369,11 @@ function renderHome(){
   const nCats = Object.keys(counts).length;
   const ys = POSTS.map(p => p.d.slice(0,4)).sort();
   const range = ys.length ? `${ys[0]}–${ys[ys.length-1]}` : '2016–2025';
-  const g = FEAT_GROUPS.map(x => {
-    const [ft, fd] = L ? x.en : x.zh;
-    return `<a class="feat" href="${x.href}"><div class="ico">${x.ico}</div>
-      <div class="ft">${esc(ft)}<span class="n">${nOf(x)} ${L?'posts':'篇'}</span></div>
-      <div class="fd">${esc(fd)}</div></a>`;
+  const g = CAT_GROUPS.map(x => {
+    const list = x.cats.filter(c => counts[c]).sort((a,b) => counts[b]-counts[a]).join(' · ');
+    return `<a class="feat" href="#/g/${x.id}"><div class="ico">${x.ico}</div>
+      <div class="ft">${esc(grpLabel(x))}<span class="n">${nOf(x)} ${L?'posts':'篇'}</span></div>
+      <div class="fd">${esc(list)} — ${esc(L ? x.ed : x.zd)}</div></a>`;
   }).join('\n          ');
   $('#intro').innerHTML = `
         <h1>${L ? 'Tech <span class="g">Blog</span>' : '技术<span class="g">博客</span>'}</h1>
@@ -424,6 +435,10 @@ function currentCat(){
   const m = location.hash.match(/^#\/c\/([^#]+)/);
   return m ? tryDecode(m[1]) : '';
 }
+function currentGroup(){
+  const m = location.hash.match(/^#\/g\/([^#]+)/);
+  return m ? tryDecode(m[1]) : '';
+}
 function currentPost(){
   const m = location.hash.match(/^#\/p\/([^#]+)/);
   return m ? tryDecode(m[1]) : '';
@@ -460,10 +475,11 @@ function renderYears(){
     box.querySelectorAll('.yi').forEach(el => el.style.width = el.dataset.w + '%')));
 }
 
-/* ---------- 侧栏目录 ---------- */
+/* ---------- 侧栏目录(大类 > 小类 分级) ---------- */
 function renderSide(){
   const postFile = currentPost();
   const cur = currentCat();
+  const grp = currentGroup();
   let h = '';
   if(postFile){
     const art = POSTS.find(p => p.f === postFile);
@@ -474,15 +490,22 @@ function renderSide(){
       h += `<a class="${p.f===postFile?'active':''}" href="#/p/${encPath(p.f)}" title="${esc(p.t)}">
         <span class="t">${p.f===postFile ? esc(p.t) : hi(p.t, '')}</span></a>`;
     });
-    h += `</div><div style="height:14px"></div><h3>${esc(t('allCats'))}</h3>`;
-  } else {
-    h += `<h3>${esc(t('categories'))}</h3>`;
+    h += `</div><div style="height:14px"></div>`;
   }
+  h += `<h3>${esc(t('categories'))}</h3>`;
+  h += `<a class="${!cur && !grp && !currentPost() ? 'active':''}" href="#/">${esc(t('allPosts'))}<span class="n">${POSTS.length}</span></a>`;
   const counts = {};
   POSTS.forEach(p => counts[p.c] = (counts[p.c]||0)+1);
-  const order = Object.keys(counts).sort((a,b) => counts[b]-counts[a]);
-  h += `<a class="${cur==='' && !currentPost() ? 'active':''}" href="#/">${esc(t('allPosts'))}<span class="n">${POSTS.length}</span></a>`;
-  order.forEach(c => {
+  CAT_GROUPS.forEach(g => {
+    const n = g.cats.reduce((s,c) => s + (counts[c]||0), 0);
+    h += `<a class="grp${grp === g.id && !currentPost() ? ' active' : ''}${cur && g.cats.includes(cur) ? ' has' : ''}"
+      href="#/g/${g.id}">${esc(grpLabel(g))}<span class="n">${n}</span></a>`;
+    g.cats.filter(c => counts[c]).sort((a,b) => counts[b]-counts[a]).forEach(c => {
+      h += `<a class="sub${c === cur && !currentPost() ? ' active' : ''}" href="#/c/${encodeURIComponent(c)}">
+        ${esc(c)}<span class="n">${counts[c]}</span></a>`;
+    });
+  });
+  Object.keys(counts).filter(c => !groupOf(c)).sort((a,b) => counts[b]-counts[a]).forEach(c => {
     h += `<a class="${c===cur && !currentPost() ? 'active':''}" href="#/c/${encodeURIComponent(c)}">
       ${esc(c)}<span class="n">${counts[c]}</span></a>`;
   });
@@ -495,8 +518,11 @@ function searchQuery(){ return $('#search').value.trim(); }
 function filtered(){
   const q = searchQuery().toLowerCase();
   const cat = currentCat();
+  const grp = currentGroup();
+  const gc = grp ? (groupById(grp) || {cats:[]}).cats : null;
   return POSTS.filter(p =>
     (!cat || p.c === cat) &&
+    (!gc || gc.includes(p.c)) &&
     (!q || p.t.toLowerCase().includes(q) || p.c.toLowerCase().includes(q)));
 }
 
@@ -504,12 +530,15 @@ function renderList(reset){
   if(reset){ PAGE = 0; $('#list').innerHTML = ''; }
   const q = searchQuery();
   const cat = currentCat();
+  const grp = currentGroup();
   const items = filtered();
-  const onHome = !cat && !q;
+  const onHome = !cat && !grp && !q;
   $('#intro').hidden = !onHome;
   $('#view').hidden = true;
   $('#home').hidden = false;
-  $('#stats').textContent = (cat ? tf('catFmt', {c: cat}) : t('allPosts')) +
+  const scope = cat ? tf('catFmt', {c: cat})
+    : grp && groupById(grp) ? tf('catFmt', {c: grpLabel(groupById(grp))}) : t('allPosts');
+  $('#stats').textContent = scope +
     (q ? tf('searchFmt', {q}) : '') + tf('countFmt', {n: items.length});
 
   const slice = items.slice(PAGE*PER, (PAGE+1)*PER);

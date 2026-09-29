@@ -1,7 +1,7 @@
 ---
 title: "elasticsearch 7.x搭建集群和重启"
 date: "2021-04-19 14:28:28"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/2717713"
 ---
 > **内容介绍**

@@ -1,7 +1,7 @@
 ---
 title: "jquery  datatable ajax 获取数据/重新加载"
 date: "2019-07-02 14:20:24"
-category: "前端"
+category: "frontend"
 source: "https://blog.51cto.com/hequan/2416184"
 ---
 > **内容介绍**

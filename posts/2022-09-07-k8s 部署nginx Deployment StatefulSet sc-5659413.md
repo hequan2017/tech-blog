@@ -1,7 +1,7 @@
 ---
 title: "k8s  部署nginx    Deployment/StatefulSet    sc"
 date: "2022-09-07 16:59:43"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/5659413"
 ---
 > **内容介绍**

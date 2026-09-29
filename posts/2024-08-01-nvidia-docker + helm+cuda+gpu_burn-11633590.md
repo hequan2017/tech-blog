@@ -1,7 +1,7 @@
 ---
 title: "nvidia-docker + helm+cuda+gpu_burn"
 date: "2024-08-01 17:51:49"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/11633590"
 ---
 > **内容介绍**

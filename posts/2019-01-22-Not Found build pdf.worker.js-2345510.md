@@ -1,7 +1,7 @@
 ---
 title: "Not Found: /build/pdf.worker.js"
 date: "2019-01-22 16:59:07"
-category: "前端"
+category: "frontend"
 source: "https://blog.51cto.com/hequan/2345510"
 ---
 > **内容介绍**

@@ -1,7 +1,7 @@
 ---
 title: "解决 select2在bootstrap modal中不能正常使用问题"
 date: "2018-11-28 15:57:30"
-category: "前端"
+category: "frontend"
 source: "https://blog.51cto.com/hequan/2323225"
 ---
 > **内容介绍**

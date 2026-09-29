@@ -1,7 +1,7 @@
 ---
 title: "阿里云日志服务 send data to SLS fail, error_code:Request"
 date: "2021-01-27 11:39:01"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/2607839"
 ---
 > **内容介绍**

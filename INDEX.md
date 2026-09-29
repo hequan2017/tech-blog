@@ -8,11 +8,333 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 篇数 | 112 | 55 | 78 | 55 | 12 | 20 | 40 | 34 | 9 | 1 | 416 |
 
-**分类导航:** [python](#python88-篇)(88) · [go](#go67-篇)(67) · [Linux](#linux64-篇)(64) · [集群](#集群41-篇)(41) · [lnmp](#lnmp33-篇)(33) · [kubernetes](#kubernetes24-篇)(24) · [openstack](#openstack21-篇)(21) · [前端](#前端13-篇)(13) · [vue](#vue10-篇)(10) · [shell](#shell9-篇)(9) · [随笔](#随笔9-篇)(9) · [autoops](#autoops7-篇)(7) · [tomcat](#tomcat6-篇)(6) · [运维基础](#运维基础5-篇)(5) · [ansible](#ansible5-篇)(5) · [zabbix](#zabbix4-篇)(4) · [后端](#后端3-篇)(3) · [typescript](#typescript3-篇)(3) · [cobbler](#cobbler2-篇)(2) · [安全](#安全2-篇)(2)
+**大类导航:** [ops](#ops176-篇)(176) · [backend](#backend158-篇)(158) · [cloud](#cloud45-篇)(45) · [frontend](#frontend26-篇)(26) · [essays](#essays11-篇)(11)
 
 ## 分类目录
 
-### python(88 篇)
+### ops(176 篇)
+
+#### Linux(64 篇)
+
+
+**2024 年**
+
+- 12-25 · [kvm的安装 部署 测试 网络](<posts/2024-12-25-kvm的安装 部署 测试 网络-12930481.md>)
+
+**2023 年**
+
+- 02-09 · [h3c 交换机 策划路由](<posts/2023-02-09-h3c 交换机 策划路由-6047016.md>)
+
+**2022 年**
+
+- 11-09 · [自定义centos](posts/2022-11-09-自定义centos-5838986.md)
+- 08-10 · [centos 自动 部署 系统 U盘](<posts/2022-08-10-centos 自动 部署 系统 U盘-5563487.md>)
+- 05-17 · [FRRouting  部署](<posts/2022-05-17-FRRouting 部署-5299286.md>)
+
+**2020 年**
+
+- 10-24 · [jenkins 流水线控制 发布回滚jar包](<posts/2020-10-24-jenkins 流水线控制 发布回滚jar包-2543374.md>)
+
+**2018 年**
+
+- 02-23 · [gitlab 10.4.4  Centos7 安装](<posts/2018-02-23-gitlab 10.4.4 Centos7 安装-2072267.md>)
+- 01-30 · [Web压力测试](posts/2018-01-30-Web压力测试-2066839.md)
+- 01-30 · [内核TCP/IP优化](<posts/2018-01-30-内核TCP IP优化-2066868.md>)
+- 01-22 · [NFS 共享存储](<posts/2018-01-22-NFS 共享存储-2063689.md>)
+- 01-22 · [rsync+inotify](posts/2018-01-22-rsync+inotify-2063841.md)
+- 01-09 · [php 7.2 编译安装](<posts/2018-01-09-php 7.2 编译安装-2058926.md>)
+- 01-02 · [linux 面试题1 附答案](<posts/2018-01-02-linux 面试题1 附答案-2056571.md>)
+
+**2017 年**
+
+- 12-29 · [服务器性能分析](posts/2017-12-29-服务器性能分析-2055809.md)
+- 12-28 · [zabbix3.4  监控 DELL 硬件模板  | 中文汉化](<posts/2017-12-28-zabbix3.4 监控 DELL 硬件模板 中文汉化-2055499.md>)
+- 12-28 · [zabbix3.4.4  监控mysql 5.7.20 利用percona 1.1.7](<posts/2017-12-28-zabbix3.4.4 监控mysql 5.7.20 利用percona 1.1.7-2055492.md>)
+- 09-25 · [tomcat8 安装部署--一键版本](<posts/2017-09-25-tomcat8 安装部署--一键版本-1968487.md>)
+- 01-22 · [iptables 默认服务器配置](<posts/2017-01-22-iptables 默认服务器配置-1893677.md>)
+
+**2016 年**
+
+- 06-14 · [centos7.2系统基本优化](posts/2016-06-14-centos7.2系统基本优化-1789146.md)
+- 05-26 · [CentOS Linux 6.8 正式发布 新版内核+大量更新](<posts/2016-05-26-CentOS Linux 6.8 正式发布 新版内核+大量更新-1783481.md>)
+- 05-25 · [GeoIP最快捷安装](posts/2016-05-25-GeoIP最快捷安装-1783283.md)
+- 05-24 · [[WARNING] [INS-13014] Target environment do not meet some optional requirements.](<posts/2016-05-24-[WARNING] [INS-13014] Target environment do not meet some optional req-1782765.md>)
+- 05-24 · [memcache安装](posts/2016-05-24-memcache安装-1782523.md)
+- 05-23 · [mysql日志+引擎笔记](posts/2016-05-23-mysql日志+引擎笔记-1782212.md)
+- 05-20 · [mysql全备份+增量备份笔记总结](posts/2016-05-20-mysql全备份+增量备份笔记总结-1775333.md)
+- 05-18 · [mysql主从复制](posts/2016-05-18-mysql主从复制-1774806.md)
+- 05-17 · [mysql备份与恢复+ERROR 1046](<posts/2016-05-17-mysql备份与恢复+ERROR 1046-1774511.md>)
+- 05-16 · [mysql数据库应用管理+乱码+字符集](posts/2016-05-16-mysql数据库应用管理+乱码+字符集-1773918.md)
+- 05-15 · [mysql sql](<posts/2016-05-15-mysql sql-1773728.md>)
+- 05-10 · [mysql基础操作](posts/2016-05-10-mysql基础操作-1771935.md)
+- 05-09 · [MySQL安装+多实例](posts/2016-05-09-MySQL安装+多实例-1771596.md)
+- 04-27 · [centos7下mariadb 首次修改密码及忘记密码处理方法](<posts/2016-04-27-centos7下mariadb 首次修改密码及忘记密码处理方法-1768386.md>)
+- 04-27 · [在CENTOS7/RHEL7修改网卡名称](<posts/2016-04-27-在CENTOS7 RHEL7修改网卡名称-1768380.md>)
+- 04-26 · [linux  lnmp安装](<posts/2016-04-26-linux lnmp安装-1768044.md>)
+- 04-26 · [nginx简单配置](posts/2016-04-26-nginx简单配置-1767844.md)
+- 04-25 · [Nginx简单安装](posts/2016-04-25-Nginx简单安装-1767646.md)
+- 04-20 · [lamp搭建](posts/2016-04-20-lamp搭建-1765665.md)
+- 04-19 · [linux 虚拟主机](<posts/2016-04-19-linux 虚拟主机-1765392.md>)
+- 04-17 · [Linux  sersync](<posts/2016-04-17-Linux sersync-1764699.md>)
+- 04-17 · [linux apache 2.4.20版本安装](<posts/2016-04-17-linux apache 2.4.20版本安装-1764833.md>)
+- 04-16 · [linux grep awk sed  find  cut](<posts/2016-04-16-linux grep awk sed find cut-1764502.md>)
+- 04-15 · [Linux inotify](<posts/2016-04-15-Linux inotify-1764193.md>)
+- 04-15 · [linux  inotify+rsync](<posts/2016-04-15-linux inotify+rsync-1764262.md>)
+- 04-15 · [rsync深度实战](posts/2016-04-15-rsync深度实战-1764098.md)
+- 04-14 · [linux rsync](<posts/2016-04-14-linux rsync-1763780.md>)
+- 04-12 · [linux ssh key免密码分发](<posts/2016-04-12-linux ssh key免密码分发-1762853.md>)
+- 04-07 · [linux man中文手册](<posts/2016-04-07-linux man中文手册-1761212.md>)
+- 04-07 · [linux ssh基本](<posts/2016-04-07-linux ssh基本-1761324.md>)
+- 04-06 · [linuxNFS优化及自动挂载autofs](posts/2016-04-06-linuxNFS优化及自动挂载autofs-1760940.md)
+- 04-03 · [linux NFS网络文件系统](<posts/2016-04-03-linux NFS网络文件系统-1759919.md>)
+- 04-01 · [linux权限集中管理和行为日志审计](posts/2016-04-01-linux权限集中管理和行为日志审计-1759231.md)
+- 04-01 · [linux磁盘管理](posts/2016-04-01-linux磁盘管理-1759336.md)
+- 04-01 · [linux网络基础](posts/2016-04-01-linux网络基础-1759297.md)
+- 03-31 · [Linux crond](<posts/2016-03-31-Linux crond-1758943.md>)
+- 03-31 · [linux用户管理](posts/2016-03-31-linux用户管理-1759037.md)
+- 03-30 · [linux文件权限](posts/2016-03-30-linux文件权限-1758598.md)
+- 03-30 · [linux文件类型2](posts/2016-03-30-linux文件类型2-1758337.md)
+- 03-30 · [linux正则表达式BRE](posts/2016-03-30-linux正则表达式BRE-1758538.md)
+- 03-29 · [CentOS镜像使用帮助--yum更新](posts/2016-03-29-CentOS镜像使用帮助--yum更新-1757931.md)
+- 03-29 · [Linux基础命令](posts/2016-03-29-Linux基础命令-1757934.md)
+- 03-29 · [Linux基础操作优化](posts/2016-03-29-Linux基础操作优化-1757932.md)
+- 03-29 · [Linux目录结构](posts/2016-03-29-Linux目录结构-1757935.md)
+- 03-29 · [linux基础命令练习1](posts/2016-03-29-linux基础命令练习1-1758200.md)
+- 03-29 · [linux文件类型](posts/2016-03-29-linux文件类型-1758015.md)
+
+#### cluster(41 篇)
+
+
+**2024 年**
+
+- 08-01 · [nvidia-docker + helm+cuda+gpu_burn](<posts/2024-08-01-nvidia-docker + helm+cuda+gpu_burn-11633590.md>)
+- 07-31 · [nvidia驱动安装](posts/2024-07-31-nvidia驱动安装-11622160.md)
+- 07-30 · [k8s kubeadm   v1.30.2部署](<posts/2024-07-30-k8s kubeadm v1.30.2部署-11608966.md>)
+- 07-30 · [rancher:v2.7.9 部署](<posts/2024-07-30-rancher v2.7.9 部署-11613483.md>)
+
+**2023 年**
+
+- 06-19 · [rps和rfs优化脚本](posts/2023-06-19-rps和rfs优化脚本-6515750.md)
+- 06-01 · [docker部署influxdb](posts/2023-06-01-docker部署influxdb-6396307.md)
+- 04-14 · [爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。](<posts/2023-04-14-爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。-6190425.md>)
+- 04-10 · [centos7 设置服务器为网络中转](<posts/2023-04-10-centos7 设置服务器为网络中转-6181184.md>)
+- 03-21 · [centos7 tty模式不支持中文，需要去github找 修改后的内核](<posts/2023-03-21-centos7 tty模式不支持中文，需要去github找 修改后的内核-6140088.md>)
+- 03-16 · [华为交换机 配置vrp 路由分离](<posts/2023-03-16-华为交换机 配置vrp 路由分离-6125106.md>)
+- 03-14 · [交换机 策划路由](<posts/2023-03-14-交换机 策划路由-6120846.md>)
+- 03-14 · [数据库    添加   联合索引](<posts/2023-03-14-数据库 添加 联合索引-6120828.md>)
+- 02-01 · [ks.cfg 设置IP 和选择硬盘](<posts/2023-02-01-ks.cfg 设置IP 和选择硬盘-6031774.md>)
+
+**2022 年**
+
+- 09-07 · [k8s Storage Class 搭建/测试](<posts/2022-09-07-k8s Storage Class 搭建 测试-5658976.md>)
+- 09-07 · [k8s pv pvc nfs简单例子](<posts/2022-09-07-k8s pv pvc nfs简单例子-5658718.md>)
+- 09-07 · [k8s  部署nginx    Deployment/StatefulSet    sc](<posts/2022-09-07-k8s 部署nginx Deployment StatefulSet sc-5659413.md>)
+- 09-06 · [failed to get sandbox image 'k8s.gcr.io/pause:3.6': failed to pull image 'k8s.gcr.io/pause:3.6'](<posts/2022-09-06-failed to get sandbox image k8s.gcr.io pause 3.6 failed to pull image -5654959.md>)
+- 09-06 · [k8s  metrics-server 部署](<posts/2022-09-06-k8s metrics-server 部署-5655640.md>)
+- 09-06 · [k8s node NotReady Container runtime network not ready' networkReady='NetworkRe](<posts/2022-09-06-k8s node NotReady Container runtime network not ready networkReady= Ne-5654734.md>)
+- 09-06 · [k8s v1.25.0 删除node重新加入](<posts/2022-09-06-k8s v1.25.0 删除node重新加入-5654730.md>)
+- 09-06 · [k8s 部署 ingress-nginx](<posts/2022-09-06-k8s 部署 ingress-nginx-5656344.md>)
+- 09-06 · [k8s-ingress nginx 部署例子  DaemonSet+HostNetwork(+nodeSelector)](<posts/2022-09-06-k8s-ingress nginx 部署例子 DaemonSet+HostNetwork(+nodeSelector)-5656475.md>)
+- 09-05 · [calico 部署](<posts/2022-09-05-calico 部署-5652431.md>)
+- 09-05 · [k8s v1.25.0 更新证书](<posts/2022-09-05-k8s v1.25.0 更新证书-5651038.md>)
+- 09-02 · [kubeadm 安装部署k8s v1.25.0版本 master节点](<posts/2022-09-02-kubeadm 安装部署k8s v1.25.0版本 master节点-5644930.md>)
+- 09-02 · [kubernetes dashboard v2.6.1版本部署](<posts/2022-09-02-kubernetes dashboard v2.6.1版本部署-5645421.md>)
+- 09-01 · [k8s 命令自动补全](<posts/2022-09-01-k8s 命令自动补全-5641536.md>)
+- 06-09 · [minikube 部署使用](<posts/2022-06-09-minikube 部署使用-5370956.md>)
+- 04-18 · [运维基础架构 -- 1.open access server 搭建](<posts/2022-04-18-运维基础架构 -- 1.open access server 搭建-5214134.md>)
+
+**2021 年**
+
+- 10-25 · [confluence  wiki 接入 LDAP FreeIPA](<posts/2021-10-25-confluence wiki 接入 LDAP FreeIPA-4312251.md>)
+- 08-09 · [redash docker 最新版本 部署](<posts/2021-08-09-redash docker 最新版本 部署-3326827.md>)
+- 04-19 · [elasticsearch 7.x搭建集群和重启](<posts/2021-04-19-elasticsearch 7.x搭建集群和重启-2717713.md>)
+- 01-27 · [阿里云日志服务 send data to SLS fail, error_code:Request](<posts/2021-01-27-阿里云日志服务 send data to SLS fail, error_code Request-2607839.md>)
+
+**2018 年**
+
+- 09-01 · [gitlab 11.2.3 通过LDAP 调用FreeIPA 登录](<posts/2018-09-01-gitlab 11.2.3 通过LDAP 调用FreeIPA 登录-2168915.md>)
+
+**2017 年**
+
+- 12-18 · [阿里云与IDC -- 专线互联](<posts/2017-12-18-阿里云与IDC -- 专线互联-2051756.md>)
+
+**2016 年**
+
+- 12-26 · [集群一 HAProxy+keepalived+varnsh](<posts/2016-12-26-集群一 HAProxy+keepalived+varnsh-1886307.md>)
+- 12-26 · [集群三 php+memcached缓存服务器](<posts/2016-12-26-集群三 php+memcached缓存服务器-1886309.md>)
+- 12-26 · [集群二 nginx](<posts/2016-12-26-集群二 nginx-1886308.md>)
+- 12-26 · [集群四 mysql-5.7.16一键安装](<posts/2016-12-26-集群四 mysql-5.7.16一键安装-1886310.md>)
+- 06-01 · [LVS笔记](posts/2016-06-01-LVS笔记-1785317.md)
+- 05-31 · [个人画的第一幅图memcached](posts/2016-05-31-个人画的第一幅图memcached-1784994.md)
+
+#### lnmp(33 篇)
+
+
+**2023 年**
+
+- 03-29 · [ppp拨号管理线路--自动检查默认脚本](posts/2023-03-29-ppp拨号管理线路--自动检查默认脚本-6157332.md)
+- 01-09 · [centos实现 登录窗口 1个免密登录/其他还是root登录](<posts/2023-01-09-centos实现 登录窗口 1个免密登录 其他还是root登录-5997514.md>)
+
+**2022 年**
+
+- 04-30 · [mysql 内网环境 连接慢  排坑](<posts/2022-04-30-mysql 内网环境 连接慢 排坑-5265475.md>)
+
+**2018 年**
+
+- 05-26 · [mysql 8.0.11 二进制安装](<posts/2018-05-26-mysql 8.0.11 二进制安装-2120497.md>)
+- 05-26 · [rabbitmq 3.6.15  yum安装部署](<posts/2018-05-26-rabbitmq 3.6.15 yum安装部署-2120565.md>)
+- 01-16 · [mongodb 3.7.1 安装](<posts/2018-01-16-mongodb 3.7.1 安装-2061444.md>)
+- 01-10 · [MySQL InnoDB Cluser  |  Mysql 5.7 集群](<posts/2018-01-10-MySQL InnoDB Cluser Mysql 5.7 集群-2059436.md>)
+
+**2017 年**
+
+- 12-14 · [zabbix3.4.4  编译安装](<posts/2017-12-14-zabbix3.4.4 编译安装-2050520.md>)
+- 12-01 · [nginx+tomcat  动静分离 的配置文件](<posts/2017-12-01-nginx+tomcat 动静分离 的配置文件-2046293.md>)
+- 11-29 · [Mysql 5.7主从](<posts/2017-11-29-Mysql 5.7主从-2045634.md>)
+- 11-29 · [redis 4.0.1   |   cluster集群](<posts/2017-11-29-redis 4.0.1 cluster集群-2045790.md>)
+- 11-28 · [jenkins 2.73.3 安装 、 配置git 、maven](<posts/2017-11-28-jenkins 2.73.3 安装 、 配置git 、maven-2045232.md>)
+- 11-27 · [Jemalloc 5.0.1  安装 |  nginx  mysql 使用](<posts/2017-11-27-Jemalloc 5.0.1 安装 nginx mysql 使用-2044761.md>)
+- 11-22 · [tomcat8 安装|解决启动慢|进入管理|host-manager  403错误](<posts/2017-11-22-tomcat8 安装 解决启动慢 进入管理 host-manager 403错误-1984005.md>)
+- 11-16 · [mysql-5.7.20  二进制安装 | 备份恢复](<posts/2017-11-16-mysql-5.7.20 二进制安装 备份恢复-1982428.md>)
+- 11-15 · [PHP-7.1.11 YUM安装 | 编译安装](<posts/2017-11-15-PHP-7.1.11 YUM安装 编译安装-1982046.md>)
+- 11-13 · [nginx-1.12.2 安装| 配置文件 | 日志切割 | 启动文件](<posts/2017-11-13-nginx-1.12.2 安装 配置文件 日志切割 启动文件-1981306.md>)
+- 02-08 · [mysql-5.7.16一键安装/配置优化](<posts/2017-02-08-mysql-5.7.16一键安装 配置优化-1896153.md>)
+- 02-08 · [nginx1.10.3一键安装/系统内核优化/配置文件优化/https/日志切割](<posts/2017-02-08-nginx1.10.3一键安装 系统内核优化 配置文件优化 https 日志切割-1895932.md>)
+- 02-08 · [php7.1.1一键安装/配置文件简单优化](<posts/2017-02-08-php7.1.1一键安装 配置文件简单优化-1896152.md>)
+
+**2016 年**
+
+- 05-31 · [企业级nginx服务优化合集](posts/2016-05-31-企业级nginx服务优化合集-1784987.md)
+- 05-30 · [LNMP_6.8+1.11.0+5.6.12+5.6.22](posts/2016-05-30-LNMP_6.8+1.11.0+5.6.12+5.6.22-1784440.md)
+- 05-30 · [nginx重点优化合集一](posts/2016-05-30-nginx重点优化合集一-1784366.md)
+- 05-06 · [企业级nginx服务优化（三 )Apache+防盗链](<posts/2016-05-06-企业级nginx服务优化（三 )Apache+防盗链-1770655.md>)
+- 05-06 · [企业级nginx服务优化（二 )](<posts/2016-05-06-企业级nginx服务优化（二 )-1770627.md>)
+- 05-06 · [企业级nginx服务优化（四 )伪静态+php.ini](<posts/2016-05-06-企业级nginx服务优化（四 )伪静态+php.ini-1770778.md>)
+- 05-05 · [LAMP与LNMP加速与缓存优化(二)](posts/2016-05-05-LAMP与LNMP加速与缓存优化(二)-1770388.md)
+- 05-05 · [企业级nginx服务优化（一)](posts/2016-05-05-企业级nginx服务优化（一)-1770441.md)
+- 05-04 · [LAMP与LNMP加速与缓存优化(一)2](posts/2016-05-04-LAMP与LNMP加速与缓存优化(一)2-1770130.md)
+- 05-03 · [LAMP与LNMP加速与缓存优化(一)1](posts/2016-05-03-LAMP与LNMP加速与缓存优化(一)1-1769879.md)
+- 04-28 · [nginx代理负载均衡简单](posts/2016-04-28-nginx代理负载均衡简单-1768714.md)
+- 04-27 · [nginx 修改并隐藏版本号](<posts/2016-04-27-nginx 修改并隐藏版本号-1768379.md>)
+- 04-27 · [nginx.conf基本配置与参数说明](posts/2016-04-27-nginx.conf基本配置与参数说明-1768378.md)
+
+#### shell(9 篇)
+
+
+**2023 年**
+
+- 10-11 · [linux 服务器 多网口判断网卡名字和实际网卡口顺序 对应关系](<posts/2023-10-11-linux 服务器 多网口判断网卡名字和实际网卡口顺序 对应关系-7815837.md>)
+- 05-17 · [docker 获取容器流量](<posts/2023-05-17-docker 获取容器流量-6291868.md>)
+- 05-09 · [在jenkins构建时，先执行这个，钉钉审批通过，则继续执行，钉钉审批失败，则不执行简陋的审批工作流。](posts/2023-05-09-在jenkins构建时，先执行这个，钉钉审批通过，则继续执行，钉钉审批失败，则不执行简陋的审批工作流。-6258555.md)
+- 05-08 · [shell 根据网卡名字自动生成网卡文件，然后up。](<posts/2023-05-08-shell 根据网卡名字自动生成网卡文件，然后up。-6254471.md>)
+- 02-21 · [拨号管理系统之创建ppp拨号](posts/2023-02-21-拨号管理系统之创建ppp拨号-6076932.md)
+
+**2022 年**
+
+- 04-28 · [运维基础架构 --3 jar包 启动关闭命令脚本](<posts/2022-04-28-运维基础架构 --3 jar包 启动关闭命令脚本-5259894.md>)
+
+**2017 年**
+
+- 02-21 · [微信企业号：shell定时发送图片 到 指定人](<posts/2017-02-21-微信企业号：shell定时发送图片 到 指定人-1899900.md>)
+
+**2016 年**
+
+- 08-05 · [linux 简单格式化硬盘脚本](<posts/2016-08-05-linux 简单格式化硬盘脚本-1834578.md>)
+- 07-01 · [shell IFS例子](<posts/2016-07-01-shell IFS例子-1795015.md>)
+
+#### autoops(7 篇)
+
+
+**2021 年**
+
+- 11-11 · [BPMN 自定义流水线](<posts/2021-11-11-BPMN 自定义流水线-4576944.md>)
+- 11-09 · [BPMN 2.0 例子 （仅供参考）](<posts/2021-11-09-BPMN 2.0 例子 （仅供参考）-4565367.md>)
+
+**2018 年**
+
+- 05-09 · [django  异步 查看 服务器日志 | 利用 channels==2.0.2](<posts/2018-05-09-django 异步 查看 服务器日志 利用 channels==2.0.2-2114529.md>)
+- 03-17 · [新做了一个简单版本的CMDB云主机管理系统](posts/2018-03-17-新做了一个简单版本的CMDB云主机管理系统-2087835.md)
+- 02-13 · [Celery 3 版本  定时执行与 异步执行 |  Django 案例](<posts/2018-02-13-Celery 3 版本 定时执行与 异步执行 Django 案例-2071544.md>)
+
+**2017 年**
+
+- 11-17 · [django1.11.6+nginx1.12.2+uwsgi2.0.15  部署](<posts/2017-11-17-django1.11.6+nginx1.12.2+uwsgi2.0.15 部署-1982769.md>)
+- 06-16 · [AutoOps  1.8  版本](<posts/2017-06-16-AutoOps 1.8 版本-1937439.md>)
+
+#### tomcat(6 篇)
+
+
+**2018 年**
+
+- 02-27 · [jenkins 2.89.4   简单安装使用 |　发布war包](<posts/2018-02-27-jenkins 2.89.4 简单安装使用 发布war包-2073573.md>)
+- 02-11 · [tomcat 9.0.4 性能调优](<posts/2018-02-11-tomcat 9.0.4 性能调优-2071146.md>)
+- 01-30 · [APP程序上线架构图](posts/2018-01-30-APP程序上线架构图-2066721.md)
+- 01-29 · [nginx+tomcat   session 共享](<posts/2018-01-29-nginx+tomcat session 共享-2066415.md>)
+- 01-25 · [tomcat9 用非root用户开机自启动](<posts/2018-01-25-tomcat9 用非root用户开机自启动-2065086.md>)
+- 01-24 · [tomcat9 更换运行模式为 Apr 模式](<posts/2018-01-24-tomcat9 更换运行模式为 Apr 模式-2064813.md>)
+
+#### ops-basics(5 篇)
+
+
+**2022 年**
+
+- 11-21 · [centos 盘点硬盘类型](<posts/2022-11-21-centos 盘点硬盘类型-5873999.md>)
+- 11-21 · [go 循环生成交换机 ipv6 地址](<posts/2022-11-21-go 循环生成交换机 ipv6 地址-5874000.md>)
+- 08-11 · [frp 部署使用 内网机器必备](<posts/2022-08-11-frp 部署使用 内网机器必备-5566644.md>)
+- 04-24 · [运维基础架构 -- 2 nexus 部署](<posts/2022-04-24-运维基础架构 -- 2 nexus 部署-5250545.md>)
+
+**2016 年**
+
+- 09-05 · [XX平台升级报告](posts/2016-09-05-XX平台升级报告-1846566.md)
+
+#### ansible(5 篇)
+
+
+**2018 年**
+
+- 01-22 · ['Worker' object has no attribute '_config'](<posts/2018-01-22-'Worker' object has no attribute '_config'-2063631.md>)
+- 01-02 · [ansible (2.4.2.0)  API    python调用重写 | 适用于 web](<posts/2018-01-02-ansible (2.4.2.0) API python调用重写 适用于 web-2056727.md>)
+
+**2017 年**
+
+- 07-17 · [ansible2.x 版本api 调用（适用于web开发使用）](<posts/2017-07-17-ansible2.x 版本api 调用（适用于web开发使用）-1948209.md>)
+- 01-13 · [自动化运维工具ansible--笔记一之简介安装/常用模块](<posts/2017-01-13-自动化运维工具ansible--笔记一之简介安装 常用模块-1891703.md>)
+
+**2016 年**
+
+- 08-31 · [puppet-笔记1](posts/2016-08-31-puppet-笔记1-1844951.md)
+
+#### zabbix(4 篇)
+
+
+**2023 年**
+
+- 08-18 · [docker zabbix](<posts/2023-08-18-docker zabbix-7132766.md>)
+
+**2017 年**
+
+- 01-25 · [zabbix 监控h3c  10508 交换机光衰值](<posts/2017-01-25-zabbix 监控h3c 10508 交换机光衰值-1894209.md>)
+
+**2016 年**
+
+- 07-06 · [sendEmail报错：at /usr/share/perl5/vendor_perl/IO/Socket/SSL.pm](<posts/2016-07-06-sendEmail报错：at usr share perl5 vendor_perl IO Socket SSL.pm-1811246.md>)
+- 06-29 · [zabbix_agentd报错汇总](posts/2016-06-29-zabbix_agentd报错汇总-1794376.md)
+
+#### cobbler(2 篇)
+
+
+**2017 年**
+
+- 06-19 · [最快捷的自动化装机解决方案--比cobbler 方便10倍](<posts/2017-06-19-最快捷的自动化装机解决方案--比cobbler 方便10倍-1939779.md>)
+
+**2016 年**
+
+- 05-07 · [COBBLER无人值守安装-----已用真实服务器测试](posts/2016-05-07-COBBLER无人值守安装-----已用真实服务器测试-1770950.md)
+
+
+### backend(158 篇)
+
+#### python(88 篇)
 
 
 **2025 年**
@@ -41,10 +363,10 @@
 - 11-28 · [python  jenkins 打包构建代码](<posts/2019-11-28-python jenkins 打包构建代码-2454600.md>)
 - 11-15 · [Django之入门 CMDB系统  (六) 前后端分离之后端](<posts/2019-11-15-Django之入门 CMDB系统 (六) 前后端分离之后端-2450628.md>)
 - 11-14 · [Django之入门 CMDB系统 (五) 前后端分离之前端](<posts/2019-11-14-Django之入门 CMDB系统 (五) 前后端分离之前端-2450408.md>)
-- 11-01 · [Django之入门 CMDB系统  (四) 增删改查](<posts/2019-11-01-Django之入门 CMDB系统 (四) 增删改查-2447147.md>)
-- 11-01 · [Django之入门 CMDB系统  (二) 前端模板](<posts/2019-11-01-Django之入门 CMDB系统 (二) 前端模板-2447143.md>)
-- 11-01 · [Django之入门 CMDB系统  (三) 登录注销](<posts/2019-11-01-Django之入门 CMDB系统 (三) 登录注销-2447145.md>)
 - 11-01 · [Django之入门 CMDB系统  (一) 基础环境](<posts/2019-11-01-Django之入门 CMDB系统 (一) 基础环境-2447140.md>)
+- 11-01 · [Django之入门 CMDB系统  (三) 登录注销](<posts/2019-11-01-Django之入门 CMDB系统 (三) 登录注销-2447145.md>)
+- 11-01 · [Django之入门 CMDB系统  (二) 前端模板](<posts/2019-11-01-Django之入门 CMDB系统 (二) 前端模板-2447143.md>)
+- 11-01 · [Django之入门 CMDB系统  (四) 增删改查](<posts/2019-11-01-Django之入门 CMDB系统 (四) 增删改查-2447147.md>)
 - 08-01 · [Ucloud  api  signature 生成  (python3)](<posts/2019-08-01-Ucloud api signature 生成 (python3)-2425633.md>)
 - 06-28 · [python 获取mysql 库信息/表信息/表结构/索引](<posts/2019-06-28-python 获取mysql 库信息 表信息 表结构 索引-2414914.md>)
 - 04-10 · [GraphQL  graphene-django  基本使用文档](<posts/2019-04-10-GraphQL graphene-django 基本使用文档-2376728.md>)
@@ -64,14 +386,14 @@
 - 10-25 · [django 利用钉钉 扩展用户系统](<posts/2018-10-25-django 利用钉钉 扩展用户系统-2308926.md>)
 - 10-18 · [django 钉钉扫码登录](<posts/2018-10-18-django 钉钉扫码登录-2304690.md>)
 - 10-17 · [django  扩展自带权限,使其支持对象权限](<posts/2018-10-17-django 扩展自带权限,使其支持对象权限-2301300.md>)
-- 10-09 · [python3 获取阿里云OSS 最新存储容量 SDK API](<posts/2018-10-09-python3 获取阿里云OSS 最新存储容量 SDK API-2296360.md>)
 - 10-09 · [ServerUnreachable Unable to connect server: timed](<posts/2018-10-09-ServerUnreachable Unable to connect server timed-2296381.md>)
+- 10-09 · [python3 获取阿里云OSS 最新存储容量 SDK API](<posts/2018-10-09-python3 获取阿里云OSS 最新存储容量 SDK API-2296360.md>)
 - 09-27 · [python 开发规范 预览版](<posts/2018-09-27-python 开发规范 预览版-2286537.md>)
 - 09-21 · [python3  列表内多个字典  相同项目 值计算合并](<posts/2018-09-21-python3 列表内多个字典 相同项目 值计算合并-2178785.md>)
 - 09-17 · [python3.6 通过调用 阿里云 API (非SDK方式) 查询 账单 例子](<posts/2018-09-17-python3.6 通过调用 阿里云 API (非SDK方式) 查询 账单 例子-2176032.md>)
 - 09-12 · [python3.6 通过API(SDK) 创建阿里云ECS主机 示例](<posts/2018-09-12-python3.6 通过API(SDK) 创建阿里云ECS主机 示例-2174407.md>)
-- 08-27 · [python3.7: error while loading shared libraries: l](<posts/2018-08-27-python3.7 error while loading shared libraries l-2165075.md>)
 - 08-27 · [Django 2.1  通过LDAP 调用 FreeIPA账户信息 例子](<posts/2018-08-27-Django 2.1 通过LDAP 调用 FreeIPA账户信息 例子-2165097.md>)
+- 08-27 · [python3.7: error while loading shared libraries: l](<posts/2018-08-27-python3.7 error while loading shared libraries l-2165075.md>)
 - 08-24 · [FreeIPA  4.7.0   服务端  部署](<posts/2018-08-24-FreeIPA 4.7.0 服务端 部署-2164114.md>)
 - 08-20 · [python 模拟登录 Django项目 CSRF (以jumpserver举例子)](<posts/2018-08-20-python 模拟登录 Django项目 CSRF (以jumpserver举例子)-2162033.md>)
 - 08-03 · [python  aiohttp  asyncio  异步请求](<posts/2018-08-03-python aiohttp asyncio 异步请求-2154170.md>)
@@ -79,8 +401,8 @@
 - 06-12 · [python 获取域名的IP、注册时间、过期时间](<posts/2018-06-12-python 获取域名的IP、注册时间、过期时间-2128454.md>)
 - 05-26 · [yum 安装 python36 及 pip](<posts/2018-05-26-yum 安装 python36 及 pip-2120555.md>)
 - 04-24 · [python  获取6大币对 区块高度](<posts/2018-04-24-python 获取6大币对 区块高度-2107325.md>)
-- 04-19 · [AWS  cloudfomation模板2 创建多台主机](<posts/2018-04-19-AWS cloudfomation模板2 创建多台主机-2105381.md>)
 - 04-19 · [AWS cloudfomation  模板1  创建单台](<posts/2018-04-19-AWS cloudfomation 模板1 创建单台-2105379.md>)
+- 04-19 · [AWS  cloudfomation模板2 创建多台主机](<posts/2018-04-19-AWS cloudfomation模板2 创建多台主机-2105381.md>)
 - 01-31 · [mysql-5.7.21 二进制安装 | Jemalloc内存优化 | 备份恢复｜修改密码](<posts/2018-01-31-mysql-5.7.21 二进制安装 Jemalloc内存优化 备份恢复｜修改密码-2067341.md>)
 - 01-05 · [python 3.6.4 一键安装](<posts/2018-01-05-python 3.6.4 一键安装-2057765.md>)
 
@@ -99,35 +421,35 @@
 - 03-29 · [day20  django](<posts/2017-03-29-day20 django-1911354.md>)
 - 03-26 · [day19-URL+视图+模板+ORM](posts/2017-03-26-day19-URL+视图+模板+ORM-1910512.md)
 - 03-25 · [day18-django基础](posts/2017-03-25-day18-django基础-1910348.md)
-- 03-23 · [day17 Jquery](<posts/2017-03-23-day17 Jquery-1909811.md>)
 - 03-23 · [day17 Jquery](<posts/2017-03-23-day17 Jquery-1909810.md>)
+- 03-23 · [day17 Jquery](<posts/2017-03-23-day17 Jquery-1909811.md>)
 - 03-22 · [day16 js+dom](<posts/2017-03-22-day16 js+dom-1909384.md>)
 - 03-21 · [day15CSS+JavaScript+DOM](posts/2017-03-21-day15CSS+JavaScript+DOM-1908641.md)
-- 03-17 · [python3模拟登录zabbix](posts/2017-03-17-python3模拟登录zabbix-1907543.md)
 - 03-17 · [python--学习--day14--web基础:html|css](<posts/2017-03-17-python--学习--day14--web基础 html css-1907759.md>)
+- 03-17 · [python3模拟登录zabbix](posts/2017-03-17-python3模拟登录zabbix-1907543.md)
 - 03-15 · [python3微信企业号 发送图文](<posts/2017-03-15-python3微信企业号 发送图文-1906922.md>)
 - 03-08 · [python3--zabbixapi 的使用](<posts/2017-03-08-python3--zabbixapi 的使用-1904261.md>)
-- 02-21 · [微信企业号开发:开启回调模式/Python判断信息--回复指定内容](<posts/2017-02-21-微信企业号开发 开启回调模式 Python判断信息--回复指定内容-1899902.md>)
 - 02-21 · [python3 文本变图片](<posts/2017-02-21-python3 文本变图片-1899899.md>)
-- 02-17 · [微信企业号开启回调模式--php](posts/2017-02-17-微信企业号开启回调模式--php-1898947.md)
+- 02-21 · [微信企业号开发:开启回调模式/Python判断信息--回复指定内容](<posts/2017-02-21-微信企业号开发 开启回调模式 Python判断信息--回复指定内容-1899902.md>)
 - 02-17 · [python调用mongodb发送微信企业号](posts/2017-02-17-python调用mongodb发送微信企业号-1898946.md)
+- 02-17 · [微信企业号开启回调模式--php](posts/2017-02-17-微信企业号开启回调模式--php-1898947.md)
 
 **2016 年**
 
-- 12-29 · [Python--day9--进程/线程/协程](<posts/2016-12-29-Python--day9--进程 线程 协程-1887449.md>)
 - 12-29 · [Python--day8--Socket编程/异常处理](<posts/2016-12-29-Python--day8--Socket编程 异常处理-1887260.md>)
-- 12-28 · [Python--day7--面向对象编程进阶](posts/2016-12-28-Python--day7--面向对象编程进阶-1886936.md)
+- 12-29 · [Python--day9--进程/线程/协程](<posts/2016-12-29-Python--day9--进程 线程 协程-1887449.md>)
 - 12-28 · [Python--day6--面向对象学习](posts/2016-12-28-Python--day6--面向对象学习-1886861.md)
-- 12-27 · [Python--day5--常用模块](posts/2016-12-27-Python--day5--常用模块-1886646.md)
+- 12-28 · [Python--day7--面向对象编程进阶](posts/2016-12-28-Python--day7--面向对象编程进阶-1886936.md)
 - 12-27 · [Python--day4--正则表达式/冒泡/时间复杂度](<posts/2016-12-27-Python--day4--正则表达式 冒泡 时间复杂度-1886449.md>)
-- 12-26 · [python笔记二 基础](<posts/2016-12-26-python笔记二 基础-1886269.md>)
-- 12-26 · [python笔记三 函数](<posts/2016-12-26-python笔记三 函数-1886270.md>)
-- 12-26 · [Python笔记一  基础概念与基础认识](<posts/2016-12-26-Python笔记一 基础概念与基础认识-1886268.md>)
+- 12-27 · [Python--day5--常用模块](posts/2016-12-27-Python--day5--常用模块-1886646.md)
 - 12-26 · [Python--day4--迭代器-生成器-装饰器-目录](posts/2016-12-26-Python--day4--迭代器-生成器-装饰器-目录-1886276.md)
+- 12-26 · [Python笔记一  基础概念与基础认识](<posts/2016-12-26-Python笔记一 基础概念与基础认识-1886268.md>)
+- 12-26 · [python笔记三 函数](<posts/2016-12-26-python笔记三 函数-1886270.md>)
+- 12-26 · [python笔记二 基础](<posts/2016-12-26-python笔记二 基础-1886269.md>)
 - 10-22 · [python-day1-login练习](posts/2016-10-22-python-day1-login练习-1864611.md)
 - 10-09 · [python 数据类型基础](<posts/2016-10-09-python 数据类型基础-1859683.md>)
 
-### go(67 篇)
+#### go(67 篇)
 
 
 **2024 年**
@@ -142,15 +464,15 @@
 - 07-11 · [更换GORM默认的SQLite驱动](posts/2023-07-11-更换GORM默认的SQLite驱动-6690830.md)
 - 06-01 · [go 调用influxdb 保存CPU 使用率](<posts/2023-06-01-go 调用influxdb 保存CPU 使用率-6396335.md>)
 - 05-31 · [go 获取多核心CPU 使用率](<posts/2023-05-31-go 获取多核心CPU 使用率-6388467.md>)
-- 05-30 · [pcdn go 采集nat类型](<posts/2023-05-30-pcdn go 采集nat类型-6380661.md>)
 - 05-30 · [PCDN 华为服务器 终端 二维码 乱码 界面办法](<posts/2023-05-30-PCDN 华为服务器 终端 二维码 乱码 界面办法-6380678.md>)
+- 05-30 · [pcdn go 采集nat类型](<posts/2023-05-30-pcdn go 采集nat类型-6380661.md>)
 - 03-31 · [根据规则 生成mac地址。](<posts/2023-03-31-根据规则 生成mac地址。-6161915.md>)
-- 03-16 · [go  redis  组订阅  并发 消费](<posts/2023-03-16-go redis 组订阅 并发 消费-6125408.md>)
-- 03-16 · [go redis 生产者消费者](<posts/2023-03-16-go redis 生产者消费者-6125081.md>)
 - 03-16 · [go redis 基本使用](<posts/2023-03-16-go redis 基本使用-6125000.md>)
-- 02-20 · [拨号管理系统之ui输入框](posts/2023-02-20-拨号管理系统之ui输入框-6069029.md)
-- 02-20 · [拨号管理系统之go-ppp增删改查](posts/2023-02-20-拨号管理系统之go-ppp增删改查-6068228.md)
+- 03-16 · [go redis 生产者消费者](<posts/2023-03-16-go redis 生产者消费者-6125081.md>)
+- 03-16 · [go  redis  组订阅  并发 消费](<posts/2023-03-16-go redis 组订阅 并发 消费-6125408.md>)
 - 02-20 · [拨号管理系统之0.1版本](posts/2023-02-20-拨号管理系统之0.1版本-6069335.md)
+- 02-20 · [拨号管理系统之go-ppp增删改查](posts/2023-02-20-拨号管理系统之go-ppp增删改查-6068228.md)
+- 02-20 · [拨号管理系统之ui输入框](posts/2023-02-20-拨号管理系统之ui输入框-6069029.md)
 - 01-30 · [go 控制台 根据提示选择 go-prompt](<posts/2023-01-30-go 控制台 根据提示选择 go-prompt-6026499.md>)
 
 **2022 年**
@@ -164,8 +486,8 @@
 - 05-17 · [go 多平台打包工具 gox](<posts/2022-05-17-go 多平台打包工具 gox-5299065.md>)
 - 05-07 · [艺龙酒店开放接口 对接 go版本](<posts/2022-05-07-艺龙酒店开放接口 对接 go版本-5279203.md>)
 - 04-24 · [go get xml html 解析](<posts/2022-04-24-go get xml html 解析-5251385.md>)
-- 04-22 · [go 循环请求API接口 goto 执行重复代码](<posts/2022-04-22-go 循环请求API接口 goto 执行重复代码-5246799.md>)
 - 04-22 · [go 去除字符串中 多余空格](<posts/2022-04-22-go 去除字符串中 多余空格-5245113.md>)
+- 04-22 · [go 循环请求API接口 goto 执行重复代码](<posts/2022-04-22-go 循环请求API接口 goto 执行重复代码-5246799.md>)
 
 **2021 年**
 
@@ -185,8 +507,8 @@
 **2020 年**
 
 - 12-11 · [阿里云 go sdk 获取 ecs 资产信息](<posts/2020-12-11-阿里云 go sdk 获取 ecs 资产信息-2563007.md>)
-- 12-01 · [有关解决GORM deleted_at 搜索问题的解决办法](<posts/2020-12-01-有关解决GORM deleted_at 搜索问题的解决办法-2557970.md>)
 - 12-01 · [AWS SDK GO版本 获取EC2资产信息 示例](<posts/2020-12-01-AWS SDK GO版本 获取EC2资产信息 示例-2557831.md>)
+- 12-01 · [有关解决GORM deleted_at 搜索问题的解决办法](<posts/2020-12-01-有关解决GORM deleted_at 搜索问题的解决办法-2557970.md>)
 - 08-19 · [go shell执行优化版+ 输出结果为table格式](<posts/2020-08-19-go shell执行优化版+ 输出结果为table格式-2521942.md>)
 - 08-18 · [基于gin-vue-admin模板 面向对象权限设计示例](<posts/2020-08-18-基于gin-vue-admin模板 面向对象权限设计示例-2521539.md>)
 
@@ -197,10 +519,10 @@
 - 06-13 · [mysql 审核引擎 goInception 的基本使用](<posts/2019-06-13-mysql 审核引擎 goInception 的基本使用-2408482.md>)
 - 05-15 · [go  web  权限管理 简单例子  (面向对象权限 ABAC / Casbin)](<posts/2019-05-15-go web 权限管理 简单例子 (面向对象权限 ABAC Casbin)-2395179.md>)
 - 05-14 · [goframe 框架跨域 设置](<posts/2019-05-14-goframe 框架跨域 设置-2394141.md>)
-- 04-09 · [go  linux基本 开发环境  安装(包含常用软件包)](<posts/2019-04-09-go linux基本 开发环境 安装(包含常用软件包)-2376125.md>)
 - 04-09 · [Swagger  文档 使用规则](<posts/2019-04-09-Swagger 文档 使用规则-2375970.md>)
-- 04-04 · [go  钉钉报警](<posts/2019-04-04-go 钉钉报警-2374161.md>)
+- 04-09 · [go  linux基本 开发环境  安装(包含常用软件包)](<posts/2019-04-09-go linux基本 开发环境 安装(包含常用软件包)-2376125.md>)
 - 04-04 · [go post json数据](<posts/2019-04-04-go post json数据-2374177.md>)
+- 04-04 · [go  钉钉报警](<posts/2019-04-04-go 钉钉报警-2374161.md>)
 - 04-01 · [go 动态定时任务 API 接口 -- HTTP版本](<posts/2019-04-01-go 动态定时任务 API 接口 -- HTTP版本-2372597.md>)
 - 03-05 · [go 链表](<posts/2019-03-05-go 链表-2358719.md>)
 - 02-27 · [Go  一键生成 后端 restful api](<posts/2019-02-27-Go 一键生成 后端 restful api-2355891.md>)
@@ -218,211 +540,22 @@
 - 12-14 · [go 读取 ini文件 并修改](<posts/2018-12-14-go 读取 ini文件 并修改-2330712.md>)
 - 12-05 · [两数之和 go版本](<posts/2018-12-05-两数之和 go版本-2326340.md>)
 
-### Linux(64 篇)
+#### backend(3 篇)
 
 
-**2024 年**
+**2019 年**
 
-- 12-25 · [kvm的安装 部署 测试 网络](<posts/2024-12-25-kvm的安装 部署 测试 网络-12930481.md>)
-
-**2023 年**
-
-- 02-09 · [h3c 交换机 策划路由](<posts/2023-02-09-h3c 交换机 策划路由-6047016.md>)
-
-**2022 年**
-
-- 11-09 · [自定义centos](posts/2022-11-09-自定义centos-5838986.md)
-- 08-10 · [centos 自动 部署 系统 U盘](<posts/2022-08-10-centos 自动 部署 系统 U盘-5563487.md>)
-- 05-17 · [FRRouting  部署](<posts/2022-05-17-FRRouting 部署-5299286.md>)
-
-**2020 年**
-
-- 10-24 · [jenkins 流水线控制 发布回滚jar包](<posts/2020-10-24-jenkins 流水线控制 发布回滚jar包-2543374.md>)
+- 07-08 · [windows defender 关闭方法](<posts/2019-07-08-windows defender 关闭方法-2418274.md>)
 
 **2018 年**
 
-- 02-23 · [gitlab 10.4.4  Centos7 安装](<posts/2018-02-23-gitlab 10.4.4 Centos7 安装-2072267.md>)
-- 01-30 · [内核TCP/IP优化](<posts/2018-01-30-内核TCP IP优化-2066868.md>)
-- 01-30 · [Web压力测试](posts/2018-01-30-Web压力测试-2066839.md)
-- 01-22 · [rsync+inotify](posts/2018-01-22-rsync+inotify-2063841.md)
-- 01-22 · [NFS 共享存储](<posts/2018-01-22-NFS 共享存储-2063689.md>)
-- 01-09 · [php 7.2 编译安装](<posts/2018-01-09-php 7.2 编译安装-2058926.md>)
-- 01-02 · [linux 面试题1 附答案](<posts/2018-01-02-linux 面试题1 附答案-2056571.md>)
-
-**2017 年**
-
-- 12-29 · [服务器性能分析](posts/2017-12-29-服务器性能分析-2055809.md)
-- 12-28 · [zabbix3.4.4  监控mysql 5.7.20 利用percona 1.1.7](<posts/2017-12-28-zabbix3.4.4 监控mysql 5.7.20 利用percona 1.1.7-2055492.md>)
-- 12-28 · [zabbix3.4  监控 DELL 硬件模板  | 中文汉化](<posts/2017-12-28-zabbix3.4 监控 DELL 硬件模板 中文汉化-2055499.md>)
-- 09-25 · [tomcat8 安装部署--一键版本](<posts/2017-09-25-tomcat8 安装部署--一键版本-1968487.md>)
-- 01-22 · [iptables 默认服务器配置](<posts/2017-01-22-iptables 默认服务器配置-1893677.md>)
-
-**2016 年**
-
-- 06-14 · [centos7.2系统基本优化](posts/2016-06-14-centos7.2系统基本优化-1789146.md)
-- 05-26 · [CentOS Linux 6.8 正式发布 新版内核+大量更新](<posts/2016-05-26-CentOS Linux 6.8 正式发布 新版内核+大量更新-1783481.md>)
-- 05-25 · [GeoIP最快捷安装](posts/2016-05-25-GeoIP最快捷安装-1783283.md)
-- 05-24 · [memcache安装](posts/2016-05-24-memcache安装-1782523.md)
-- 05-24 · [[WARNING] [INS-13014] Target environment do not meet some optional requirements.](<posts/2016-05-24-[WARNING] [INS-13014] Target environment do not meet some optional req-1782765.md>)
-- 05-23 · [mysql日志+引擎笔记](posts/2016-05-23-mysql日志+引擎笔记-1782212.md)
-- 05-20 · [mysql全备份+增量备份笔记总结](posts/2016-05-20-mysql全备份+增量备份笔记总结-1775333.md)
-- 05-18 · [mysql主从复制](posts/2016-05-18-mysql主从复制-1774806.md)
-- 05-17 · [mysql备份与恢复+ERROR 1046](<posts/2016-05-17-mysql备份与恢复+ERROR 1046-1774511.md>)
-- 05-16 · [mysql数据库应用管理+乱码+字符集](posts/2016-05-16-mysql数据库应用管理+乱码+字符集-1773918.md)
-- 05-15 · [mysql sql](<posts/2016-05-15-mysql sql-1773728.md>)
-- 05-10 · [mysql基础操作](posts/2016-05-10-mysql基础操作-1771935.md)
-- 05-09 · [MySQL安装+多实例](posts/2016-05-09-MySQL安装+多实例-1771596.md)
-- 04-27 · [在CENTOS7/RHEL7修改网卡名称](<posts/2016-04-27-在CENTOS7 RHEL7修改网卡名称-1768380.md>)
-- 04-27 · [centos7下mariadb 首次修改密码及忘记密码处理方法](<posts/2016-04-27-centos7下mariadb 首次修改密码及忘记密码处理方法-1768386.md>)
-- 04-26 · [nginx简单配置](posts/2016-04-26-nginx简单配置-1767844.md)
-- 04-26 · [linux  lnmp安装](<posts/2016-04-26-linux lnmp安装-1768044.md>)
-- 04-25 · [Nginx简单安装](posts/2016-04-25-Nginx简单安装-1767646.md)
-- 04-20 · [lamp搭建](posts/2016-04-20-lamp搭建-1765665.md)
-- 04-19 · [linux 虚拟主机](<posts/2016-04-19-linux 虚拟主机-1765392.md>)
-- 04-17 · [linux apache 2.4.20版本安装](<posts/2016-04-17-linux apache 2.4.20版本安装-1764833.md>)
-- 04-17 · [Linux  sersync](<posts/2016-04-17-Linux sersync-1764699.md>)
-- 04-16 · [linux grep awk sed  find  cut](<posts/2016-04-16-linux grep awk sed find cut-1764502.md>)
-- 04-15 · [rsync深度实战](posts/2016-04-15-rsync深度实战-1764098.md)
-- 04-15 · [linux  inotify+rsync](<posts/2016-04-15-linux inotify+rsync-1764262.md>)
-- 04-15 · [Linux inotify](<posts/2016-04-15-Linux inotify-1764193.md>)
-- 04-14 · [linux rsync](<posts/2016-04-14-linux rsync-1763780.md>)
-- 04-12 · [linux ssh key免密码分发](<posts/2016-04-12-linux ssh key免密码分发-1762853.md>)
-- 04-07 · [linux ssh基本](<posts/2016-04-07-linux ssh基本-1761324.md>)
-- 04-07 · [linux man中文手册](<posts/2016-04-07-linux man中文手册-1761212.md>)
-- 04-06 · [linuxNFS优化及自动挂载autofs](posts/2016-04-06-linuxNFS优化及自动挂载autofs-1760940.md)
-- 04-03 · [linux NFS网络文件系统](<posts/2016-04-03-linux NFS网络文件系统-1759919.md>)
-- 04-01 · [linux网络基础](posts/2016-04-01-linux网络基础-1759297.md)
-- 04-01 · [linux磁盘管理](posts/2016-04-01-linux磁盘管理-1759336.md)
-- 04-01 · [linux权限集中管理和行为日志审计](posts/2016-04-01-linux权限集中管理和行为日志审计-1759231.md)
-- 03-31 · [linux用户管理](posts/2016-03-31-linux用户管理-1759037.md)
-- 03-31 · [Linux crond](<posts/2016-03-31-Linux crond-1758943.md>)
-- 03-30 · [linux正则表达式BRE](posts/2016-03-30-linux正则表达式BRE-1758538.md)
-- 03-30 · [linux文件类型2](posts/2016-03-30-linux文件类型2-1758337.md)
-- 03-30 · [linux文件权限](posts/2016-03-30-linux文件权限-1758598.md)
-- 03-29 · [linux文件类型](posts/2016-03-29-linux文件类型-1758015.md)
-- 03-29 · [linux基础命令练习1](posts/2016-03-29-linux基础命令练习1-1758200.md)
-- 03-29 · [Linux目录结构](posts/2016-03-29-Linux目录结构-1757935.md)
-- 03-29 · [Linux基础操作优化](posts/2016-03-29-Linux基础操作优化-1757932.md)
-- 03-29 · [Linux基础命令](posts/2016-03-29-Linux基础命令-1757934.md)
-- 03-29 · [CentOS镜像使用帮助--yum更新](posts/2016-03-29-CentOS镜像使用帮助--yum更新-1757931.md)
-
-### 集群(41 篇)
+- 11-27 · [django 实现前端 进度条](<posts/2018-11-27-django 实现前端 进度条-2322751.md>)
+- 11-14 · [django-rest-framework     自动生成接口说明文档](<posts/2018-11-14-django-rest-framework 自动生成接口说明文档-2316781.md>)
 
 
-**2024 年**
+### cloud(45 篇)
 
-- 08-01 · [nvidia-docker + helm+cuda+gpu_burn](<posts/2024-08-01-nvidia-docker + helm+cuda+gpu_burn-11633590.md>)
-- 07-31 · [nvidia驱动安装](posts/2024-07-31-nvidia驱动安装-11622160.md)
-- 07-30 · [rancher:v2.7.9 部署](<posts/2024-07-30-rancher v2.7.9 部署-11613483.md>)
-- 07-30 · [k8s kubeadm   v1.30.2部署](<posts/2024-07-30-k8s kubeadm v1.30.2部署-11608966.md>)
-
-**2023 年**
-
-- 06-19 · [rps和rfs优化脚本](posts/2023-06-19-rps和rfs优化脚本-6515750.md)
-- 06-01 · [docker部署influxdb](posts/2023-06-01-docker部署influxdb-6396307.md)
-- 04-14 · [爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。](<posts/2023-04-14-爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。-6190425.md>)
-- 04-10 · [centos7 设置服务器为网络中转](<posts/2023-04-10-centos7 设置服务器为网络中转-6181184.md>)
-- 03-21 · [centos7 tty模式不支持中文，需要去github找 修改后的内核](<posts/2023-03-21-centos7 tty模式不支持中文，需要去github找 修改后的内核-6140088.md>)
-- 03-16 · [华为交换机 配置vrp 路由分离](<posts/2023-03-16-华为交换机 配置vrp 路由分离-6125106.md>)
-- 03-14 · [数据库    添加   联合索引](<posts/2023-03-14-数据库 添加 联合索引-6120828.md>)
-- 03-14 · [交换机 策划路由](<posts/2023-03-14-交换机 策划路由-6120846.md>)
-- 02-01 · [ks.cfg 设置IP 和选择硬盘](<posts/2023-02-01-ks.cfg 设置IP 和选择硬盘-6031774.md>)
-
-**2022 年**
-
-- 09-07 · [k8s  部署nginx    Deployment/StatefulSet    sc](<posts/2022-09-07-k8s 部署nginx Deployment StatefulSet sc-5659413.md>)
-- 09-07 · [k8s pv pvc nfs简单例子](<posts/2022-09-07-k8s pv pvc nfs简单例子-5658718.md>)
-- 09-07 · [k8s Storage Class 搭建/测试](<posts/2022-09-07-k8s Storage Class 搭建 测试-5658976.md>)
-- 09-06 · [k8s-ingress nginx 部署例子  DaemonSet+HostNetwork(+nodeSelector)](<posts/2022-09-06-k8s-ingress nginx 部署例子 DaemonSet+HostNetwork(+nodeSelector)-5656475.md>)
-- 09-06 · [k8s 部署 ingress-nginx](<posts/2022-09-06-k8s 部署 ingress-nginx-5656344.md>)
-- 09-06 · [k8s v1.25.0 删除node重新加入](<posts/2022-09-06-k8s v1.25.0 删除node重新加入-5654730.md>)
-- 09-06 · [k8s node NotReady Container runtime network not ready' networkReady='NetworkRe](<posts/2022-09-06-k8s node NotReady Container runtime network not ready networkReady= Ne-5654734.md>)
-- 09-06 · [k8s  metrics-server 部署](<posts/2022-09-06-k8s metrics-server 部署-5655640.md>)
-- 09-06 · [failed to get sandbox image 'k8s.gcr.io/pause:3.6': failed to pull image 'k8s.gcr.io/pause:3.6'](<posts/2022-09-06-failed to get sandbox image k8s.gcr.io pause 3.6 failed to pull image -5654959.md>)
-- 09-05 · [k8s v1.25.0 更新证书](<posts/2022-09-05-k8s v1.25.0 更新证书-5651038.md>)
-- 09-05 · [calico 部署](<posts/2022-09-05-calico 部署-5652431.md>)
-- 09-02 · [kubernetes dashboard v2.6.1版本部署](<posts/2022-09-02-kubernetes dashboard v2.6.1版本部署-5645421.md>)
-- 09-02 · [kubeadm 安装部署k8s v1.25.0版本 master节点](<posts/2022-09-02-kubeadm 安装部署k8s v1.25.0版本 master节点-5644930.md>)
-- 09-01 · [k8s 命令自动补全](<posts/2022-09-01-k8s 命令自动补全-5641536.md>)
-- 06-09 · [minikube 部署使用](<posts/2022-06-09-minikube 部署使用-5370956.md>)
-- 04-18 · [运维基础架构 -- 1.open access server 搭建](<posts/2022-04-18-运维基础架构 -- 1.open access server 搭建-5214134.md>)
-
-**2021 年**
-
-- 10-25 · [confluence  wiki 接入 LDAP FreeIPA](<posts/2021-10-25-confluence wiki 接入 LDAP FreeIPA-4312251.md>)
-- 08-09 · [redash docker 最新版本 部署](<posts/2021-08-09-redash docker 最新版本 部署-3326827.md>)
-- 04-19 · [elasticsearch 7.x搭建集群和重启](<posts/2021-04-19-elasticsearch 7.x搭建集群和重启-2717713.md>)
-- 01-27 · [阿里云日志服务 send data to SLS fail, error_code:Request](<posts/2021-01-27-阿里云日志服务 send data to SLS fail, error_code Request-2607839.md>)
-
-**2018 年**
-
-- 09-01 · [gitlab 11.2.3 通过LDAP 调用FreeIPA 登录](<posts/2018-09-01-gitlab 11.2.3 通过LDAP 调用FreeIPA 登录-2168915.md>)
-
-**2017 年**
-
-- 12-18 · [阿里云与IDC -- 专线互联](<posts/2017-12-18-阿里云与IDC -- 专线互联-2051756.md>)
-
-**2016 年**
-
-- 12-26 · [集群四 mysql-5.7.16一键安装](<posts/2016-12-26-集群四 mysql-5.7.16一键安装-1886310.md>)
-- 12-26 · [集群二 nginx](<posts/2016-12-26-集群二 nginx-1886308.md>)
-- 12-26 · [集群三 php+memcached缓存服务器](<posts/2016-12-26-集群三 php+memcached缓存服务器-1886309.md>)
-- 12-26 · [集群一 HAProxy+keepalived+varnsh](<posts/2016-12-26-集群一 HAProxy+keepalived+varnsh-1886307.md>)
-- 06-01 · [LVS笔记](posts/2016-06-01-LVS笔记-1785317.md)
-- 05-31 · [个人画的第一幅图memcached](posts/2016-05-31-个人画的第一幅图memcached-1784994.md)
-
-### lnmp(33 篇)
-
-
-**2023 年**
-
-- 03-29 · [ppp拨号管理线路--自动检查默认脚本](posts/2023-03-29-ppp拨号管理线路--自动检查默认脚本-6157332.md)
-- 01-09 · [centos实现 登录窗口 1个免密登录/其他还是root登录](<posts/2023-01-09-centos实现 登录窗口 1个免密登录 其他还是root登录-5997514.md>)
-
-**2022 年**
-
-- 04-30 · [mysql 内网环境 连接慢  排坑](<posts/2022-04-30-mysql 内网环境 连接慢 排坑-5265475.md>)
-
-**2018 年**
-
-- 05-26 · [rabbitmq 3.6.15  yum安装部署](<posts/2018-05-26-rabbitmq 3.6.15 yum安装部署-2120565.md>)
-- 05-26 · [mysql 8.0.11 二进制安装](<posts/2018-05-26-mysql 8.0.11 二进制安装-2120497.md>)
-- 01-16 · [mongodb 3.7.1 安装](<posts/2018-01-16-mongodb 3.7.1 安装-2061444.md>)
-- 01-10 · [MySQL InnoDB Cluser  |  Mysql 5.7 集群](<posts/2018-01-10-MySQL InnoDB Cluser Mysql 5.7 集群-2059436.md>)
-
-**2017 年**
-
-- 12-14 · [zabbix3.4.4  编译安装](<posts/2017-12-14-zabbix3.4.4 编译安装-2050520.md>)
-- 12-01 · [nginx+tomcat  动静分离 的配置文件](<posts/2017-12-01-nginx+tomcat 动静分离 的配置文件-2046293.md>)
-- 11-29 · [redis 4.0.1   |   cluster集群](<posts/2017-11-29-redis 4.0.1 cluster集群-2045790.md>)
-- 11-29 · [Mysql 5.7主从](<posts/2017-11-29-Mysql 5.7主从-2045634.md>)
-- 11-28 · [jenkins 2.73.3 安装 、 配置git 、maven](<posts/2017-11-28-jenkins 2.73.3 安装 、 配置git 、maven-2045232.md>)
-- 11-27 · [Jemalloc 5.0.1  安装 |  nginx  mysql 使用](<posts/2017-11-27-Jemalloc 5.0.1 安装 nginx mysql 使用-2044761.md>)
-- 11-22 · [tomcat8 安装|解决启动慢|进入管理|host-manager  403错误](<posts/2017-11-22-tomcat8 安装 解决启动慢 进入管理 host-manager 403错误-1984005.md>)
-- 11-16 · [mysql-5.7.20  二进制安装 | 备份恢复](<posts/2017-11-16-mysql-5.7.20 二进制安装 备份恢复-1982428.md>)
-- 11-15 · [PHP-7.1.11 YUM安装 | 编译安装](<posts/2017-11-15-PHP-7.1.11 YUM安装 编译安装-1982046.md>)
-- 11-13 · [nginx-1.12.2 安装| 配置文件 | 日志切割 | 启动文件](<posts/2017-11-13-nginx-1.12.2 安装 配置文件 日志切割 启动文件-1981306.md>)
-- 02-08 · [php7.1.1一键安装/配置文件简单优化](<posts/2017-02-08-php7.1.1一键安装 配置文件简单优化-1896152.md>)
-- 02-08 · [nginx1.10.3一键安装/系统内核优化/配置文件优化/https/日志切割](<posts/2017-02-08-nginx1.10.3一键安装 系统内核优化 配置文件优化 https 日志切割-1895932.md>)
-- 02-08 · [mysql-5.7.16一键安装/配置优化](<posts/2017-02-08-mysql-5.7.16一键安装 配置优化-1896153.md>)
-
-**2016 年**
-
-- 05-31 · [企业级nginx服务优化合集](posts/2016-05-31-企业级nginx服务优化合集-1784987.md)
-- 05-30 · [nginx重点优化合集一](posts/2016-05-30-nginx重点优化合集一-1784366.md)
-- 05-30 · [LNMP_6.8+1.11.0+5.6.12+5.6.22](posts/2016-05-30-LNMP_6.8+1.11.0+5.6.12+5.6.22-1784440.md)
-- 05-06 · [企业级nginx服务优化（四 )伪静态+php.ini](<posts/2016-05-06-企业级nginx服务优化（四 )伪静态+php.ini-1770778.md>)
-- 05-06 · [企业级nginx服务优化（二 )](<posts/2016-05-06-企业级nginx服务优化（二 )-1770627.md>)
-- 05-06 · [企业级nginx服务优化（三 )Apache+防盗链](<posts/2016-05-06-企业级nginx服务优化（三 )Apache+防盗链-1770655.md>)
-- 05-05 · [企业级nginx服务优化（一)](posts/2016-05-05-企业级nginx服务优化（一)-1770441.md)
-- 05-05 · [LAMP与LNMP加速与缓存优化(二)](posts/2016-05-05-LAMP与LNMP加速与缓存优化(二)-1770388.md)
-- 05-04 · [LAMP与LNMP加速与缓存优化(一)2](posts/2016-05-04-LAMP与LNMP加速与缓存优化(一)2-1770130.md)
-- 05-03 · [LAMP与LNMP加速与缓存优化(一)1](posts/2016-05-03-LAMP与LNMP加速与缓存优化(一)1-1769879.md)
-- 04-28 · [nginx代理负载均衡简单](posts/2016-04-28-nginx代理负载均衡简单-1768714.md)
-- 04-27 · [nginx.conf基本配置与参数说明](posts/2016-04-27-nginx.conf基本配置与参数说明-1768378.md)
-- 04-27 · [nginx 修改并隐藏版本号](<posts/2016-04-27-nginx 修改并隐藏版本号-1768379.md>)
-
-### kubernetes(24 篇)
+#### kubernetes(24 篇)
 
 
 **2024 年**
@@ -442,26 +575,26 @@
 - 08-26 · [k8s ingress-nginx 0.25.1 最新版部署和例子](<posts/2019-08-26-k8s ingress-nginx 0.25.1 最新版部署和例子-2432608.md>)
 - 08-21 · [Jenkins  中文汉化 支持最新版](<posts/2019-08-21-Jenkins 中文汉化 支持最新版-2431286.md>)
 - 08-20 · [docker 仓库harbor 1.8.2 http 部署](<posts/2019-08-20-docker 仓库harbor 1.8.2 http 部署-2431158.md>)
-- 06-10 · [获取k8s admin token的方法](<posts/2019-06-10-获取k8s admin token的方法-2406680.md>)
 - 06-10 · [kubernetes webssh  管理  (django开发/通过调用K8S API实现)](<posts/2019-06-10-kubernetes webssh 管理 (django开发 通过调用K8S API实现)-2406980.md>)
+- 06-10 · [获取k8s admin token的方法](<posts/2019-06-10-获取k8s admin token的方法-2406680.md>)
 - 06-05 · [kubernetes 1.14.2  kubeadm 方式部署](<posts/2019-06-05-kubernetes 1.14.2 kubeadm 方式部署-2405408.md>)
 
 **2018 年**
 
-- 12-08 · [k8s v1.13  集群部署](<posts/2018-12-08-k8s v1.13 集群部署-2327910.md>)
-- 12-08 · [flanneld v0.10.0 版本部署](<posts/2018-12-08-flanneld v0.10.0 版本部署-2327822.md>)
-- 12-08 · [centos 7  yum 设置 阿里云 kubernetes  库](<posts/2018-12-08-centos 7 yum 设置 阿里云 kubernetes 库-2327792.md>)
-- 12-08 · [Etcd v3.3.10 版本部署(3台集群)](<posts/2018-12-08-Etcd v3.3.10 版本部署(3台集群)-2327820.md>)
 - 12-08 · [Error from server (Forbidden): Forbidden (user=sys](<posts/2018-12-08-Error from server (Forbidden) Forbidden (user=sys-2327975.md>)
+- 12-08 · [Etcd v3.3.10 版本部署(3台集群)](<posts/2018-12-08-Etcd v3.3.10 版本部署(3台集群)-2327820.md>)
+- 12-08 · [centos 7  yum 设置 阿里云 kubernetes  库](<posts/2018-12-08-centos 7 yum 设置 阿里云 kubernetes 库-2327792.md>)
+- 12-08 · [flanneld v0.10.0 版本部署](<posts/2018-12-08-flanneld v0.10.0 版本部署-2327822.md>)
+- 12-08 · [k8s v1.13  集群部署](<posts/2018-12-08-k8s v1.13 集群部署-2327910.md>)
 - 05-16 · [kubernets1.10.1--基本操作（二）](posts/2018-05-16-kubernets1.10.1--基本操作（二）-2117199.md)
 - 05-06 · [kubernets1.10.1--基本操作（一）](posts/2018-05-06-kubernets1.10.1--基本操作（一）-2113307.md)
 - 04-23 · [docker-compose  zabbix](<posts/2018-04-23-docker-compose zabbix-2106949.md>)
 - 04-22 · [kubernetes 1.10.1 版本 部署](<posts/2018-04-22-kubernetes 1.10.1 版本 部署-2106618.md>)
-- 04-05 · [docker镜像仓库 harbor 笔记](<posts/2018-04-05-docker镜像仓库 harbor 笔记-2094955.md>)
 - 04-05 · [Solo博客系统--Jenkins/docker自动化构建发布系统](<posts/2018-04-05-Solo博客系统--Jenkins docker自动化构建发布系统-2095114.md>)
+- 04-05 · [docker镜像仓库 harbor 笔记](<posts/2018-04-05-docker镜像仓库 harbor 笔记-2094955.md>)
 - 02-26 · [docker-ce 安装 | 基本使用](<posts/2018-02-26-docker-ce 安装 基本使用-2073186.md>)
 
-### openstack(21 篇)
+#### openstack(21 篇)
 
 
 **2017 年**
@@ -475,23 +608,26 @@
 - 09-03 · [Openstack Mitaka for  Centos7.2 部署指南（二）](<posts/2016-09-03-Openstack Mitaka for Centos7.2 部署指南（二）-1846001.md>)
 - 08-29 · [Openstack Mitaka for  Centos7.2 部署指南（一）](<posts/2016-08-29-Openstack Mitaka for Centos7.2 部署指南（一）-1844084.md>)
 - 08-25 · [OpenStack Mitaka for Ubuntu 16.04 LTS 部署指南](<posts/2016-08-25-OpenStack Mitaka for Ubuntu 16.04 LTS 部署指南-1842494.md>)
-- 08-01 · [openstack学习笔记十一  Nova](<posts/2016-08-01-openstack学习笔记十一 Nova-1832697.md>)
-- 08-01 · [openstack学习笔记十 neutron](<posts/2016-08-01-openstack学习笔记十 neutron-1832696.md>)
 - 08-01 · [ERROR : Error appeared during Puppet run: x.x.x.x _keystone.pp](<posts/2016-08-01-ERROR Error appeared during Puppet run x.x.x.x _keystone.pp-1833247.md>)
+- 08-01 · [openstack学习笔记十 neutron](<posts/2016-08-01-openstack学习笔记十 neutron-1832696.md>)
+- 08-01 · [openstack学习笔记十一  Nova](<posts/2016-08-01-openstack学习笔记十一 Nova-1832697.md>)
 - 07-28 · [openstack学习笔记九 cinder基础配置](<posts/2016-07-28-openstack学习笔记九 cinder基础配置-1830981.md>)
 - 07-25 · [openstack部署实战第2版之Open vSwitch](<posts/2016-07-25-openstack部署实战第2版之Open vSwitch-1829871.md>)
 - 07-21 · [openstack学习笔记八 glance安装配置](<posts/2016-07-21-openstack学习笔记八 glance安装配置-1828592.md>)
 - 07-09 · [openstack学习笔记七 swift安装](<posts/2016-07-09-openstack学习笔记七 swift安装-1812861.md>)
-- 07-05 · [openstack学习笔记四 组件框架](<posts/2016-07-05-openstack学习笔记四 组件框架-1795980.md>)
-- 07-05 · [openstack学习笔记六 多节点部署之keystone](<posts/2016-07-05-openstack学习笔记六 多节点部署之keystone-1796108.md>)
-- 07-05 · [openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据](<posts/2016-07-05-openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据-1796041.md>)
-- 07-05 · [openstack学习笔记三 创建第一个实例](<posts/2016-07-05-openstack学习笔记三 创建第一个实例-1795927.md>)
 - 07-05 · [7月份 北京有关openstack的会议](<posts/2016-07-05-7月份 北京有关openstack的会议-1796068.md>)
-- 07-04 · [openstack学习笔记二 网络设置基础](<posts/2016-07-04-openstack学习笔记二 网络设置基础-1795705.md>)
-- 07-04 · [openstack学习笔记一 RDO模式安装](<posts/2016-07-04-openstack学习笔记一 RDO模式安装-1795664.md>)
+- 07-05 · [openstack学习笔记三 创建第一个实例](<posts/2016-07-05-openstack学习笔记三 创建第一个实例-1795927.md>)
+- 07-05 · [openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据](<posts/2016-07-05-openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据-1796041.md>)
+- 07-05 · [openstack学习笔记六 多节点部署之keystone](<posts/2016-07-05-openstack学习笔记六 多节点部署之keystone-1796108.md>)
+- 07-05 · [openstack学习笔记四 组件框架](<posts/2016-07-05-openstack学习笔记四 组件框架-1795980.md>)
 - 07-04 · [ERROR : Error appeared during Puppet run: 192.168.1.201_mariadb.pp](<posts/2016-07-04-ERROR Error appeared during Puppet run 192.168.1.201_mariadb.pp-1795594.md>)
+- 07-04 · [openstack学习笔记一 RDO模式安装](<posts/2016-07-04-openstack学习笔记一 RDO模式安装-1795664.md>)
+- 07-04 · [openstack学习笔记二 网络设置基础](<posts/2016-07-04-openstack学习笔记二 网络设置基础-1795705.md>)
 
-### 前端(13 篇)
+
+### frontend(26 篇)
+
+#### frontend(13 篇)
 
 
 **2023 年**
@@ -522,7 +658,7 @@
 - 09-25 · [Mock简明文档](posts/2018-09-25-Mock简明文档-2285144.md)
 - 06-09 · [jquery 方法常用整理](<posts/2018-06-09-jquery 方法常用整理-2126731.md>)
 
-### vue(10 篇)
+#### vue(10 篇)
 
 
 **2022 年**
@@ -537,8 +673,8 @@
 **2019 年**
 
 - 06-05 · [node 最新版 yum 部署 +iview admin 线上部署 nginx配置](<posts/2019-06-05-node 最新版 yum 部署 +iview admin 线上部署 nginx配置-2405165.md>)
-- 04-23 · [iview-admin  动态菜单](<posts/2019-04-23-iview-admin 动态菜单-2383130.md>)
 - 04-23 · [iview-admin 2.5.0  登录](<posts/2019-04-23-iview-admin 2.5.0 登录-2383103.md>)
+- 04-23 · [iview-admin  动态菜单](<posts/2019-04-23-iview-admin 动态菜单-2383130.md>)
 - 03-29 · [vs code 开发 vue   格式设置](<posts/2019-03-29-vs code 开发 vue 格式设置-2371126.md>)
 
 **2018 年**
@@ -547,31 +683,19 @@
 - 06-11 · [iview-admin 1.3 + django 2.0 (二)  用户登录](<posts/2018-06-11-iview-admin 1.3 + django 2.0 (二) 用户登录-2128052.md>)
 - 06-09 · [iview-admin 1.3 + django 2.0 (一)  增删改查例子](<posts/2018-06-09-iview-admin 1.3 + django 2.0 (一) 增删改查例子-2126730.md>)
 
-### shell(9 篇)
+#### typescript(3 篇)
 
 
-**2023 年**
+**2019 年**
 
-- 10-11 · [linux 服务器 多网口判断网卡名字和实际网卡口顺序 对应关系](<posts/2023-10-11-linux 服务器 多网口判断网卡名字和实际网卡口顺序 对应关系-7815837.md>)
-- 05-17 · [docker 获取容器流量](<posts/2023-05-17-docker 获取容器流量-6291868.md>)
-- 05-09 · [在jenkins构建时，先执行这个，钉钉审批通过，则继续执行，钉钉审批失败，则不执行简陋的审批工作流。](posts/2023-05-09-在jenkins构建时，先执行这个，钉钉审批通过，则继续执行，钉钉审批失败，则不执行简陋的审批工作流。-6258555.md)
-- 05-08 · [shell 根据网卡名字自动生成网卡文件，然后up。](<posts/2023-05-08-shell 根据网卡名字自动生成网卡文件，然后up。-6254471.md>)
-- 02-21 · [拨号管理系统之创建ppp拨号](posts/2023-02-21-拨号管理系统之创建ppp拨号-6076932.md)
+- 03-18 · [typescript 类 -- 学习笔记三](<posts/2019-03-18-typescript 类 -- 学习笔记三-2364998.md>)
+- 03-16 · [typescript 基本类型 | Symbol | 接口| 函数| 泛型-- 学习笔记二](<posts/2019-03-16-typescript 基本类型 Symbol 接口 函数 泛型-- 学习笔记二-2364148.md>)
+- 03-14 · [typescript 基本环境 搭建  -- 学习笔记一](<posts/2019-03-14-typescript 基本环境 搭建 -- 学习笔记一-2363220.md>)
 
-**2022 年**
 
-- 04-28 · [运维基础架构 --3 jar包 启动关闭命令脚本](<posts/2022-04-28-运维基础架构 --3 jar包 启动关闭命令脚本-5259894.md>)
+### essays(11 篇)
 
-**2017 年**
-
-- 02-21 · [微信企业号：shell定时发送图片 到 指定人](<posts/2017-02-21-微信企业号：shell定时发送图片 到 指定人-1899900.md>)
-
-**2016 年**
-
-- 08-05 · [linux 简单格式化硬盘脚本](<posts/2016-08-05-linux 简单格式化硬盘脚本-1834578.md>)
-- 07-01 · [shell IFS例子](<posts/2016-07-01-shell IFS例子-1795015.md>)
-
-### 随笔(9 篇)
+#### essays(9 篇)
 
 
 **2017 年**
@@ -584,128 +708,19 @@
 - 07-13 · [参加云计算开源产业联盟成果发布会的一些照片](posts/2016-07-13-参加云计算开源产业联盟成果发布会的一些照片-1826181.md)
 - 05-19 · [庆祝自己博客访问上千，继续努力](posts/2016-05-19-庆祝自己博客访问上千，继续努力-1775211.md)
 - 04-27 · [你那么努力，吃了那么多苦，也没见你有多优秀啊？](posts/2016-04-27-你那么努力，吃了那么多苦，也没见你有多优秀啊？-1768419.md)
-- 04-08 · [知乎文章：旁观者 - 技术高手如何炼成](<posts/2016-04-08-知乎文章：旁观者 - 技术高手如何炼成-1761571.md>)
-- 04-08 · [极简主义](posts/2016-04-08-极简主义-1761570.md)
-- 04-08 · [我们这一代人的困惑](posts/2016-04-08-我们这一代人的困惑-1761572.md)
 - 04-08 · [为什么有些人很聪明?他们遇到问题时的思维方式与我们差别在哪呢?转自知乎](<posts/2016-04-08-为什么有些人很聪明 他们遇到问题时的思维方式与我们差别在哪呢 转自知乎-1761573.md>)
+- 04-08 · [我们这一代人的困惑](posts/2016-04-08-我们这一代人的困惑-1761572.md)
+- 04-08 · [极简主义](posts/2016-04-08-极简主义-1761570.md)
+- 04-08 · [知乎文章：旁观者 - 技术高手如何炼成](<posts/2016-04-08-知乎文章：旁观者 - 技术高手如何炼成-1761571.md>)
 
-### autoops(7 篇)
-
-
-**2021 年**
-
-- 11-11 · [BPMN 自定义流水线](<posts/2021-11-11-BPMN 自定义流水线-4576944.md>)
-- 11-09 · [BPMN 2.0 例子 （仅供参考）](<posts/2021-11-09-BPMN 2.0 例子 （仅供参考）-4565367.md>)
-
-**2018 年**
-
-- 05-09 · [django  异步 查看 服务器日志 | 利用 channels==2.0.2](<posts/2018-05-09-django 异步 查看 服务器日志 利用 channels==2.0.2-2114529.md>)
-- 03-17 · [新做了一个简单版本的CMDB云主机管理系统](posts/2018-03-17-新做了一个简单版本的CMDB云主机管理系统-2087835.md)
-- 02-13 · [Celery 3 版本  定时执行与 异步执行 |  Django 案例](<posts/2018-02-13-Celery 3 版本 定时执行与 异步执行 Django 案例-2071544.md>)
-
-**2017 年**
-
-- 11-17 · [django1.11.6+nginx1.12.2+uwsgi2.0.15  部署](<posts/2017-11-17-django1.11.6+nginx1.12.2+uwsgi2.0.15 部署-1982769.md>)
-- 06-16 · [AutoOps  1.8  版本](<posts/2017-06-16-AutoOps 1.8 版本-1937439.md>)
-
-### tomcat(6 篇)
-
-
-**2018 年**
-
-- 02-27 · [jenkins 2.89.4   简单安装使用 |　发布war包](<posts/2018-02-27-jenkins 2.89.4 简单安装使用 发布war包-2073573.md>)
-- 02-11 · [tomcat 9.0.4 性能调优](<posts/2018-02-11-tomcat 9.0.4 性能调优-2071146.md>)
-- 01-30 · [APP程序上线架构图](posts/2018-01-30-APP程序上线架构图-2066721.md)
-- 01-29 · [nginx+tomcat   session 共享](<posts/2018-01-29-nginx+tomcat session 共享-2066415.md>)
-- 01-25 · [tomcat9 用非root用户开机自启动](<posts/2018-01-25-tomcat9 用非root用户开机自启动-2065086.md>)
-- 01-24 · [tomcat9 更换运行模式为 Apr 模式](<posts/2018-01-24-tomcat9 更换运行模式为 Apr 模式-2064813.md>)
-
-### 运维基础(5 篇)
-
-
-**2022 年**
-
-- 11-21 · [go 循环生成交换机 ipv6 地址](<posts/2022-11-21-go 循环生成交换机 ipv6 地址-5874000.md>)
-- 11-21 · [centos 盘点硬盘类型](<posts/2022-11-21-centos 盘点硬盘类型-5873999.md>)
-- 08-11 · [frp 部署使用 内网机器必备](<posts/2022-08-11-frp 部署使用 内网机器必备-5566644.md>)
-- 04-24 · [运维基础架构 -- 2 nexus 部署](<posts/2022-04-24-运维基础架构 -- 2 nexus 部署-5250545.md>)
-
-**2016 年**
-
-- 09-05 · [XX平台升级报告](posts/2016-09-05-XX平台升级报告-1846566.md)
-
-### ansible(5 篇)
-
-
-**2018 年**
-
-- 01-22 · ['Worker' object has no attribute '_config'](<posts/2018-01-22-'Worker' object has no attribute '_config'-2063631.md>)
-- 01-02 · [ansible (2.4.2.0)  API    python调用重写 | 适用于 web](<posts/2018-01-02-ansible (2.4.2.0) API python调用重写 适用于 web-2056727.md>)
-
-**2017 年**
-
-- 07-17 · [ansible2.x 版本api 调用（适用于web开发使用）](<posts/2017-07-17-ansible2.x 版本api 调用（适用于web开发使用）-1948209.md>)
-- 01-13 · [自动化运维工具ansible--笔记一之简介安装/常用模块](<posts/2017-01-13-自动化运维工具ansible--笔记一之简介安装 常用模块-1891703.md>)
-
-**2016 年**
-
-- 08-31 · [puppet-笔记1](posts/2016-08-31-puppet-笔记1-1844951.md)
-
-### zabbix(4 篇)
-
-
-**2023 年**
-
-- 08-18 · [docker zabbix](<posts/2023-08-18-docker zabbix-7132766.md>)
-
-**2017 年**
-
-- 01-25 · [zabbix 监控h3c  10508 交换机光衰值](<posts/2017-01-25-zabbix 监控h3c 10508 交换机光衰值-1894209.md>)
-
-**2016 年**
-
-- 07-06 · [sendEmail报错：at /usr/share/perl5/vendor_perl/IO/Socket/SSL.pm](<posts/2016-07-06-sendEmail报错：at usr share perl5 vendor_perl IO Socket SSL.pm-1811246.md>)
-- 06-29 · [zabbix_agentd报错汇总](posts/2016-06-29-zabbix_agentd报错汇总-1794376.md)
-
-### 后端(3 篇)
-
-
-**2019 年**
-
-- 07-08 · [windows defender 关闭方法](<posts/2019-07-08-windows defender 关闭方法-2418274.md>)
-
-**2018 年**
-
-- 11-27 · [django 实现前端 进度条](<posts/2018-11-27-django 实现前端 进度条-2322751.md>)
-- 11-14 · [django-rest-framework     自动生成接口说明文档](<posts/2018-11-14-django-rest-framework 自动生成接口说明文档-2316781.md>)
-
-### typescript(3 篇)
-
-
-**2019 年**
-
-- 03-18 · [typescript 类 -- 学习笔记三](<posts/2019-03-18-typescript 类 -- 学习笔记三-2364998.md>)
-- 03-16 · [typescript 基本类型 | Symbol | 接口| 函数| 泛型-- 学习笔记二](<posts/2019-03-16-typescript 基本类型 Symbol 接口 函数 泛型-- 学习笔记二-2364148.md>)
-- 03-14 · [typescript 基本环境 搭建  -- 学习笔记一](<posts/2019-03-14-typescript 基本环境 搭建 -- 学习笔记一-2363220.md>)
-
-### cobbler(2 篇)
-
-
-**2017 年**
-
-- 06-19 · [最快捷的自动化装机解决方案--比cobbler 方便10倍](<posts/2017-06-19-最快捷的自动化装机解决方案--比cobbler 方便10倍-1939779.md>)
-
-**2016 年**
-
-- 05-07 · [COBBLER无人值守安装-----已用真实服务器测试](posts/2016-05-07-COBBLER无人值守安装-----已用真实服务器测试-1770950.md)
-
-### 安全(2 篇)
+#### security(2 篇)
 
 
 **2016 年**
 
 - 04-07 · [《信息安全技术信息系统安全等级保护指南》的个人总结](posts/2016-04-07-《信息安全技术信息系统安全等级保护指南》的个人总结-1761366.md)
 - 04-06 · [《卫生行业信息安全等级保护工作的指导意见》的个人总结](posts/2016-04-06-《卫生行业信息安全等级保护工作的指导意见》的个人总结-1761088.md)
+
 
 ## 按年份总表
 
@@ -721,10 +736,10 @@
 | --- | --- | --- |
 | 2024-12-25 | [kvm的安装 部署 测试 网络](<posts/2024-12-25-kvm的安装 部署 测试 网络-12930481.md>) | Linux |
 | 2024-08-06 | [k8s 安装 proxy](<posts/2024-08-06-k8s 安装 proxy-11673646.md>) | kubernetes |
-| 2024-08-01 | [nvidia-docker + helm+cuda+gpu_burn](<posts/2024-08-01-nvidia-docker + helm+cuda+gpu_burn-11633590.md>) | 集群 |
-| 2024-07-31 | [nvidia驱动安装](posts/2024-07-31-nvidia驱动安装-11622160.md) | 集群 |
-| 2024-07-30 | [rancher:v2.7.9 部署](<posts/2024-07-30-rancher v2.7.9 部署-11613483.md>) | 集群 |
-| 2024-07-30 | [k8s kubeadm   v1.30.2部署](<posts/2024-07-30-k8s kubeadm v1.30.2部署-11608966.md>) | 集群 |
+| 2024-08-01 | [nvidia-docker + helm+cuda+gpu_burn](<posts/2024-08-01-nvidia-docker + helm+cuda+gpu_burn-11633590.md>) | cluster |
+| 2024-07-31 | [nvidia驱动安装](posts/2024-07-31-nvidia驱动安装-11622160.md) | cluster |
+| 2024-07-30 | [k8s kubeadm   v1.30.2部署](<posts/2024-07-30-k8s kubeadm v1.30.2部署-11608966.md>) | cluster |
+| 2024-07-30 | [rancher:v2.7.9 部署](<posts/2024-07-30-rancher v2.7.9 部署-11613483.md>) | cluster |
 | 2024-07-05 | [p2p 点对点互拉带宽 第一版](<posts/2024-07-05-p2p 点对点互拉带宽 第一版-11359758.md>) | go |
 | 2024-04-26 | [go 下载限速器](<posts/2024-04-26-go 下载限速器-10611790.md>) | go |
 | 2024-04-09 | [ppp名字规范排序算法](posts/2024-04-09-ppp名字规范排序算法-10382879.md) | go |
@@ -735,36 +750,36 @@
 | --- | --- | --- |
 | 2023-10-11 | [linux 服务器 多网口判断网卡名字和实际网卡口顺序 对应关系](<posts/2023-10-11-linux 服务器 多网口判断网卡名字和实际网卡口顺序 对应关系-7815837.md>) | shell |
 | 2023-08-18 | [docker zabbix](<posts/2023-08-18-docker zabbix-7132766.md>) | zabbix |
-| 2023-08-10 | [vue 前端实现webssh 多窗口模式](<posts/2023-08-10-vue 前端实现webssh 多窗口模式-7037245.md>) | 前端 |
+| 2023-08-10 | [vue 前端实现webssh 多窗口模式](<posts/2023-08-10-vue 前端实现webssh 多窗口模式-7037245.md>) | frontend |
 | 2023-07-13 | [go influxdb  批量写入  api](<posts/2023-07-13-go influxdb 批量写入 api-6711517.md>) | go |
 | 2023-07-11 | [更换GORM默认的SQLite驱动](posts/2023-07-11-更换GORM默认的SQLite驱动-6690830.md) | go |
-| 2023-06-19 | [rps和rfs优化脚本](posts/2023-06-19-rps和rfs优化脚本-6515750.md) | 集群 |
+| 2023-06-19 | [rps和rfs优化脚本](posts/2023-06-19-rps和rfs优化脚本-6515750.md) | cluster |
+| 2023-06-01 | [docker部署influxdb](posts/2023-06-01-docker部署influxdb-6396307.md) | cluster |
 | 2023-06-01 | [go 调用influxdb 保存CPU 使用率](<posts/2023-06-01-go 调用influxdb 保存CPU 使用率-6396335.md>) | go |
-| 2023-06-01 | [docker部署influxdb](posts/2023-06-01-docker部署influxdb-6396307.md) | 集群 |
 | 2023-05-31 | [go 获取多核心CPU 使用率](<posts/2023-05-31-go 获取多核心CPU 使用率-6388467.md>) | go |
-| 2023-05-30 | [pcdn go 采集nat类型](<posts/2023-05-30-pcdn go 采集nat类型-6380661.md>) | go |
 | 2023-05-30 | [PCDN 华为服务器 终端 二维码 乱码 界面办法](<posts/2023-05-30-PCDN 华为服务器 终端 二维码 乱码 界面办法-6380678.md>) | go |
+| 2023-05-30 | [pcdn go 采集nat类型](<posts/2023-05-30-pcdn go 采集nat类型-6380661.md>) | go |
 | 2023-05-17 | [docker 获取容器流量](<posts/2023-05-17-docker 获取容器流量-6291868.md>) | shell |
 | 2023-05-09 | [在jenkins构建时，先执行这个，钉钉审批通过，则继续执行，钉钉审批失败，则不执行简陋的审批工作流。](posts/2023-05-09-在jenkins构建时，先执行这个，钉钉审批通过，则继续执行，钉钉审批失败，则不执行简陋的审批工作流。-6258555.md) | shell |
 | 2023-05-08 | [shell 根据网卡名字自动生成网卡文件，然后up。](<posts/2023-05-08-shell 根据网卡名字自动生成网卡文件，然后up。-6254471.md>) | shell |
-| 2023-04-14 | [爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。](<posts/2023-04-14-爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。-6190425.md>) | 集群 |
-| 2023-04-10 | [centos7 设置服务器为网络中转](<posts/2023-04-10-centos7 设置服务器为网络中转-6181184.md>) | 集群 |
-| 2023-03-31 | [根据规则 生成mac地址。](<posts/2023-03-31-根据规则 生成mac地址。-6161915.md>) | go |
+| 2023-04-14 | [爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。](<posts/2023-04-14-爱快 加vm虚拟机，搭建一个模拟pppoe拨号的 环境。-6190425.md>) | cluster |
+| 2023-04-10 | [centos7 设置服务器为网络中转](<posts/2023-04-10-centos7 设置服务器为网络中转-6181184.md>) | cluster |
 | 2023-03-31 | [ppp拨号管理线路--自动检查默认脚本--优化版本1](posts/2023-03-31-ppp拨号管理线路--自动检查默认脚本--优化版本1-6161840.md) | python |
+| 2023-03-31 | [根据规则 生成mac地址。](<posts/2023-03-31-根据规则 生成mac地址。-6161915.md>) | go |
 | 2023-03-29 | [ppp拨号管理线路--自动检查默认脚本](posts/2023-03-29-ppp拨号管理线路--自动检查默认脚本-6157332.md) | lnmp |
-| 2023-03-21 | [centos7 tty模式不支持中文，需要去github找 修改后的内核](<posts/2023-03-21-centos7 tty模式不支持中文，需要去github找 修改后的内核-6140088.md>) | 集群 |
-| 2023-03-16 | [华为交换机 配置vrp 路由分离](<posts/2023-03-16-华为交换机 配置vrp 路由分离-6125106.md>) | 集群 |
-| 2023-03-16 | [go  redis  组订阅  并发 消费](<posts/2023-03-16-go redis 组订阅 并发 消费-6125408.md>) | go |
-| 2023-03-16 | [go redis 生产者消费者](<posts/2023-03-16-go redis 生产者消费者-6125081.md>) | go |
+| 2023-03-21 | [centos7 tty模式不支持中文，需要去github找 修改后的内核](<posts/2023-03-21-centos7 tty模式不支持中文，需要去github找 修改后的内核-6140088.md>) | cluster |
 | 2023-03-16 | [go redis 基本使用](<posts/2023-03-16-go redis 基本使用-6125000.md>) | go |
-| 2023-03-14 | [数据库    添加   联合索引](<posts/2023-03-14-数据库 添加 联合索引-6120828.md>) | 集群 |
-| 2023-03-14 | [交换机 策划路由](<posts/2023-03-14-交换机 策划路由-6120846.md>) | 集群 |
+| 2023-03-16 | [go redis 生产者消费者](<posts/2023-03-16-go redis 生产者消费者-6125081.md>) | go |
+| 2023-03-16 | [go  redis  组订阅  并发 消费](<posts/2023-03-16-go redis 组订阅 并发 消费-6125408.md>) | go |
+| 2023-03-16 | [华为交换机 配置vrp 路由分离](<posts/2023-03-16-华为交换机 配置vrp 路由分离-6125106.md>) | cluster |
+| 2023-03-14 | [交换机 策划路由](<posts/2023-03-14-交换机 策划路由-6120846.md>) | cluster |
+| 2023-03-14 | [数据库    添加   联合索引](<posts/2023-03-14-数据库 添加 联合索引-6120828.md>) | cluster |
 | 2023-02-21 | [拨号管理系统之创建ppp拨号](posts/2023-02-21-拨号管理系统之创建ppp拨号-6076932.md) | shell |
-| 2023-02-20 | [拨号管理系统之ui输入框](posts/2023-02-20-拨号管理系统之ui输入框-6069029.md) | go |
-| 2023-02-20 | [拨号管理系统之go-ppp增删改查](posts/2023-02-20-拨号管理系统之go-ppp增删改查-6068228.md) | go |
 | 2023-02-20 | [拨号管理系统之0.1版本](posts/2023-02-20-拨号管理系统之0.1版本-6069335.md) | go |
+| 2023-02-20 | [拨号管理系统之go-ppp增删改查](posts/2023-02-20-拨号管理系统之go-ppp增删改查-6068228.md) | go |
+| 2023-02-20 | [拨号管理系统之ui输入框](posts/2023-02-20-拨号管理系统之ui输入框-6069029.md) | go |
 | 2023-02-09 | [h3c 交换机 策划路由](<posts/2023-02-09-h3c 交换机 策划路由-6047016.md>) | Linux |
-| 2023-02-01 | [ks.cfg 设置IP 和选择硬盘](<posts/2023-02-01-ks.cfg 设置IP 和选择硬盘-6031774.md>) | 集群 |
+| 2023-02-01 | [ks.cfg 设置IP 和选择硬盘](<posts/2023-02-01-ks.cfg 设置IP 和选择硬盘-6031774.md>) | cluster |
 | 2023-01-30 | [go 控制台 根据提示选择 go-prompt](<posts/2023-01-30-go 控制台 根据提示选择 go-prompt-6026499.md>) | go |
 | 2023-01-09 | [centos实现 登录窗口 1个免密登录/其他还是root登录](<posts/2023-01-09-centos实现 登录窗口 1个免密登录 其他还是root登录-5997514.md>) | lnmp |
 
@@ -773,42 +788,42 @@
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
 | 2022-12-09 | [go 实现ping检查ip](<posts/2022-12-09-go 实现ping检查ip-5924570.md>) | go |
-| 2022-11-21 | [go 循环生成交换机 ipv6 地址](<posts/2022-11-21-go 循环生成交换机 ipv6 地址-5874000.md>) | 运维基础 |
-| 2022-11-21 | [centos 盘点硬盘类型](<posts/2022-11-21-centos 盘点硬盘类型-5873999.md>) | 运维基础 |
+| 2022-11-21 | [centos 盘点硬盘类型](<posts/2022-11-21-centos 盘点硬盘类型-5873999.md>) | ops-basics |
+| 2022-11-21 | [go 循环生成交换机 ipv6 地址](<posts/2022-11-21-go 循环生成交换机 ipv6 地址-5874000.md>) | ops-basics |
 | 2022-11-14 | [go 获取网卡1分钟网速数据](<posts/2022-11-14-go 获取网卡1分钟网速数据-5849200.md>) | go |
 | 2022-11-09 | [自定义centos](posts/2022-11-09-自定义centos-5838986.md) | Linux |
-| 2022-09-07 | [k8s  部署nginx    Deployment/StatefulSet    sc](<posts/2022-09-07-k8s 部署nginx Deployment StatefulSet sc-5659413.md>) | 集群 |
-| 2022-09-07 | [k8s pv pvc nfs简单例子](<posts/2022-09-07-k8s pv pvc nfs简单例子-5658718.md>) | 集群 |
-| 2022-09-07 | [k8s Storage Class 搭建/测试](<posts/2022-09-07-k8s Storage Class 搭建 测试-5658976.md>) | 集群 |
-| 2022-09-06 | [k8s-ingress nginx 部署例子  DaemonSet+HostNetwork(+nodeSelector)](<posts/2022-09-06-k8s-ingress nginx 部署例子 DaemonSet+HostNetwork(+nodeSelector)-5656475.md>) | 集群 |
-| 2022-09-06 | [k8s 部署 ingress-nginx](<posts/2022-09-06-k8s 部署 ingress-nginx-5656344.md>) | 集群 |
-| 2022-09-06 | [k8s v1.25.0 删除node重新加入](<posts/2022-09-06-k8s v1.25.0 删除node重新加入-5654730.md>) | 集群 |
-| 2022-09-06 | [k8s node NotReady Container runtime network not ready' networkReady='NetworkRe](<posts/2022-09-06-k8s node NotReady Container runtime network not ready networkReady= Ne-5654734.md>) | 集群 |
-| 2022-09-06 | [k8s  metrics-server 部署](<posts/2022-09-06-k8s metrics-server 部署-5655640.md>) | 集群 |
-| 2022-09-06 | [failed to get sandbox image 'k8s.gcr.io/pause:3.6': failed to pull image 'k8s.gcr.io/pause:3.6'](<posts/2022-09-06-failed to get sandbox image k8s.gcr.io pause 3.6 failed to pull image -5654959.md>) | 集群 |
-| 2022-09-05 | [k8s v1.25.0 更新证书](<posts/2022-09-05-k8s v1.25.0 更新证书-5651038.md>) | 集群 |
-| 2022-09-05 | [calico 部署](<posts/2022-09-05-calico 部署-5652431.md>) | 集群 |
-| 2022-09-02 | [kubernetes dashboard v2.6.1版本部署](<posts/2022-09-02-kubernetes dashboard v2.6.1版本部署-5645421.md>) | 集群 |
-| 2022-09-02 | [kubeadm 安装部署k8s v1.25.0版本 master节点](<posts/2022-09-02-kubeadm 安装部署k8s v1.25.0版本 master节点-5644930.md>) | 集群 |
-| 2022-09-01 | [k8s 命令自动补全](<posts/2022-09-01-k8s 命令自动补全-5641536.md>) | 集群 |
-| 2022-08-11 | [frp 部署使用 内网机器必备](<posts/2022-08-11-frp 部署使用 内网机器必备-5566644.md>) | 运维基础 |
+| 2022-09-07 | [k8s Storage Class 搭建/测试](<posts/2022-09-07-k8s Storage Class 搭建 测试-5658976.md>) | cluster |
+| 2022-09-07 | [k8s pv pvc nfs简单例子](<posts/2022-09-07-k8s pv pvc nfs简单例子-5658718.md>) | cluster |
+| 2022-09-07 | [k8s  部署nginx    Deployment/StatefulSet    sc](<posts/2022-09-07-k8s 部署nginx Deployment StatefulSet sc-5659413.md>) | cluster |
+| 2022-09-06 | [failed to get sandbox image 'k8s.gcr.io/pause:3.6': failed to pull image 'k8s.gcr.io/pause:3.6'](<posts/2022-09-06-failed to get sandbox image k8s.gcr.io pause 3.6 failed to pull image -5654959.md>) | cluster |
+| 2022-09-06 | [k8s  metrics-server 部署](<posts/2022-09-06-k8s metrics-server 部署-5655640.md>) | cluster |
+| 2022-09-06 | [k8s node NotReady Container runtime network not ready' networkReady='NetworkRe](<posts/2022-09-06-k8s node NotReady Container runtime network not ready networkReady= Ne-5654734.md>) | cluster |
+| 2022-09-06 | [k8s v1.25.0 删除node重新加入](<posts/2022-09-06-k8s v1.25.0 删除node重新加入-5654730.md>) | cluster |
+| 2022-09-06 | [k8s 部署 ingress-nginx](<posts/2022-09-06-k8s 部署 ingress-nginx-5656344.md>) | cluster |
+| 2022-09-06 | [k8s-ingress nginx 部署例子  DaemonSet+HostNetwork(+nodeSelector)](<posts/2022-09-06-k8s-ingress nginx 部署例子 DaemonSet+HostNetwork(+nodeSelector)-5656475.md>) | cluster |
+| 2022-09-05 | [calico 部署](<posts/2022-09-05-calico 部署-5652431.md>) | cluster |
+| 2022-09-05 | [k8s v1.25.0 更新证书](<posts/2022-09-05-k8s v1.25.0 更新证书-5651038.md>) | cluster |
+| 2022-09-02 | [kubeadm 安装部署k8s v1.25.0版本 master节点](<posts/2022-09-02-kubeadm 安装部署k8s v1.25.0版本 master节点-5644930.md>) | cluster |
+| 2022-09-02 | [kubernetes dashboard v2.6.1版本部署](<posts/2022-09-02-kubernetes dashboard v2.6.1版本部署-5645421.md>) | cluster |
+| 2022-09-01 | [k8s 命令自动补全](<posts/2022-09-01-k8s 命令自动补全-5641536.md>) | cluster |
+| 2022-08-11 | [frp 部署使用 内网机器必备](<posts/2022-08-11-frp 部署使用 内网机器必备-5566644.md>) | ops-basics |
 | 2022-08-10 | [centos 自动 部署 系统 U盘](<posts/2022-08-10-centos 自动 部署 系统 U盘-5563487.md>) | Linux |
 | 2022-07-08 | [go 计算网络带宽95值](<posts/2022-07-08-go 计算网络带宽95值-5454845.md>) | go |
 | 2022-07-05 | [kubernetes-dashboard  部署](<posts/2022-07-05-kubernetes-dashboard 部署-5442988.md>) | python |
 | 2022-06-16 | [go 密码 token passwd  加密解密](<posts/2022-06-16-go 密码 token passwd 加密解密-5387561.md>) | go |
 | 2022-06-15 | [go 缩减编译后的文件 体积大小](<posts/2022-06-15-go 缩减编译后的文件 体积大小-5385060.md>) | go |
-| 2022-06-09 | [minikube 部署使用](<posts/2022-06-09-minikube 部署使用-5370956.md>) | 集群 |
+| 2022-06-09 | [minikube 部署使用](<posts/2022-06-09-minikube 部署使用-5370956.md>) | cluster |
 | 2022-06-06 | [tdengine 数据库 api 接口  sdk  go](<posts/2022-06-06-tdengine 数据库 api 接口 sdk go-5359730.md>) | go |
-| 2022-05-17 | [go 多平台打包工具 gox](<posts/2022-05-17-go 多平台打包工具 gox-5299065.md>) | go |
 | 2022-05-17 | [FRRouting  部署](<posts/2022-05-17-FRRouting 部署-5299286.md>) | Linux |
+| 2022-05-17 | [go 多平台打包工具 gox](<posts/2022-05-17-go 多平台打包工具 gox-5299065.md>) | go |
 | 2022-05-07 | [艺龙酒店开放接口 对接 go版本](<posts/2022-05-07-艺龙酒店开放接口 对接 go版本-5279203.md>) | go |
 | 2022-04-30 | [mysql 内网环境 连接慢  排坑](<posts/2022-04-30-mysql 内网环境 连接慢 排坑-5265475.md>) | lnmp |
 | 2022-04-28 | [运维基础架构 --3 jar包 启动关闭命令脚本](<posts/2022-04-28-运维基础架构 --3 jar包 启动关闭命令脚本-5259894.md>) | shell |
-| 2022-04-24 | [运维基础架构 -- 2 nexus 部署](<posts/2022-04-24-运维基础架构 -- 2 nexus 部署-5250545.md>) | 运维基础 |
 | 2022-04-24 | [go get xml html 解析](<posts/2022-04-24-go get xml html 解析-5251385.md>) | go |
-| 2022-04-22 | [go 循环请求API接口 goto 执行重复代码](<posts/2022-04-22-go 循环请求API接口 goto 执行重复代码-5246799.md>) | go |
+| 2022-04-24 | [运维基础架构 -- 2 nexus 部署](<posts/2022-04-24-运维基础架构 -- 2 nexus 部署-5250545.md>) | ops-basics |
 | 2022-04-22 | [go 去除字符串中 多余空格](<posts/2022-04-22-go 去除字符串中 多余空格-5245113.md>) | go |
-| 2022-04-18 | [运维基础架构 -- 1.open access server 搭建](<posts/2022-04-18-运维基础架构 -- 1.open access server 搭建-5214134.md>) | 集群 |
+| 2022-04-22 | [go 循环请求API接口 goto 执行重复代码](<posts/2022-04-22-go 循环请求API接口 goto 执行重复代码-5246799.md>) | go |
+| 2022-04-18 | [运维基础架构 -- 1.open access server 搭建](<posts/2022-04-18-运维基础架构 -- 1.open access server 搭建-5214134.md>) | cluster |
 | 2022-03-24 | [dockerfile  vue+go 发布 例子  docker-compose](<posts/2022-03-24-dockerfile vue+go 发布 例子 docker-compose-5146223.md>) | kubernetes |
 | 2022-03-18 | [vue3 多选传对象 到 go](<posts/2022-03-18-vue3 多选传对象 到 go-5118065.md>) | vue |
 | 2022-01-13 | [vue 自动补全输入框  多个输入框](<posts/2022-01-13-vue 自动补全输入框 多个输入框-4921590.md>) | vue |
@@ -822,20 +837,20 @@
 | 2021-12-21 | [clickhouse  go  例子](<posts/2021-12-21-clickhouse go 例子-4829377.md>) | go |
 | 2021-11-11 | [BPMN 自定义流水线](<posts/2021-11-11-BPMN 自定义流水线-4576944.md>) | autoops |
 | 2021-11-09 | [BPMN 2.0 例子 （仅供参考）](<posts/2021-11-09-BPMN 2.0 例子 （仅供参考）-4565367.md>) | autoops |
-| 2021-10-25 | [confluence  wiki 接入 LDAP FreeIPA](<posts/2021-10-25-confluence wiki 接入 LDAP FreeIPA-4312251.md>) | 集群 |
+| 2021-10-25 | [confluence  wiki 接入 LDAP FreeIPA](<posts/2021-10-25-confluence wiki 接入 LDAP FreeIPA-4312251.md>) | cluster |
 | 2021-10-15 | [gocelery 测试例子(windows会有报错，建议linux执行)](<posts/2021-10-15-gocelery 测试例子(windows会有报错，建议linux执行)-4221137.md>) | go |
 | 2021-10-14 | [go 调用minio sdk](<posts/2021-10-14-go 调用minio sdk-4215331.md>) | go |
 | 2021-08-31 | [vue xterm 4版本 go gin webssh](<posts/2021-08-31-vue xterm 4版本 go gin webssh-3712190.md>) | go |
-| 2021-08-09 | [redash docker 最新版本 部署](<posts/2021-08-09-redash docker 最新版本 部署-3326827.md>) | 集群 |
+| 2021-08-09 | [redash docker 最新版本 部署](<posts/2021-08-09-redash docker 最新版本 部署-3326827.md>) | cluster |
 | 2021-08-06 | [gin-vue-admin 用户对应单角色 改多角色](<posts/2021-08-06-gin-vue-admin 用户对应单角色 改多角色-3301731.md>) | go |
 | 2021-08-04 | [go vue 工作流 开发模型](<posts/2021-08-04-go vue 工作流 开发模型-3270769.md>) | go |
 | 2021-07-15 | [go  获取钉钉通讯录 所有部门](<posts/2021-07-15-go 获取钉钉通讯录 所有部门-3103588.md>) | go |
 | 2021-07-02 | [go 根据jumpserver api 获取所有资产信息(后续可导入cmdb)](<posts/2021-07-02-go 根据jumpserver api 获取所有资产信息(后续可导入cmdb)-2970605.md>) | go |
 | 2021-06-22 | [go  编译npm 前端包 发版](<posts/2021-06-22-go 编译npm 前端包 发版-2939804.md>) | go |
 | 2021-06-21 | [go 读取ip文件 进行循环ping检查](<posts/2021-06-21-go 读取ip文件 进行循环ping检查-2933691.md>) | go |
-| 2021-04-19 | [elasticsearch 7.x搭建集群和重启](<posts/2021-04-19-elasticsearch 7.x搭建集群和重启-2717713.md>) | 集群 |
-| 2021-01-28 | [vue element 动态添加 表单 中的行](<posts/2021-01-28-vue element 动态添加 表单 中的行-2609377.md>) | 前端 |
-| 2021-01-27 | [阿里云日志服务 send data to SLS fail, error_code:Request](<posts/2021-01-27-阿里云日志服务 send data to SLS fail, error_code Request-2607839.md>) | 集群 |
+| 2021-04-19 | [elasticsearch 7.x搭建集群和重启](<posts/2021-04-19-elasticsearch 7.x搭建集群和重启-2717713.md>) | cluster |
+| 2021-01-28 | [vue element 动态添加 表单 中的行](<posts/2021-01-28-vue element 动态添加 表单 中的行-2609377.md>) | frontend |
+| 2021-01-27 | [阿里云日志服务 send data to SLS fail, error_code:Request](<posts/2021-01-27-阿里云日志服务 send data to SLS fail, error_code Request-2607839.md>) | cluster |
 | 2021-01-22 | [Nacos 1.4.1 之前存在鉴权漏洞，建议修复到最新版](<posts/2021-01-22-Nacos 1.4.1 之前存在鉴权漏洞，建议修复到最新版-2602035.md>) | go |
 
 ### 2020 年(12 篇)
@@ -843,11 +858,11 @@
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
 | 2020-12-11 | [阿里云 go sdk 获取 ecs 资产信息](<posts/2020-12-11-阿里云 go sdk 获取 ecs 资产信息-2563007.md>) | go |
-| 2020-12-01 | [有关解决GORM deleted_at 搜索问题的解决办法](<posts/2020-12-01-有关解决GORM deleted_at 搜索问题的解决办法-2557970.md>) | go |
 | 2020-12-01 | [AWS SDK GO版本 获取EC2资产信息 示例](<posts/2020-12-01-AWS SDK GO版本 获取EC2资产信息 示例-2557831.md>) | go |
+| 2020-12-01 | [有关解决GORM deleted_at 搜索问题的解决办法](<posts/2020-12-01-有关解决GORM deleted_at 搜索问题的解决办法-2557970.md>) | go |
 | 2020-10-24 | [jenkins 流水线控制 发布回滚jar包](<posts/2020-10-24-jenkins 流水线控制 发布回滚jar包-2543374.md>) | Linux |
+| 2020-09-20 | [Error: vue-loader requires @vue/compiler-sfc to be](<posts/2020-09-20-Error vue-loader requires @vue compiler-sfc to be-2536201.md>) | frontend |
 | 2020-09-20 | [运维平台工作流--简单示例](posts/2020-09-20-运维平台工作流--简单示例-2536208.md) | python |
-| 2020-09-20 | [Error: vue-loader requires @vue/compiler-sfc to be](<posts/2020-09-20-Error vue-loader requires @vue compiler-sfc to be-2536201.md>) | 前端 |
 | 2020-08-20 | [运维平台 py/go 调用钉钉工作流api接口示例](<posts/2020-08-20-运维平台 py go 调用钉钉工作流api接口示例-2522252.md>) | python |
 | 2020-08-19 | [go shell执行优化版+ 输出结果为table格式](<posts/2020-08-19-go shell执行优化版+ 输出结果为table格式-2521942.md>) | go |
 | 2020-08-18 | [基于gin-vue-admin模板 面向对象权限设计示例](<posts/2020-08-18-基于gin-vue-admin模板 面向对象权限设计示例-2521539.md>) | go |
@@ -859,16 +874,16 @@
 
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
-| 2019-12-30 | [vue-element-admin 与后端调试 登录](<posts/2019-12-30-vue-element-admin 与后端调试 登录-2463043.md>) | 前端 |
-| 2019-12-25 | [python 开源 车牌 识别](<posts/2019-12-25-python 开源 车牌 识别-2461730.md>) | python |
+| 2019-12-30 | [vue-element-admin 与后端调试 登录](<posts/2019-12-30-vue-element-admin 与后端调试 登录-2463043.md>) | frontend |
 | 2019-12-25 | [Go  车牌识别 （网络图片| 本地图片）](<posts/2019-12-25-Go 车牌识别 （网络图片 本地图片）-2461676.md>) | go |
+| 2019-12-25 | [python 开源 车牌 识别](<posts/2019-12-25-python 开源 车牌 识别-2461730.md>) | python |
 | 2019-11-28 | [python  jenkins 打包构建代码](<posts/2019-11-28-python jenkins 打包构建代码-2454600.md>) | python |
 | 2019-11-15 | [Django之入门 CMDB系统  (六) 前后端分离之后端](<posts/2019-11-15-Django之入门 CMDB系统 (六) 前后端分离之后端-2450628.md>) | python |
 | 2019-11-14 | [Django之入门 CMDB系统 (五) 前后端分离之前端](<posts/2019-11-14-Django之入门 CMDB系统 (五) 前后端分离之前端-2450408.md>) | python |
-| 2019-11-01 | [Django之入门 CMDB系统  (四) 增删改查](<posts/2019-11-01-Django之入门 CMDB系统 (四) 增删改查-2447147.md>) | python |
-| 2019-11-01 | [Django之入门 CMDB系统  (二) 前端模板](<posts/2019-11-01-Django之入门 CMDB系统 (二) 前端模板-2447143.md>) | python |
-| 2019-11-01 | [Django之入门 CMDB系统  (三) 登录注销](<posts/2019-11-01-Django之入门 CMDB系统 (三) 登录注销-2447145.md>) | python |
 | 2019-11-01 | [Django之入门 CMDB系统  (一) 基础环境](<posts/2019-11-01-Django之入门 CMDB系统 (一) 基础环境-2447140.md>) | python |
+| 2019-11-01 | [Django之入门 CMDB系统  (三) 登录注销](<posts/2019-11-01-Django之入门 CMDB系统 (三) 登录注销-2447145.md>) | python |
+| 2019-11-01 | [Django之入门 CMDB系统  (二) 前端模板](<posts/2019-11-01-Django之入门 CMDB系统 (二) 前端模板-2447143.md>) | python |
+| 2019-11-01 | [Django之入门 CMDB系统  (四) 增删改查](<posts/2019-11-01-Django之入门 CMDB系统 (四) 增删改查-2447147.md>) | python |
 | 2019-09-17 | [k8s python api二次封装 例子](<posts/2019-09-17-k8s python api二次封装 例子-2438485.md>) | kubernetes |
 | 2019-09-12 | [k8s  StatefulSet ingress 例子](<posts/2019-09-12-k8s StatefulSet ingress 例子-2437663.md>) | kubernetes |
 | 2019-09-11 | [k8s storageclass  例子](<posts/2019-09-11-k8s storageclass 例子-2437544.md>) | kubernetes |
@@ -878,37 +893,37 @@
 | 2019-08-20 | [docker 仓库harbor 1.8.2 http 部署](<posts/2019-08-20-docker 仓库harbor 1.8.2 http 部署-2431158.md>) | kubernetes |
 | 2019-08-01 | [Ucloud  api  signature 生成  (python3)](<posts/2019-08-01-Ucloud api signature 生成 (python3)-2425633.md>) | python |
 | 2019-07-31 | [go webssh  简单例子 （基于gin+ws+ssh）](<posts/2019-07-31-go webssh 简单例子 （基于gin+ws+ssh）-2425428.md>) | go |
-| 2019-07-08 | [windows defender 关闭方法](<posts/2019-07-08-windows defender 关闭方法-2418274.md>) | 后端 |
-| 2019-07-02 | [jquery  datatable ajax 获取数据/重新加载](<posts/2019-07-02-jquery datatable ajax 获取数据 重新加载-2416184.md>) | 前端 |
-| 2019-07-01 | [select 下拉选择框 恢复默认为空](<posts/2019-07-01-select 下拉选择框 恢复默认为空-2415843.md>) | 前端 |
+| 2019-07-08 | [windows defender 关闭方法](<posts/2019-07-08-windows defender 关闭方法-2418274.md>) | backend |
+| 2019-07-02 | [jquery  datatable ajax 获取数据/重新加载](<posts/2019-07-02-jquery datatable ajax 获取数据 重新加载-2416184.md>) | frontend |
+| 2019-07-01 | [select 下拉选择框 恢复默认为空](<posts/2019-07-01-select 下拉选择框 恢复默认为空-2415843.md>) | frontend |
 | 2019-06-28 | [python 获取mysql 库信息/表信息/表结构/索引](<posts/2019-06-28-python 获取mysql 库信息 表信息 表结构 索引-2414914.md>) | python |
 | 2019-06-13 | [mysql 审核引擎 goInception 的基本使用](<posts/2019-06-13-mysql 审核引擎 goInception 的基本使用-2408482.md>) | go |
-| 2019-06-10 | [获取k8s admin token的方法](<posts/2019-06-10-获取k8s admin token的方法-2406680.md>) | kubernetes |
 | 2019-06-10 | [kubernetes webssh  管理  (django开发/通过调用K8S API实现)](<posts/2019-06-10-kubernetes webssh 管理 (django开发 通过调用K8S API实现)-2406980.md>) | kubernetes |
-| 2019-06-05 | [node 最新版 yum 部署 +iview admin 线上部署 nginx配置](<posts/2019-06-05-node 最新版 yum 部署 +iview admin 线上部署 nginx配置-2405165.md>) | vue |
+| 2019-06-10 | [获取k8s admin token的方法](<posts/2019-06-10-获取k8s admin token的方法-2406680.md>) | kubernetes |
 | 2019-06-05 | [kubernetes 1.14.2  kubeadm 方式部署](<posts/2019-06-05-kubernetes 1.14.2 kubeadm 方式部署-2405408.md>) | kubernetes |
+| 2019-06-05 | [node 最新版 yum 部署 +iview admin 线上部署 nginx配置](<posts/2019-06-05-node 最新版 yum 部署 +iview admin 线上部署 nginx配置-2405165.md>) | vue |
 | 2019-05-15 | [go  web  权限管理 简单例子  (面向对象权限 ABAC / Casbin)](<posts/2019-05-15-go web 权限管理 简单例子 (面向对象权限 ABAC Casbin)-2395179.md>) | go |
 | 2019-05-14 | [goframe 框架跨域 设置](<posts/2019-05-14-goframe 框架跨域 设置-2394141.md>) | go |
-| 2019-04-23 | [iview-admin  动态菜单](<posts/2019-04-23-iview-admin 动态菜单-2383130.md>) | vue |
 | 2019-04-23 | [iview-admin 2.5.0  登录](<posts/2019-04-23-iview-admin 2.5.0 登录-2383103.md>) | vue |
+| 2019-04-23 | [iview-admin  动态菜单](<posts/2019-04-23-iview-admin 动态菜单-2383130.md>) | vue |
 | 2019-04-10 | [GraphQL  graphene-django  基本使用文档](<posts/2019-04-10-GraphQL graphene-django 基本使用文档-2376728.md>) | python |
-| 2019-04-09 | [go  linux基本 开发环境  安装(包含常用软件包)](<posts/2019-04-09-go linux基本 开发环境 安装(包含常用软件包)-2376125.md>) | go |
 | 2019-04-09 | [Swagger  文档 使用规则](<posts/2019-04-09-Swagger 文档 使用规则-2375970.md>) | go |
-| 2019-04-04 | [go  钉钉报警](<posts/2019-04-04-go 钉钉报警-2374161.md>) | go |
+| 2019-04-09 | [go  linux基本 开发环境  安装(包含常用软件包)](<posts/2019-04-09-go linux基本 开发环境 安装(包含常用软件包)-2376125.md>) | go |
 | 2019-04-04 | [go post json数据](<posts/2019-04-04-go post json数据-2374177.md>) | go |
+| 2019-04-04 | [go  钉钉报警](<posts/2019-04-04-go 钉钉报警-2374161.md>) | go |
 | 2019-04-01 | [go 动态定时任务 API 接口 -- HTTP版本](<posts/2019-04-01-go 动态定时任务 API 接口 -- HTTP版本-2372597.md>) | go |
 | 2019-03-29 | [vs code 开发 vue   格式设置](<posts/2019-03-29-vs code 开发 vue 格式设置-2371126.md>) | vue |
 | 2019-03-18 | [typescript 类 -- 学习笔记三](<posts/2019-03-18-typescript 类 -- 学习笔记三-2364998.md>) | typescript |
 | 2019-03-16 | [typescript 基本类型 | Symbol | 接口| 函数| 泛型-- 学习笔记二](<posts/2019-03-16-typescript 基本类型 Symbol 接口 函数 泛型-- 学习笔记二-2364148.md>) | typescript |
 | 2019-03-15 | [python 异步程序 dramatiq](<posts/2019-03-15-python 异步程序 dramatiq-2363758.md>) | python |
-| 2019-03-14 | [华为云 通过SDK 创建弹性主机(Python版本)](<posts/2019-03-14-华为云 通过SDK 创建弹性主机(Python版本)-2362944.md>) | python |
 | 2019-03-14 | [typescript 基本环境 搭建  -- 学习笔记一](<posts/2019-03-14-typescript 基本环境 搭建 -- 学习笔记一-2363220.md>) | typescript |
+| 2019-03-14 | [华为云 通过SDK 创建弹性主机(Python版本)](<posts/2019-03-14-华为云 通过SDK 创建弹性主机(Python版本)-2362944.md>) | python |
 | 2019-03-05 | [go 链表](<posts/2019-03-05-go 链表-2358719.md>) | go |
 | 2019-02-27 | [Go  一键生成 后端 restful api](<posts/2019-02-27-Go 一键生成 后端 restful api-2355891.md>) | go |
 | 2019-02-13 | [docker/k8s  webssh](<posts/2019-02-13-docker k8s webssh-2349911.md>) | go |
 | 2019-02-12 | [华为云 获取 弹性云服务器 信息 python版本](<posts/2019-02-12-华为云 获取 弹性云服务器 信息 python版本-2349473.md>) | python |
 | 2019-01-28 | [go ssh  执行命令](<posts/2019-01-28-go ssh 执行命令-2347357.md>) | go |
-| 2019-01-22 | [Not Found: /build/pdf.worker.js](<posts/2019-01-22-Not Found build pdf.worker.js-2345510.md>) | 前端 |
+| 2019-01-22 | [Not Found: /build/pdf.worker.js](<posts/2019-01-22-Not Found build pdf.worker.js-2345510.md>) | frontend |
 | 2019-01-10 | [go  gin+casbin RBAC 简单例子](<posts/2019-01-10-go gin+casbin RBAC 简单例子-2341145.md>) | go |
 | 2019-01-09 | [go 依赖注入  简单 例子  inject](<posts/2019-01-09-go 依赖注入 简单 例子 inject-2340877.md>) | go |
 | 2019-01-08 | [python 计算 crontab 下次执行时间](<posts/2019-01-08-python 计算 crontab 下次执行时间-2340169.md>) | python |
@@ -924,57 +939,57 @@
 | 2018-12-21 | [年轻人的第一个go程序:监控数据库字段 报警](<posts/2018-12-21-年轻人的第一个go程序 监控数据库字段 报警-2333786.md>) | go |
 | 2018-12-19 | [gorm 一对一  一对多 例子](<posts/2018-12-19-gorm 一对一 一对多 例子-2333058.md>) | go |
 | 2018-12-14 | [go 读取 ini文件 并修改](<posts/2018-12-14-go 读取 ini文件 并修改-2330712.md>) | go |
-| 2018-12-08 | [k8s v1.13  集群部署](<posts/2018-12-08-k8s v1.13 集群部署-2327910.md>) | kubernetes |
-| 2018-12-08 | [flanneld v0.10.0 版本部署](<posts/2018-12-08-flanneld v0.10.0 版本部署-2327822.md>) | kubernetes |
-| 2018-12-08 | [centos 7  yum 设置 阿里云 kubernetes  库](<posts/2018-12-08-centos 7 yum 设置 阿里云 kubernetes 库-2327792.md>) | kubernetes |
-| 2018-12-08 | [Etcd v3.3.10 版本部署(3台集群)](<posts/2018-12-08-Etcd v3.3.10 版本部署(3台集群)-2327820.md>) | kubernetes |
 | 2018-12-08 | [Error from server (Forbidden): Forbidden (user=sys](<posts/2018-12-08-Error from server (Forbidden) Forbidden (user=sys-2327975.md>) | kubernetes |
-| 2018-12-07 | [chrome 网页 左侧导航栏不展开](<posts/2018-12-07-chrome 网页 左侧导航栏不展开-2327585.md>) | 前端 |
+| 2018-12-08 | [Etcd v3.3.10 版本部署(3台集群)](<posts/2018-12-08-Etcd v3.3.10 版本部署(3台集群)-2327820.md>) | kubernetes |
+| 2018-12-08 | [centos 7  yum 设置 阿里云 kubernetes  库](<posts/2018-12-08-centos 7 yum 设置 阿里云 kubernetes 库-2327792.md>) | kubernetes |
+| 2018-12-08 | [flanneld v0.10.0 版本部署](<posts/2018-12-08-flanneld v0.10.0 版本部署-2327822.md>) | kubernetes |
+| 2018-12-08 | [k8s v1.13  集群部署](<posts/2018-12-08-k8s v1.13 集群部署-2327910.md>) | kubernetes |
+| 2018-12-07 | [chrome 网页 左侧导航栏不展开](<posts/2018-12-07-chrome 网页 左侧导航栏不展开-2327585.md>) | frontend |
 | 2018-12-05 | [两数之和 go版本](<posts/2018-12-05-两数之和 go版本-2326340.md>) | go |
-| 2018-11-28 | [解决 select2在bootstrap modal中不能正常使用问题](<posts/2018-11-28-解决 select2在bootstrap modal中不能正常使用问题-2323225.md>) | 前端 |
 | 2018-11-28 | [django 2.x + celery 4.2.x 配置文件 设置](<posts/2018-11-28-django 2.x + celery 4.2.x 配置文件 设置-2323058.md>) | python |
-| 2018-11-27 | [django 实现前端 进度条](<posts/2018-11-27-django 实现前端 进度条-2322751.md>) | 后端 |
+| 2018-11-28 | [解决 select2在bootstrap modal中不能正常使用问题](<posts/2018-11-28-解决 select2在bootstrap modal中不能正常使用问题-2323225.md>) | frontend |
+| 2018-11-27 | [django 实现前端 进度条](<posts/2018-11-27-django 实现前端 进度条-2322751.md>) | backend |
 | 2018-11-17 | [vue技术栈开发实战--学习笔记2](posts/2018-11-17-vue技术栈开发实战--学习笔记2-2318253.md) | python |
-| 2018-11-16 | [解决启用 codemirror后，jquery获取不到textarea 的值](<posts/2018-11-16-解决启用 codemirror后，jquery获取不到textarea 的值-2318076.md>) | 前端 |
+| 2018-11-16 | [解决启用 codemirror后，jquery获取不到textarea 的值](<posts/2018-11-16-解决启用 codemirror后，jquery获取不到textarea 的值-2318076.md>) | frontend |
 | 2018-11-15 | [python3.6 批量创建 多台阿里云ECS主机 示例](<posts/2018-11-15-python3.6 批量创建 多台阿里云ECS主机 示例-2317341.md>) | python |
-| 2018-11-14 | [iview-admin 2.1  + django 2.1 （一） 登录认证+修改请求头 简单例子](<posts/2018-11-14-iview-admin 2.1 + django 2.1 （一） 登录认证+修改请求头 简单例子-2316979.md>) | 前端 |
-| 2018-11-14 | [django-rest-framework     自动生成接口说明文档](<posts/2018-11-14-django-rest-framework 自动生成接口说明文档-2316781.md>) | 后端 |
+| 2018-11-14 | [django-rest-framework     自动生成接口说明文档](<posts/2018-11-14-django-rest-framework 自动生成接口说明文档-2316781.md>) | backend |
+| 2018-11-14 | [iview-admin 2.1  + django 2.1 （一） 登录认证+修改请求头 简单例子](<posts/2018-11-14-iview-admin 2.1 + django 2.1 （一） 登录认证+修改请求头 简单例子-2316979.md>) | frontend |
 | 2018-11-13 | [django 分页例子](<posts/2018-11-13-django 分页例子-2316259.md>) | python |
 | 2018-10-25 | [django 利用钉钉 扩展用户系统](<posts/2018-10-25-django 利用钉钉 扩展用户系统-2308926.md>) | python |
 | 2018-10-18 | [django 钉钉扫码登录](<posts/2018-10-18-django 钉钉扫码登录-2304690.md>) | python |
 | 2018-10-17 | [django  扩展自带权限,使其支持对象权限](<posts/2018-10-17-django 扩展自带权限,使其支持对象权限-2301300.md>) | python |
-| 2018-10-09 | [python3 获取阿里云OSS 最新存储容量 SDK API](<posts/2018-10-09-python3 获取阿里云OSS 最新存储容量 SDK API-2296360.md>) | python |
 | 2018-10-09 | [ServerUnreachable Unable to connect server: timed](<posts/2018-10-09-ServerUnreachable Unable to connect server timed-2296381.md>) | python |
+| 2018-10-09 | [python3 获取阿里云OSS 最新存储容量 SDK API](<posts/2018-10-09-python3 获取阿里云OSS 最新存储容量 SDK API-2296360.md>) | python |
 | 2018-09-27 | [python 开发规范 预览版](<posts/2018-09-27-python 开发规范 预览版-2286537.md>) | python |
-| 2018-09-25 | [Mock简明文档](posts/2018-09-25-Mock简明文档-2285144.md) | 前端 |
+| 2018-09-25 | [Mock简明文档](posts/2018-09-25-Mock简明文档-2285144.md) | frontend |
 | 2018-09-22 | [vue技术栈开发实战--学习笔记1](posts/2018-09-22-vue技术栈开发实战--学习笔记1-2179028.md) | vue |
 | 2018-09-21 | [python3  列表内多个字典  相同项目 值计算合并](<posts/2018-09-21-python3 列表内多个字典 相同项目 值计算合并-2178785.md>) | python |
 | 2018-09-17 | [python3.6 通过调用 阿里云 API (非SDK方式) 查询 账单 例子](<posts/2018-09-17-python3.6 通过调用 阿里云 API (非SDK方式) 查询 账单 例子-2176032.md>) | python |
 | 2018-09-12 | [python3.6 通过API(SDK) 创建阿里云ECS主机 示例](<posts/2018-09-12-python3.6 通过API(SDK) 创建阿里云ECS主机 示例-2174407.md>) | python |
-| 2018-09-01 | [gitlab 11.2.3 通过LDAP 调用FreeIPA 登录](<posts/2018-09-01-gitlab 11.2.3 通过LDAP 调用FreeIPA 登录-2168915.md>) | 集群 |
-| 2018-08-27 | [python3.7: error while loading shared libraries: l](<posts/2018-08-27-python3.7 error while loading shared libraries l-2165075.md>) | python |
+| 2018-09-01 | [gitlab 11.2.3 通过LDAP 调用FreeIPA 登录](<posts/2018-09-01-gitlab 11.2.3 通过LDAP 调用FreeIPA 登录-2168915.md>) | cluster |
 | 2018-08-27 | [Django 2.1  通过LDAP 调用 FreeIPA账户信息 例子](<posts/2018-08-27-Django 2.1 通过LDAP 调用 FreeIPA账户信息 例子-2165097.md>) | python |
+| 2018-08-27 | [python3.7: error while loading shared libraries: l](<posts/2018-08-27-python3.7 error while loading shared libraries l-2165075.md>) | python |
 | 2018-08-24 | [FreeIPA  4.7.0   服务端  部署](<posts/2018-08-24-FreeIPA 4.7.0 服务端 部署-2164114.md>) | python |
 | 2018-08-20 | [python 模拟登录 Django项目 CSRF (以jumpserver举例子)](<posts/2018-08-20-python 模拟登录 Django项目 CSRF (以jumpserver举例子)-2162033.md>) | python |
 | 2018-08-03 | [python  aiohttp  asyncio  异步请求](<posts/2018-08-03-python aiohttp asyncio 异步请求-2154170.md>) | python |
 | 2018-07-16 | [基于 django 实现的 webssh 简单例子](<posts/2018-07-16-基于 django 实现的 webssh 简单例子-2145007.md>) | python |
 | 2018-06-12 | [python 获取域名的IP、注册时间、过期时间](<posts/2018-06-12-python 获取域名的IP、注册时间、过期时间-2128454.md>) | python |
 | 2018-06-11 | [iview-admin 1.3 + django 2.0 (二)  用户登录](<posts/2018-06-11-iview-admin 1.3 + django 2.0 (二) 用户登录-2128052.md>) | vue |
-| 2018-06-09 | [jquery 方法常用整理](<posts/2018-06-09-jquery 方法常用整理-2126731.md>) | 前端 |
 | 2018-06-09 | [iview-admin 1.3 + django 2.0 (一)  增删改查例子](<posts/2018-06-09-iview-admin 1.3 + django 2.0 (一) 增删改查例子-2126730.md>) | vue |
-| 2018-05-26 | [yum 安装 python36 及 pip](<posts/2018-05-26-yum 安装 python36 及 pip-2120555.md>) | python |
-| 2018-05-26 | [rabbitmq 3.6.15  yum安装部署](<posts/2018-05-26-rabbitmq 3.6.15 yum安装部署-2120565.md>) | lnmp |
+| 2018-06-09 | [jquery 方法常用整理](<posts/2018-06-09-jquery 方法常用整理-2126731.md>) | frontend |
 | 2018-05-26 | [mysql 8.0.11 二进制安装](<posts/2018-05-26-mysql 8.0.11 二进制安装-2120497.md>) | lnmp |
+| 2018-05-26 | [rabbitmq 3.6.15  yum安装部署](<posts/2018-05-26-rabbitmq 3.6.15 yum安装部署-2120565.md>) | lnmp |
+| 2018-05-26 | [yum 安装 python36 及 pip](<posts/2018-05-26-yum 安装 python36 及 pip-2120555.md>) | python |
 | 2018-05-16 | [kubernets1.10.1--基本操作（二）](posts/2018-05-16-kubernets1.10.1--基本操作（二）-2117199.md) | kubernetes |
 | 2018-05-09 | [django  异步 查看 服务器日志 | 利用 channels==2.0.2](<posts/2018-05-09-django 异步 查看 服务器日志 利用 channels==2.0.2-2114529.md>) | autoops |
 | 2018-05-06 | [kubernets1.10.1--基本操作（一）](posts/2018-05-06-kubernets1.10.1--基本操作（一）-2113307.md) | kubernetes |
 | 2018-04-24 | [python  获取6大币对 区块高度](<posts/2018-04-24-python 获取6大币对 区块高度-2107325.md>) | python |
 | 2018-04-23 | [docker-compose  zabbix](<posts/2018-04-23-docker-compose zabbix-2106949.md>) | kubernetes |
 | 2018-04-22 | [kubernetes 1.10.1 版本 部署](<posts/2018-04-22-kubernetes 1.10.1 版本 部署-2106618.md>) | kubernetes |
-| 2018-04-19 | [AWS  cloudfomation模板2 创建多台主机](<posts/2018-04-19-AWS cloudfomation模板2 创建多台主机-2105381.md>) | python |
 | 2018-04-19 | [AWS cloudfomation  模板1  创建单台](<posts/2018-04-19-AWS cloudfomation 模板1 创建单台-2105379.md>) | python |
-| 2018-04-05 | [docker镜像仓库 harbor 笔记](<posts/2018-04-05-docker镜像仓库 harbor 笔记-2094955.md>) | kubernetes |
+| 2018-04-19 | [AWS  cloudfomation模板2 创建多台主机](<posts/2018-04-19-AWS cloudfomation模板2 创建多台主机-2105381.md>) | python |
 | 2018-04-05 | [Solo博客系统--Jenkins/docker自动化构建发布系统](<posts/2018-04-05-Solo博客系统--Jenkins docker自动化构建发布系统-2095114.md>) | kubernetes |
+| 2018-04-05 | [docker镜像仓库 harbor 笔记](<posts/2018-04-05-docker镜像仓库 harbor 笔记-2094955.md>) | kubernetes |
 | 2018-03-17 | [新做了一个简单版本的CMDB云主机管理系统](posts/2018-03-17-新做了一个简单版本的CMDB云主机管理系统-2087835.md) | autoops |
 | 2018-02-27 | [jenkins 2.89.4   简单安装使用 |　发布war包](<posts/2018-02-27-jenkins 2.89.4 简单安装使用 发布war包-2073573.md>) | tomcat |
 | 2018-02-26 | [docker-ce 安装 | 基本使用](<posts/2018-02-26-docker-ce 安装 基本使用-2073186.md>) | kubernetes |
@@ -982,36 +997,36 @@
 | 2018-02-13 | [Celery 3 版本  定时执行与 异步执行 |  Django 案例](<posts/2018-02-13-Celery 3 版本 定时执行与 异步执行 Django 案例-2071544.md>) | autoops |
 | 2018-02-11 | [tomcat 9.0.4 性能调优](<posts/2018-02-11-tomcat 9.0.4 性能调优-2071146.md>) | tomcat |
 | 2018-01-31 | [mysql-5.7.21 二进制安装 | Jemalloc内存优化 | 备份恢复｜修改密码](<posts/2018-01-31-mysql-5.7.21 二进制安装 Jemalloc内存优化 备份恢复｜修改密码-2067341.md>) | python |
-| 2018-01-30 | [内核TCP/IP优化](<posts/2018-01-30-内核TCP IP优化-2066868.md>) | Linux |
-| 2018-01-30 | [Web压力测试](posts/2018-01-30-Web压力测试-2066839.md) | Linux |
 | 2018-01-30 | [APP程序上线架构图](posts/2018-01-30-APP程序上线架构图-2066721.md) | tomcat |
+| 2018-01-30 | [Web压力测试](posts/2018-01-30-Web压力测试-2066839.md) | Linux |
+| 2018-01-30 | [内核TCP/IP优化](<posts/2018-01-30-内核TCP IP优化-2066868.md>) | Linux |
 | 2018-01-29 | [nginx+tomcat   session 共享](<posts/2018-01-29-nginx+tomcat session 共享-2066415.md>) | tomcat |
 | 2018-01-25 | [tomcat9 用非root用户开机自启动](<posts/2018-01-25-tomcat9 用非root用户开机自启动-2065086.md>) | tomcat |
 | 2018-01-24 | [tomcat9 更换运行模式为 Apr 模式](<posts/2018-01-24-tomcat9 更换运行模式为 Apr 模式-2064813.md>) | tomcat |
-| 2018-01-22 | [rsync+inotify](posts/2018-01-22-rsync+inotify-2063841.md) | Linux |
-| 2018-01-22 | [NFS 共享存储](<posts/2018-01-22-NFS 共享存储-2063689.md>) | Linux |
 | 2018-01-22 | ['Worker' object has no attribute '_config'](<posts/2018-01-22-'Worker' object has no attribute '_config'-2063631.md>) | ansible |
+| 2018-01-22 | [NFS 共享存储](<posts/2018-01-22-NFS 共享存储-2063689.md>) | Linux |
+| 2018-01-22 | [rsync+inotify](posts/2018-01-22-rsync+inotify-2063841.md) | Linux |
 | 2018-01-16 | [mongodb 3.7.1 安装](<posts/2018-01-16-mongodb 3.7.1 安装-2061444.md>) | lnmp |
 | 2018-01-10 | [MySQL InnoDB Cluser  |  Mysql 5.7 集群](<posts/2018-01-10-MySQL InnoDB Cluser Mysql 5.7 集群-2059436.md>) | lnmp |
 | 2018-01-09 | [php 7.2 编译安装](<posts/2018-01-09-php 7.2 编译安装-2058926.md>) | Linux |
 | 2018-01-05 | [python 3.6.4 一键安装](<posts/2018-01-05-python 3.6.4 一键安装-2057765.md>) | python |
-| 2018-01-02 | [linux 面试题1 附答案](<posts/2018-01-02-linux 面试题1 附答案-2056571.md>) | Linux |
 | 2018-01-02 | [ansible (2.4.2.0)  API    python调用重写 | 适用于 web](<posts/2018-01-02-ansible (2.4.2.0) API python调用重写 适用于 web-2056727.md>) | ansible |
+| 2018-01-02 | [linux 面试题1 附答案](<posts/2018-01-02-linux 面试题1 附答案-2056571.md>) | Linux |
 
 ### 2017 年(55 篇)
 
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
 | 2017-12-29 | [服务器性能分析](posts/2017-12-29-服务器性能分析-2055809.md) | Linux |
-| 2017-12-28 | [zabbix3.4.4  监控mysql 5.7.20 利用percona 1.1.7](<posts/2017-12-28-zabbix3.4.4 监控mysql 5.7.20 利用percona 1.1.7-2055492.md>) | Linux |
 | 2017-12-28 | [zabbix3.4  监控 DELL 硬件模板  | 中文汉化](<posts/2017-12-28-zabbix3.4 监控 DELL 硬件模板 中文汉化-2055499.md>) | Linux |
+| 2017-12-28 | [zabbix3.4.4  监控mysql 5.7.20 利用percona 1.1.7](<posts/2017-12-28-zabbix3.4.4 监控mysql 5.7.20 利用percona 1.1.7-2055492.md>) | Linux |
 | 2017-12-26 | [Python3  django2.0  字段加密 解密 AES](<posts/2017-12-26-Python3 django2.0 字段加密 解密 AES-2054844.md>) | python |
 | 2017-12-20 | [Centos7.4 安装 Inception](<posts/2017-12-20-Centos7.4 安装 Inception-2052602.md>) | python |
-| 2017-12-18 | [阿里云与IDC -- 专线互联](<posts/2017-12-18-阿里云与IDC -- 专线互联-2051756.md>) | 集群 |
+| 2017-12-18 | [阿里云与IDC -- 专线互联](<posts/2017-12-18-阿里云与IDC -- 专线互联-2051756.md>) | cluster |
 | 2017-12-14 | [zabbix3.4.4  编译安装](<posts/2017-12-14-zabbix3.4.4 编译安装-2050520.md>) | lnmp |
 | 2017-12-01 | [nginx+tomcat  动静分离 的配置文件](<posts/2017-12-01-nginx+tomcat 动静分离 的配置文件-2046293.md>) | lnmp |
-| 2017-11-29 | [redis 4.0.1   |   cluster集群](<posts/2017-11-29-redis 4.0.1 cluster集群-2045790.md>) | lnmp |
 | 2017-11-29 | [Mysql 5.7主从](<posts/2017-11-29-Mysql 5.7主从-2045634.md>) | lnmp |
+| 2017-11-29 | [redis 4.0.1   |   cluster集群](<posts/2017-11-29-redis 4.0.1 cluster集群-2045790.md>) | lnmp |
 | 2017-11-28 | [jenkins 2.73.3 安装 、 配置git 、maven](<posts/2017-11-28-jenkins 2.73.3 安装 、 配置git 、maven-2045232.md>) | lnmp |
 | 2017-11-27 | [Jemalloc 5.0.1  安装 |  nginx  mysql 使用](<posts/2017-11-27-Jemalloc 5.0.1 安装 nginx mysql 使用-2044761.md>) | lnmp |
 | 2017-11-24 | [python 基础](<posts/2017-11-24-python 基础-2043852.md>) | python |
@@ -1019,7 +1034,7 @@
 | 2017-11-17 | [django1.11.6+nginx1.12.2+uwsgi2.0.15  部署](<posts/2017-11-17-django1.11.6+nginx1.12.2+uwsgi2.0.15 部署-1982769.md>) | autoops |
 | 2017-11-16 | [mysql-5.7.20  二进制安装 | 备份恢复](<posts/2017-11-16-mysql-5.7.20 二进制安装 备份恢复-1982428.md>) | lnmp |
 | 2017-11-15 | [PHP-7.1.11 YUM安装 | 编译安装](<posts/2017-11-15-PHP-7.1.11 YUM安装 编译安装-1982046.md>) | lnmp |
-| 2017-11-14 | [顺利通过阿里云云计算专业ACP考试认证](posts/2017-11-14-顺利通过阿里云云计算专业ACP考试认证-1981486.md) | 随笔 |
+| 2017-11-14 | [顺利通过阿里云云计算专业ACP考试认证](posts/2017-11-14-顺利通过阿里云云计算专业ACP考试认证-1981486.md) | essays |
 | 2017-11-13 | [nginx-1.12.2 安装| 配置文件 | 日志切割 | 启动文件](<posts/2017-11-13-nginx-1.12.2 安装 配置文件 日志切割 启动文件-1981306.md>) | lnmp |
 | 2017-10-26 | [阿里云云计算ACP考试知识点(标红为重点)](posts/2017-10-26-阿里云云计算ACP考试知识点(标红为重点)-1976334.md) | openstack |
 | 2017-10-19 | [阿里云云计算工程师ACP学习笔记--知识点总结](posts/2017-10-19-阿里云云计算工程师ACP学习笔记--知识点总结-1974241.md) | openstack |
@@ -1029,31 +1044,31 @@
 | 2017-08-08 | [django+echarts+ajax异步+显示优化--基本例子](posts/2017-08-08-django+echarts+ajax异步+显示优化--基本例子-1954409.md) | python |
 | 2017-08-03 | [Python批量发邮件--加附件/抄送](<posts/2017-08-03-Python批量发邮件--加附件 抄送-1953223.md>) | python |
 | 2017-07-17 | [ansible2.x 版本api 调用（适用于web开发使用）](<posts/2017-07-17-ansible2.x 版本api 调用（适用于web开发使用）-1948209.md>) | ansible |
-| 2017-06-19 | [最快捷的自动化装机解决方案--比cobbler 方便10倍](<posts/2017-06-19-最快捷的自动化装机解决方案--比cobbler 方便10倍-1939779.md>) | cobbler |
 | 2017-06-19 | [python 发邮件：sina普通版    |  zabbix版本](<posts/2017-06-19-python 发邮件：sina普通版 zabbix版本-1939844.md>) | python |
+| 2017-06-19 | [最快捷的自动化装机解决方案--比cobbler 方便10倍](<posts/2017-06-19-最快捷的自动化装机解决方案--比cobbler 方便10倍-1939779.md>) | cobbler |
 | 2017-06-16 | [AutoOps  1.8  版本](<posts/2017-06-16-AutoOps 1.8 版本-1937439.md>) | autoops |
 | 2017-05-13 | [day22  session登录](<posts/2017-05-13-day22 session登录-1925359.md>) | python |
 | 2017-04-05 | [day21  登录cookie](<posts/2017-04-05-day21 登录cookie-1913161.md>) | python |
 | 2017-03-29 | [day20  django](<posts/2017-03-29-day20 django-1911354.md>) | python |
 | 2017-03-26 | [day19-URL+视图+模板+ORM](posts/2017-03-26-day19-URL+视图+模板+ORM-1910512.md) | python |
 | 2017-03-25 | [day18-django基础](posts/2017-03-25-day18-django基础-1910348.md) | python |
-| 2017-03-23 | [day17 Jquery](<posts/2017-03-23-day17 Jquery-1909811.md>) | python |
 | 2017-03-23 | [day17 Jquery](<posts/2017-03-23-day17 Jquery-1909810.md>) | python |
+| 2017-03-23 | [day17 Jquery](<posts/2017-03-23-day17 Jquery-1909811.md>) | python |
 | 2017-03-22 | [day16 js+dom](<posts/2017-03-22-day16 js+dom-1909384.md>) | python |
 | 2017-03-21 | [day15CSS+JavaScript+DOM](posts/2017-03-21-day15CSS+JavaScript+DOM-1908641.md) | python |
-| 2017-03-17 | [python3模拟登录zabbix](posts/2017-03-17-python3模拟登录zabbix-1907543.md) | python |
 | 2017-03-17 | [python--学习--day14--web基础:html|css](<posts/2017-03-17-python--学习--day14--web基础 html css-1907759.md>) | python |
+| 2017-03-17 | [python3模拟登录zabbix](posts/2017-03-17-python3模拟登录zabbix-1907543.md) | python |
 | 2017-03-15 | [python3微信企业号 发送图文](<posts/2017-03-15-python3微信企业号 发送图文-1906922.md>) | python |
 | 2017-03-08 | [python3--zabbixapi 的使用](<posts/2017-03-08-python3--zabbixapi 的使用-1904261.md>) | python |
-| 2017-02-21 | [微信企业号：shell定时发送图片 到 指定人](<posts/2017-02-21-微信企业号：shell定时发送图片 到 指定人-1899900.md>) | shell |
-| 2017-02-21 | [微信企业号开发:开启回调模式/Python判断信息--回复指定内容](<posts/2017-02-21-微信企业号开发 开启回调模式 Python判断信息--回复指定内容-1899902.md>) | python |
 | 2017-02-21 | [python3 文本变图片](<posts/2017-02-21-python3 文本变图片-1899899.md>) | python |
-| 2017-02-17 | [微信企业号开启回调模式--php](posts/2017-02-17-微信企业号开启回调模式--php-1898947.md) | python |
+| 2017-02-21 | [微信企业号开发:开启回调模式/Python判断信息--回复指定内容](<posts/2017-02-21-微信企业号开发 开启回调模式 Python判断信息--回复指定内容-1899902.md>) | python |
+| 2017-02-21 | [微信企业号：shell定时发送图片 到 指定人](<posts/2017-02-21-微信企业号：shell定时发送图片 到 指定人-1899900.md>) | shell |
 | 2017-02-17 | [python调用mongodb发送微信企业号](posts/2017-02-17-python调用mongodb发送微信企业号-1898946.md) | python |
-| 2017-02-08 | [php7.1.1一键安装/配置文件简单优化](<posts/2017-02-08-php7.1.1一键安装 配置文件简单优化-1896152.md>) | lnmp |
-| 2017-02-08 | [nginx1.10.3一键安装/系统内核优化/配置文件优化/https/日志切割](<posts/2017-02-08-nginx1.10.3一键安装 系统内核优化 配置文件优化 https 日志切割-1895932.md>) | lnmp |
+| 2017-02-17 | [微信企业号开启回调模式--php](posts/2017-02-17-微信企业号开启回调模式--php-1898947.md) | python |
 | 2017-02-08 | [mysql-5.7.16一键安装/配置优化](<posts/2017-02-08-mysql-5.7.16一键安装 配置优化-1896153.md>) | lnmp |
-| 2017-02-02 | [2017年马上要开始了](posts/2017-02-02-2017年马上要开始了-1894590.md) | 随笔 |
+| 2017-02-08 | [nginx1.10.3一键安装/系统内核优化/配置文件优化/https/日志切割](<posts/2017-02-08-nginx1.10.3一键安装 系统内核优化 配置文件优化 https 日志切割-1895932.md>) | lnmp |
+| 2017-02-08 | [php7.1.1一键安装/配置文件简单优化](<posts/2017-02-08-php7.1.1一键安装 配置文件简单优化-1896152.md>) | lnmp |
+| 2017-02-02 | [2017年马上要开始了](posts/2017-02-02-2017年马上要开始了-1894590.md) | essays |
 | 2017-01-25 | [zabbix 监控h3c  10508 交换机光衰值](<posts/2017-01-25-zabbix 监控h3c 10508 交换机光衰值-1894209.md>) | zabbix |
 | 2017-01-22 | [iptables 默认服务器配置](<posts/2017-01-22-iptables 默认服务器配置-1893677.md>) | Linux |
 | 2017-01-13 | [自动化运维工具ansible--笔记一之简介安装/常用模块](<posts/2017-01-13-自动化运维工具ansible--笔记一之简介安装 常用模块-1891703.md>) | ansible |
@@ -1062,61 +1077,61 @@
 
 | 日期 | 标题 | 分类 |
 | --- | --- | --- |
-| 2016-12-29 | [Python--day9--进程/线程/协程](<posts/2016-12-29-Python--day9--进程 线程 协程-1887449.md>) | python |
 | 2016-12-29 | [Python--day8--Socket编程/异常处理](<posts/2016-12-29-Python--day8--Socket编程 异常处理-1887260.md>) | python |
-| 2016-12-28 | [Python--day7--面向对象编程进阶](posts/2016-12-28-Python--day7--面向对象编程进阶-1886936.md) | python |
+| 2016-12-29 | [Python--day9--进程/线程/协程](<posts/2016-12-29-Python--day9--进程 线程 协程-1887449.md>) | python |
 | 2016-12-28 | [Python--day6--面向对象学习](posts/2016-12-28-Python--day6--面向对象学习-1886861.md) | python |
-| 2016-12-27 | [Python--day5--常用模块](posts/2016-12-27-Python--day5--常用模块-1886646.md) | python |
+| 2016-12-28 | [Python--day7--面向对象编程进阶](posts/2016-12-28-Python--day7--面向对象编程进阶-1886936.md) | python |
 | 2016-12-27 | [Python--day4--正则表达式/冒泡/时间复杂度](<posts/2016-12-27-Python--day4--正则表达式 冒泡 时间复杂度-1886449.md>) | python |
-| 2016-12-26 | [集群四 mysql-5.7.16一键安装](<posts/2016-12-26-集群四 mysql-5.7.16一键安装-1886310.md>) | 集群 |
-| 2016-12-26 | [集群二 nginx](<posts/2016-12-26-集群二 nginx-1886308.md>) | 集群 |
-| 2016-12-26 | [集群三 php+memcached缓存服务器](<posts/2016-12-26-集群三 php+memcached缓存服务器-1886309.md>) | 集群 |
-| 2016-12-26 | [集群一 HAProxy+keepalived+varnsh](<posts/2016-12-26-集群一 HAProxy+keepalived+varnsh-1886307.md>) | 集群 |
-| 2016-12-26 | [python笔记二 基础](<posts/2016-12-26-python笔记二 基础-1886269.md>) | python |
-| 2016-12-26 | [python笔记三 函数](<posts/2016-12-26-python笔记三 函数-1886270.md>) | python |
-| 2016-12-26 | [Python笔记一  基础概念与基础认识](<posts/2016-12-26-Python笔记一 基础概念与基础认识-1886268.md>) | python |
+| 2016-12-27 | [Python--day5--常用模块](posts/2016-12-27-Python--day5--常用模块-1886646.md) | python |
 | 2016-12-26 | [Python--day4--迭代器-生成器-装饰器-目录](posts/2016-12-26-Python--day4--迭代器-生成器-装饰器-目录-1886276.md) | python |
+| 2016-12-26 | [Python笔记一  基础概念与基础认识](<posts/2016-12-26-Python笔记一 基础概念与基础认识-1886268.md>) | python |
+| 2016-12-26 | [python笔记三 函数](<posts/2016-12-26-python笔记三 函数-1886270.md>) | python |
+| 2016-12-26 | [python笔记二 基础](<posts/2016-12-26-python笔记二 基础-1886269.md>) | python |
+| 2016-12-26 | [集群一 HAProxy+keepalived+varnsh](<posts/2016-12-26-集群一 HAProxy+keepalived+varnsh-1886307.md>) | cluster |
+| 2016-12-26 | [集群三 php+memcached缓存服务器](<posts/2016-12-26-集群三 php+memcached缓存服务器-1886309.md>) | cluster |
+| 2016-12-26 | [集群二 nginx](<posts/2016-12-26-集群二 nginx-1886308.md>) | cluster |
+| 2016-12-26 | [集群四 mysql-5.7.16一键安装](<posts/2016-12-26-集群四 mysql-5.7.16一键安装-1886310.md>) | cluster |
 | 2016-10-22 | [python-day1-login练习](posts/2016-10-22-python-day1-login练习-1864611.md) | python |
 | 2016-10-09 | [python 数据类型基础](<posts/2016-10-09-python 数据类型基础-1859683.md>) | python |
-| 2016-09-05 | [XX平台升级报告](posts/2016-09-05-XX平台升级报告-1846566.md) | 运维基础 |
+| 2016-09-05 | [XX平台升级报告](posts/2016-09-05-XX平台升级报告-1846566.md) | ops-basics |
 | 2016-09-04 | [Openstack Mitaka for  Centos7.2 部署指南（三）](<posts/2016-09-04-Openstack Mitaka for Centos7.2 部署指南（三）-1846096.md>) | openstack |
 | 2016-09-03 | [Openstack Mitaka for  Centos7.2 部署指南（二）](<posts/2016-09-03-Openstack Mitaka for Centos7.2 部署指南（二）-1846001.md>) | openstack |
 | 2016-08-31 | [puppet-笔记1](posts/2016-08-31-puppet-笔记1-1844951.md) | ansible |
 | 2016-08-29 | [Openstack Mitaka for  Centos7.2 部署指南（一）](<posts/2016-08-29-Openstack Mitaka for Centos7.2 部署指南（一）-1844084.md>) | openstack |
 | 2016-08-25 | [OpenStack Mitaka for Ubuntu 16.04 LTS 部署指南](<posts/2016-08-25-OpenStack Mitaka for Ubuntu 16.04 LTS 部署指南-1842494.md>) | openstack |
 | 2016-08-05 | [linux 简单格式化硬盘脚本](<posts/2016-08-05-linux 简单格式化硬盘脚本-1834578.md>) | shell |
-| 2016-08-01 | [openstack学习笔记十一  Nova](<posts/2016-08-01-openstack学习笔记十一 Nova-1832697.md>) | openstack |
-| 2016-08-01 | [openstack学习笔记十 neutron](<posts/2016-08-01-openstack学习笔记十 neutron-1832696.md>) | openstack |
 | 2016-08-01 | [ERROR : Error appeared during Puppet run: x.x.x.x _keystone.pp](<posts/2016-08-01-ERROR Error appeared during Puppet run x.x.x.x _keystone.pp-1833247.md>) | openstack |
+| 2016-08-01 | [openstack学习笔记十 neutron](<posts/2016-08-01-openstack学习笔记十 neutron-1832696.md>) | openstack |
+| 2016-08-01 | [openstack学习笔记十一  Nova](<posts/2016-08-01-openstack学习笔记十一 Nova-1832697.md>) | openstack |
 | 2016-07-28 | [openstack学习笔记九 cinder基础配置](<posts/2016-07-28-openstack学习笔记九 cinder基础配置-1830981.md>) | openstack |
 | 2016-07-25 | [openstack部署实战第2版之Open vSwitch](<posts/2016-07-25-openstack部署实战第2版之Open vSwitch-1829871.md>) | openstack |
 | 2016-07-21 | [openstack学习笔记八 glance安装配置](<posts/2016-07-21-openstack学习笔记八 glance安装配置-1828592.md>) | openstack |
-| 2016-07-13 | [参加云计算开源产业联盟成果发布会的一些照片](posts/2016-07-13-参加云计算开源产业联盟成果发布会的一些照片-1826181.md) | 随笔 |
+| 2016-07-13 | [参加云计算开源产业联盟成果发布会的一些照片](posts/2016-07-13-参加云计算开源产业联盟成果发布会的一些照片-1826181.md) | essays |
 | 2016-07-09 | [openstack学习笔记七 swift安装](<posts/2016-07-09-openstack学习笔记七 swift安装-1812861.md>) | openstack |
 | 2016-07-06 | [sendEmail报错：at /usr/share/perl5/vendor_perl/IO/Socket/SSL.pm](<posts/2016-07-06-sendEmail报错：at usr share perl5 vendor_perl IO Socket SSL.pm-1811246.md>) | zabbix |
-| 2016-07-05 | [openstack学习笔记四 组件框架](<posts/2016-07-05-openstack学习笔记四 组件框架-1795980.md>) | openstack |
-| 2016-07-05 | [openstack学习笔记六 多节点部署之keystone](<posts/2016-07-05-openstack学习笔记六 多节点部署之keystone-1796108.md>) | openstack |
-| 2016-07-05 | [openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据](<posts/2016-07-05-openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据-1796041.md>) | openstack |
-| 2016-07-05 | [openstack学习笔记三 创建第一个实例](<posts/2016-07-05-openstack学习笔记三 创建第一个实例-1795927.md>) | openstack |
 | 2016-07-05 | [7月份 北京有关openstack的会议](<posts/2016-07-05-7月份 北京有关openstack的会议-1796068.md>) | openstack |
-| 2016-07-04 | [openstack学习笔记二 网络设置基础](<posts/2016-07-04-openstack学习笔记二 网络设置基础-1795705.md>) | openstack |
-| 2016-07-04 | [openstack学习笔记一 RDO模式安装](<posts/2016-07-04-openstack学习笔记一 RDO模式安装-1795664.md>) | openstack |
+| 2016-07-05 | [openstack学习笔记三 创建第一个实例](<posts/2016-07-05-openstack学习笔记三 创建第一个实例-1795927.md>) | openstack |
+| 2016-07-05 | [openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据](<posts/2016-07-05-openstack学习笔记五 多节点部署之 rabbitmq信息中枢与元数据-1796041.md>) | openstack |
+| 2016-07-05 | [openstack学习笔记六 多节点部署之keystone](<posts/2016-07-05-openstack学习笔记六 多节点部署之keystone-1796108.md>) | openstack |
+| 2016-07-05 | [openstack学习笔记四 组件框架](<posts/2016-07-05-openstack学习笔记四 组件框架-1795980.md>) | openstack |
 | 2016-07-04 | [ERROR : Error appeared during Puppet run: 192.168.1.201_mariadb.pp](<posts/2016-07-04-ERROR Error appeared during Puppet run 192.168.1.201_mariadb.pp-1795594.md>) | openstack |
+| 2016-07-04 | [openstack学习笔记一 RDO模式安装](<posts/2016-07-04-openstack学习笔记一 RDO模式安装-1795664.md>) | openstack |
+| 2016-07-04 | [openstack学习笔记二 网络设置基础](<posts/2016-07-04-openstack学习笔记二 网络设置基础-1795705.md>) | openstack |
 | 2016-07-01 | [shell IFS例子](<posts/2016-07-01-shell IFS例子-1795015.md>) | shell |
 | 2016-06-29 | [zabbix_agentd报错汇总](posts/2016-06-29-zabbix_agentd报错汇总-1794376.md) | zabbix |
 | 2016-06-14 | [centos7.2系统基本优化](posts/2016-06-14-centos7.2系统基本优化-1789146.md) | Linux |
-| 2016-06-01 | [LVS笔记](posts/2016-06-01-LVS笔记-1785317.md) | 集群 |
+| 2016-06-01 | [LVS笔记](posts/2016-06-01-LVS笔记-1785317.md) | cluster |
+| 2016-05-31 | [个人画的第一幅图memcached](posts/2016-05-31-个人画的第一幅图memcached-1784994.md) | cluster |
 | 2016-05-31 | [企业级nginx服务优化合集](posts/2016-05-31-企业级nginx服务优化合集-1784987.md) | lnmp |
-| 2016-05-31 | [个人画的第一幅图memcached](posts/2016-05-31-个人画的第一幅图memcached-1784994.md) | 集群 |
-| 2016-05-30 | [nginx重点优化合集一](posts/2016-05-30-nginx重点优化合集一-1784366.md) | lnmp |
 | 2016-05-30 | [LNMP_6.8+1.11.0+5.6.12+5.6.22](posts/2016-05-30-LNMP_6.8+1.11.0+5.6.12+5.6.22-1784440.md) | lnmp |
+| 2016-05-30 | [nginx重点优化合集一](posts/2016-05-30-nginx重点优化合集一-1784366.md) | lnmp |
 | 2016-05-26 | [CentOS Linux 6.8 正式发布 新版内核+大量更新](<posts/2016-05-26-CentOS Linux 6.8 正式发布 新版内核+大量更新-1783481.md>) | Linux |
 | 2016-05-25 | [GeoIP最快捷安装](posts/2016-05-25-GeoIP最快捷安装-1783283.md) | Linux |
-| 2016-05-24 | [memcache安装](posts/2016-05-24-memcache安装-1782523.md) | Linux |
 | 2016-05-24 | [[WARNING] [INS-13014] Target environment do not meet some optional requirements.](<posts/2016-05-24-[WARNING] [INS-13014] Target environment do not meet some optional req-1782765.md>) | Linux |
+| 2016-05-24 | [memcache安装](posts/2016-05-24-memcache安装-1782523.md) | Linux |
 | 2016-05-23 | [mysql日志+引擎笔记](posts/2016-05-23-mysql日志+引擎笔记-1782212.md) | Linux |
 | 2016-05-20 | [mysql全备份+增量备份笔记总结](posts/2016-05-20-mysql全备份+增量备份笔记总结-1775333.md) | Linux |
-| 2016-05-19 | [庆祝自己博客访问上千，继续努力](posts/2016-05-19-庆祝自己博客访问上千，继续努力-1775211.md) | 随笔 |
+| 2016-05-19 | [庆祝自己博客访问上千，继续努力](posts/2016-05-19-庆祝自己博客访问上千，继续努力-1775211.md) | essays |
 | 2016-05-18 | [mysql主从复制](posts/2016-05-18-mysql主从复制-1774806.md) | Linux |
 | 2016-05-17 | [mysql备份与恢复+ERROR 1046](<posts/2016-05-17-mysql备份与恢复+ERROR 1046-1774511.md>) | Linux |
 | 2016-05-16 | [mysql数据库应用管理+乱码+字符集](posts/2016-05-16-mysql数据库应用管理+乱码+字符集-1773918.md) | Linux |
@@ -1124,53 +1139,53 @@
 | 2016-05-10 | [mysql基础操作](posts/2016-05-10-mysql基础操作-1771935.md) | Linux |
 | 2016-05-09 | [MySQL安装+多实例](posts/2016-05-09-MySQL安装+多实例-1771596.md) | Linux |
 | 2016-05-07 | [COBBLER无人值守安装-----已用真实服务器测试](posts/2016-05-07-COBBLER无人值守安装-----已用真实服务器测试-1770950.md) | cobbler |
-| 2016-05-06 | [企业级nginx服务优化（四 )伪静态+php.ini](<posts/2016-05-06-企业级nginx服务优化（四 )伪静态+php.ini-1770778.md>) | lnmp |
-| 2016-05-06 | [企业级nginx服务优化（二 )](<posts/2016-05-06-企业级nginx服务优化（二 )-1770627.md>) | lnmp |
 | 2016-05-06 | [企业级nginx服务优化（三 )Apache+防盗链](<posts/2016-05-06-企业级nginx服务优化（三 )Apache+防盗链-1770655.md>) | lnmp |
-| 2016-05-05 | [企业级nginx服务优化（一)](posts/2016-05-05-企业级nginx服务优化（一)-1770441.md) | lnmp |
+| 2016-05-06 | [企业级nginx服务优化（二 )](<posts/2016-05-06-企业级nginx服务优化（二 )-1770627.md>) | lnmp |
+| 2016-05-06 | [企业级nginx服务优化（四 )伪静态+php.ini](<posts/2016-05-06-企业级nginx服务优化（四 )伪静态+php.ini-1770778.md>) | lnmp |
 | 2016-05-05 | [LAMP与LNMP加速与缓存优化(二)](posts/2016-05-05-LAMP与LNMP加速与缓存优化(二)-1770388.md) | lnmp |
+| 2016-05-05 | [企业级nginx服务优化（一)](posts/2016-05-05-企业级nginx服务优化（一)-1770441.md) | lnmp |
 | 2016-05-04 | [LAMP与LNMP加速与缓存优化(一)2](posts/2016-05-04-LAMP与LNMP加速与缓存优化(一)2-1770130.md) | lnmp |
 | 2016-05-03 | [LAMP与LNMP加速与缓存优化(一)1](posts/2016-05-03-LAMP与LNMP加速与缓存优化(一)1-1769879.md) | lnmp |
 | 2016-04-28 | [nginx代理负载均衡简单](posts/2016-04-28-nginx代理负载均衡简单-1768714.md) | lnmp |
-| 2016-04-27 | [在CENTOS7/RHEL7修改网卡名称](<posts/2016-04-27-在CENTOS7 RHEL7修改网卡名称-1768380.md>) | Linux |
-| 2016-04-27 | [你那么努力，吃了那么多苦，也没见你有多优秀啊？](posts/2016-04-27-你那么努力，吃了那么多苦，也没见你有多优秀啊？-1768419.md) | 随笔 |
-| 2016-04-27 | [nginx.conf基本配置与参数说明](posts/2016-04-27-nginx.conf基本配置与参数说明-1768378.md) | lnmp |
-| 2016-04-27 | [nginx 修改并隐藏版本号](<posts/2016-04-27-nginx 修改并隐藏版本号-1768379.md>) | lnmp |
 | 2016-04-27 | [centos7下mariadb 首次修改密码及忘记密码处理方法](<posts/2016-04-27-centos7下mariadb 首次修改密码及忘记密码处理方法-1768386.md>) | Linux |
-| 2016-04-26 | [nginx简单配置](posts/2016-04-26-nginx简单配置-1767844.md) | Linux |
+| 2016-04-27 | [nginx 修改并隐藏版本号](<posts/2016-04-27-nginx 修改并隐藏版本号-1768379.md>) | lnmp |
+| 2016-04-27 | [nginx.conf基本配置与参数说明](posts/2016-04-27-nginx.conf基本配置与参数说明-1768378.md) | lnmp |
+| 2016-04-27 | [你那么努力，吃了那么多苦，也没见你有多优秀啊？](posts/2016-04-27-你那么努力，吃了那么多苦，也没见你有多优秀啊？-1768419.md) | essays |
+| 2016-04-27 | [在CENTOS7/RHEL7修改网卡名称](<posts/2016-04-27-在CENTOS7 RHEL7修改网卡名称-1768380.md>) | Linux |
 | 2016-04-26 | [linux  lnmp安装](<posts/2016-04-26-linux lnmp安装-1768044.md>) | Linux |
+| 2016-04-26 | [nginx简单配置](posts/2016-04-26-nginx简单配置-1767844.md) | Linux |
 | 2016-04-25 | [Nginx简单安装](posts/2016-04-25-Nginx简单安装-1767646.md) | Linux |
 | 2016-04-20 | [lamp搭建](posts/2016-04-20-lamp搭建-1765665.md) | Linux |
 | 2016-04-19 | [linux 虚拟主机](<posts/2016-04-19-linux 虚拟主机-1765392.md>) | Linux |
-| 2016-04-17 | [linux apache 2.4.20版本安装](<posts/2016-04-17-linux apache 2.4.20版本安装-1764833.md>) | Linux |
 | 2016-04-17 | [Linux  sersync](<posts/2016-04-17-Linux sersync-1764699.md>) | Linux |
+| 2016-04-17 | [linux apache 2.4.20版本安装](<posts/2016-04-17-linux apache 2.4.20版本安装-1764833.md>) | Linux |
 | 2016-04-16 | [linux grep awk sed  find  cut](<posts/2016-04-16-linux grep awk sed find cut-1764502.md>) | Linux |
-| 2016-04-15 | [rsync深度实战](posts/2016-04-15-rsync深度实战-1764098.md) | Linux |
-| 2016-04-15 | [linux  inotify+rsync](<posts/2016-04-15-linux inotify+rsync-1764262.md>) | Linux |
 | 2016-04-15 | [Linux inotify](<posts/2016-04-15-Linux inotify-1764193.md>) | Linux |
+| 2016-04-15 | [linux  inotify+rsync](<posts/2016-04-15-linux inotify+rsync-1764262.md>) | Linux |
+| 2016-04-15 | [rsync深度实战](posts/2016-04-15-rsync深度实战-1764098.md) | Linux |
 | 2016-04-14 | [linux rsync](<posts/2016-04-14-linux rsync-1763780.md>) | Linux |
 | 2016-04-12 | [linux ssh key免密码分发](<posts/2016-04-12-linux ssh key免密码分发-1762853.md>) | Linux |
-| 2016-04-08 | [知乎文章：旁观者 - 技术高手如何炼成](<posts/2016-04-08-知乎文章：旁观者 - 技术高手如何炼成-1761571.md>) | 随笔 |
-| 2016-04-08 | [极简主义](posts/2016-04-08-极简主义-1761570.md) | 随笔 |
-| 2016-04-08 | [我们这一代人的困惑](posts/2016-04-08-我们这一代人的困惑-1761572.md) | 随笔 |
-| 2016-04-08 | [为什么有些人很聪明?他们遇到问题时的思维方式与我们差别在哪呢?转自知乎](<posts/2016-04-08-为什么有些人很聪明 他们遇到问题时的思维方式与我们差别在哪呢 转自知乎-1761573.md>) | 随笔 |
-| 2016-04-07 | [《信息安全技术信息系统安全等级保护指南》的个人总结](posts/2016-04-07-《信息安全技术信息系统安全等级保护指南》的个人总结-1761366.md) | 安全 |
-| 2016-04-07 | [linux ssh基本](<posts/2016-04-07-linux ssh基本-1761324.md>) | Linux |
+| 2016-04-08 | [为什么有些人很聪明?他们遇到问题时的思维方式与我们差别在哪呢?转自知乎](<posts/2016-04-08-为什么有些人很聪明 他们遇到问题时的思维方式与我们差别在哪呢 转自知乎-1761573.md>) | essays |
+| 2016-04-08 | [我们这一代人的困惑](posts/2016-04-08-我们这一代人的困惑-1761572.md) | essays |
+| 2016-04-08 | [极简主义](posts/2016-04-08-极简主义-1761570.md) | essays |
+| 2016-04-08 | [知乎文章：旁观者 - 技术高手如何炼成](<posts/2016-04-08-知乎文章：旁观者 - 技术高手如何炼成-1761571.md>) | essays |
 | 2016-04-07 | [linux man中文手册](<posts/2016-04-07-linux man中文手册-1761212.md>) | Linux |
-| 2016-04-06 | [《卫生行业信息安全等级保护工作的指导意见》的个人总结](posts/2016-04-06-《卫生行业信息安全等级保护工作的指导意见》的个人总结-1761088.md) | 安全 |
+| 2016-04-07 | [linux ssh基本](<posts/2016-04-07-linux ssh基本-1761324.md>) | Linux |
+| 2016-04-07 | [《信息安全技术信息系统安全等级保护指南》的个人总结](posts/2016-04-07-《信息安全技术信息系统安全等级保护指南》的个人总结-1761366.md) | security |
 | 2016-04-06 | [linuxNFS优化及自动挂载autofs](posts/2016-04-06-linuxNFS优化及自动挂载autofs-1760940.md) | Linux |
+| 2016-04-06 | [《卫生行业信息安全等级保护工作的指导意见》的个人总结](posts/2016-04-06-《卫生行业信息安全等级保护工作的指导意见》的个人总结-1761088.md) | security |
 | 2016-04-03 | [linux NFS网络文件系统](<posts/2016-04-03-linux NFS网络文件系统-1759919.md>) | Linux |
-| 2016-04-01 | [linux网络基础](posts/2016-04-01-linux网络基础-1759297.md) | Linux |
-| 2016-04-01 | [linux磁盘管理](posts/2016-04-01-linux磁盘管理-1759336.md) | Linux |
 | 2016-04-01 | [linux权限集中管理和行为日志审计](posts/2016-04-01-linux权限集中管理和行为日志审计-1759231.md) | Linux |
-| 2016-03-31 | [linux用户管理](posts/2016-03-31-linux用户管理-1759037.md) | Linux |
+| 2016-04-01 | [linux磁盘管理](posts/2016-04-01-linux磁盘管理-1759336.md) | Linux |
+| 2016-04-01 | [linux网络基础](posts/2016-04-01-linux网络基础-1759297.md) | Linux |
 | 2016-03-31 | [Linux crond](<posts/2016-03-31-Linux crond-1758943.md>) | Linux |
-| 2016-03-30 | [linux正则表达式BRE](posts/2016-03-30-linux正则表达式BRE-1758538.md) | Linux |
-| 2016-03-30 | [linux文件类型2](posts/2016-03-30-linux文件类型2-1758337.md) | Linux |
+| 2016-03-31 | [linux用户管理](posts/2016-03-31-linux用户管理-1759037.md) | Linux |
 | 2016-03-30 | [linux文件权限](posts/2016-03-30-linux文件权限-1758598.md) | Linux |
-| 2016-03-29 | [linux文件类型](posts/2016-03-29-linux文件类型-1758015.md) | Linux |
-| 2016-03-29 | [linux基础命令练习1](posts/2016-03-29-linux基础命令练习1-1758200.md) | Linux |
-| 2016-03-29 | [Linux目录结构](posts/2016-03-29-Linux目录结构-1757935.md) | Linux |
-| 2016-03-29 | [Linux基础操作优化](posts/2016-03-29-Linux基础操作优化-1757932.md) | Linux |
-| 2016-03-29 | [Linux基础命令](posts/2016-03-29-Linux基础命令-1757934.md) | Linux |
+| 2016-03-30 | [linux文件类型2](posts/2016-03-30-linux文件类型2-1758337.md) | Linux |
+| 2016-03-30 | [linux正则表达式BRE](posts/2016-03-30-linux正则表达式BRE-1758538.md) | Linux |
 | 2016-03-29 | [CentOS镜像使用帮助--yum更新](posts/2016-03-29-CentOS镜像使用帮助--yum更新-1757931.md) | Linux |
+| 2016-03-29 | [Linux基础命令](posts/2016-03-29-Linux基础命令-1757934.md) | Linux |
+| 2016-03-29 | [Linux基础操作优化](posts/2016-03-29-Linux基础操作优化-1757932.md) | Linux |
+| 2016-03-29 | [Linux目录结构](posts/2016-03-29-Linux目录结构-1757935.md) | Linux |
+| 2016-03-29 | [linux基础命令练习1](posts/2016-03-29-linux基础命令练习1-1758200.md) | Linux |
+| 2016-03-29 | [linux文件类型](posts/2016-03-29-linux文件类型-1758015.md) | Linux |

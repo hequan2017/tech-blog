@@ -1,7 +1,7 @@
 ---
 title: "k8s node NotReady Container runtime network not ready' networkReady='NetworkRe"
 date: "2022-09-06 10:58:01"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/5654734"
 ---
 > **内容介绍**

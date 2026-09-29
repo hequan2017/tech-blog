@@ -1,7 +1,7 @@
 ---
 title: "解决启用 codemirror后，jquery获取不到textarea 的值"
 date: "2018-11-16 17:54:25"
-category: "前端"
+category: "frontend"
 source: "https://blog.51cto.com/hequan/2318076"
 ---
 > **内容介绍**

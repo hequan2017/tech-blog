@@ -1,7 +1,7 @@
 ---
 title: "Error: vue-loader requires @vue/compiler-sfc to be"
 date: "2020-09-20 12:59:35"
-category: "前端"
+category: "frontend"
 source: "https://blog.51cto.com/hequan/2536201"
 ---
 > **内容介绍**
