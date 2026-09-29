@@ -6,16 +6,25 @@ source: "https://blog.51cto.com/hequan/5146223"
 ---
 > **内容介绍**
 >
-> 本文是Kubernetes 云原生容器编排实践,记录了「dockerfile  vue+go 发布 例子  docker-compose」的相关内容。
+> 本文转载 gin-vue-admin 开源项目的容器化部署配置：用一份
+> docker-compose 编排 web、server、mysql、redis 四个服务，
+> 并附上前后端各自的 Dockerfile——Go 后端多阶段构建，
+> 前端经 Node 构建后交由 Nginx 托管静态页面。
 
 > **技术备注**
 >
-> CentOS 6 已于 2020 年 11 月停止维护(EOL),生产环境建议迁移至 Rocky Linux / AlmaLinux / Ubuntu LTS。
+> 以 2026 年视角回看：node:16 已于 2023 年 9 月停止维护，
+> mysql:8.0.21 与 redis:6.0.6 也是 2020 年前后的旧版本，
+> 实践时建议换用更新的镜像标签；如今的 Compose V2 已忽略
+> 顶层 version 字段，服务互访直接用服务名即可，links 属遗留写法。
 
 ---
 
-```shell
-来自 https:///flipped-aurora/gin-vue-admin 转载
+来自 <https://github.com/flipped-aurora/gin-vue-admin> 转载。
+
+## 1. docker-compose 编排：一键启动四个服务
+
+```yaml
 version: "3"
 
 # 声明一个名为network的networks,subnet为network的子网地址,默认网关是177.7.0.1
@@ -92,9 +101,14 @@ services:
     networks:
       network:
         ipv4_address: 177.7.0.14
+```
+
+## 2. server/Dockerfile：Go 后端多阶段构建
+
+```dockerfile
 FROM golang:alpine as builder
 
-WORKDIR /go/src//flipped-aurora/gin-vue-admin/server
+WORKDIR /go/src/github.com/flipped-aurora/gin-vue-admin/server
 COPY . .
 
 RUN go env -w GO111MODULE=on \
@@ -106,16 +120,21 @@ RUN go env -w GO111MODULE=on \
 
 FROM alpine:latest
 
-LABEL MAINTAINER="SliverHorn@sliver_horn@"
+LABEL MAINTAINER="SliverHorn@sliver_horn@qq.com"
 
-WORKDIR /go/src//flipped-aurora/gin-vue-admin/server
+WORKDIR /go/src/github.com/flipped-aurora/gin-vue-admin/server
 
-COPY --from=0 /go/src//flipped-aurora/gin-vue-admin/server/server ./
-COPY --from=0 /go/src//flipped-aurora/gin-vue-admin/server/resource ./resource/
-COPY --from=0 /go/src//flipped-aurora/gin-vue-admin/server/config.docker.yaml ./
+COPY --from=0 /go/src/github.com/flipped-aurora/gin-vue-admin/server/server ./
+COPY --from=0 /go/src/github.com/flipped-aurora/gin-vue-admin/server/resource ./resource/
+COPY --from=0 /go/src/github.com/flipped-aurora/gin-vue-admin/server/config.docker.yaml ./
 
 EXPOSE 8888
 ENTRYPOINT ./server -c config.docker.yaml
+```
+
+## 3. web/Dockerfile：前端构建后交给 Nginx 托管
+
+```dockerfile
 FROM node:16
 
 WORKDIR /gva_web/
@@ -124,7 +143,7 @@ COPY . .
 RUN yarn && yarn build
 
 FROM nginx:alpine
-LABEL MAINTAINER="SliverHorn@sliver_horn@"
+LABEL MAINTAINER="SliverHorn@sliver_horn@qq.com"
 
 COPY .docker-compose/nginx/conf.d/my.conf /etc/nginx/conf.d/my.conf
 COPY --from=0 /gva_web/dist /usr/share/nginx/html
