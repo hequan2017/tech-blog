@@ -196,6 +196,10 @@
  "2019-11-28-python jenkins 打包构建代码-2454600.md": "Packaging and Building Code with Python and Jenkins",
  "2019-12-25-Go 车牌识别 （网络图片 本地图片）-2461676.md": "Go License Plate Recognition (Web Image | Local Image)",
  "2019-12-25-python 开源 车牌 识别-2461730.md": "Python Open-Source License Plate Recognition",
+ "2020-04-30-cobbler api python3调用，创建system,删除system-2491810.md": "Calling the Cobbler API with Python 3 to Create and Delete Systems",
+ "2020-08-14-python3 在服务器上打印资产信息-2520351.md": "Printing Asset Information on a Server with Python 3",
+ "2020-08-20-运维平台 py go 调用钉钉工作流api接口示例-2522252.md": "Ops Platform: Calling the DingTalk Workflow API with Python/Go",
+ "2020-09-20-运维平台工作流--简单示例-2536208.md": "Ops Platform Workflow - A Simple Example",
  "2022-01-13-vue 自动补全输入框 多个输入框-4921590.md": "Vue Autocomplete Input with Multiple Inputs",
  "2022-03-18-vue3 多选传对象 到 go-5118065.md": "Passing Selected Objects from a Vue3 Multi-Select to Go",
  "2022-03-24-dockerfile vue+go 发布 例子 docker-compose-5146223.md": "Dockerfile vue+go deployment example with docker-compose",
@@ -276,5 +280,6 @@
  "2024-07-31-nvidia驱动安装-11622160.md": "Installing the NVIDIA Driver",
  "2024-08-01-nvidia-docker + helm+cuda+gpu_burn-11633590.md": "nvidia-docker + helm + cuda + gpu_burn",
  "2024-08-06-k8s 安装 proxy-11673646.md": "Installing a Proxy on k8s",
- "2024-12-25-kvm的安装 部署 测试 网络-12930481.md": "KVM Installation, Deployment, Testing, and Networking"
+ "2024-12-25-kvm的安装 部署 测试 网络-12930481.md": "KVM Installation, Deployment, Testing, and Networking",
+ "2025-09-05-抓取某招聘网站数据，测试用-14178617.md": "Scraping a Job Site for Data (Test Script)"
 }
