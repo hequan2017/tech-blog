@@ -110,6 +110,6 @@ vim      index.jsp
         }
 ```
 
-![](../assets/2066415/01_23f627c80559b900c1ba53508540897b.png)
+![Test page on tomcat1 showing the session ID](../assets/2066415/01_23f627c80559b900c1ba53508540897b.png)
 
-![](../assets/2066415/02_e58c876bd28e52ebe33ff5645e8f3129.png)
+![tomcat2 showing the same session ID](../assets/2066415/02_e58c876bd28e52ebe33ff5645e8f3129.png)

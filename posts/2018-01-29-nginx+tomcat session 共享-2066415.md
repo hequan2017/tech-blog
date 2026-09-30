@@ -109,6 +109,6 @@ vim      index.jsp
         }
 ```
 
-![](assets/2066415/01_23f627c80559b900c1ba53508540897b.png)
+![tomcat1 节点测试页显示会话 ID](assets/2066415/01_23f627c80559b900c1ba53508540897b.png)
 
-![](assets/2066415/02_e58c876bd28e52ebe33ff5645e8f3129.png)
+![tomcat2 节点显示相同会话 ID](assets/2066415/02_e58c876bd28e52ebe33ff5645e8f3129.png)
