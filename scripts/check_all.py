@@ -23,6 +23,18 @@ issues = {
 IMG_RE = re.compile(r'(!\[(.*?)\]\(([^)]+)\))')
 LINK_IMG_RE = re.compile(r'\[!\[(.*?)\]\([^)]+\)\]\((https?://[^)]*51cto[^)]*)\)')
 
+
+def strip_fences(text):
+    """去掉代码围栏内容: 围栏内的 &nbsp;/&#12288; 等是教学示例, 不算脏 HTML"""
+    out, in_fence = [], False
+    for ln in text.split('\n'):
+        if ln.startswith('```'):
+            in_fence = not in_fence
+            continue
+        if not in_fence:
+            out.append(ln)
+    return '\n'.join(out)
+
 for f in sorted(os.listdir(POSTS)):
     if not f.endswith('.md'):
         continue
@@ -60,11 +72,12 @@ for f in sorted(os.listdir(POSTS)):
     if LINK_IMG_RE.search(body):
         issues['dead_img_link'].append(f)
 
-    # 脏 HTML
-    if re.search(r'&nbsp;|<br\s*/?>\s*$|&#\d+;', body):
+    # 脏 HTML (仅查围栏外正文)
+    body_nofence = strip_fences(body)
+    if re.search(r'&nbsp;|<br\s*/?>\s*$|&#\d+;', body_nofence):
         issues['html_junk'].append(f)
     # 裸 URL 成对残留 (51cto 抓取常见)
-    if re.search(r'\[https?://s\d\.51cto[^\]]*\]\(https?://', body):
+    if re.search(r'\[https?://s\d\.51cto[^\]]*\]\(https?://', body_nofence):
         issues['raw_url_junk'].append(f)
 
     if re.search(r'[ \t]+$', body, re.M):
