@@ -21,9 +21,9 @@ lang: "en"
 
 ### Demo
 
-![](../assets/2406980/01_2237982917e751bc6099ba36cca1ca66.jpg)
+![Pod list page of the WebSSH management console](../assets/2406980/01_2237982917e751bc6099ba36cca1ca66.jpg)
 
-![](../assets/2406980/02_e1333df55574b0501ae37675b3ef1ff1.jpg)
+![Terminal running commands inside a container via WebSSH](../assets/2406980/02_e1333df55574b0501ae37675b3ef1ff1.jpg)
 
 ### Description
 

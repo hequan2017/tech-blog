@@ -20,9 +20,9 @@ source: "https://blog.51cto.com/hequan/2406980"
 
 ### demo
 
-![](assets/2406980/01_2237982917e751bc6099ba36cca1ca66.jpg)
+![WebSSH 管理后台的 Pod 列表页面](assets/2406980/01_2237982917e751bc6099ba36cca1ca66.jpg)
 
-![](assets/2406980/02_e1333df55574b0501ae37675b3ef1ff1.jpg)
+![通过 WebSSH 在容器内执行命令的终端](assets/2406980/02_e1333df55574b0501ae37675b3ef1ff1.jpg)
 
 ### 说明
 
