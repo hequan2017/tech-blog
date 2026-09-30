@@ -9,6 +9,7 @@
 All articles were scraped from the author's [51CTO blog](https://blog.51cto.com/hequan) and converted to Markdown.
 Images are localized under `posts/assets/` for offline reading and full-text search.
 Each article keeps its original title, publish date, category and source URL in the front-matter.
+English translations of all 416 posts live in [`posts/en/`](posts/en/) (same filenames; `posts-en-index.json` maps them to English titles).
 
 ## Contents (clickable)
 

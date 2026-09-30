@@ -33,6 +33,7 @@ Vue 文档风格界面,开箱即用:
 本仓库将博主在 [51CTO 博客](https://blog.51cto.com/hequan) 发布的全部技术文章抓取并转换为 Markdown,
 图片已本地化至 `posts/assets/`,可**离线阅读、全文检索**。
 每篇文章的 front-matter 保留原标题、发布时间、分类与原文链接(`source`)。
+全部 416 篇均有对应英文版(`posts/en/`),在线站点支持中英切换。
 
 内容覆盖运维与后端开发的主要方向,适合作为实战参考资料:
 
@@ -72,11 +73,13 @@ Vue 文档风格界面,开箱即用:
 tech-blog/
 ├── index.html            # 单文件前端(Vue 文档风格,无构建依赖)
 ├── posts-index.json      # 文章索引(标题/日期/分类/原文链接)
+├── posts-en-index.json   # 英文版标题索引(文件名→英文标题)
 ├── INDEX.md              # 完整目录(分类×年份)
 ├── README.md             # 本文件
 ├── scripts/              # 工具链(抓取/组装/索引生成/文章校验)
 └── posts/                # 全部 416 篇文章
     ├── YYYY-MM-DD-标题-文章ID.md
+    ├── en/               # 416 篇对应英文版(文件名与中文版一致)
     └── assets/           # 本地化图片资源
 ```
 
@@ -86,9 +89,9 @@ tech-blog/
 
 ```yaml
 ---
-title: "k8s kubeadm v1.30.2部署"
+title: "k8s kubeadm   v1.30.2部署"
 date: "2024-07-30 11:31:58"
-category: "集群"
+category: "cluster"
 source: "https://blog.51cto.com/hequan/11608966"
 ---
 ```
