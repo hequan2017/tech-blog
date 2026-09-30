@@ -28,7 +28,7 @@ lang: "en"
 * MySQL Shell is an interactive program that supports both JavaScript and SQL, allowing you to configure an InnoDB Cluster quickly.
 ```
 
-![](../assets/2059436/01_8815cd9266b5f987ffcdd17c72341bf2.png)
+![MySQL InnoDB Cluster architecture diagram](../assets/2059436/01_8815cd9266b5f987ffcdd17c72341bf2.png)
 
 ---
 

@@ -27,7 +27,7 @@ source: "https://blog.51cto.com/hequan/2059436"
 * MySQL Shell 是一个同时支持 JavaScript 和 SQL 的交互程序，可以快速配置 InnoDB Cluster。
 ```
 
-![](assets/2059436/01_8815cd9266b5f987ffcdd17c72341bf2.png)
+![MySQL InnoDB 集群架构示意图](assets/2059436/01_8815cd9266b5f987ffcdd17c72341bf2.png)
 
 ---
 
